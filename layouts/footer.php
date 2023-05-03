@@ -5,15 +5,14 @@
         <div class="row container mx-auto pt-5">
             <div class="footer-one col-lg-3 col-md-6 col-sm-12">
                 <img class="logo" src="assets/imgs/logo.jpg">
-                <p class="pt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis, ipsa.</p>
+                <p class="pt-3">A bicycle shop that offers good quality and budget products!</p>
             </div>
             <div class="footer-one col-lg-3 col-md-6 col-sm-12">
                 <h5 class="pb-2">Featured</h5>
                 <ul class="text-uppercase">
-                    <li><a href="#">Mountain Bike</a></li>
-                    <li><a href="#">Mountain Bike</a></li>
-                    <li><a href="#">E-Bike</a></li>
-                    <li><a href="#">Fixie</a></li>
+                    <li><a href="#">Mountain Bikes</a></li>
+                    <li><a href="#">Kiddie Bikes</a></li>
+                    <li><a href="#">E-Bikes</a></li>
                     <li><a href="#">Parts & Accessories</a></li>
                 </ul>
             </div>
@@ -25,11 +24,11 @@
                 </div>
                 <div>
                     <h6 class="text-uppercase">Phone No.</h6>
-                    <p class="contact">+63 9222801307</p>
+                    <p class="contact">+63 956-225-6879</p>
                 </div>
                 <div>
                     <h6 class="text-uppercase">Email Address</h6>
-                    <p class="contact">vykesmnl@mail.com</p>
+                    <p class="contact">vykesmnl@gmail.com</p>
                 </div>
             </div>
             <div class="footer-one col-lg-3 col-md-6 col-sm-12">
@@ -51,9 +50,9 @@
                     <img src="assets/imgs/payment.png">
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
-                    <a href=""><i class="fab fa-facebook"></i></a>
-                    <a href=""><i class="fab fa-instagram"></i></a>
-                    <a href=""><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.facebook.com/vykesmnl"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/vykesmnl"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/vykesmnl"><i class="fab fa-tiktok"></i></a>
                 </div>
             </div>
         </div>
