@@ -21,7 +21,7 @@
                 <h5 class="pb-2">Contact Us</h5>
                 <div>
                     <h6 class="text-uppercase">Address</h6>
-                    <p class="contact">6969 Street Name, City</p>
+                    <p class="contact">59C Gen Ordonez Ave., Marikina City</p>
                 </div>
                 <div>
                     <h6 class="text-uppercase">Phone No.</h6>
