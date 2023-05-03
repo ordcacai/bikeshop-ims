@@ -46,7 +46,7 @@ session_start();
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="contact.php">Contact Us</a>
+                <a class="nav-link" href="faqs.php">FAQs</a>
               </li>
 
               <li class="nav-item">
