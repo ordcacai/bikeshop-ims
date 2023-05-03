@@ -25,7 +25,7 @@
                 </div>
                 <div>
                     <h6 class="text-uppercase">Phone No.</h6>
-                    <p class="contact">+63 968-449-1553</p>
+                    <p class="contact">+63 9222801307</p>
                 </div>
                 <div>
                     <h6 class="text-uppercase">Email Address</h6>
