@@ -1,0 +1,734 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+button{
+    font-size: 0.8rem;
+    font-weight: 900;
+    outline: none;
+    border: none;
+    background-color: #1d1d1d;
+    color: white;
+    padding: 13px 30px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+
+button:hover{
+    background-color: darkorange;
+    color: black;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
+hr{
+    width: 150px;
+    height: 3px !important;
+    opacity: 1 !important;
+    background-color: darkorange;
+    color: darkorange;
+}
+
+h1{
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+h2{
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+h3{
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+h4{
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+h5{
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+h6{
+    color: #d8d8d8;
+}
+
+.logo{
+    width: 50px;
+    height: 50px;
+}
+
+/* Navigation Bar */
+
+.nav-buttons{
+    margin-left: 40%;
+}
+
+.navbar{
+    font-size: 10px;
+    padding-top: 1.2rem !important;
+    padding-bottom: 1.2rem !important;
+    top: 0;
+    left: 0;
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.1);
+}
+
+.navbar .company{
+    margin: 0px 10px;
+    font-size: 1.2rem;
+}
+
+.navbar .company span{
+    color: darkorange;
+}
+
+.navbar-light .navbar-nav .nav-link{
+    padding: 0px 15px;
+    color: black;
+    transition: 0.4s ease;
+}
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar a:hover,
+.navbar-light .navbar-nav .nav-link.active
+.navbar a:hover{
+    color: darkorange;
+}
+
+.navbar a{
+    font-size: 1.2rem;
+    padding: 0px 0.7px;
+    transition: 0.4s ease;
+    font-weight: 500;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+@media only screen and (max-width:990px) {
+    
+    .nav-buttons{
+        margin: 10px;
+    }
+
+    .nav-buttons ul{
+        margin: 1rem;
+        justify-content: flex-start;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .nav-buttons ul .fas{
+        margin: 20px 5px 10px 20px;
+    }
+}
+
+/* Home */
+
+#home{
+    background-image: url('../imgs/background.png');
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position-x: -100px;
+    background-position-y: -200px;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* Banner */
+
+#banner{
+    background-image: url('../imgs/banner.png');
+    width: 100%;
+    height: 50vh;
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: 80px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* Brand */
+
+#brand{
+    padding: 5px;
+    border: 2px black solid;
+    margin-top: 100px;
+}
+
+/* New Product */
+
+#new .one img{
+    width: 100%;
+    height: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 1px black solid;
+    padding: 50px;
+}
+
+#new .one{
+    position: relative;
+}
+
+#new .one .details{
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: white;
+    font-weight: bold;
+    transition: 0.4s ease;
+    opacity: 0.8;
+    background-color: rgb(1,1,1);
+    width: 100%;
+    height: 80%;
+}
+
+#new .one .details:hover{
+    background-color: white;
+    color: black;
+}
+
+#new .one:nth-child(1) .details{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: start;
+}
+
+#new .one:nth-child(2) .details{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+#new .one:nth-child(3) .details{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+}
+
+/* Shop */
+
+.product-img{
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    object-fit: cover;
+}
+
+.pagination a{
+    color: darkorange;
+    cursor: pointer;
+}
+
+.pagination li .active {
+    color: white;
+    background-color: darkorange;
+    border: 1px solid white;
+}
+
+.product{
+    cursor: pointer;
+    margin-bottom: 2rem;
+}
+
+.product img{
+    transition: 0.3s all;
+}
+
+.product:hover img{
+    opacity: 0.7;
+}
+
+.product .buy-btn{
+    transform: translateY(50px);
+    opacity: 0;
+    transition: 0.3s all;
+    background-color: darkorange;
+    color: white;
+    font-weight: bold;
+}
+
+.product:hover .buy-btn{
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.star {
+    padding: 10px 0;
+}
+
+.star i{
+    font-size: 0.9rem;
+    color: darkorange;
+}
+
+/* Footer */
+
+Footer{
+    background-color: #222222;
+}
+
+Footer h5{
+    color: white;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+footer ul{
+    padding-left: 0;
+    margin-left: 0;
+}
+
+footer li{
+    padding-bottom: 10px;   
+    list-style: none;
+}
+
+footer li a{
+    font-size: 0.8rem;
+    color: gray;
+    text-decoration: none;
+}
+
+footer li a:hover{
+    color: white;
+}
+
+footer .copyright a{
+    color: black;
+    height: 40px;
+    width: 40px;
+    background-color: white;
+    display: inline-block;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    transition: 0.3s ease;
+    margin: 0px 10px;
+}
+
+footer .copyright a:hover{
+    background-color: darkorange;
+    color: white;
+}
+
+footer p{
+    color: white;
+}
+
+footer .contact{
+    color:gray;
+}
+
+/* Product View */
+
+.small-img-group{
+    display: flex;
+    justify-content: space-between;
+}
+
+.small-img-col{
+    flex-basis: 24%;
+    cursor: pointer;
+}
+
+.product-view input{
+    width: 50px;
+    height: 45px;
+    padding-left: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    margin-right: 10px;
+    border: 2px darkorange solid;
+}
+.product-view input:focus{
+    outline: none;
+
+}
+
+.product-view .buy-btn{
+    background-color: darkorange;
+    transition: 0.4s all;
+}
+
+.product-view .buy-btn:hover{
+    background-color: #ffae42;
+    color: white;
+}
+
+.product-view h4{
+    color: darkorange;
+}
+
+#shop-container {
+
+    display: flex;
+
+}
+
+#search .btn{
+    background-color: darkorange;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+}
+
+#search .btn:hover{
+    background-color: #ffae42;
+}
+/* Cart */
+
+.cart table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cart .product-info{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cart th{
+    text-align: left;
+    padding: 5px 10px;
+    color: white;
+    background-color: darkorange;
+}
+
+.cart td{
+    padding: 10px 20px;
+}
+
+.cart td img{
+    width: 150px;
+    height: 120px;
+    margin-right: 50px;
+}
+
+.cart td input{
+    width: 70px;
+    height: 30px;
+    padding: 5px;
+    border: 1px darkorange solid;
+}
+
+.cart td input:hover{
+    border: 2px darkorange solid;
+}
+
+.cart .remove-btn{
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    background-color: darkorange;
+    border: none;
+    width: 100px;
+    margin-top: 10px;
+}
+
+.cart .remove-btn:hover{
+    background-color: #ffae42;
+    border: none;
+}
+
+.cart .edit-btn{
+    color: darkorange;
+    text-decoration: none;
+    font-size: 15px;
+    background-color: white;
+    border: none;
+    width: 50px;
+    height: 30px;
+    margin-left: 5px;
+}
+
+.cart .edit-btn:hover{
+    text-decoration: underline;
+    color: #ffae42;
+    border: none;
+}
+
+.cart .product-info p{
+    margin: 3px;
+}
+
+.cart-total {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.cart-total table{
+    width: 100%;
+    max-width: 500px;
+    margin-top: 50px;
+    border-top: 3px darkorange solid;
+}
+
+td:last-child{
+    text-align: right;
+}
+
+th:last-child{
+    text-align: right;
+}
+
+.checkout-container{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 40px;
+}
+
+.checkout-container .button{
+    background-color: darkorange;
+    color: white;
+    border: none;
+    width: 120px;
+    height: 40px;
+    margin-left: 5px;
+    border-radius: 10px;
+}
+
+.checkout-container .button:hover{
+    background-color: #ffae42;
+    color: white;
+}
+
+#checkout-form a{
+    margin-left: 10px;
+    padding: 5px 15px;
+    text-decoration: none;
+    background-color: darkorange;
+    color: white;
+    border-radius: 5px;
+}
+
+#checkout-form a:hover{
+    background-color: #ffae42;
+}
+
+/* Login */
+
+#login-form{
+    width: 60%;
+    margin: 5px auto;
+    text-align: center;
+    padding: 80px;
+    border-top: 3px darkorange solid; 
+}
+
+#login-form input{
+    width: 70%;
+    margin: 5px auto;
+}
+
+#login-form #login-btn{
+    background-color: darkorange;
+    color: white;
+}
+
+#login-form #login-btn:hover{
+    background-color: #ffae42;
+    color: white;
+}
+
+#login-form #register-url{
+    color: darkorange;
+}
+
+#login-form #register-url:hover{
+    color: #ffae42;
+}
+
+/* Register */
+
+#register-form{
+    width: 60%;
+    margin: 5px auto;
+    text-align: center;
+    padding: 50px;
+    border-top: 3px darkorange solid;
+}
+
+#register-form input{
+    width: 80%;
+    margin: 5px auto;
+}
+
+#register-form #register-btn{
+    margin-top: 30px;
+    background-color: darkorange;
+    color: white;
+}
+
+#register-form #register-btn:hover{
+    background-color: #ffae42;
+    color: white;
+}
+
+#register-form #login-url{
+    color: darkorange;
+}
+
+#register-form #login-url:hover{
+    color: #ffae42;
+}
+
+/* Account */
+
+#account-form{
+    width: 70%;
+    margin: 70px;
+    text-align: center;
+    padding: 30px;
+}
+
+#account-form input{
+    margin: 10px auto;
+}
+
+#account-form #change-password-btn{
+    margin-top: 30px;
+    background-color: darkorange;
+    color: white;
+}
+
+#account-form #change-password-btn:hover{
+    background-color: #ffae42;
+}
+
+.account-info #order-btn, #logout-btn{
+    color: darkorange;
+    text-decoration: none;
+}
+
+.account-info #order-btn:hover, #logout-btn:hover{
+    color: #ffae42;
+}
+
+/* Orders */
+
+.orders table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.orders .product-info{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.orders th{
+    padding: 5px 10px;
+    color: white;
+    background-color: darkorange;
+}
+
+.orders th:nth-child(2){
+    padding: 5px 10px;
+    color: white;
+    background-color: darkorange;
+}
+
+.orders td{
+    padding: 10px 20px;
+}
+
+.orders td img{
+    width: 150px;
+    height: 120px;
+    margin-right: 10px;
+}
+
+.orders .order-details-btn{
+    padding: 5px;;
+    background-color: darkorange;
+    color: white;
+}
+
+.orders .order-details-btn:hover{
+    background-color: #ffae42;
+    color: white;
+}
+
+.orders td p{
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.orders td p:nth-child(1){
+    margin-left: 10px;
+}
+
+/* Check Out */
+
+#checkout-form .checkout-small-element{
+    display: inline-block;
+    width: 48%;
+    margin: 10px auto;
+}
+
+#checkout-form .checkout-large-element{
+    width: 96.4%;
+}
+
+#checkout-form .checkout-btn-container{
+    margin: 10px;
+    text-align: right;
+    margin-right: 45px;
+    font-weight: 700;
+}
+
+#checkout-form #checkout-btn{
+    background-color: darkorange;
+    color: white;
+    padding: 7px 15px;
+    margin-top: 30px;
+}
+
+#checkout-form #checkout-btn:hover{
+    background-color: #ffae42;
+}
+
+/* Contact */
+
+#contact span{
+    color: darkorange;
+}
+
+/* Cart Quantity */
+
+.cart-quantity{
+    background-color: darkorange;
+    color: white;
+    padding: 2px 5px;
+    border-radius: 50%;
+    margin: -3px;
+    font-size: 1rem;
+}
