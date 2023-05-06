@@ -30,7 +30,7 @@ if(!isset($_SESSION['logged_in'])){
 
         $payment_image_name = $order_date."1.jpeg";
 
-        move_uploaded_file($payment_image,"./assets/imgs/".$payment_image_name);
+        move_uploaded_file($payment_image,"../assets/imgs/".$payment_image_name);
     
         $stmt = $conn->prepare("INSERT INTO orders (order_cost,order_status,user_id,user_phone,user_city,user_address,payment_method,   payment_image, order_date) VALUES (?,?,?,?,?,?,?,?,?); ");
     
