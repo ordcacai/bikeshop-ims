@@ -66,10 +66,12 @@
                         <tr>
                             <th scope="col">Order ID</th>
                             <th scope="col">Order Status</th>
+                            <th scope="col">Payment Method</th>
+                            <th scope="col">Proof of Payment</th>
                             <th scope="col">User ID</th>
-                            <th scope="col">Order Date</th>
                             <th scope="col">Contact Number</th>
-                            <th scope="col">Address</th>
+                            <th scope="col">User Address</th>
+                            <th scope="col">Order Date</th>
                             <th scope="col">Edit</th>
                             <th scope="col">Delete</th>
                         </tr>
@@ -80,10 +82,12 @@
                         <tr>
                             <td><?php echo $order['order_id']; ?></td>
                             <td><?php echo $order['order_status']; ?></td>
+                            <td><?php echo $order['payment_method']; ?></td>
+                            <td><img src="<?php echo "../assets/imgs/".$order['payment_image']; ?>" style="width: 70px; height: 70px;"></td>
                             <td><?php echo $order['user_id']; ?></td>
-                            <td><?php echo $order['order_date']; ?></td>
                             <td><?php echo $order['user_phone']; ?></td>
                             <td><?php echo $order['user_address']; ?></td>
+                            <td><?php echo $order['order_date']; ?></td>
                             <td><a class="btn btn-primary" href="edit_order.php?order_id=<?php echo $order['order_id']; ?>">Edit</a></td>
                             <td><a class="btn btn-danger">Delete</a></td>
                         </tr>

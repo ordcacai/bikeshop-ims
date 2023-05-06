@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 01, 2023 at 01:16 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: May 06, 2023 at 07:55 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,6 +24,26 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `admins`
+--
+
+CREATE TABLE `admins` (
+  `admin_id` int(11) NOT NULL,
+  `admin_name` varchar(250) NOT NULL,
+  `admin_email` text NOT NULL,
+  `admin_password` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`admin_id`, `admin_name`, `admin_email`, `admin_password`) VALUES
+(1, 'admin', 'admin@email.com', '62cc2d8b4bf2d8728120d052163a77df');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `orders`
 --
 
@@ -35,24 +55,27 @@ CREATE TABLE `orders` (
   `user_phone` int(11) NOT NULL,
   `user_city` varchar(255) NOT NULL,
   `user_address` varchar(255) NOT NULL,
-  `order_date` datetime NOT NULL DEFAULT current_timestamp()
+  `payment_method` varchar(20) NOT NULL,
+  `payment_image` varchar(250) NOT NULL,
+  `order_date` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`order_id`, `order_cost`, `order_status`, `user_id`, `user_phone`, `user_city`, `user_address`, `order_date`) VALUES
-(1, '100.00', 'paid', 1, 2147483647, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City, San Antonio', '2023-03-30 22:59:40'),
-(2, '100.00', 'not paid', 1, 2147483647, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City, San Antonio', '2023-03-31 15:04:10'),
-(3, '200.00', 'not paid', 1, 2147483647, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City, San Antonio', '2023-03-31 16:09:52'),
-(4, '300.00', 'delivered', 1, 2147483647, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City, San Antonio', '2023-03-31 16:11:36'),
-(9, '400.00', 'not paid', 1, 2147483647, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City, San Antonio', '2023-04-01 17:21:43'),
-(10, '100.00', 'not paid', 1, 2147483647, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City, San Antonio', '2023-04-04 16:09:39'),
-(11, '100.00', 'not paid', 1, 2147483647, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City, San Antonio', '2023-04-05 14:27:41'),
-(12, '100.00', 'not paid', 1, 2147483647, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City, San Antonio', '2023-04-24 16:17:29'),
-(13, '100.00', 'not paid', 1, 2147483647, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City, San Antonio', '2023-04-24 16:36:54'),
-(14, '100.00', 'not paid', 1, 2147483647, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City, San Antonio', '2023-04-24 16:43:09');
+INSERT INTO `orders` (`order_id`, `order_cost`, `order_status`, `user_id`, `user_phone`, `user_city`, `user_address`, `payment_method`, `payment_image`, `order_date`) VALUES
+(1, 100.00, 'paid', 1, 2147483647, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City, San Antonio', '', '', '2023-03-30'),
+(2, 100.00, 'not paid', 1, 2147483647, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City, San Antonio', '', '', '2023-03-31'),
+(3, 200.00, 'not paid', 1, 2147483647, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City, San Antonio', '', '', '2023-03-31'),
+(4, 300.00, 'delivered', 1, 2147483647, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City, San Antonio', '', '', '2023-03-31'),
+(9, 400.00, 'not paid', 1, 2147483647, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City, San Antonio', '', '', '2023-04-01'),
+(10, 100.00, 'not paid', 1, 2147483647, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City, San Antonio', '', '', '2023-04-04'),
+(11, 100.00, 'not paid', 1, 2147483647, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City, San Antonio', '', '', '2023-04-05'),
+(12, 100.00, 'not paid', 1, 2147483647, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City, San Antonio', '', '', '2023-04-24'),
+(13, 100.00, 'not paid', 1, 2147483647, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City, San Antonio', '', '', '2023-04-24'),
+(14, 100.00, 'not paid', 1, 2147483647, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City, San Antonio', '', '', '2023-04-24'),
+(16, 100.00, 'not paid', 1, 2147483647, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City', 'E-Wallet', '', '2023-05-06');
 
 -- --------------------------------------------------------
 
@@ -77,19 +100,21 @@ CREATE TABLE `order_items` (
 --
 
 INSERT INTO `order_items` (`item_id`, `order_id`, `product_id`, `product_name`, `product_image`, `product_price`, `product_quantity`, `user_id`, `order_date`) VALUES
-(1, 1, '1', 'Mountain Bike', 'featured1.png', '100.00', 1, 1, '2023-03-30 22:59:40'),
-(2, 2, '1', 'Mountain Bike', 'featured1.png', '100.00', 1, 1, '2023-03-31 15:04:10'),
-(3, 3, '5', 'Shimano Ultegra Groupset', 'parts1.png', '200.00', 1, 1, '2023-03-31 16:09:52'),
-(4, 4, '5', 'Shimano Ultegra Groupset', 'parts1.png', '200.00', 1, 1, '2023-03-31 16:11:36'),
-(5, 4, '1', 'Mountain Bike', 'featured1.png', '100.00', 1, 1, '2023-03-31 16:11:36'),
-(12, 9, '1', 'Mountain Bike', 'featured1.png', '100.00', 1, 1, '2023-04-01 17:21:43'),
-(13, 9, '3', 'Mountain Bike', 'featured1.png', '100.00', 1, 1, '2023-04-01 17:21:43'),
-(14, 9, '8', 'Shimano Ultegra Groupset', 'parts1.png', '200.00', 1, 1, '2023-04-01 17:21:43'),
-(15, 10, '1', 'Mountain Bike', 'featured1.png', '100.00', 1, 1, '2023-04-04 16:09:39'),
-(16, 11, '2', 'Mountain Bike', 'featured1.png', '100.00', 1, 1, '2023-04-05 14:27:41'),
-(17, 12, '1', 'Mountain Bike', 'featured1.png', '100.00', 1, 1, '2023-04-24 16:17:29'),
-(18, 13, '1', 'Mountain Bike', 'featured1.png', '100.00', 1, 1, '2023-04-24 16:36:54'),
-(19, 14, '1', 'Mountain Bike', 'featured1.png', '100.00', 1, 1, '2023-04-24 16:43:09');
+(1, 1, '1', 'Mountain Bike', 'featured1.png', 100.00, 1, 1, '2023-03-30 22:59:40'),
+(2, 2, '1', 'Mountain Bike', 'featured1.png', 100.00, 1, 1, '2023-03-31 15:04:10'),
+(3, 3, '5', 'Shimano Ultegra Groupset', 'parts1.png', 200.00, 1, 1, '2023-03-31 16:09:52'),
+(4, 4, '5', 'Shimano Ultegra Groupset', 'parts1.png', 200.00, 1, 1, '2023-03-31 16:11:36'),
+(5, 4, '1', 'Mountain Bike', 'featured1.png', 100.00, 1, 1, '2023-03-31 16:11:36'),
+(12, 9, '1', 'Mountain Bike', 'featured1.png', 100.00, 1, 1, '2023-04-01 17:21:43'),
+(13, 9, '3', 'Mountain Bike', 'featured1.png', 100.00, 1, 1, '2023-04-01 17:21:43'),
+(14, 9, '8', 'Shimano Ultegra Groupset', 'parts1.png', 200.00, 1, 1, '2023-04-01 17:21:43'),
+(15, 10, '1', 'Mountain Bike', 'featured1.png', 100.00, 1, 1, '2023-04-04 16:09:39'),
+(16, 11, '2', 'Mountain Bike', 'featured1.png', 100.00, 1, 1, '2023-04-05 14:27:41'),
+(17, 12, '1', 'Mountain Bike', 'featured1.png', 100.00, 1, 1, '2023-04-24 16:17:29'),
+(18, 13, '1', 'Mountain Bike', 'featured1.png', 100.00, 1, 1, '2023-04-24 16:36:54'),
+(19, 14, '1', 'Mountain Bike', 'featured1.png', 100.00, 1, 1, '2023-04-24 16:43:09'),
+(20, 15, '2', 'Mountain Bike', 'featured1.png', 100.00, 1, 1, '2023-05-06 06:08:26'),
+(21, 16, '2', 'Mountain Bike', 'featured1.png', 100.00, 1, 1, '2023-05-06 06:09:54');
 
 -- --------------------------------------------------------
 
@@ -129,15 +154,15 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `product_name`, `product_category`, `product_description`, `product_image`, `product_image2`, `product_image3`, `product_image4`, `product_price`, `product_special_offer`, `product_color`) VALUES
-(1, 'Bike', 'Bike', 'gold Mountain Bike', 'featured1.png', 'featured1.png', 'featured1.png', 'featured1.png', '1000.00', 1, 'gold'),
-(2, 'Mountain Bike', 'Bike', 'Silver Mountain Bike', 'featured1.png', 'featured1.png', 'featured1.png', 'featured1.png', '100.00', 0, 'silver'),
-(3, 'Mountain Bike', 'Bike', 'Silver Mountain Bike', 'featured1.png', 'featured1.png', 'featured1.png', 'featured1.png', '100.00', 0, 'silver'),
-(4, 'Mountain Bike', 'Bike', 'Silver Mountain Bike', 'featured1.png', 'featured1.png', 'featured1.png', 'featured1.png', '100.00', 0, 'silver'),
-(5, 'Shimano Ultegra Groupset', 'parts', 'Groupset for Road bike', 'parts1.png', 'parts1.png', 'parts1.png', 'parts1.png', '200.00', 0, 'classic'),
-(6, 'Shimano Ultegra Groupset', 'parts', 'Groupset for Road bike', 'parts1.png', 'parts1.png', 'parts1.png', 'parts1.png', '200.00', 0, 'classic'),
-(7, 'Shimano Ultegra Groupset', 'parts', 'Groupset for Road bike', 'parts1.png', 'parts1.png', 'parts1.png', 'parts1.png', '200.00', 0, 'classic'),
-(8, 'Shimano Ultegra Groupset', 'parts', 'Groupset for Road bike', 'parts1.png', 'parts1.png', 'parts1.png', 'parts1.png', '200.00', 0, 'classic'),
-(9, 'Mountain Bike', 'Bike', 'Silver Mountain Bike', '1.jpeg', '2.jpeg', '3.jpeg', '4.jpeg', '100.00', 0, 'silver');
+(1, 'Bike', 'Bike', 'gold Mountain Bike', 'featured1.png', 'featured1.png', 'featured1.png', 'featured1.png', 1000.00, 1, 'gold'),
+(2, 'Mountain Bike', 'Bike', 'Silver Mountain Bike', 'featured1.png', 'featured1.png', 'featured1.png', 'featured1.png', 100.00, 0, 'silver'),
+(3, 'Mountain Bike', 'Bike', 'Silver Mountain Bike', 'featured1.png', 'featured1.png', 'featured1.png', 'featured1.png', 100.00, 0, 'silver'),
+(4, 'Mountain Bike', 'Bike', 'Silver Mountain Bike', 'featured1.png', 'featured1.png', 'featured1.png', 'featured1.png', 100.00, 0, 'silver'),
+(5, 'Shimano Ultegra Groupset', 'parts', 'Groupset for Road bike', 'parts1.png', 'parts1.png', 'parts1.png', 'parts1.png', 200.00, 0, 'classic'),
+(6, 'Shimano Ultegra Groupset', 'parts', 'Groupset for Road bike', 'parts1.png', 'parts1.png', 'parts1.png', 'parts1.png', 200.00, 0, 'classic'),
+(7, 'Shimano Ultegra Groupset', 'parts', 'Groupset for Road bike', 'parts1.png', 'parts1.png', 'parts1.png', 'parts1.png', 200.00, 0, 'classic'),
+(8, 'Shimano Ultegra Groupset', 'parts', 'Groupset for Road bike', 'parts1.png', 'parts1.png', 'parts1.png', 'parts1.png', 200.00, 0, 'classic'),
+(9, 'Mountain Bike', 'Bike', 'Silver Mountain Bike', '1.jpeg', '2.jpeg', '3.jpeg', '4.jpeg', 100.00, 0, 'silver');
 
 -- --------------------------------------------------------
 
@@ -164,6 +189,12 @@ INSERT INTO `users` (`user_id`, `user_name`, `user_email`, `user_password`) VALU
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admins`
+--
+ALTER TABLE `admins`
+  ADD PRIMARY KEY (`admin_id`);
 
 --
 -- Indexes for table `orders`
@@ -201,16 +232,22 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `admins`
+--
+ALTER TABLE `admins`
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `payments`

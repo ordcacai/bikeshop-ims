@@ -20,16 +20,21 @@ if(!isset($_SESSION['logged_in'])){
         $phone = $_POST['phone'];
         $city = $_POST['city'];
         $address = $_POST['address'];
+        $payment_method = $_POST['payment_method'];
         $order_cost = $_SESSION['total'];
         $order_status = "not paid";
         $user_id = $_SESSION['user_id'];
         $order_date = date('Y-m-d H:i:s');
+
+        $payment_image = $_FILES['payment']['tmp_name'];
+
+        $payment_image_name = $order_date."1.jpeg";
+
+        move_uploaded_file($payment_image,"./assets/imgs/".$payment_image_name);
     
-        $stmt = $conn->prepare("INSERT INTO orders (order_cost,order_status,user_id,user_phone,user_city,user_address,order_date)
-        
-                                VALUES (?,?,?,?,?,?,?); ");
+        $stmt = $conn->prepare("INSERT INTO orders (order_cost,order_status,user_id,user_phone,user_city,user_address,payment_method,   payment_image, order_date) VALUES (?,?,?,?,?,?,?,?,?); ");
     
-        $stmt->bind_param('isiisss', $order_cost, $order_status, $user_id, $phone, $city, $address, $order_date);
+        $stmt->bind_param('isiisssss', $order_cost, $order_status, $user_id, $phone, $city, $address, $payment_method, $payment_image, $order_date);
     
         $stmt_status = $stmt->execute();
     
