@@ -3,64 +3,55 @@
     include('layouts/header.php');
 
 ?> 
-
+    
 <br>
-<div class="container text-center mt-5 py-5">
+<div class="container text-center mt-5 py-md-5">
     <h3>Frequently Asked Questions</h3><br>
     <hr class="mx-auto">
 </div>
-<div class="row mx-auto container"></div>
 
-    <!-- FAQs -->
+<div class="container"> </div> 
 
-    <div class="list-group w-100">
-        <a href="#shortExampleAnswer1collapse" data-mdb-toggle="collapse" aria-expanded="false"
-            aria-controls="shortExampleAnswer1collapse" class="list-group-item list-group-item-action">
-            <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">Where is your shop located?</h5>
+<div class="accordion w-75 mx-auto" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+      Where is your shop located?
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <strong>Our shop is located at 59C Gen. Ordonez Ave. Marikina City</strong> We also have other branches. One in Sta. Rosa, Laguna and one in Trece, Cavite.
+      </div>
     </div>
+  </div>
 
-    <p class="mb-1">Our shop is located at 59C Gen. Ordonez Ave. Marikina City</p>
-    <small><u>Learn more</u></small>
-
-    <!-- Collapsed content -->
-
-    <div class="collapse mt-3" id="shortExampleAnswer1collapse">
-      We also have other branches. One in Sta. Rosa, Laguna and one in Trece, Cavite.
-    </div>
-</a>
-    
-  <a href="#shortExampleAnswer2collapse" data-mdb-toggle="collapse" aria-expanded="false"
-    aria-controls="shortExampleAnswer1collapse" class="list-group-item list-group-item-action">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">What mode of payments do you offer?</h5>
-    </div>
-    <p class="mb-1">
-      We accept cash payments and we have a lot installment options.
-    </p>
-    <small class="text-muted"><u>Learn more</u></small>
-
-    <!-- Collapsed content -->
-    <div class="collapse mt-3" id="shortExampleAnswer2collapse">
-      We accept cash payments and also consider payments thru Gcash or Bank transfer. We accept installment plans through 
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+      What mode of payments do you offer?
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <strong>We accept cash payments and we have a lot installment options.</strong> We accept cash payments and also consider payments thru Gcash or Bank transfer. We accept installment plans through 
       Home Credit, Credit Cards, Atome App, BillEase App and Cashalo App.
     </div>
-  </a>
-  <a href="#shortExampleAnswer3collapse" data-mdb-toggle="collapse" aria-expanded="false"
-    aria-controls="shortExampleAnswer1collapse" class="list-group-item list-group-item-action">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">How do I place an order?</h5>
-    </div>
-    <p class="mb-1">
-      You can place your order by messaging us through our Facebook page. Our admin will be happy to serve you!
-    </p>
-    <small class="text-muted"><u>Learn more</u></small>
+  </div>
 
-    <!-- Collapsed content -->
-    <div class="collapse mt-3" id="shortExampleAnswer3collapse">
-      You can also place an order through our website, just fill up the order form and wait for our confirmation for your order.
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+      How do I place an order?
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <strong>You can place your order by messaging us through our Facebook page. Our admin will be happy to serve you!</strong> 
+        You can also place an order through our website, just fill up the order form and wait for our confirmation for your order.
+      </div>
     </div>
-  </a>
+  </div>
 </div>
 
     <?php include('layouts/footer.php'); ?>
