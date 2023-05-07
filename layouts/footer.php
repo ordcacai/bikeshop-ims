@@ -17,6 +17,19 @@
                     <li><a href="#">Parts & Accessories</a></li>
                 </ul>
             </div>
+<!-- Payment Methods -->
+            <div class="footer-one col-lg-3 col-md-6 col-sm-12">
+                <h5 class="pb-2">Payment Methods</h5>
+                <ul class="text-uppercase">
+                    <li><a href="#">Cash | Gcash | Bank Transfer</a></li>
+                    <li><a href="#">Home Credit</a></li>
+                    <li><a href="#">BillEase App</a></li>
+                    <li><a href="#">Atome App</a></li>
+                    <li><a href="#">Credit Card Payments</a></li>
+                </ul>
+            </div>
+
+<!-- Contact US -->
             <div class="footer-one col-lg-3 col-md-6 col-sm-12">
                 <h5 class="pb-2">Contact Us</h5>
                 <div>
@@ -25,26 +38,16 @@
                 </div>
                 <div>
                     <h6 class="text-uppercase">Phone No.</h6>
-                    <p class="contact"></p>
+                    <p class="contact">0956 225 6879</p>
                 </div>
                 <div>
                     <h6 class="text-uppercase">Email Address</h6>
                     <p class="contact">vykesmnl@gmail.com</p>
                 </div>
-            </div>
-            <div class="footer-one col-lg-3 col-md-6 col-sm-12">
-                <h5 class="pb-2">Images</h5>
-                <div class="row">
-                    <img src="assets/imgs/cannondale.png" class="img-fluid w-25 h-100 m-2">
-                    <img src="assets/imgs/giant.png" class="img-fluid w-25 h-100 m-2">
-                    <img src="assets/imgs/specialized.png" class="img-fluid w-25 h-100 m-2">
-                    <img src="assets/imgs/cannondale.png" class="img-fluid w-25 h-100 m-2">
-                    <img src="assets/imgs/giant.png" class="img-fluid w-25 h-100 m-2">
-                    <img src="assets/imgs/parts1.png" class="img-fluid w-25 h-100 m-2">
-                </div>
-            </div>
+            </div>  
         </div>
 
+<!-- Social Media -->
         <div class="copyright mt-5">
             <div class="row container mx-auto">
                 <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
