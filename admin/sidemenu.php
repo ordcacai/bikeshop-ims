@@ -14,6 +14,12 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a href="retail.php" class="nav-link active">
+                    <span data-feather="file"></span>
+                    R or W
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="products.php" class="nav-link active">
                     <span data-feather="shopping-cart"></span>
                     Products
