@@ -13,7 +13,7 @@
                 </div>
             </div>
 
-            <h2 class="form-weight-bold mt-3 my-3">Edit Products</h2>
+            <h2 class="form-weight-bold mt-3 my-3">Add Products</h2>
             <div class="table-responsive">
 
                 <div class="mx-auto container">

@@ -14,15 +14,15 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="products.php" class="nav-link active">
-                    <span data-feather="shopping-cart"></span>
-                    Products
+                <a href="add_order.php" class="nav-link active">
+                    <span data-feather="file"></span>
+                    Add New Orders
                 </a>
             </li>
             <li class="nav-item">
-                <a href="account.php" class="nav-link active">
-                    <span data-feather="layers"></span>
-                    Account
+                <a href="products.php" class="nav-link active">
+                    <span data-feather="shopping-cart"></span>
+                    Products
                 </a>
             </li>
             <li class="nav-item">
@@ -35,6 +35,12 @@
                 <a href="Sales.php" class="nav-link active">
                     <span data-feather="bar-chart-2"></span>
                     Sales
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="account.php" class="nav-link active">
+                    <span data-feather="layers"></span>
+                    Account
                 </a>
             </li>
             

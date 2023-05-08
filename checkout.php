@@ -24,7 +24,7 @@ if ( !empty($_SESSION['cart'])){
 
     <section class="my-t py-5">
         <div class="container text-center mt-3 pt-5">
-            <h2 class="form-weight-bold mt-3 my-3">Check Out</h2>
+            <h2 class="form-weight-bold mt-3 my-3">Order Request</h2>
             <hr class="mx-auto">
         </div>
 
@@ -65,6 +65,16 @@ if ( !empty($_SESSION['cart'])){
                 </div>
 
                 <div class="form-group checkout-small-element">
+                    <label><strong>Landmark:</strong></label>
+                    <input type="text" class="form-control" id="checkout-landmark" name="landmark" placeholder="Landmark" required>
+                </div>
+
+                <div class="form-group checkout-small-element">
+                    <label><strong>Location Link:</strong></label>
+                    <input type="text" class="form-control" id="checkout-location" name="location" placeholder="Location" required>
+                </div>
+
+                <div class="form-group checkout-small-element">
                             <label><strong>Payment Method</strong></label>
                             <select class="form-select" required name="payment_method">
 
@@ -77,9 +87,21 @@ if ( !empty($_SESSION['cart'])){
                 </div>
 
                 <div class="form-group checkout-small-element">
+                            <label><strong>Shipping Method</strong></label>
+                            <select class="form-select" required name="shipping_method">
+
+                                <option value="LBC">LBC</option>
+                                <option value="Lalamove">Lalamove</option>
+                                <option value="Grab">Grab</option>
+                                <option value="J&T">J&T</option>
+
+                            </select>
+                </div>
+
+                <!-- <div class="form-group checkout-small-element">
                             <label><strong>Proof of Payment</strong></label>
                             <input type="file" class="form-control" id="checkout-payment" name="payment" placeholder="Payment" required>
-                </div>
+                </div> -->
 
                 <div class="form-group checkout-btn-container">
                     <p>Total: ₱<?php echo $_SESSION['total']; ?></p>

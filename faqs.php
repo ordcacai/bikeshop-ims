@@ -11,8 +11,6 @@
     <hr class="mx-auto">
 </div>
 
-
-
   <div class="accordion w-75 mx-auto" id="accordionExample">
     <div class="accordion-item">
       <h2 class="accordion-header" id="headingOne">
@@ -54,7 +52,6 @@
       </div>
     </div>
   </div>
-
 </div>
 </section>
 
