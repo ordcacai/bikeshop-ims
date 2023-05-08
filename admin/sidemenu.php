@@ -14,12 +14,6 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="add_order.php" class="nav-link active">
-                    <span data-feather="file"></span>
-                    Add New Orders
-                </a>
-            </li>
-            <li class="nav-item">
                 <a href="products.php" class="nav-link active">
                     <span data-feather="shopping-cart"></span>
                     Products

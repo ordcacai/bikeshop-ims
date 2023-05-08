@@ -31,7 +31,7 @@
         <div class="container text-center mt-5 py-5">
             <h3>Brands</h3>
             <hr class="mx-auto">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, harum!</p>
+            <p>A lot of brands to choose from!</p>
         </div>
         <div class="row">
             <img src="assets/imgs/cannondale.png" class="img-fluid col-lg-3 col-md-6 col-sm-12">
@@ -47,7 +47,7 @@
         <div class="container text-center mt-5 py-5">
             <h3>New Products</h3>
             <hr class="mx-auto">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, harum!</p>
+            <p>Only with the best quality bikes of all time.</p>
         </div>
         <div class="row p-0 m-0 container-fluid">
 
@@ -117,7 +117,7 @@
         <div class="container text-center mt-5 py-5">
             <h3>Parts & Accessories</h3>
             <hr class="mx-auto">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, harum!</p>
+            <p>For your upgrades and maintainance, we got you!</p>
         </div>
         <div class="row mx-auto container">
 
