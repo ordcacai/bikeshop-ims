@@ -9,7 +9,7 @@
                 <p class="pt-3">A bicycle shop that offers good quality and budget products!</p>
             </div>
             <div class="footer-one col-lg-3 col-md-6 col-sm-12">
-                <h5 class="pb-2">Featured</h5>
+                <h5 class="pb-2">Featured Items</h5>
                 <ul class="text-uppercase">
                     <li><a href="#">Mountain Bikes</a></li>
                     <li><a href="#">Kiddie Bikes</a></li>
@@ -18,6 +18,7 @@
                 </ul>
             </div>
 <!-- Payment Methods -->
+
             <div class="footer-one col-lg-3 col-md-6 col-sm-12">
                 <h5 class="pb-2">Payment Methods</h5>
                 <ul class="text-uppercase">
