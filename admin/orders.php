@@ -97,7 +97,7 @@
                         <tr>
                             <td><?php echo $order['order_id']; ?></td>
                             <td><?php echo $order['user_name']; ?></td>
-                            <td><?php echo $order['user_phone']; ?></td>
+                            <td><?php echo "+63 ".$order['user_phone']; ?></td>
                             <td><?php echo $order['user_address']; ?></td>
                             <td><?php echo $order['order_date']; ?></td>
                             <td><?php echo $order['order_status']; ?></td>
