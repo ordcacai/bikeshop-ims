@@ -20,13 +20,12 @@
 <!-- Payment Methods -->
 
             <div class="footer-one col-lg-3 col-md-6 col-sm-12">
-                <h5 class="pb-2">Payment Methods</h5>
+                <h5 class="pb-2">Information</h5>
                 <ul class="text-uppercase">
-                    <li><a href="#">Cash | Gcash | Bank Transfer</a></li>
-                    <li><a href="#">Home Credit</a></li>
-                    <li><a href="#">BillEase App</a></li>
-                    <li><a href="#">Atome App</a></li>
-                    <li><a href="#">Credit Card Payments</a></li>
+                    <li><a href="mop.php">Payment Methods</a></li>
+                    <li><a href="del.php">Shipping and Deliveries</a></li>
+                    <li><a href="services.php">Services</a></li>
+                    <li><a href="warranty.php">Warranty Terms</a></li>
                 </ul>
             </div>
 
