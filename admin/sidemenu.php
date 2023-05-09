@@ -32,6 +32,12 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a href="inventory.php" class="nav-link active">
+                    <span data-feather="users"></span>
+                    Inventory
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="Sales.php" class="nav-link active">
                     <span data-feather="bar-chart-2"></span>
                     Sales
