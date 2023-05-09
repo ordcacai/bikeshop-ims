@@ -52,6 +52,7 @@
 
                                 <option value="Bike">Bike</option>
                                 <option value="parts">Parts & Accessories</option>
+                                <option value="Ebike">E-Bike</option>
 
                             </select>
                         </div>
