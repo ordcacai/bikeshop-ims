@@ -5,7 +5,6 @@
 ?> 
 
 <section>
-<link rel="stylesheet" href="assets/css/style.css">
 
 <br>
 <div class="container">
@@ -15,19 +14,19 @@
   </div>
 </div>
 
-<div class="row container mx-auto">
+<div class="container mx-auto">
 
-<!--Sidebar-->
-  <nav class="nav flex-column">
-        <a class="nav-link active" aria-current="page" href="#">Cash | Gcash | Bank Transfer</a>
-        <a class="nav-link" href="#">Home Credit</a>
-        <a class="nav-link" href="#">BillEase App</a>
-        <a class="nav-link" href="#">Atome App</a>
-        <a class="nav-link" href="#">Credit Card Payments</a>
-  </nav>
-</div>
-
+<div class="row">
+  <div class="column side">
+    <h2>Side</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
+  </div>
   
+  <div class="column middle">
+    <h2>Main Content</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan convallis.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan convallis.</p>
+  </div>  
 </div>
 
   </section>
