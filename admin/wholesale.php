@@ -98,7 +98,22 @@
                 <h1 class="primary">Orders</h1>
             </div>
             <h3 class="tertiary">Order Type </h3>
-            <h4> RETAIL | <a href="wholesale.php" id="switch">Switch to WHOLESALE</a></h4>
+            <h4> WHOLESALE | <a href="retail.php" id="switch">Switch to RETAIL</a></h4>
+            <hr style="height: 15px; border: none; color: #000; background-color: #000; width: 60%;"> 
+            <h3 class="tertiary">Wholesale Information Form (For Package Label)</h3>
+            <form method="post" action="submit.php">
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name" required placeholder="Ex: Lalisa Manoban"><br>
+
+                <label for="phone">Contact Number:</label><br>
+                <input type="tel" id="phone" name="phone" required placeholder="Ex: 09*********"><br>
+
+                <label for="address">Address:</label><br>
+                <textarea id="address" name="address" required placeholder="Ex: 59C. Gen. Ordoñez Ave., Marikina City"></textarea><br>
+
+                <label for="wcourier">Preferred Courier:</label><br>
+                <input type="text" id="wcourier" name="wcourier" required placeholder="Ex: Lalamove"><br>
+            </form>
             <hr style="height: 15px; border: none; color: #000; background-color: #000; width: 60%;">
             <h3 class="tertiary">Order Details</h3>
             <form method="post" action="submit.php">
