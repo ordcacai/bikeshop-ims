@@ -739,14 +739,14 @@ th:last-child{
     padding: 10px;
   }
 
-  /* Left and right column */
+  /* Side Nav Bar column */
   .column.side {
-    width: 25%;
+    width: 30%;
   }
 
-  /* Middle column */
+  /* Info Coulmn */
   .column.middle {
-    width: 50%;
+    width: 70%;
   }
 
   /* Clear floats after the columns */
@@ -762,3 +762,5 @@ th:last-child{
       width: 100%;
     }
   }
+
+

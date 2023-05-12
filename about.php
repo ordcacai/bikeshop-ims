@@ -18,15 +18,26 @@
         </div>
     </section>
 
-    <section class="container">
-        <div class="row">
-            <img src="assets/imgs/sr1.jpg" class="img-fluid col-lg-2 col-md-6 col-sm-12">
-            <img src="assets/imgs/sr2.jpg" class="img-fluid col-lg-2 col-md-6 col-sm-12">
-            <img src="assets/imgs/sr3.jpg" class="img-fluid col-lg-2 col-md-6 col-sm-12">
-            <div class="container text-center mt-5 py-2">
-        <p>Vykes MNL Sta Rosa is our second branch and is located at Sta. Rosa, Laguna.  You can click <a href="https://www.facebook.com/vykesmnlstarosa">here</a>
-            to for more inquries.</p>
-        </div>
-      </section>
+    <!-- Container (Grid) -->
+
+<div class="container-fluid bg-3 text-center">    
+  <h3 class="margin">Our Branches</h3><br>
+  <div class="row">
+    <div class="col-sm-4">
+      <p>VYKES MNL MAIN (Marikina)</p>
+      <img src="assets/imgs/logo.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+    </div>
+    <div class="col-sm-4"> 
+      <p>VYKES MNL STA. ROSA</p>
+      <img src="assets/imgs/vmsr_logo.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+    </div>
+    <div class="col-sm-4"> 
+      <p>VYKES MNL TRECE</p>
+      <img src="assets/imgs/vmtc_logo.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+    </div>
+  </div>
+</div>
+
+
 
 <?php include('layouts/footer.php'); ?>
