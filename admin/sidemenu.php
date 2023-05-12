@@ -1,55 +1,53 @@
-<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-    <div class="position-sticky pt-3">
-        <ul class="nav flex-column">
-            <li class="nav-item">
-                <a href="index.php" class="nav-link active" aria-current="page">
-                    <span data-feather="home"></span>
-                    Dashboard
+<div class="sidebar">
+    <div class="sidebar-brand">
+        <h2><span></span>Vykes MNL</h2>
+    </div>
+
+    <div class="sidebar-menu">
+        <ul>
+            <li>
+                <a href="index.php" class="nav-link active">
+                    <span><i class="fas fa-th-large"></i></span>
+                    <span>Dashboard</span> 
                 </a>
             </li>
-            <li class="nav-item">
+            <li>
                 <a href="orders.php" class="nav-link active">
-                    <span data-feather="file"></span>
-                    Orders
+                    <span><i class="fas fa-shopping-cart"></i></span>
+                    <span>Orders</span> 
                 </a>
             </li>
-            <li class="nav-item">
+            <li>
                 <a href="retail.php" class="nav-link active">
-                    <span data-feather="file"></span>
-                    Add New Order
+
+                    <span>Add New Order</span> 
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="products.php" class="nav-link active">
-                    <span data-feather="shopping-cart"></span>
-                    Products
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="add_product.php" class="nav-link active">
-                    <span data-feather="users"></span>
-                    Add New Product
-                </a>
-            </li>
-            <li class="nav-item">
+                        <li>
                 <a href="inventory.php" class="nav-link active">
-                    <span data-feather="users"></span>
-                    Inventory
+                    <span><i class="fas fa-boxes"></i></span>
+                    <span>Inventory</span> 
                 </a>
             </li>
-            <li class="nav-item">
+            <li>
+                <a href="add_product.php" class="nav-link active">
+                    <span>Add New Product</span> 
+                </a>
+            </li>
+
+            <li>
                 <a href="Sales.php" class="nav-link active">
-                    <span data-feather="bar-chart-2"></span>
-                    Sales
+                    <span><i class="fas fa-chart-line"></i></span>
+                    <span>Sales</span> 
                 </a>
             </li>
-            <li class="nav-item">
+            <li>
                 <a href="account.php" class="nav-link active">
-                    <span data-feather="layers"></span>
-                    Account
+                    <span><i class="fas fa-user"></i></span>
+                    <span>Account</span> 
                 </a>
             </li>
             
         </ul>
     </div>
-</nav>
+</div>

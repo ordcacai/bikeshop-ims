@@ -7,21 +7,67 @@
     }
 ?>
 
-<div class="container-fluid">
-    <div class="row" style="min-height:1000px">
-
         <?php include('sidemenu.php'); ?>
 
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 mt-2">
-                <h1 class="mb-5">Dashboard</h1>
-                <div class="btn-toolbar mb-2 mb-md-0">
-                    <div class="btn-group me-2"></div>
+        <div class="main-content">
+            <header>
+                    <h1 class="my-4">
+                        <label for=""><span><i class="fas fa-bars"></i></span></label>
+                        Dashboard
+                    </h1>
+
+                    <div class="search-wrapper">
+                        <span><i class="fas fa-search"></i></span>
+                        <input type="search" placeholder="Search here">
+                    </div>
+                    
+                    <div class="user-wrapper">
+                        <img src="..assets/imgs/banner.png" width="40px" height="40px" alt="">
+                        <div>
+                            <h4>Charles</h4>
+                            <small>Admin</small>
+                        </div>
+                    </div>
+            </header>
+
+            <main>
+                <div class="cards">
+                    <div class="card-single">
+                        <div>
+                            <h1>1</h1>
+                            <span>Customers</span>
+                        </div>
+                        <div>
+                            <i class="fas fa-users"></i>
+                        </div>
+                    </div>
+                    <div class="card-single">
+                        <div>
+                            <h1>2</h1>
+                            <span>Orders</span>
+                        </div>
+                        <div>
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                    </div>
+                    <div class="card-single">
+                        <div>
+                            <h1>3</h1>
+                            <span>Products</span>
+                        </div>
+                        <div>
+                            <i class="fas fa-box"></i>
+                        </div>
+                    </div>
+                    <div class="card-single">
+                        <div>
+                            <h1>4</h1>
+                            <span>Income</span>
+                        </div>
+                        <div>
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </main>
-
-
-    </div>
-</div> 
-
+            </main>
+        </div>

@@ -94,9 +94,8 @@
         <?php include('sidemenu.php'); ?>
 
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 mt-2">
-                <h1 class="primary">Orders</h1>
-            </div>
+
+            <h1 class="my-4">Add New Order</h1>
             <h3 class="tertiary">Order Type </h3>
             <h4> RETAIL | <a href="wholesale.php" id="switch">Switch to WHOLESALE</a></h4>
             <hr style="height: 15px; border: none; color: #000; background-color: #000; width: 60%;">

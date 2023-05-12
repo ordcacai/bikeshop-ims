@@ -1,35 +1,58 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    list-style-type: none;
+    text-decoration: none;
     font-family: 'Poppins', sans-serif;
 }
 
-/* div .container form{
-    text-align: center;
-} */
-
-h2{
+/* h2{
     text-align: center;
     margin: 100px 0px;
     transition: 0.3s ease;
-}
-
-
-/* form .form-group{
-    text-align: center;
 } */
-
-/* form .form-group .form-control{
-    margin: 10px;
-    border: 1px solid black;
-    width: 50%;
-    display: inline-block;
-} */
-
-/* Admin */
 
 /* Side Menu */
+
+.sidebar {
+    width: 345px;
+    position: fixed;
+    height: 100%;
+    background: darkorange;
+}
+
+.sidebar-brand {
+    height: 90px;
+    padding: 1rem 0rem 1rem 2rem;
+}
+
+.sidebar-brand span {
+    display: inline-block;
+    padding-right: 1rem;
+    padding-left: 2rem;
+}
+
+.sidebar-menu li {
+    width: 100%;
+    margin-bottom: 1.3rem;
+}
+
+.sidebar-menu a {
+    display: block;
+    font-size: 1.1rem;
+}
+
+.sidebar-menu a span {
+    font-size: 1.5rem;
+    padding-right: 1rem;
+}
+
+.main-content {
+    margin-left: 345px;
+
+}
+
 

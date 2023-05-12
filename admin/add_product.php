@@ -6,14 +6,14 @@
         <?php include('sidemenu.php'); ?>
 
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 mt-2">
+            <!-- <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 mt-2">
                 <h1 class="primary">Dashboard</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group me-2"></div>
                 </div>
-            </div>
+            </div> -->
 
-            <h2 class="form-weight-bold mt-3 my-3">Add Products</h2>
+            <h1 class="my-4">Add New Products</h1>
             <div class="table-responsive">
 
                 <div class="mx-auto container">
