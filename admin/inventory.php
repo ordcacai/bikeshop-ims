@@ -9,64 +9,54 @@
 
 <?php
 
-    //1. determine page no.
-    if(isset($_GET['page_no']) && $_GET['page_no'] != ""){
-        //if user has already entered page then page number is the one that they selected
-        $page_no = $_GET['page_no'];
-    }else{
-        //if user just entered the page then default page is 1
-        $page_no = 1;
-    }
+    // 1. Determine page number
+    $page_no = isset($_GET['page_no']) ? $_GET['page_no'] : 1;
 
-    //2. return number of products
-    $stmt1 = $conn->prepare("SELECT COUNT(*) As total_records FROM products");
+    // 2. Return total number of products
+    $stmt1 = $conn->prepare("SELECT COUNT(*) AS total_records FROM products");
     $stmt1->execute();
     $stmt1->bind_result($total_records);
     $stmt1->store_result();
     $stmt1->fetch();
 
     // 3. Return the total number of records for the selected category
-$category = isset($_GET['category']) ? $_GET['category'] : '';
-echo "Selected category: " . $category;
+    $category = isset($_GET['category']) ? $_GET['category'] : '';
+    echo "Selected category: " . $category;
 
-if ($category != '') {
-    $stmt1 = $conn->prepare("SELECT COUNT(*) AS total_records FROM products WHERE product_category = ?");
-    $stmt1->bind_param("s", $category);
-} else {
-    $stmt1 = $conn->prepare("SELECT COUNT(*) AS total_records FROM products");
-}
-
-$stmt1->execute();
-$stmt1->bind_result($total_records);
-$stmt1->store_result();
-$stmt1->fetch();
-
-// Default values
-$total_records_per_page = 5;
-$offset = ($page_no - 1) * $total_records_per_page;
-$previous_page = $page_no - 1;
-$next_page = $page_no + 1;
-$adjacents = "2";
-$total_no_of_pages = ceil($total_records / $total_records_per_page);
-
-/// 4. Get all products
-$category = isset($_GET['category']) ? $_GET['category'] : '';
-if ($category != '') {
-    if ($category === 'parts_accessories') {
-        $stmt2 = $conn->prepare("SELECT * FROM products WHERE product_category = ? LIMIT ?, ?");
-        $stmt2->bind_param("sii", $category, $offset, $total_records_per_page);
+    if ($category != '') {
+        $stmt1 = $conn->prepare("SELECT COUNT(*) AS total_records FROM products WHERE product_category = ?");
+        $stmt1->bind_param("s", $category);
     } else {
-        $stmt2 = $conn->prepare("SELECT * FROM products WHERE product_category = ? LIMIT ?, ?");
-        $stmt2->bind_param("sii", $category, $offset, $total_records_per_page);
+        $stmt1 = $conn->prepare("SELECT COUNT(*) AS total_records FROM products");
     }
-} else {
-    $stmt2 = $conn->prepare("SELECT * FROM products LIMIT ?, ?");
+
+    $stmt1->execute();
+    $stmt1->bind_result($total_records);
+    $stmt1->store_result();
+    $stmt1->fetch();
+
+    // Default values
+    $total_records_per_page = 5;
+    $offset = ($page_no - 1) * $total_records_per_page;
+    $previous_page = $page_no - 1;
+    $next_page = $page_no + 1;
+    $adjacents = 2;
+    $total_no_of_pages = ceil($total_records / $total_records_per_page);
+
+    /// 4. Get products based on category and pagination
+    $category = isset($_GET['category']) ? $_GET['category'] : '';
+    if ($category === 'bike') {
+        $stmt2 = $conn->prepare("SELECT * FROM products WHERE product_category = 'Bike' LIMIT ?, ?");
+    } else if ($category === 'bicycles') {
+        $stmt2 = $conn->prepare("SELECT * FROM products WHERE product_category = 'Bike' LIMIT ?, ?");
+    } else if ($category === 'parts_accessories') {
+        $stmt2 = $conn->prepare("SELECT * FROM products WHERE product_category = 'parts' LIMIT ?, ?");
+    } else {
+        $stmt2 = $conn->prepare("SELECT * FROM products WHERE product_category = 'bikes' LIMIT ?, ?");
+    }
     $stmt2->bind_param("ii", $offset, $total_records_per_page);
-}
-$stmt2->execute();
-$products = $stmt2->get_result();
-
-
+    $stmt2->execute();
+    $products = $stmt2->get_result();
 ?>
 <div class="container-fluid">
     <div class="row" style="min-height:1000px">
@@ -77,24 +67,26 @@ $products = $stmt2->get_result();
                 <h1 class="mb-5">Dashboard</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group me-2"></div>
+
                 </div>
             </div>
             <h1 class="mb-4">Inventory</h1>
 
+
             <!-- Centered Tab Menu -->
-            <div class="d-flex justify-content-center mb-4">
-                <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                        <a class="nav-link <?php echo (!isset($_GET['category']) || $_GET['category'] === 'Bike') ? 'active' : ''; ?>" href="?category=bike">Ebikes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link <?php echo ($_GET['category'] === 'bicycles') ? 'active' : ''; ?>" href="?category=bicycles">Bicycles</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link <?php echo (!isset($_GET['category']) || $_GET['category'] === 'parts') ? 'active' : ''; ?>" href="?category=parts_accessories">Parts & Accessories</a>
-                    </li>
-                </ul>
-            </div>
+<div class="d-flex justify-content-center mb-4">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link <?php echo ((!isset($_GET['category']) || $_GET['category'] === 'bike') ? 'active' : ''); ?>" href="?category=bike">Ebikes</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link <?php echo ($_GET['category'] === 'bicycles') ? 'active' : ''; ?>" href="?category=bicycles">Bicycles</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link <?php echo ((!isset($_GET['category']) || $_GET['category'] === 'parts_accessories') ? 'active' : ''); ?>" href="?category=parts_accessories">Parts & Accessories</a>
+        </li>
+    </ul>
+</div>
 
             <?php if(isset($_GET['edit_success_message'])){ ?>
                 <p class="text-center" style="color: green;"><?php echo $_GET['edit_success_message']; ?></p>
@@ -139,15 +131,10 @@ $products = $stmt2->get_result();
                     <thead>
                         <tr>
                             <th scope="col">Product ID</th>
-                            <th scope="col">Product Image</th>
                             <th scope="col">Product Name</th>
-                            <th scope="col">Product Price</th>
-                            <th scope="col">Product Discount</th>
-                            <th scope="col">Product Category</th>
-                            <th scope="col">Product Color</th>
-                            <th scope="col">Edit Images</th>
-                            <th scope="col">Edit</th>
-                            <th scope="col">Delete</th>
+                            <th scope="col">SRP</th>
+                            <th scope="col">WSP</th>
+                            <th scope="col">QTY</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -155,15 +142,10 @@ $products = $stmt2->get_result();
                         <?php foreach($products as $product) { ?>
                         <tr>
                             <td><?php echo $product['product_id']; ?></td>
-                            <td><img src="<?php echo "../assets/imgs/".$product['product_image']; ?>" style="width: 70px; height: 70px;"></td>
                             <td><?php echo $product['product_name']; ?></td>
                             <td><?php echo "₱".$product['product_price']; ?></td>
-                            <td><?php echo $product['product_special_offer']."%"; ?></td>
-                            <td><?php echo $product['product_category']; ?></td>
-                            <td><?php echo $product['product_color']; ?></td>
-                            <td><a class="btn btn-warning" href="<?php echo "edit_images.php?product_id=".$product['product_id']."&product_name=".$product['product_name'];?>">Edit Images</a></td>
-                            <td><a class="btn btn-primary" href="edit_product.php?product_id=<?php echo $product['product_id']; ?>">Edit</a></td>
-                            <td><a class="btn btn-danger" href="delete_product.php?product_id=<?php echo $product['product_id']; ?>">Delete</a></td>
+                            <td><?php echo "₱".$product['product_special_offer']; ?></td>
+                            <td><?php echo $product['product_quantity']; ?></td>
                         </tr>
                         <?php } ?>
                     </tbody>
