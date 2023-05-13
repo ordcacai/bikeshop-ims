@@ -91,7 +91,7 @@ $products = $stmt2->get_result();
                         <a class="nav-link <?php echo ($_GET['category'] === 'bicycles') ? 'active' : ''; ?>" href="?category=bicycles">Bicycles</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?php echo (!isset($_GET['category']) || $_GET['category'] === 'parts_accessories') ? 'active' : ''; ?>" href="?category=parts_accessories">Parts & Accessories</a>
+                        <a class="nav-link <?php echo (!isset($_GET['category']) || $_GET['category'] === 'parts') ? 'active' : ''; ?>" href="?category=parts_accessories">Parts & Accessories</a>
                     </li>
                 </ul>
             </div>
