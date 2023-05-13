@@ -130,8 +130,8 @@
                 <table class="table table-striped table-bordered table-hover table-sm">
                     <thead>
                         <tr>
-                            <th scope="col">Product ID</th>
                             <th scope="col">Product Name</th>
+                            <th scope="col">Product ID</th>
                             <th scope="col">SRP</th>
                             <th scope="col">WSP</th>
                             <th scope="col">QTY</th>
@@ -139,15 +139,18 @@
                     </thead>
                     <tbody>
 
-                        <?php foreach($products as $product) { ?>
-                        <tr>
-                            <td><?php echo $product['product_id']; ?></td>
-                            <td><?php echo $product['product_name']; ?></td>
-                            <td><?php echo "₱".$product['product_price']; ?></td>
-                            <td><?php echo "₱".$product['product_special_offer']; ?></td>
-                            <td><?php echo $product['product_quantity']; ?></td>
-                        </tr>
-                        <?php } ?>
+                    <?php foreach($products as $product) { ?>
+    <tr>
+        <td><a href="product_details.php?product_id=<?php echo $product['product_id']; ?>"><?php echo $product['product_name']; ?></a></td>
+        <td><?php echo $product['product_id']; ?></td>
+        <td><?php echo "₱".$product['product_price']; ?></td>
+        <td><?php echo "₱".$product['product_special_offer']; ?></td>
+        <td><?php echo $product['product_quantity']; ?></td>
+    </tr>
+<?php } ?>
+
+
+
                     </tbody>
                 </table>
 
