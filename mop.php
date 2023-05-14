@@ -37,26 +37,22 @@
       <a class="nav-link" data-bs-toggle="pill" href="#cc">Credit Cards</a>
     </li>
   </ul>
+ 
 
   <!-- Cash Content -->
   <div class="tab-content">
-    <div id="cash" class="container tab-pane active"><br><br>
-      <h4>Quick FAQs</h4>
-      <ul>
-        <li>All of our prices are in cash.</li>
-        <li>If you pay through bank transfer or Gcash upon purchase, it is considered as cash (No additional fess from us.)</li>
-        <li>We have BDO and BPI Bank Accounts. You can also transfer from another bank via InstaPay.</li>
-        <li>This payment method is applicable for walk-in customers, online orders and deliveries cathered by our in-house delivery team.</li>
-        <li>We also accept payments through Palawan Express, Mlhuillier and other remittances centers.</li>
-      </ul> 
-      <br><p>Please take note that bank details will be provided upon confirmation of order.</p> 
+    <div id="cash" class="container tab-pane active">
+        <div id="cashbanner" class="container">
+            <h1>Flexible Mode of Payments</h1>
+            <p>We accept online paayments through Bank Transfer or Gcash.</p>
+        </div>
     </div>
 
   <!-- Home Credit Content -->
 
-<div id="hc" class="container tab-pane fade"><br>
-
-    <div class=text-center>
+<div id="hc" class="container tab-pane fade">
+    
+    <br><br><div class=text-center>
       <h3>How to Qualify for a Loan?</h3>
       <p>Ready to make a purchase? Here's what you'll need</p>
     </div>
@@ -73,12 +69,13 @@
         <i class="bi bi-person-vcard fa-2x"></i>
         <h4>Primary ID</h4>
         <p>Must have at least one primary ID that contains your current address.</p>
-        <p><a class="nav-link" data-bs-toggle="modal" data-bs-target="#list_id">List of Valid IDs</a></p>  
+        <p><a class="nav-item" data-bs-toggle="modal" data-bs-target="#list_id">List of Valid IDs</a></p>  
       </div>
-<!-- The Modal -->
-<div class="modal fade" id="list_id">
-  <div class="modal-dialog">
-    <div class="modal-content">
+
+<!-- Modal for List of IDs -->
+  <div class="modal fade" id="list_id">
+    <div class="modal-dialog">
+      <div class="modal-content">
 
       <!-- Modal Header -->
       <div class="modal-header">
@@ -88,20 +85,20 @@
 
       <!-- Modal body -->
       <div class="modal-body">
-      <h4>Primary IDs<h4>
-        <ul style="list-style-type: none" style="padding-left:1em"> 
-          <li><i class="bi bi-check2 fa-lg"></i></i> Voter's ID</li>
-          <li><i class="bi bi-check2 fa-lg"></i></i> Driver's Liscense ID</li>
-          <li><i class="bi bi-check2 fa-lg"></i></i> Postal ID (New)</li>
-          <li><i class="bi bi-check2 fa-lg"></i></i> Philippine Identification Card</li>
-          <li><i class="bi bi-check2 fa-lg"></i></i> Unified Multi-Purpose ID (UMID)</li>
-          <li><i class="bi bi-check2 fa-lg"></i></i> Professional Regulation (PRC) ID - secondary ID with address required</li>
+      <h4>Primary IDs</h4>
+      <ul style="list-style-type: none" style="padding-left:1em"> 
+          <li><i class="bi bi-check2 fa-lg"></i> Voter's </li>
+          <li><i class="bi bi-check2 fa-lg"></i> Driver's Liscense ID</li>
+          <li><i class="bi bi-check2 fa-lg"></i> Postal ID (New)</li>
+          <li><i class="bi bi-check2 fa-lg"></i> Philippine Identification Card</li>
+          <li><i class="bi bi-check2 fa-lg"></i> Unified Multi-Purpose ID</li>
+          <li><i class="bi bi-check2 fa-lg"></i> Professional Regulation (PRC) ID - secondary ID with address required</li>
         </ul>
       <h4>Secondary IDs</h4>
         <ul style="list-style-type: none" style="padding-left:1em"> 
-          <li><i class="bi bi-check2 fa-lg"></i></i> Barangay Certificate</li>
-          <li><i class="bi bi-check2 fa-lg"></i></i> NBI Clearance</li>
-          <li><i class="bi bi-check2 fa-lg"></i></i> Phone Bill / Electric Bill</li>
+          <li><i class="bi bi-check2 fa-lg"></i> Barangay Certificate</li>
+          <li><i class="bi bi-check2 fa-lg"></i> NBI Clearance</li>
+          <li><i class="bi bi-check2 fa-lg"></i> Phone Bill / Electric Bill</li>
         </ul>
       </div>
 
@@ -109,7 +106,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
       </div>
-
+      
     </div>
   </div>
 </div>
@@ -120,7 +117,77 @@
       </div>
     </div>
 
-    <br><h4>Quick FAQs</h4>
+    <br>
+    <div class=text-center>
+      <br><h3>How to Apply?</h3>
+      <p>Home Credit made it easier, with few simple steps!</p>
+    </div><br>
+
+    <!-- Card Image -->
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col">
+      <div class="card h-100">
+        <img src="assets/imgs/logo.jpg" class="card-img-top" alt="step1">
+        <div class="card-body">
+          <h5 class="card-title">Step 1</h5>
+          <p>Download the Home Credit App, log in and tap the "Product Loan" banner to apply for pre-approval.</p>
+        </div>
+      </div>
+   </div>
+
+    <div class="col">
+      <div class="card h-100">
+        <img src="assets/imgs/logo.jpg" class="card-img-top" alt="step2">
+        <div class="card-body">
+          <h5 class="card-title">Step 2</h5>
+          <p>Go to our store and approach our staff/sales associate for assistance.</p>
+          <p><a class="nav-item" data-bs-toggle="modal" data-bs-target="#must_bring">What you must bring</a></p>
+            <!-- Modal for List of IDs -->
+  <div class="modal fade" id="must_bring">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">What Must you Bring</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <ul style="list-style-type: none" style="padding-left:1em"> 
+          <li><i class="bi bi-check2 fa-lg"></i> Enough cash for down payment</li>
+          <li><i class="bi bi-check2 fa-lg"></i> Active and registered mobile number</li>
+          <li><i class="bi bi-check2 fa-lg"></i> At least 1 Primary Valid ID</li>
+        </ul>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card h-100">
+        <img src="assets/imgs/logo.jpg" class="card-img-top" alt="step3">
+        <div class="card-body">
+          <h5 class="card-title">Step 3</h5>
+          <p>Our staff/sales associate will process your product loan application.</p>
+        </div>
+      </div>
+    </div>
+</div>
+
+    <br>
+    <h4>Quick FAQs</h4>
       <ul>
         <li>Pre-approval loan applications can be done at home using your smartphone or can be done in-store.</li>
         <li>Transactions for Home Credit approval applications is done in-store ONLY.</li>
@@ -132,9 +199,15 @@
   </div>
 
   <!-- BillEase Content-->
-    <div id="billease" class="container tab-pane fade"><br>
-      <h3>BillEase App</h3>
-      <p>Content here</p>
+    <div id="billease" class="container tab-pane fade">
+      <div id="billease_banner" class="w-100">
+            <h1>Buy Now, Pay Later with Billease</h1>
+            <p>100% online process, loan at your convenince</p>
+        </div>
+      <div class=text-center>
+        <h3>How does it work?</h3>
+      </div>
+
     </div>
 
   <!-- Atome Content-->

@@ -9,8 +9,8 @@
       <section id="home">
         <div class="container">
             <h5>NEW ARRIVAL</h5>
-            <h1>Lorem ipsum dolor sit amet.</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, deserunt.</p>
+            <h1>Electric E-bike Code 113</h1>
+            <p>All new budget e-bike! For only Php 16,200</p>
             <button onclick="window.location.href='shop.php';">Shop Now</button>
         </div>
       </section>
@@ -34,10 +34,10 @@
             <p>A lot of brands to choose from!</p>
         </div>
         <div class="row">
-            <img src="assets/imgs/cannondale.png" class="img-fluid col-lg-3 col-md-6 col-sm-12">
+            <img src="assets/imgs/mtp_logo.png" class="img-fluid col-lg-3 col-md-6 col-sm-12">
             <img src="assets/imgs/giant.png" class="img-fluid col-lg-3 col-md-6 col-sm-12">
             <img src="assets/imgs/specialized.png" class="img-fluid col-lg-3 col-md-6 col-sm-12">
-            <img src="assets/imgs/trek.png" class="img-fluid col-lg-3 col-md-6 col-sm-12">
+            <img src="assets/imgs/foxter_logo.png" class="img-fluid col-lg-3 col-md-6 col-sm-12">
         </div>
       </section>
 
