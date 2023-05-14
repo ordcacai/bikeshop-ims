@@ -6,68 +6,149 @@
         exit;
     }
 ?>
+<?php include('sidemenu.php'); ?>
 
-        <?php include('sidemenu.php'); ?>
+<div class="main-content">
+    <div class="container-fluid">
+            <h1 class="my-4">Dashboard</h1>
+                    <div class="cards">
+                        <div class="card-single">
+                            <div>
+                                <h1>1</h1>
+                                <span>Customers</span>
+                            </div>
+                            <div>
+                                <span><i class="fas fa-users"></i></span>
+                            </div>
+                        </div>
+                        <div class="card-single">
+                            <div>
+                                <h1>2</h1>
+                                <span>Orders</span>
+                            </div>
+                            <div>
+                                <span><i class="fas fa-clipboard-list"></i></span>
+                            </div>
+                        </div>
+                        <div class="card-single">
+                            <div>
+                                <h1>3</h1>
+                                <span>Products</span>
+                            </div>
+                            <div>
+                                <span><i class="fas fa-box"></i></span>
+                            </div>
+                        </div>
+                        <div class="card-single">
+                            <div>
+                                <h1>4</h1>
+                                <span>Income</span>
+                            </div>
+                            <div>
+                                <span><i class="fas fa-wallet"></i></span>
+                            </div>
+                        </div>
+                    </div>
 
-        <div class="main-content">
-            <header>
-                    <h1 class="my-4">
-                        <label for=""><span><i class="fas fa-bars"></i></span></label>
-                        Dashboard
-                    </h1>
+                    <div class="recent-grid">
+                        <div class="orders">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3>Recent Orders</h3>
 
-                    <div class="search-wrapper">
-                        <span><i class="fas fa-search"></i></span>
-                        <input type="search" placeholder="Search here">
-                    </div>
-                    
-                    <div class="user-wrapper">
-                        <img src="..assets/imgs/banner.png" width="40px" height="40px" alt="">
-                        <div>
-                            <h4>Charles</h4>
-                            <small>Admin</small>
+                                    <button onclick="window.location.href='orders.php';">View All <span><i class="fas fa-eye"></i></span></button>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover" width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <td><strong>Order ID</strong></td>
+                                                    <td><strong>Customer Name</strong></td>
+                                                    <td><strong>Order Status</strong></td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>Charles</td>
+                                                    <td>Pending</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>Charles</td>
+                                                    <td>Pending</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>Charles</td>
+                                                    <td>Pending</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td>Charles</td>
+                                                    <td>Pending</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-            </header>
+                        <div class="products">
+                            <div class="card">
+                                    <div class="card-header">
+                                        <h3>Products</h3>
 
-            <main>
-                <div class="cards">
-                    <div class="card-single">
-                        <div>
-                            <h1>1</h1>
-                            <span>Customers</span>
-                        </div>
-                        <div>
-                            <i class="fas fa-users"></i>
+                                        <button onclick="window.location.href='inventory.php';">View All <span><i class="fas fa-eye"></i></span></button>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="product">
+                                            <div class="info">
+                                                <img src="../assets/imgs/banner.png" width="40px" height="40px" alt="">
+                                                <div>
+                                                    <h4>Mountain Bike</h4>
+                                                    <small>100</small>
+                                                </div>
+                                            </div>
+                                            <div class="configure">
+                                                <span><i class="fas fa-eye"></i></span>
+                                                <span><i class="fas fa-edit"></i></span>
+                                                <span><i class="fas fa-trash"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="product">
+                                            <div class="info">
+                                                <img src="../assets/imgs/banner.png" width="40px" height="40px" alt="">
+                                                <div>
+                                                    <h4>Mountain Bike</h4>
+                                                    <small>100</small>
+                                                </div>
+                                            </div>
+                                            <div class="configure">
+                                                <span><i class="fas fa-eye"></i></span>
+                                                <span><i class="fas fa-edit"></i></span>
+                                                <span><i class="fas fa-trash"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="product">
+                                            <div class="info">
+                                                <img src="../assets/imgs/banner.png" width="40px" height="40px" alt="">
+                                                <div>
+                                                    <h4>Mountain Bike</h4>
+                                                    <small>100</small>
+                                                </div>
+                                            </div>
+                                            <div class="configure">
+                                                <span><i class="fas fa-eye"></i></span>
+                                                <span><i class="fas fa-edit"></i></span>
+                                                <span><i class="fas fa-trash"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="card-single">
-                        <div>
-                            <h1>2</h1>
-                            <span>Orders</span>
-                        </div>
-                        <div>
-                            <i class="fas fa-clipboard-list"></i>
-                        </div>
-                    </div>
-                    <div class="card-single">
-                        <div>
-                            <h1>3</h1>
-                            <span>Products</span>
-                        </div>
-                        <div>
-                            <i class="fas fa-box"></i>
-                        </div>
-                    </div>
-                    <div class="card-single">
-                        <div>
-                            <h1>4</h1>
-                            <span>Income</span>
-                        </div>
-                        <div>
-                            <i class="fas fa-wallet"></i>
-                        </div>
-                    </div>
-                </div>
-            </main>
+                </main>
+            </div>
         </div>

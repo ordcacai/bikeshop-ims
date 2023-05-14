@@ -57,7 +57,7 @@ if(isset($_POST['login_btn'])){
 ?>
     <!-- Admin Login -->
 
-    <h2>Login</h2>
+    <h2 class="text-center my-5">Login</h2>
     <div class="mx-auto container">
         <form action="login.php" id="login-form" method="POST" enctype="multipart/form-data">
             <p style="color: red;"><?php if(isset($_GET['error'])){echo $_GET['error']; } ?></p>
@@ -71,7 +71,7 @@ if(isset($_POST['login_btn'])){
                 <input type="password" class="form-control" id="product-desc" name="password" placeholder="Password" required>
             </div>
             
-            <div class="form-group mt-3">
+            <div class="form-group mt-5 text-center">
                 <input type="submit" class="btn btn-primary" name="login_btn" value="Login">
             </div>
         </form>
