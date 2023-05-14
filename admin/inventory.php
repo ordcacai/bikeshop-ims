@@ -63,7 +63,6 @@
 <div class="main-content">
     <div class="container-fluid">
             <h1 class="my-4">Inventory</h1>
-            
             <!-- Centered Tab Menu -->
 <div class="d-flex justify-content-center mb-4">
     <ul class="nav nav-tabs">
@@ -71,7 +70,7 @@
             <a class="nav-link <?php echo ((!isset($_GET['category']) || $_GET['category'] === 'bike') ? 'active' : ''); ?>" href="?category=bike">Ebikes</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link <?php echo ($_GET['category'] === 'bicycles') ? 'active' : ''; ?>" href="?category=bicycles">Bicycles</a>
+            <a class="nav-link <?php echo ((!isset($_GET['category']) || $_GET['category'] === 'bicycles') ? 'active' : ''); ?>" href="?category=bicycles">Bicycles</a>
         </li>
         <li class="nav-item">
             <a class="nav-link <?php echo ((!isset($_GET['category']) || $_GET['category'] === 'parts_accessories') ? 'active' : ''); ?>" href="?category=parts_accessories">Parts & Accessories</a>

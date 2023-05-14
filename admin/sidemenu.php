@@ -27,6 +27,7 @@
         </li>
         <li>
             <a href="retail.php">
+                <i class="fas fa-plus"></i>
                 <span class="nav-item">AddOrders</span>
             </a>
         </li>
@@ -38,6 +39,7 @@
         </li>
         <li>
             <a href="add_product.php">
+                <i class="fas fa-plus"></i>
                 <span class="nav-item">AddProducts</span>
             </a>
         </li>
