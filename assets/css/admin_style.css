@@ -240,7 +240,7 @@
     color: gray;
 }
 
-.configure span {
+.configure a i{
     font-size: 1.2rem;
     display: inline-block;
     margin-left: .5rem;

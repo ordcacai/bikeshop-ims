@@ -34,7 +34,7 @@
     $total_no_of_pages = ceil($total_records/$total_records_per_page);
 
     //4. get all products
-    $stmt2 = $conn->prepare("SELECT * FROM orders LIMIT $offset, $total_records_per_page");
+    $stmt2 = $conn->prepare("SELECT * FROM orders ORDER BY order_id DESC LIMIT $offset, $total_records_per_page");
     $stmt2->execute();
     $orders = $stmt2->get_result();//array
 

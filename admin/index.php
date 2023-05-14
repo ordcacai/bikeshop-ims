@@ -6,6 +6,53 @@
         exit;
     }
 ?>
+
+<?php
+
+    $stmt = $conn->prepare("SELECT COUNT(*) As total_records_users FROM users");
+    $stmt->execute();
+    $stmt->bind_result($total_records_users);
+    $stmt->store_result();
+    $stmt->fetch();
+
+?>
+
+<?php
+
+    $stmt1 = $conn->prepare("SELECT COUNT(*) As total_records_orders FROM orders");
+    $stmt1->execute();
+    $stmt1->bind_result($total_records_orders);
+    $stmt1->store_result();
+    $stmt1->fetch();
+
+?>
+
+<?php
+
+    $stmt2 = $conn->prepare("SELECT COUNT(*) As total_records_products FROM products");
+    $stmt2->execute();
+    $stmt2->bind_result($total_records_products);
+    $stmt2->store_result();
+    $stmt2->fetch();
+
+?>
+
+<?php
+
+    $stmt3 = $conn->prepare("SELECT * FROM orders ORDER BY order_id DESC LIMIT 10");
+    $stmt3->execute();
+    $orders = $stmt3->get_result();//array
+
+?>
+
+<?php
+
+    $stmt4 = $conn->prepare("SELECT * FROM products ORDER BY product_id DESC LIMIT 10");
+    $stmt4->execute();
+    $products = $stmt4->get_result();//array
+
+?>
+
 <?php include('sidemenu.php'); ?>
 
 <div class="main-content">
@@ -14,7 +61,7 @@
                     <div class="cards">
                         <div class="card-single">
                             <div>
-                                <h1>1</h1>
+                                <h1><?php echo $total_records_users; ?></h1>
                                 <span>Customers</span>
                             </div>
                             <div>
@@ -23,7 +70,7 @@
                         </div>
                         <div class="card-single">
                             <div>
-                                <h1>2</h1>
+                                <h1><?php echo $total_records_orders; ?></h1>
                                 <span>Orders</span>
                             </div>
                             <div>
@@ -32,7 +79,7 @@
                         </div>
                         <div class="card-single">
                             <div>
-                                <h1>3</h1>
+                                <h1><?php echo $total_records_products; ?></h1>
                                 <span>Products</span>
                             </div>
                             <div>
@@ -41,7 +88,7 @@
                         </div>
                         <div class="card-single">
                             <div>
-                                <h1>4</h1>
+                                <h1>₱999,999</h1>
                                 <span>Income</span>
                             </div>
                             <div>
@@ -69,26 +116,13 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                            <?php foreach($orders as $order) { ?>
                                                 <tr>
-                                                    <td>1</td>
-                                                    <td>Charles</td>
-                                                    <td>Pending</td>
+                                                    <td><?php echo $order['order_id']; ?></td>
+                                                    <td><?php echo $order['user_name']; ?></td>
+                                                    <td><?php echo $order['order_status']; ?></td>
                                                 </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>Charles</td>
-                                                    <td>Pending</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td>Charles</td>
-                                                    <td>Pending</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>4</td>
-                                                    <td>Charles</td>
-                                                    <td>Pending</td>
-                                                </tr>
+                                            <?php }?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -98,57 +132,30 @@
                         <div class="products">
                             <div class="card">
                                     <div class="card-header">
-                                        <h3>Products</h3>
+                                        <h3>Newly Added Products</h3>
 
                                         <button onclick="window.location.href='inventory.php';">View All <span><i class="fas fa-eye"></i></span></button>
                                     </div>
                                     <div class="card-body">
+                                    <?php foreach($products as $product) { ?>
                                         <div class="product">
                                             <div class="info">
-                                                <img src="../assets/imgs/banner.png" width="40px" height="40px" alt="">
+                                            <img src="<?php echo "../assets/imgs/".$product['product_image']; ?>" style="width: 60px; height: 50px;">
                                                 <div>
-                                                    <h4>Mountain Bike</h4>
-                                                    <small>100</small>
+                                                    <h4><?php echo $product['product_name']; ?></h4>
+                                                    <small><?php echo "₱".$product['product_price']; ?></small>
                                                 </div>
                                             </div>
                                             <div class="configure">
-                                                <span><i class="fas fa-eye"></i></span>
-                                                <span><i class="fas fa-edit"></i></span>
-                                                <span><i class="fas fa-trash"></i></span>
+                                                <a href="product_details.php?product_id=<?php echo $product['product_id']; ?>"><i class="fas fa-eye"></i></a >
+                                                <a href="edit_product.php?product_id=<?php echo $product['product_id']; ?>"><i class="fas fa-edit"></i></a >
+                                                <a href="delete_product.php?product_id=<?php echo $product['product_id']; ?>"><i class="fas fa-trash"></i></a >
                                             </div>
                                         </div>
-                                        <div class="product">
-                                            <div class="info">
-                                                <img src="../assets/imgs/banner.png" width="40px" height="40px" alt="">
-                                                <div>
-                                                    <h4>Mountain Bike</h4>
-                                                    <small>100</small>
-                                                </div>
-                                            </div>
-                                            <div class="configure">
-                                                <span><i class="fas fa-eye"></i></span>
-                                                <span><i class="fas fa-edit"></i></span>
-                                                <span><i class="fas fa-trash"></i></span>
-                                            </div>
-                                        </div>
-                                        <div class="product">
-                                            <div class="info">
-                                                <img src="../assets/imgs/banner.png" width="40px" height="40px" alt="">
-                                                <div>
-                                                    <h4>Mountain Bike</h4>
-                                                    <small>100</small>
-                                                </div>
-                                            </div>
-                                            <div class="configure">
-                                                <span><i class="fas fa-eye"></i></span>
-                                                <span><i class="fas fa-edit"></i></span>
-                                                <span><i class="fas fa-trash"></i></span>
-                                            </div>
-                                        </div>
+                                    <?php } ?>
                                     </div>
                             </div>
                         </div>
                     </div>
-                </main>
             </div>
         </div>
