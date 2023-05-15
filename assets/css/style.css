@@ -390,6 +390,7 @@ footer .contact{
 #shop-container {
 
     display: flex;
+    justify-content: center;
 
 }
 
