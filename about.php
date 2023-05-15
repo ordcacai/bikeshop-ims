@@ -23,15 +23,15 @@
     <div class="col-lg-6">
     <div class="slideshow-container">
         <div class="mySlides1">
-          <img src="assets/imgs/logo.jpg" style="width:100%">
+          <img src="assets/imgs/vm1.jpg" style="width:100%">
         </div>
 
         <div class="mySlides1">
-          <img src="assets/imgs/vmsr_logo.jpg" style="width:100%">
+          <img src="assets/imgs/vm2.jpg" style="width:100%">
         </div>
 
         <div class="mySlides1">
-          <img src="assets/imgs/vmtc_logo.jpg" style="width:100%">
+          <img src="assets/imgs/vm3.jpg" style="width:100%">
         </div>
 
         <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
