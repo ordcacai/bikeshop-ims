@@ -38,9 +38,9 @@
         <a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
       </div>
     </div>
-        <div class="col-lg-3"><br>
+        <div class=" col-lg-3"><br>
           <p><strong>VYKES MNL MAIN (Marikina)</strong></p>
-          <p><br><i class="bi bi-geo-alt fa-lg"></i><a href="https://goo.gl/maps/RrQVjPPtipFwCL8i6"> 59C. Gen. Ordonez Ave., Marikina City </a></p>
+          <p><br><i class="bi bi-geo-alt fa-lg"></i><a href="https://goo.gl/maps/RrQVjPPtipFwCL8i6" style="text-decoration:none; color: black;"> 59C. Gen. Ordonez Ave., Marikina City </a></p>
           <p><i class="bi bi-telephone fa-lg"></i> 0956-225-6879</p>
           <p><i class="bi bi-facebook fa-lg"></i> Vykes MNL </p>
         </div>
@@ -70,7 +70,7 @@
     </div>
         <div class="col-lg-3"><br><br>
           <p><strong>VYKES MNL MAIN (Marikina)</strong></p>
-          <p><br><i class="bi bi-geo-alt fa-lg"></i><a href="https://goo.gl/maps/RrQVjPPtipFwCL8i6"> 59C. Gen. Ordonez Ave., Marikina City </a></p>
+          <p><br><i class="bi bi-geo-alt fa-lg"></i><a href="https://goo.gl/maps/RrQVjPPtipFwCL8i6" style="text-decoration:none; color: black;"> 59C. Gen. Ordonez Ave., Marikina City </a></p>
           <p><i class="bi bi-telephone fa-lg"></i> 0956-225-6879</p>
           <p><i class="bi bi-facebook fa-lg"></i> Vykes MNL </p>
         </div>

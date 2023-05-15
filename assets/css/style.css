@@ -798,9 +798,14 @@ button.accordion {
 
   /* Slideshow */
 
-  * {box-sizing: border-box}
-  .mySlides1, .mySlides2 {display: none}
-    img {vertical-align: middle;}
+    .slideshow-container > div > img {
+        width:640px;
+        height:450px;
+    }
+
+    img {
+        vertical-align: middle;
+    }
   
   /* Slideshow container */
   .slideshow-container {
@@ -835,6 +840,11 @@ button.accordion {
   .prev:hover, .next:hover {
     background-color: #f1f1f1;
     color: black;
+  }
+
+  .details {
+    text-decoration: none;
+    
   }
 
 
