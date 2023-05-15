@@ -795,9 +795,11 @@ button.accordion {
     transition: max-height 0.2s ease-out;
   }
 
+  /* Slideshow */
+
   * {box-sizing: border-box}
   .mySlides1, .mySlides2 {display: none}
-  img {vertical-align: middle;}
+    img {vertical-align: middle;}
   
   /* Slideshow container */
   .slideshow-container {
@@ -833,3 +835,5 @@ button.accordion {
     background-color: #f1f1f1;
     color: black;
   }
+
+

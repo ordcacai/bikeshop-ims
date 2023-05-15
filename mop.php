@@ -187,12 +187,12 @@
 </div>
 
     <br>
-    <h4>Quick FAQs</h4>
+    <h4>Additional FAQs</h4>
       <ul>
         <li>Pre-approval loan applications can be done at home using your smartphone or can be done in-store.</li>
         <li>Transactions for Home Credit approval applications is done in-store ONLY.</li>
         <li>It is recommended to have a pre-approval before visiting our shop for approval.</li>
-        <li>Minimum amount of purchase is at Php 5,000.00.</li>
+        <li>Minimum amount of purchase is Php 5,000.00.</li>
       </ul><br>
   </div>
 
@@ -204,10 +204,10 @@
             <h1>Buy Now, Pay Later with Billease</h1>
             <p>100% online process, loan at your convenince</p>
         </div>
-      <div class=text-center>
-        <h3>How does it work?</h3>
-      </div>
-
+        <div class=text-center>
+          <h3>How does it work?</h3>
+          
+        </div>
     </div>
 
   <!-- Atome Content-->
