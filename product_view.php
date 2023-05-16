@@ -53,6 +53,7 @@ if(isset($_GET['product_id'])){
 
             <div class="col-lg-6 col-md-12 col-sm-12 mx-5">
                 <h6><?php echo $row['product_category']; ?></h6>
+                <h6><?php echo $row['product_color']; ?></h6>
                 <h3 class="pb-2"><?php echo $row['product_name']; ?></h3>
                 <h2 class="pb-2 pt-2">₱<?php echo $row['product_price']; ?></h2>
 
@@ -60,6 +61,7 @@ if(isset($_GET['product_id'])){
                     <input type="hidden" name="product_id" value="<?php echo $row['product_id']; ?>">
                     <input type="hidden" name="product_image" value="<?php echo $row['product_image']; ?>">
                     <input type="hidden" name="product_name" value="<?php echo $row['product_name']; ?>">
+                    <input type="hidden" name="product_color" value="<?php echo $row['product_color']; ?>">
                     <input type="hidden" name="product_price" value="<?php echo $row['product_price']; ?>">
                     <input type="number" name="product_quantity" value="1">
                     <button class="buy-btn mb-4" type="submit" name="add_to_cart">Add to Cart</button>

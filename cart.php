@@ -20,6 +20,7 @@ if(isset($_POST['add_to_cart'])){
             $product_array = array(
                 'product_id' => $_POST['product_id'],
                 'product_name' => $_POST['product_name'],
+                'product_color' => $_POST['product_color'],
                 'product_price' => $_POST['product_price'],
                 'product_image' => $_POST['product_image'],
                 'product_quantity' => $_POST['product_quantity']
@@ -37,6 +38,7 @@ if(isset($_POST['add_to_cart'])){
 
         $product_id = $_POST['product_id'];
         $product_name = $_POST['product_name'];
+        $product_color = $_POST['product_color'];
         $product_price = $_POST['product_price'];
         $product_image = $_POST['product_image'];
         $product_quantity = $_POST['product_quantity'];
@@ -44,6 +46,7 @@ if(isset($_POST['add_to_cart'])){
         $product_array = array(
             'product_id' => $product_id,
             'product_name' => $product_name,
+            'product_color' => $product_color,
             'product_price' => $product_price,
             'product_image' => $product_image,
             'product_quantity' => $product_quantity
@@ -140,6 +143,8 @@ function calculateTotalCart(){
                             <div>
                                 <p><?php echo $value['product_name']; ?></p>
                                 <small><span>₱</span><?php echo $value['product_price']; ?></small>
+                                <br>
+                                <small><span></span><?php echo $value['product_color']; ?></small>
                                 <br>
                                 <form method="POST" action="cart.php">
                                     <input type="hidden" name="product_id" value="<?php echo $value['product_id']; ?>"/>

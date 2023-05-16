@@ -39,19 +39,10 @@ if(isset($_GET['order_id'])){
 
 ?>
 
-<div class="container-fluid">
-    <div class="row" style="min-height:1000px">
+<?php include('sidemenu.php'); ?>
 
-        <?php include('sidemenu.php'); ?>
-
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 mt-2">
-                <h1 class="primary">Dashboard</h1>
-                <div class="btn-toolbar mb-2 mb-md-0">
-                    <div class="btn-group me-2"></div>
-                </div>
-            </div>
-
+<div class="main-content">
+    <div class="container-fluid">
             <h2 class="form-weight-bold my-3">Edit Order</h2>
             <div class="table-responsive">
 

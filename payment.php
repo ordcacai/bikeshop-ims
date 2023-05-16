@@ -19,13 +19,14 @@ if(isset($_POST['order_pay_btn'])){
 
     <section class="my-5 py-5">
         <div class="container text-center mt-3 pt-5">
-            <h2 class="form-weight-bold">Payment</h2>
+            <h2 class="text-success form-weight-bold mt-5">Order Request Successful!</h2>
             <hr class="mx-auto">
         </div>
 
         <div class="mx-auto container text-center">
+            <p class="mt-5">Please wait for an invoice for your payment. Thank you!</p>
 
-            <?php if(isset($_SESSION['total']) && $_SESSION['total'] !=0){ ?>
+            <!-- <?php if(isset($_SESSION['total']) && $_SESSION['total'] !=0){ ?>
             <?php $amount = strval($_SESSION['total']); ?>
                 <p>Total Payment: ₱<?php echo $_SESSION['total']; ?></p>
 
@@ -35,7 +36,7 @@ if(isset($_POST['order_pay_btn'])){
 
             <?php }else{ ?>
                 <p>You don't have an order.</p>
-            <?php } ?>
+            <?php } ?> -->
     
         </div>
     </section>
