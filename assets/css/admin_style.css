@@ -251,3 +251,10 @@
     width: 100%;
     overflow-x: auto;
 }
+
+/* Return Button */
+
+.return {
+    color: darkorange;
+    font-size: 2.5rem;
+}
