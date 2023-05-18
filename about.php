@@ -14,10 +14,12 @@
                 in Marikina that offers good quality products and services. Throughout the years, Vykes MNL have 
                 also established other branches, one in Sta. Rosa, Laguna and one in Trece, Cavite. Vykes MNL 
                 continues to serve most of it's loyal customers until now. 
-            </p>
+            </p><br>
+            <h3 class="margin">Our Branches</h3>
         </div>
 
-<!-- First Slideshow -->
+
+<!-- First Mini Slideshow -->
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-6">
@@ -39,7 +41,7 @@
       </div>
     </div>
         <div class=" col-lg-3"><br>
-          <p><strong>VYKES MNL MAIN (Marikina)</strong></p>
+          <p><strong>VYKES MNL MAIN STA ROSA</strong></p>
           <p><br><i class="bi bi-geo-alt fa-lg"></i><a href="https://goo.gl/maps/RrQVjPPtipFwCL8i6" style="text-decoration:none; color: black;"> 59C. Gen. Ordonez Ave., Marikina City </a></p>
           <p><i class="bi bi-telephone fa-lg"></i> 0956-225-6879</p>
           <p><i class="bi bi-facebook fa-lg"></i> Vykes MNL </p>
@@ -47,21 +49,21 @@
   </div>
 </div>
 
-<!-- Second Slideshow -->
+<!-- Second Mini Slideshow -->
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-6">
       <br><br><div class="slideshow-container">
         <div class="mySlides2">
-          <img src="assets/imgs/logo.jpg" style="width:100%">
+          <img src="assets/imgs/vmtc1.jpg" style="width:100%">
         </div>
 
         <div class="mySlides2">
-          <img src="assets/imgs/vmsr_logo.jpg" style="width:100%">
+          <img src="assets/imgs/vmtc2.jpg" style="width:100%">
         </div>
 
         <div class="mySlides2">
-          <img src="assets/imgs/vmtc_logo.jpg" style="width:100%">
+          <img src="assets/imgs/vmtc4.jpg" style="width:100%">
         </div>
 
         <a class="prev" onclick="plusSlides(-1, 1)">&#10094;</a>
@@ -69,7 +71,7 @@
       </div>
     </div>
         <div class="col-lg-3"><br><br>
-          <p><strong>VYKES MNL MAIN (Marikina)</strong></p>
+          <p><strong>VYKES MNL TRECE CAVITE</strong></p>
           <p><br><i class="bi bi-geo-alt fa-lg"></i><a href="https://goo.gl/maps/RrQVjPPtipFwCL8i6" style="text-decoration:none; color: black;"> 59C. Gen. Ordonez Ave., Marikina City </a></p>
           <p><i class="bi bi-telephone fa-lg"></i> 0956-225-6879</p>
           <p><i class="bi bi-facebook fa-lg"></i> Vykes MNL </p>
@@ -77,29 +79,27 @@
   </div>
 </div>
 
-<script>
-let slideIndex = [1,1];
-let slideId = ["mySlides1", "mySlides2"]
-showSlides(1, 0);
-showSlides(1, 1);
+  <script>
+  let slideIndex = [1,1];
+  let slideId = ["mySlides1", "mySlides2"]
+  showSlides(1, 0);
+  showSlides(1, 1);
 
-function plusSlides(n, no) {
-  showSlides(slideIndex[no] += n, no);
-}
-
-function showSlides(n, no) {
-  let i;
-  let x = document.getElementsByClassName(slideId[no]);
-  if (n > x.length) {slideIndex[no] = 1}    
-  if (n < 1) {slideIndex[no] = x.length}
-  for (i = 0; i < x.length; i++) {
-     x[i].style.display = "none";  
+  function plusSlides(n, no) {
+    showSlides(slideIndex[no] += n, no);
   }
-  x[slideIndex[no]-1].style.display = "block";  
-}
-</script>
 
-
+  function showSlides(n, no) {
+    let i;
+    let x = document.getElementsByClassName(slideId[no]);
+    if (n > x.length) {slideIndex[no] = 1}    
+    if (n < 1) {slideIndex[no] = x.length}
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";  
+    }
+    x[slideIndex[no]-1].style.display = "block";  
+  }
+  </script>
 
 
     </section>

@@ -251,3 +251,8 @@
     width: 100%;
     overflow-x: auto;
 }
+
+.return {
+    font-size: 2.5rem;
+    color: darkorange;
+}

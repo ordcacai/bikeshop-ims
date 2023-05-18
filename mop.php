@@ -5,46 +5,41 @@
 ?> 
 
 <section>
-
-<br>
-<div class="container">
-  <div class="container text-center mt-5 py-md-5">
+<br><div class="container text-center mt-5 py-md-5">
       <h3>Payment Methods</h3><br>
       <hr class="mx-auto">
   </div>
-</div>
 
 <div class="container mt-1">
-
   <!-- Nav Pills -->
   <ul class="nav nav-pills" role="tablist">
     <li class="nav-item">
-      <a class="nav-link active" data-bs-toggle="pill" href="#cash">Cash | Gcash | Bank Transfer</a>
+      <a class="nav-pills active" data-bs-toggle="pill" href="#cash">Cash | Gcash | Bank Transfer</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-bs-toggle="pill" href="#hc">Home Credit</a>
+      <a class="nav-pills" data-bs-toggle="pill" href="#hc">Home Credit</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-bs-toggle="pill" href="#billease">BillEase App</a>
+      <a class="nav-pills" data-bs-toggle="pill" href="#billease">BillEase App</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-bs-toggle="pill" href="#atome">Atome App</a>
+      <a class="nav-pills" data-bs-toggle="pill" href="#atome">Atome App</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-bs-toggle="pill" href="#cashalo">Cashalo App</a>
+      <a class="nav-pills" data-bs-toggle="pill" href="#cashalo">Cashalo App</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-bs-toggle="pill" href="#cc">Credit Cards</a>
+      <a class="nav-pills" data-bs-toggle="pill" href="#cc">Credit Cards</a>
     </li>
   </ul>
- 
+
 
   <!-- Cash Content -->
   <div class="tab-content">
     <div id="cash" class="container tab-pane active">
-        <div id="cashbanner" class="container">
+        <div id="cashbanner">
             <h1>Flexible Mode of Payments</h1>
-            <p>We accept online paayments through Bank Transfer or Gcash.</p>
+            <p>We accept online payments through Bank Transfer or Gcash.</p>
         </div>
     </div>
 
@@ -199,24 +194,93 @@
   </div>
 
   <!-- BillEase Content-->
+  
+  <section>
     <div id="billease" class="container tab-pane fade">
-      <div id="billease_banner" class="w-100">
+      <div id="billease_banner">  
             <h1>Buy Now, Pay Later with Billease</h1>
             <p>100% online process, loan at your convenince</p>
         </div>
-        <div class=text-center>
-          <h3>How does it work?</h3>
-          
-        </div>
-    </div>
+      </div>
+        <div id="billease_banner2">
 
+        </div>
+    </section>
+   
   <!-- Atome Content-->
     <div id="atome" class="container tab-pane fade"><br>
-      <h3>Atome App</h3>
-      <p>Content here</p>
+      <div class=text-center>
+        <br><h3>What are the Requirements?</h3>
+      </div>
+
+    <div class="container mt-5">
+      <div class="row">
+      <div class="col-sm-3">
+          <i class="bi bi-file-person fa-2x"></i>
+          <h4>Age Requirement</h4>        
+          <p>Must be 18-70 years old</p>
+        </div>
+
+        <div class="col-sm-3">
+          <i class="bi bi-credit-card fa-2x"></i>
+          <h4>Debit or Credit Card</h4>
+          <p>Must have an active debit or credit card (At least one).</p>
+          <p>Visa or Mastercard is accepted.</p>
+        </div>
+
+        <div class="col-sm-3">
+          <i class="bi bi-person-vcard fa-2x"></i>
+          <h4>Valid ID</h4>
+          <p>Must have at least one valid ID that corresponds your registration details in the app.</p>
+          <p><a class="nav-item" data-bs-toggle="modal" data-bs-target="#list_id_atome">List of Valid IDs</a></p> 
+             <!-- Modal for List of IDs -->
+        <div class="modal fade" id="list_id_atome">
+          <div class="modal-dialog">
+            <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">List of Valid IDs</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <ul style="list-style-type: none" style="padding-left:1em"> 
+            <li><i class="bi bi-check2 fa-lg"></i> Driver's Liscense ID</li>
+            <li><i class="bi bi-check2 fa-lg"></i> PRC ID</li>
+            <li><i class="bi bi-check2 fa-lg"></i> Philippine Identification Card</li>
+            <li><i class="bi bi-check2 fa-lg"></i> Unified Multi-Purpose ID</li>
+          </ul>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+        </div>
+      </div>
+    </div>
+        </div>
+
+        <div class="col-sm-3">
+          <i class="bi bi-phone fa-2x"></i>
+          <h4>The Atome App</h4>        
+          <p>Must have an Atome App on your smartphone.</p>
+        </div>
+    </div><br>
+    
+    <h4>Always Remember that Atome will give you:</h4>
+      <ul style="list-style-type: none" style="padding-left:1em">
+        <li><i class="bi bi-check2-square fa-lg"></i> Credit Limit for Debit Card: Php 15,000</li>
+        <li><i class="bi bi-check2-square fa-lg"></i> Credit Limit for Credit Card: Php 50,000</li>
+        <li><i class="bi bi-check2-square fa-lg"></i> 0% Interest for 3 payment terms</li>
+      </ul><br>
+
     </div>
 
   <!-- Cashalo Content-->
+
     <div id="cashalo" class="container tab-pane fade"><br>
       <h3>Cashalo App</h3>
       <p>Content here</p>

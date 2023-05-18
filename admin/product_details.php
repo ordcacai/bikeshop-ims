@@ -18,18 +18,38 @@
 
 <?php include('sidemenu.php'); ?>
 
+<link rel="stylesheet" type="text/css" href="admin_style.css">
+
 <div class="main-content">
     <div class="container-fluid">
-            <h1 class="mb-4">Product Details</h1>
+        <h1 class="my-4">Product Details</h1>
 
-            <div>
-                <h2>Product Name: <?php echo $product['product_name']; ?></h2>
-                <p>Stocks: <?php echo $product['product_quantity']; ?></p>
-
-                <!-- Add Edit and Cancel buttons with appropriate URLs -->
-                <a href="edit_product.php?product_id=<?php echo $product['product_id']; ?>" class="btn btn-primary">Edit</a>
-                <a href="inventory.php" class="btn btn-secondary">Cancel</a>
+        <div class="product-details-container">
+            <div class="product-image">
+                <img src="<?php echo "../assets/imgs/".$product['product_image']; ?>" alt="Product Image" class="img-fluid">
             </div>
-        </main>
+            <div class="product-info">
+                <div class="product-details">
+                    <h2><?php echo $product['product_name']; ?></h2>
+                    <div class="product-info-box">
+                        <p class="product-price">SRP: <?php echo $product['product_price']; ?></p>
+                        <p class="product-price">WSP: <?php echo $product['product_special_offer']; ?></p>
+                        <p class="product-quantity">QTY: <?php echo $product['product_quantity']; ?></p>
+                        <p class="product-quantity">Stocks: <?php echo $product['product_quantity']; ?></p>
+                    </div>
+                </div>
+                <div class="specifications-box">
+                    <h2>Specifications</h2>
+                    <p><?php echo $product['product_description']; ?></p>
+                    <p>Color: <?php echo $product['product_color']; ?></p>
+                </div>
+                <div class="buttons-container">
+                    <a href="edit_product.php?product_id=<?php echo $product['product_id']; ?>" class="btn btn-primary">Edit</a>
+                    <a href="inventory.php" class="btn btn-secondary">Cancel</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+

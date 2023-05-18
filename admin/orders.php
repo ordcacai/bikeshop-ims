@@ -45,7 +45,7 @@
     <div class="container-fluid">
             <h1 class="my-4">Orders</h1>
 
-            <?php if(isset($_GET['order_updated'])){ ?>
+                <?php if(isset($_GET['order_updated'])){ ?>
                     <p class="text-center" style="color: green;"><?php echo $_GET['order_updated']; ?></p>   
                 <?php }?>
 
@@ -70,7 +70,7 @@
                 <?php }?>
             
             <div class="table-responsive">
-                <table class="table table-striped table-bordered table-hover table-sm">
+                <table class="table table-striped table-bordered table-hover table-sm text-center">
                     <thead>
                         <tr>
                             <th scope="col">Order ID</th>
@@ -79,24 +79,22 @@
                             <th scope="col">User Address</th>
                             <th scope="col">Order Date</th>
                             <th scope="col">Order Status</th>
-                            <th scope="col">View</th>
                             <th scope="col">Edit</th>
                             <th scope="col">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
 
-                        <?php foreach($orders as $order) { ?>
+                    <?php while($row = $orders->fetch_assoc()) { ?>
                         <tr>
-                            <td><?php echo $order['order_id']; ?></td>
-                            <td><?php echo $order['user_name']; ?></td>
-                            <td><?php echo "+63 ".$order['user_phone']; ?></td>
-                            <td><?php echo $order['user_address']; ?></td>
-                            <td><?php echo $order['order_date']; ?></td>
-                            <td><?php echo $order['order_status']; ?></td>
-                            <td><a class="btn btn-dark" href="view_order.php?order_id=<?php echo $order['order_id']; ?>">View</a></td>
-                            <td><a class="btn btn-primary" href="edit_order.php?order_id=<?php echo $order['order_id']; ?>">Edit</a></td>
-                            <td><a class="btn btn-danger" href="delete_order.php?order_id=<?php echo $order['order_id']; ?>">Delete</a></td>
+                            <td><a href="<?php echo "view_order.php?order_id=".$row['order_id']; ?>"><?php echo $row['order_id']; ?></a></td>
+                            <td><?php echo $row['user_name']; ?></td>
+                            <td><?php echo "+63 ".$row['user_phone']; ?></td>
+                            <td><?php echo $row['user_address']; ?></td>
+                            <td><?php echo $row['order_date']; ?></td>
+                            <td><?php echo $row['order_status']; ?></td>
+                            <td><a class="btn btn-primary" href="edit_order.php?order_id=<?php echo $row['order_id']; ?>">Edit</a></td>
+                            <td><a class="btn btn-danger" href="delete_order.php?order_id=<?php echo $row['order_id']; ?>">Delete</a></td>
                         </tr>
                         <?php } ?>
                     </tbody>
