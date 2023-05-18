@@ -74,7 +74,7 @@
 		}
 
 		input[type=text]:hover, input[type=tel]:hover, input[type=url]:hover, textarea:hover {
-			border-color: blue;
+			border-color: #f9881c;
 		}
 		/* set width to 50% for the textarea field */
 		textarea {
@@ -97,22 +97,24 @@
             <h4> RETAIL | <a href="wholesale.php" id="switch">Switch to WHOLESALE</a></h4>
             <hr style="height: 15px; border: none; color: #000; background-color: #000; width: 60%;">
             <h3 class="tertiary">Order Details</h3>
-            <form method="post" action="submit.php">
-                <label for="name">Name:</label><br>
-                <input type="text" id="name" name="name" required placeholder="Ex: Juan Dela Cruz"><br>
+        <form method="POST" enctype="multipart/form-data" action="create_order.php">
+    <form method="POST" enctype="multipart/form-data" action="create_order.php"> 
+                <label>Name:</label><br>
+                <input type="text" id="user_name" name="name" required placeholder="Ex: Juan Dela Cruz"><br>
 
-                <label for="phone">Contact Number:</label><br>
-                <input type="tel" id="phone" name="phone" required placeholder="Ex: 09*********"><br>
+                <label>Contact Number:</label><br>
+                <input type="tel" id="user_phone" name="phone" required placeholder="Ex: 09*********"><br>
 
-                <label for="address">Address:</label><br>
-                <textarea id="address" name="address" required placeholder="Ex: 59C. Gen. Ordoñez Ave., Marikina City"></textarea><br>
+                <label>Address:</label><br>
+                <input type="text" id="user_address" name="address" required placeholder="Ex: 59C. Gen. Ordoñez Ave., Marikina City"><br>
 
-                <label for="landmark">Nearest Landmark:</label><br>
-                <input type="text" id="landmark" name="landmark" placeholder="Ex: Manila Post Office"><br>
+                <label>Nearest Landmark:</label><br>
+                <input type="text" id="user_landmark" name="landmark" placeholder="Ex: Manila Post Office"><br>
 
-                <label for="location">Location Link:</label><br>
-                <input type="url" id="location" name="location" placeholder="Ex: https://ul.waze.com/ul?ll=69"><br>
-            </form>
+                <label>Location Link:</label><br>
+                <input type="text" id="location_link" name="location" placeholder="Ex: https://ul.waze.com/ul?ll=69"><br>
+            <!-- </form> -->
+            
             <hr style="height: 3px; border: none; color: #000; background-color: #000; width: 60%;">
             <br><h3 class="tertiary">Add Products</h3>
             <table id="addProductsTable" style="width: 55%; border-collapse: collapse; ">
@@ -127,7 +129,8 @@
                 <div style="text-align:left; margin-bottom:10px;">
                     <button class="addButton" onclick="addRow()">Add an Item</button>
                 </div>
-                <td style="padding: 10px;">
+                <!-- <form method="POST" enctype="multipart/form-data" action="create_order.php"> -->
+                <td style="padding: 10px;" required name="product_name">
                     <?php
                     // Retrieve data from MySQL database
                     $sql = "SELECT product_id, product_name FROM products";
@@ -141,7 +144,7 @@
                             echo '<option value="' . $row["product_id"] . '">' . $row["product_name"] . '</option>';
                         }
                     }
-                    echo '</select>';
+                    echo '</select>'; 
 
                     // Close MySQL database connection
                     $conn->close();
@@ -153,7 +156,7 @@
                 <td style="padding: 10px;"><input type="text" name="Quantity[]" style="width: 150px" maxlength="3"></td>
             </tr>
         </table>
-
+                <!-- </form> -->
         <!-- Script to add new row -->
         <script>
             function addRow() {
@@ -179,15 +182,15 @@
                 table.appendChild(newRow);
             }
         </script>
-                
+              
             </table>
             <hr style="height: 3px; border: none; color: #000; background-color: #000; width: 60%;">
         <br><h3 class="tertiary">Payment and Shipment</h3>
-        <form>
+        <!-- <form method="POST" enctype="multipart/form-data" action="create_order.php"> -->
             <br>
             <h4>Mode of Delivery</h4>
             <label for="main-options">Select an option:</label>
-            <select id="main-options" name="main-options" onchange="showSubOptionsOrTextBox()" style="width: 500px">
+            <select id="main-options" required name="main-options" onchange="showSubOptionsOrTextBox()" style="width: 500px">
                 <option value="">-- Select Delivery Type --</option>
                 <option value="option1">In-house Delivery (Selected Areas in Metro Manila only)</option>
                 <option value="option2">Freight (Select for Specific Cargo Options)</option>
@@ -196,8 +199,8 @@
             </select>
             <br>
             <div id="sub-options-container" style="display:none;">
-                <label for="sub-options">Courier:</label>
-                <select id="sub-options" name="sub-options">
+                <label>Courier:</label>
+                <select id="shipping_method" required name="shipping_method">
                     <option value="">-- Select Courier --</option>
                     <option value="sub-option1">Capex</option>
                     <option value="sub-option2">AP Cargo</option>
@@ -211,13 +214,13 @@
                 <input type="text" id="deliveryOption_others" name="text-box">
             </div>
 
-        </form>
+        <!-- </form> -->
         
         <script>
             function showSubOptionsOrTextBox() {
                 var mainOptions = document.getElementById("main-options");
                 var subOptionsContainer = document.getElementById("sub-options-container");
-                var textBoxContainer = document.getElementById("text-box-container");//////////////
+                var textBoxContainer = document.getElementById("text-box-container");
 
                 if (mainOptions.value == "option2") {
                     subOptionsContainer.style.display = "block";
@@ -233,9 +236,9 @@
         </script>
         <hr style="height: 3px; border: none; color: #000; background-color: #000; width: 20%;">
         <h4>Mode of Payment</h4>   
-        <form>
-            <label for="payment_type">Payment Type:</label>
-            <select id="payment_type" name="payment_type" onchange="showPaymentOptions()" style="width: 300px">
+        <!-- <form method="POST" enctype="multipart/form-data" action="create_order.php"> -->
+            <label>Payment Type:</label>
+            <select id="payment_type" required name="payment_type" onchange="showPaymentOptions()" style="width: 300px">
                 <option value="">-- Select Payment Type --</option>
                 <option value="cash">Cash Payments</option>
                 <option value="installment">Installment Options</option>
@@ -243,32 +246,31 @@
             
             <div id="cash_options" style="display:none;">
                 <label for="cash_method">Cash Method:</label>
-                <select id="cash_method" name="cash_method" style="width: 300px">
+                <select id="cash_method" required name="payment_method" style="width: 300px">
                 <option value="">-- Select Cash Method --</option>
                 <option value="bpi">BPI (Bank Transfer)</option>
                 <option value="bdo">BDO (Bank Transfer)</option>
                 <option value="gcash">GCash</option>
                 <option value="cash">Cash</option>
+                <option value="cod">Cash on Delivery</option>
                 </select>
             </div>
             
             <div id="installment_options" style="display:none;">
                 <label for="installment_type">Installment Type:</label>
-                <select id="installment_type" name="installment_type"  style="width: 250px">
+                <select id="installment_type" required name="payment_method"  style="width: 250px">
                 <option value="">-- Select Installment Type --</option>
                 <option value="homecredit">Home Credit</option>
                 <option value="billease">BillEase</option>
+                <option value="billease">Cashalo</option>
                 <option value="atome">Atome</option>
-                <option value="bdocreditcard">BDO Credit Card</option>
-                <option value="otherCards">Other Credit Cards</option>
+                <option value="bdocreditcard">Straight Payment (Terminal)</option>
+                <option value="bdocreditcard">BDO CC Installment (Terminal)</option>
+                <option value="bdocreditcard">BDO Checkout Installment</option>
+                <option value="bdocreditcard">Paypal Straight Payment</option>
                 </select>
-                
-                <div id="otherCards" style="display:none;">
-                <label for="otherCards_value">Please specify the preferred Credit Card:</label>
-                <input type="text" id="otherCards__value" name="otherCards_value" placeholder="Ex: UnionBank" style="width: 200px">
-                </div>
             </div>
-            </form>
+            <!-- </form> -->
 
             <script>
             function showPaymentOptions() {
@@ -296,18 +298,22 @@
             </script>
 
         <br><h3 class="tertiary">Remarks:</h3>
-                <form method="post">
+                <!-- <form method="POST" enctype="multipart/form-data" action="create_order.php"> -->
                     <textarea id="input" name="input" rows="10" cols="50" maxlength="300" placeholder="Enter your remarks here."></textarea><br>
                     <label for="orderStatus">Order Status</label>
-                        <select id="orderStatus" name="orderStatus" style="width: 300px">
+                        <select id="orderStatus" required name="order_status" style="width: 300px">
                             <option value="">-- Select Order Status --</option>
-                            <option value="paid">Paid</option>
-                            <option value="notpaid">Not Paid</option>
+                            <option value="pending">Pending</option>
+                            <option value="forDelivery">For Delivery/Ship Out</option>
+                            <option value="delivered">Delivered/Shipped</option>
+                            <option value="walkin">Walk-in</option>
                         </select>
-                    <button type="submit" class="button"> Confirm (not yet working)</button>
-                </form>
-                
+                        
+    </form>
+    <input type="submit" class="button" name="add_order" value="Submit">
+        </form>       
                 <hr style="height: 3px; border: none; color: #000; background-color: #000; width: 60%;">
+
     </div>
 </div> 
 
