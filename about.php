@@ -53,7 +53,7 @@
     <div class="col-lg-6">
       <br><br><div class="slideshow-container">
         <div class="mySlides2">
-          <img src="assets/imgs/vmtc3.jpg" style="width:100%">
+          <img src="assets/imgs/vmtc1.jpg" style="width:100%">
         </div>
 
         <div class="mySlides2">
@@ -61,7 +61,7 @@
         </div>
 
         <div class="mySlides2">
-          <img src="assets/imgs/vmtc1.jpg" style="width:100%">
+          <img src="assets/imgs/vmtc3.jpg" style="width:100%">
         </div>
 
         <a class="prev" onclick="plusSlides(-1, 1)">&#10094;</a>
