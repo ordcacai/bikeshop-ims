@@ -39,7 +39,7 @@
       </div>
     </div>
         <div class=" col-lg-3"><br>
-          <p><strong>VYKES MNL MAIN (Marikina)</strong></p>
+          <p><strong>VYKES MNL MAIN STA ROSA</strong></p>
           <p><br><i class="bi bi-geo-alt fa-lg"></i><a href="https://goo.gl/maps/RrQVjPPtipFwCL8i6" style="text-decoration:none; color: black;"> 59C. Gen. Ordonez Ave., Marikina City </a></p>
           <p><i class="bi bi-telephone fa-lg"></i> 0956-225-6879</p>
           <p><i class="bi bi-facebook fa-lg"></i> Vykes MNL </p>
@@ -53,15 +53,15 @@
     <div class="col-lg-6">
       <br><br><div class="slideshow-container">
         <div class="mySlides2">
-          <img src="assets/imgs/logo.jpg" style="width:100%">
+          <img src="assets/imgs/vmtc3.jpg" style="width:100%">
         </div>
 
         <div class="mySlides2">
-          <img src="assets/imgs/vmsr_logo.jpg" style="width:100%">
+          <img src="assets/imgs/vmtc2.jpg" style="width:100%">
         </div>
 
         <div class="mySlides2">
-          <img src="assets/imgs/vmtc_logo.jpg" style="width:100%">
+          <img src="assets/imgs/vmtc1.jpg" style="width:100%">
         </div>
 
         <a class="prev" onclick="plusSlides(-1, 1)">&#10094;</a>
@@ -69,7 +69,7 @@
       </div>
     </div>
         <div class="col-lg-3"><br><br>
-          <p><strong>VYKES MNL MAIN (Marikina)</strong></p>
+          <p><strong>VYKES MNL TRECE CAVITE</strong></p>
           <p><br><i class="bi bi-geo-alt fa-lg"></i><a href="https://goo.gl/maps/RrQVjPPtipFwCL8i6" style="text-decoration:none; color: black;"> 59C. Gen. Ordonez Ave., Marikina City </a></p>
           <p><i class="bi bi-telephone fa-lg"></i> 0956-225-6879</p>
           <p><i class="bi bi-facebook fa-lg"></i> Vykes MNL </p>

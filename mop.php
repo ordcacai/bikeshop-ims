@@ -204,10 +204,14 @@
             <h1>Buy Now, Pay Later with Billease</h1>
             <p>100% online process, loan at your convenince</p>
         </div>
-        <div class=text-center>
-          <h3>How does it work?</h3>
-          
+        <div id="billease_banner2" class="my-5 py-5">
+        <div class="container">
+            <h4>BONUS SALE</h4>
+            <h1 class="mb-4">Product Collection <br> Up to 100% OFF!</h1>
         </div>
+      </div>
+
+      
     </div>
 
   <!-- Atome Content-->
