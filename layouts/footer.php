@@ -6,7 +6,7 @@
         <div class="row container mx-auto pt-5">
             <div class="footer-one col-lg-3 col-md-6 col-sm-12">
                 <img class="logo" src="assets/imgs/logo.jpg">
-                <p class="pt-3">A bicycle shop that offers good quality and budget products!</p>
+                <p class="pt-3">A bicycle shop that offers good quality and budget ebikes, bicycles, parts and accessories.</p>
             </div>
             <div class="footer-one col-lg-3 col-md-6 col-sm-12">
                 <h5 class="pb-2">Featured Items</h5>
