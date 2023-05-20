@@ -12,22 +12,22 @@ include('layouts/header.php');
   <!-- Nav Pills -->
   <ul class="nav nav-pills">
     <li class="nav-item">
-      <a class="nav-link" href="cash.php" id="nav-pill-1">Cash | Gcash | Bank Transfer</a>
+      <a class="nav-link active" data-toggle="pill" href="cash.php" id="nav-pill-1">Cash | Gcash | Bank Transfer</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="hc.php" id="nav-pill-1">Home Credit</a>
+      <a class="nav-link" data-toggle="pill" href="hc.php" id="nav-pill-1">Home Credit</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="billease.php" id="nav-pill-1">BillEase App</a>
+      <a class="nav-link" data-toggle="pill" href="billease.php" id="nav-pill-1">BillEase App</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="atome.php" id="nav-pill-1">Atome App</a>
+      <a class="nav-link" data-toggle="pill" href="atome.php" id="nav-pill-1">Atome App</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="cashalo.php" id="nav-pill-1">Cashalo App</a>
+      <a class="nav-link" data-toggle="pill" href="cashalo.php" id="nav-pill-1">Cashalo App</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="cc.php" id="nav-pill-1">Credit Cards</a>
+      <a class="nav-link" data-toggle="pill" href="cc.php" id="nav-pill-1">Credit Cards</a>
     </li>
   </ul>  
 </div>
@@ -35,14 +35,14 @@ include('layouts/header.php');
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     // Get all nav pills
-    var navPills = document.querySelectorAll(".nav-pills .nav-link");
+    var navPills = document.querySelectorAll(".nav-item .nav-link");
 
     // Add click event listener to each nav pill
     navPills.forEach(function(pill) {
       pill.addEventListener("click", function(event) {
         // Remove active class from all nav pills
-        navPills.forEach(function(navPill) {
-          navPill.classList.remove("active");
+        navPills.forEach(function(navPills) {
+          navPills.classList.remove("active");
         });
 
         // Add active class to the clicked nav pill

@@ -22,7 +22,7 @@
         <i class="bi bi-person-vcard fa-2x"></i>
         <h4>Primary ID</h4>
         <p>Must have at least one primary ID that contains your current address.</p>
-        <p><a class="nav-item" data-bs-toggle="modal" data-bs-target="#list_id">List of Valid IDs</a></p>  
+        <p><a class="nav-item" style="text-decoration:none;" data-bs-toggle="modal" data-bs-target="#list_id">List of Valid IDs</a></p>  
       </div>
 
 <!-- Modal for List of IDs -->
@@ -57,7 +57,7 @@
 
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn" style="background-color: darkorange; color: white;" data-bs-dismiss="modal">Close</button>
       </div>
       
     </div>
@@ -95,7 +95,7 @@
         <div class="card-body">
           <h5 class="card-title">Step 2</h5>
           <p>Go to our store and approach our staff/sales associate for assistance.</p>
-          <p><a class="nav-item" data-bs-toggle="modal" data-bs-target="#must_bring">What you must bring</a></p>
+          <p><a class="nav-item" style="text-decoration: none;" data-bs-toggle="modal" data-bs-target="#must_bring">What you must bring</a></p>
             <!-- Modal for List of IDs -->
   <div class="modal fade" id="must_bring">
     <div class="modal-dialog">
