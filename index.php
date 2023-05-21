@@ -8,7 +8,7 @@
 
       <section id="home">
         <div class="container">
-            <h5>BAGONG DATING</h5>
+            <h5>NEW ARRIVAL</h5>
             <h1>Electric E-bike Code 113</h1>
             <p>All new budget e-bike! For only Php 16,200</p>
             <button onclick="window.location.href='shop.php';">Shop Now</button>
