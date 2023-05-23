@@ -13,7 +13,4 @@
         }
 
         echo "Connected successfully";
-
-        // Close the connection
-        $conn->close();
 ?>
