@@ -21,7 +21,7 @@ if(isset($_POST['login_btn'])){
     $email = $_POST['email'];
     $password = md5($_POST['password']);
 
-    $stmt = $conn->prepare("SELECT user_id, user_name, user_email, user_password FROM users 
+    $stmt = $conn->prepare("SELECT user_id, user_name, user_email, user_password FROM users
                             WHERE user_email=? AND user_password=? LIMIT 1");
 
     $stmt->bind_param('ss', $email, $password);

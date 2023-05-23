@@ -257,3 +257,9 @@
     font-size: 2.5rem;
     color: darkorange;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
