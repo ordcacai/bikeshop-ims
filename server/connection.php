@@ -1,8 +1,8 @@
 <?php
-        $host = '31.220.110.201'; // Replace with your MySQL server hostname or IP address
-        $db = 'u564301412_inventory_db'; // Replace with your database name
-        $user = 'u564301412_inventory_db'; // Replace with your MySQL username
-        $password = 'VykesMNL23'; // Replace with your MySQL password
+        $host = '31.220.110.201'; 
+        $db = 'u564301412_inventory_db'; 
+        $user = 'u564301412_inventory_db'; 
+        $password = 'VykesMNL23'; 
 
         // Create a connection
         $conn = new mysqli($host, $user, $password, $db);

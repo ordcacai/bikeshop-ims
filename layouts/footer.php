@@ -48,11 +48,8 @@
         </div>
 
 <!-- Social Media -->
-        <div class="copyright mt-5">
+        <div class="copyright mt-2">
             <div class="row container mx-auto">
-                <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
-                    <img src="assets/imgs/payment.png">
-                </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
                     <a href="https://www.facebook.com/vykesmnl"><i class="fab fa-facebook"></i></a>
                     <a href="https://www.instagram.com/vykesmnl"><i class="fab fa-instagram"></i></a>
