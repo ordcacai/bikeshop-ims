@@ -16,28 +16,8 @@
                 continues to serve most of it's loyal customers until now. 
             </p><br>
 
-            <h3 class="margin">Our Customers</h3>
-        </div>
-
-        <div id="about_banner">
-     
-      <div class=text-center>
-        <br><h3>What are the Requirements?</h3>
-      </div>
-
-        <!-- Gall
-            <div class="row">
-      <div class="column">
-        <img src="assets/imgs/vm1.jpg" alt="Snow" style="width:30%">
-      </div>
-      <div class="column">
-        <img src="assets/imgs/vm2.jpg" alt="Forest" style="width:20px">
-      </div>
-      <div class="column">
-        <img src="assets/imgs/vm3.jpg" alt="Mountains" style="width:20px">
-      </div>
-    </div> -->
-
+            <h3 class="margin">Our Branches</h3>
+</div>
 
 
 <!-- First Mini Slideshow -->

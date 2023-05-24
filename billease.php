@@ -7,11 +7,12 @@
             <p>100% online process, loan at your convenince</p>
         </div>
       </div>
-
+    <div class=text-center>
+      <h3>What are the Requirements?</h3>
+      </div>
         <div id="billease_banner2">
-     
-      <div class=text-center>
-        <br><h3>What are the Requirements?</h3>
+      <div>
+        
       </div>
 
     <div class="container mt-5">
