@@ -67,7 +67,7 @@
     opacity: 1;
 }
 
-.top .logo i:hover {
+.top .logo i:hover{
     background-color: orange;
 }
 
@@ -144,7 +144,6 @@
     width: calc(100% - 80px);
     padding: 1rem;
 }
-
 
 /* Dashboard */
 
