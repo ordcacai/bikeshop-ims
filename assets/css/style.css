@@ -197,7 +197,7 @@ h6{
 
 #new .one img{
     width: 100%;
-    height: 80%;
+    height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -219,7 +219,7 @@ h6{
     opacity: 0.8;
     background-color: rgb(1,1,1);
     width: 100%;
-    height: 80%;
+    height: 100%;
 }
 
 #new .one .details:hover{
@@ -887,6 +887,42 @@ button.accordion {
     background-position-x: center;
     background-position-y: -180px;
     background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/*Gallery*/
+
+  
+ 
+* {
+    box-sizing: border-box;
+  }
+  
+  .column {
+    float: left;
+    width: 33.33%;
+    padding: 5px;
+  }
+  
+  /* Clearfix (clear floats) */
+  .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  #about_banner{
+    background-image: url('../imgs/grey_bg.png');
+    width: 100%;
+    height: 50vh;
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: 80px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     display: flex;
     flex-direction: column;
     justify-content: center;

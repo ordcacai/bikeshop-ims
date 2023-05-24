@@ -10,7 +10,7 @@
 <br>
 <div class="container">
   <div class="container text-center mt-5 py-md-5">
-      <h3>Frequently Asked Questions</h3><br>
+      <h3>FREQUENTLY ASKED QUESTIONS</h3><br>
       <hr class="mx-auto">
   </div>
 
@@ -29,6 +29,19 @@
 <div class="panel">
   <p>You can place your order by messaging us through our Facebook page. Our admin will be happy to serve you!
           You can also place an order through our website, just fill up the order form and wait for our confirmation for your order.</p>
+</div>
+
+<button class="accordion">Do you accept split payments?</button>
+<div class="panel">
+  <p>Yes, we do consider spilt payments. Example, the total amount that you're gonna purchase is 10,000php. You can pay the 5,000php in cash and 5,000php via credit card 
+    plus the charge (if there are any). Please note that there are various charges for installment or credit card option.</p>
+</div>
+
+<button class="accordion">I want to order a bike. Do you deliver?</button>
+<div class="panel">
+  <p>Yes, we do! Our delivery team can deliver around Metro Manila. Note that the shipping fee depends on the 
+    delivery location.
+  </p>
 </div>
 
 <script>
