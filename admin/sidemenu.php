@@ -19,6 +19,7 @@
                 <span class="nav-item">Dashboard</span>
             </a>
         </li>
+
         <li>
             <a href="orders.php">
                 <i class="fas fa-shopping-cart"></i>
@@ -36,7 +37,6 @@
                 <i class="fas fa-boxes"></i>
                 <span class="nav-item">Inventory</span>
             </a>
-        </li>
         <li>
             <a href="add_product.php">
                 <i class="fas fa-plus"></i>
@@ -76,3 +76,4 @@
      };
 </script>
 </html>
+

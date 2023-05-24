@@ -19,8 +19,8 @@
 
       <section id="banner" class="my-5 py-5">
         <div class="container">
-            <h4>BONUS SALE</h4>
-            <h1 class="mb-4">Product Collection <br> Up to 100% OFF!</h1>
+            <h1 class="mb-4">EXTENDED LABOR DAY SALE!</h1>
+            <h4>On all E-bikes, Bicycles, Parts and Accessories!</h4>
             <button onclick="window.location.href='shop.php';" class="text-uppercase">Shop Now</button>
         </div>
       </section>
@@ -55,7 +55,7 @@
             <div class="one col-lg-4 col-md-12 col-sm-12 p-0">
                 <img src="assets/imgs/new1.jpg" class="img-fluid">
                 <div class="details">
-                    <h2>Lorem, ipsum dolor.</h2>
+                    <h2>Product Name</h2>
                     <button onclick="window.location.href='shop.php';" class="text-uppercase">Shop Now</button>
                 </div>
             </div>
@@ -63,7 +63,7 @@
             <div class="one col-lg-4 col-md-12 col-sm-12 p-0">
                 <img src="assets/imgs/new1.jpg" class="img-fluid">
                 <div class="details">
-                    <h2>Lorem, ipsum dolor.</h2>
+                    <h2>Product Name</h2>
                     <button onclick="window.location.href='shop.php';" class="text-uppercase">Shop Now</button>
                 </div>
             </div>
@@ -71,7 +71,7 @@
             <div class="one col-lg-4 col-md-12 col-sm-12 p-0">
                 <img src="assets/imgs/new1.jpg" class="img-fluid">
                 <div class="details">
-                    <h2>Lorem, ipsum dolor.</h2>
+                    <h2>Product Name</h2>
                     <button onclick="window.location.href='shop.php';" class="text-uppercase">Shop Now</button>
                 </div>
             </div>
@@ -83,7 +83,7 @@
         <div class="container text-center mt-5 py-5">
             <h3>Featured Products</h3>
             <hr class="mx-auto">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, harum!</p>
+            <p>Our best sellers are still available! Get yours now!</p>
         </div>
         <div class="row mx-auto container">
 

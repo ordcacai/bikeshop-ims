@@ -68,6 +68,14 @@
                 <?php if(isset($_GET['order_failed'])){ ?>
                     <p class="text-center" style="color: red;"><?php echo $_GET['order_failed']; ?></p>   
                 <?php }?>
+
+                <?php if(isset($_GET['invoice_created'])){ ?>
+                    <p class="text-center" style="color: green;"><?php echo $_GET['invoice_created']; ?></p>   
+                <?php }?>
+
+                <?php if(isset($_GET['invoice_failed'])){ ?>
+                    <p class="text-center" style="color: red;"><?php echo $_GET['invoice_failed']; ?></p>   
+                <?php }?>
             
             <div class="table-responsive">
                 <table class="table table-striped table-bordered table-hover table-sm text-center">

@@ -130,7 +130,6 @@ if(isset($_POST['search'])){
         <div class="container text-center mt-5 py-5">
             <h3>Our Products</h3>
             <hr class="mx-auto">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, harum!</p>
         </div>
         <div class="row mx-auto container">
 

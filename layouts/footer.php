@@ -6,7 +6,7 @@
         <div class="row container mx-auto pt-5">
             <div class="footer-one col-lg-3 col-md-6 col-sm-12">
                 <img class="logo" src="assets/imgs/logo.jpg">
-                <p class="pt-3">A bicycle shop that offers good quality and budget products!</p>
+                <p class="pt-3">A bicycle shop that offers good quality and budget ebikes, bicycles, parts and accessories.</p>
             </div>
             <div class="footer-one col-lg-3 col-md-6 col-sm-12">
                 <h5 class="pb-2">Featured Items</h5>
@@ -22,7 +22,7 @@
             <div class="footer-one col-lg-3 col-md-6 col-sm-12">
                 <h5 class="pb-2">Information</h5>
                 <ul class="text-uppercase">
-                    <li><a href="mop.php">Payment Methods</a></li>
+                    <li><a href="cash.php">Payment Methods</a></li>
                     <li><a href="del.php">Shipping and Deliveries</a></li>
                     <li><a href="services.php">Services</a></li>
                     <li><a href="warranty.php">Warranty Terms</a></li>
@@ -48,11 +48,8 @@
         </div>
 
 <!-- Social Media -->
-        <div class="copyright mt-5">
+        <div class="copyright mt-2">
             <div class="row container mx-auto">
-                <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
-                    <img src="assets/imgs/payment.png">
-                </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
                     <a href="https://www.facebook.com/vykesmnl"><i class="fab fa-facebook"></i></a>
                     <a href="https://www.instagram.com/vykesmnl"><i class="fab fa-instagram"></i></a>
