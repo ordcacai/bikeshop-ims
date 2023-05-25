@@ -7,6 +7,9 @@
     font-family: 'Poppins', sans-serif;
 }
 
+body {
+    background-color: #eee;
+}
 /* Sidebar */
 
 .user-img {
@@ -136,7 +139,6 @@
 
 .main-content {
     position: relative;
-    background-color: #eee;
     min-height: 100vh;
     top: 0;
     left: 80px;
@@ -262,4 +264,28 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.product-details-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.product-image {
+    height: 400px;
+    width: 400px;
+    margin-right: 40px;
+}
+
+.product-info {
+    display: flex;
+    flex-direction: row;
+}
+
+.product-details {
+    margin-right: 40px;
+}
+
+.specification-box {
+    margin-right: 40px;
 }

@@ -33,6 +33,12 @@
             </a>
         </li>
         <li>
+            <a href="invoice.php">
+                <i class="fas fa-receipt"></i>
+                <span class="nav-item">Invoice</span>
+            </a>
+        </li>
+        <li>
             <a href="inventory.php">
                 <i class="fas fa-boxes"></i>
                 <span class="nav-item">Inventory</span>
