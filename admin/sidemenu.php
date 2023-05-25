@@ -50,6 +50,12 @@
             </a>
         </li>
         <li>
+            <a href="transfer_stock.php">
+                <i class="fas fa-minus"></i>
+                <span class="nav-item">Transfer Stock</span>
+            </a>
+        </li>
+        <li>
             <a href="sales.php">
                 <i class="fas fa-chart-line"></i>
                 <span class="nav-item">Sales</span>
@@ -82,4 +88,3 @@
      };
 </script>
 </html>
-

@@ -8,15 +8,16 @@
 
     <section>
         <div class="container text-center mt-5 py-5">
-            <h3 class="mt-5">About Us</h3>
+            <h3 class="mt-5">ABOUT US</h3>
             <hr class="mx-auto">
             <p>Vykes MNL was established mid 2020, pre-pandemic. Vykes MNL is one of the most famous bike shops 
                 in Marikina that offers good quality products and services. Throughout the years, Vykes MNL have 
                 also established other branches, one in Sta. Rosa, Laguna and one in Trece, Cavite. Vykes MNL 
                 continues to serve most of it's loyal customers until now. 
             </p><br>
+
             <h3 class="margin">Our Branches</h3>
-        </div>
+</div>
 
 
 <!-- First Mini Slideshow -->
@@ -25,15 +26,15 @@
     <div class="col-lg-6">
     <div class="slideshow-container">
         <div class="mySlides1">
-          <img src="assets/imgs/vm1.jpg" style="width:100%">
+          <img src="assets/imgs/vmsr4.jpg" style="width:100%">
         </div>
 
         <div class="mySlides1">
-          <img src="assets/imgs/vm2.jpg" style="width:100%">
+          <img src="assets/imgs/vmsr5.jpg" style="width:100%">
         </div>
 
         <div class="mySlides1">
-          <img src="assets/imgs/vm3.jpg" style="width:100%">
+          <img src="assets/imgs/vmsr6.jpg" style="width:100%">
         </div>
 
         <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
@@ -42,9 +43,9 @@
     </div>
         <div class=" col-lg-3"><br>
           <p><strong>VYKES MNL MAIN STA ROSA</strong></p>
-          <p><br><i class="bi bi-geo-alt fa-lg"></i><a href="https://goo.gl/maps/RrQVjPPtipFwCL8i6" style="text-decoration:none; color: black;"> 59C. Gen. Ordonez Ave., Marikina City </a></p>
-          <p><i class="bi bi-telephone fa-lg"></i> 0956-225-6879</p>
-          <p><i class="bi bi-facebook fa-lg"></i> Vykes MNL </p>
+          <p><br><i class="bi bi-geo-alt fa-lg"></i><a href="https://goo.gl/maps/RrQVjPPtipFwCL8i6" style="text-decoration:none; color: black;"> Rosal St. Brgy Market Area, Sta Rosa, Laguna </a></p>
+          <p><i class="bi bi-telephone fa-lg"></i> 0956-666-6666</p>
+          <p><i class="bi bi-facebook fa-lg"></i> Vykes MNL Sta Rosa</p>
         </div>
   </div>
 </div>
@@ -72,9 +73,9 @@
     </div>
         <div class="col-lg-3"><br><br>
           <p><strong>VYKES MNL TRECE CAVITE</strong></p>
-          <p><br><i class="bi bi-geo-alt fa-lg"></i><a href="https://goo.gl/maps/RrQVjPPtipFwCL8i6" style="text-decoration:none; color: black;"> 59C. Gen. Ordonez Ave., Marikina City </a></p>
-          <p><i class="bi bi-telephone fa-lg"></i> 0956-225-6879</p>
-          <p><i class="bi bi-facebook fa-lg"></i> Vykes MNL </p>
+          <p><br><i class="bi bi-geo-alt fa-lg"></i><a href="https://goo.gl/maps/RrQVjPPtipFwCL8i6" style="text-decoration:none; color: black;"> Purok 2, De Ocampo, Trece Martires, Cavite </a></p>
+          <p><i class="bi bi-telephone fa-lg"></i> 0977-777-7777</p>
+          <p><i class="bi bi-facebook fa-lg"></i> Vykes MNL Trece Cavite</p>
         </div>
   </div>
 </div>
