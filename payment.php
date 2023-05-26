@@ -24,7 +24,7 @@ if(isset($_POST['order_pay_btn'])){
         </div>
 
         <div class="mx-auto container text-center">
-            <p class="mt-5">Please wait for an invoice for your payment. Thank you!</p>
+            <p class="mt-5">Please wait for an invoice of your order. Thank you!</p>
 
             <!-- <?php if(isset($_SESSION['total']) && $_SESSION['total'] !=0){ ?>
             <?php $amount = strval($_SESSION['total']); ?>

@@ -88,7 +88,6 @@ if(isset($_GET['order_id'])){
         </div>
 
         <a class="btn btn-primary my-5 px-5" href="edit_order.php?order_id=<?php echo $order_id ?>" style="float: right;" >Edit</a> 
-        <a class="btn btn-success my-5 me-5" href="invoice.php?order_id=<?php echo $order_id ?>" style="float: right;" >Create Invoice</a> 
         
     </div>
 </div> 
