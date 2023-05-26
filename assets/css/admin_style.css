@@ -21,40 +21,6 @@ body {
     background: darkorange;
     z-index: 100;
     transition: all 0.5s ease;
-<<<<<<< Updated upstream
-  }
-  .sidebar.close{
-    width: 78px;
-  }
-  
-  .sidebar #btn {
-      position: absolute;
-      color: #fff;
-      top: 0.4rem;
-      left: 50%;
-      font-size: 1.2rem;
-      line-height: 50px;
-      transform: translateX(-50%);
-      cursor: pointer;
-  }
-  
-  .sidebar.active #btn {
-      left: 90%;
-  }
-  
-  .sidebar .nav-links{
-    height: 100%;
-    padding: 30px 0 150px 0;
-    overflow: auto;
-  }
-  .sidebar.close .nav-links{
-    overflow: visible;
-  }
-  .sidebar .nav-links::-webkit-scrollbar{
-    display: none;
-  }
-  .sidebar .nav-links li{
-=======
 }
 
 .sidebar.active ~ .main-content {
@@ -127,7 +93,6 @@ body {
 }
 
 .sidebar ul li {
->>>>>>> Stashed changes
     position: relative;
     list-style: none;
     transition: all 0.4s ease;
@@ -396,7 +361,6 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
-<<<<<<< Updated upstream
 }
 
 .product-details-container {
@@ -421,8 +385,6 @@ input::-webkit-inner-spin-button {
 
 .specification-box {
     margin-right: 40px;
-=======
->>>>>>> Stashed changes
 }
 
 /* Transfer Stocks */
