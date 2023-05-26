@@ -13,7 +13,7 @@ include('../server/connection.php');
 
     if(isset($_GET['order_id'])){
         $order_id = $_GET['order_id'];
-        $stmt = $conn->prepare("DELETE FROM orders WHERE order_id=?");
+        $stmt = $conn->prepare("DELETE orders, order_items FROM orders INNER JOIN order_items WHERE orders.order_id= order_items.order_id AND orders.order_id=?");
         $stmt->bind_param('i', $order_id);
         
         if($stmt->execute()){
