@@ -19,6 +19,18 @@ if(isset($_GET['product_id'])){
 
     $product = $stmt->get_result(); //<- Array
 
+    $stmt1 = $conn->prepare("SELECT * FROM products WHERE product_category = 'Bike' LIMIT 4");
+    $stmt1->execute();
+    $bike = $stmt1->get_result(); //<- Array
+
+    $stmt1 = $conn->prepare("SELECT * FROM products WHERE product_category = 'parts' LIMIT 4");
+    $stmt1->execute();
+    $parts = $stmt1->get_result(); //<- Array
+
+    $stmt1 = $conn->prepare("SELECT * FROM products WHERE product_category = 'Ebike' LIMIT 4");
+    $stmt1->execute();
+    $ebike = $stmt1->get_result(); //<- Array
+
     //no product_id given
 }else{
     header('location: index.php');
@@ -70,8 +82,6 @@ if(isset($_GET['product_id'])){
                 <h4 class="mt-5 mb-3">Product Details</h4>
                 <span><?php echo $row['product_description']; ?></span>
             </div>
-
-            <?php } ?>
              
         </div>
     </section>
@@ -82,69 +92,80 @@ if(isset($_GET['product_id'])){
             <h3>Related Products</h3>
             <hr class="mx-auto">
         </div>
-        <div class="row mx-auto container">
-            <!-- 1st Related -->
-            <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-                <img src="assets/imgs/featured1.png" class="img-fluid mb-3">
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h5 class="p-name">Road Bike</h5>
-                <h4 class="p-price">₱100.00</h4>
-                <button class="buy-btn">Buy Now</button>
-                
-        </div>
-        <!-- 2nd Related -->
-        <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-            <img src="assets/imgs/featured1.png" class="img-fluid mb-3">
-            <div class="star">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-            </div>
-            <h5 class="p-name">Road Bike</h5>
-            <h4 class="p-price">₱100.00</h4>
-            <button class="buy-btn">Buy Now</button>
-            
-        </div>
-        <!-- 3rd Related -->
-        <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-            <img src="assets/imgs/featured1.png" class="img-fluid mb-3">
-            <div class="star">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-            </div>
-            <h5 class="p-name">Road Bike</h5>
-            <h4 class="p-price">₱100.00</h4>
-            <button class="buy-btn">Buy Now</button>
-            
-        </div>
-        <!-- 4th Related -->
-        <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-            <img src="assets/imgs/featured1.png" class="img-fluid mb-3">
-            <div class="star">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-            </div>
-            <h5 class="p-name">Road Bike</h5>
-            <h4 class="p-price">₱100.00</h4>
-            <button class="buy-btn">Buy Now</button>
-        </div>
-        </div>
-    </section>
 
+        <div class="row mx-auto container">
+
+        <?php if($row['product_category'] == 'Bike'){ ?>
+
+            <?php while($row = $bike->fetch_assoc()){ ?>
+
+                    <!-- 1st Related -->
+                    <div class="product text-center col-lg-3 col-md-4 col-sm-12">
+                        <img src="assets/imgs/<?php echo $row['product_image']; ?>" class="img-fluid mb-3">
+                        <div class="star">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h5 class="p-name"><?php echo $row['product_name']; ?></h5>
+                        <h4 class="p-price">₱<?php echo $row['product_price']; ?></h4>
+                        <button class="buy-btn" href="<?php echo "product_view.php?product_id=".$row['product_id']; ?>">Buy Now</button>
+                        
+                    </div>
+
+                <?php } ?>
+
+            <?php }else if($row['product_category'] == 'parts'){ ?>
+
+                <?php while($row = $parts->fetch_assoc()){ ?>
+                    <!-- 1st Related -->
+                    <div class="product text-center col-lg-3 col-md-4 col-sm-12">
+                        <img src="assets/imgs/<?php echo $row['product_image']; ?>" class="img-fluid mb-3">
+                        <div class="star">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h5 class="p-name"><?php echo $row['product_name']; ?></h5>
+                        <h4 class="p-price">₱<?php echo $row['product_price']; ?></h4>
+                        <button class="buy-btn" href="<?php echo "product_view.php?product_id=".$row['product_id']; ?>">Buy Now</button>
+                        
+                    </div>
+
+                <?php } ?>
+
+            <?php }else{ ?>
+
+                <?php while($row = $ebike->fetch_assoc()){ ?>
+                    <!-- 1st Related -->
+                    <div class="product text-center col-lg-3 col-md-4 col-sm-12">
+                        <img src="assets/imgs/<?php echo $row['product_image']; ?>" class="img-fluid mb-3">
+                        <div class="star">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h5 class="p-name"><?php echo $row['product_name']; ?></h5>
+                        <h4 class="p-price">₱<?php echo $row['product_price']; ?></h4>
+                        <button class="buy-btn" href="<?php echo "product_view.php?product_id=".$row['product_id']; ?>">Buy Now</button>
+                        
+                    </div>
+
+                <?php } ?>
+
+            <?php } ?>
+            
+        <?php } ?>
+
+        </div>
+
+    </section>
 <script>
 
     var mainImg = document.getElementById("mainImg");
