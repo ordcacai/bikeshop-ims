@@ -71,12 +71,21 @@ if(isset($_POST['change_password'])){
 //get orders
 if(isset($_SESSION['logged_in'])){
 
+    if($_SESSION['user_type']=='user'){
     $user_id = $_SESSION['user_id'];
     $stmt = $conn->prepare("SELECT * FROM orders WHERE user_id = ?");
     $stmt->bind_param('i', $user_id);
     $stmt->execute();
 
     $orders = $stmt->get_result(); //<- Array
+    }else{
+        unset($_SESSION['logged_in']);
+        unset($_SESSION['user_email']);
+        unset($_SESSION['user_name']);
+        unset($_SESSION['user_type']);
+        header('location: ../login.php');
+        exit;
+    }
 
 }
 
