@@ -77,7 +77,7 @@
         </ul>
       </li>
       <li>
-      <?php if(isset($_SESSION['admin_logged_in'])) { ?>
+      <?php if(isset($_SESSION['logged_in'])) { ?>
             <a href="logout.php?logout=1">
             <i class='bx bx-log-out' ></i>
             <span class="link_name">Log Out</span>
