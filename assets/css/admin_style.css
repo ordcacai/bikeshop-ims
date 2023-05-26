@@ -346,3 +346,24 @@ input::-webkit-inner-spin-button {
 .specification-box {
     margin-right: 40px;
 }
+
+/* Transfer Stocks */
+#addButton {
+  display: inline-block;
+  background-color: darkorange;
+  border: 2px solid #f9881c;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-right: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #000;
+  text-decoration: none;
+  text-align: center;
+  box-shadow: 2px 2px 2px #888888;
+}
+#addButton:hover {
+  background-color: #fca02f;
+  border-color: #fca02f;
+  color: #fff;
+}
