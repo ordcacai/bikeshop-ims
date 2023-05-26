@@ -90,7 +90,7 @@
                                 <a class="btn btn-outline-dark" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=UPLOAD"><i class="fas fa-upload"></i></a>
                                 <a class="btn btn-outline-primary" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=DOWNLOAD"><i class="fas fa-download"></i></a>
                                 <a class="btn btn-outline-success" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=EMAIL"><i class="fas fa-envelope"></i></a>
-                                <a class="btn btn-outline-danger" style="float:right" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=EMAIL"><i class="fas fa-trash"></i></a>
+                                <!-- <a class="btn btn-outline-danger" style="float:right" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=EMAIL"><i class="fas fa-trash"></i></a> -->
                             </td>
                         </tr>
                         <?php } ?>
