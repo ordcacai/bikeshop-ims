@@ -35,9 +35,9 @@ if(!isset($_SESSION['logged_in'])){
 
         // move_uploaded_file($payment_image,"../assets/imgs/".$payment_image_name);
     
-        $stmt = $conn->prepare("INSERT INTO orders (order_cost, order_status, user_name, user_id, user_phone, user_city, user_address, user_landmark, location_link, payment_method, shipping_method, order_date) VALUES (?,?,?,?,?,?,?,?,?,?,?,?); ");
+        $stmt = $conn->prepare("INSERT INTO orders (order_cost, order_status, user_name, user_email, user_id, user_phone, user_city, user_address, user_landmark, location_link, payment_method, shipping_method, order_date) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?); ");
     
-        $stmt->bind_param('issiisssssss', $order_cost, $order_status, $name, $user_id, $phone, $city, $address, $landmark, $location, $payment_method, $shipping_method, $order_date);
+        $stmt->bind_param('isssiisssssss', $order_cost, $order_status, $name, $email, $user_id, $phone, $city, $address, $landmark, $location, $payment_method, $shipping_method, $order_date);
     
         $stmt_status = $stmt->execute();
     
@@ -72,12 +72,21 @@ if(!isset($_SESSION['logged_in'])){
             $stmt1->execute();
     
         }
-    
-        //5. remove everything from cart
+        
         $_SESSION['order_id'] = $order_id;
+        //5. remove everything from cart
+        if(isset($_POST['place_order'])){
+
+            unset($_SESSION['cart']);
+            unset($_SESSION['order_id']);
+            unset($_SESSION['quantity']);
+            header('location: ../payment.php?id=payment');
+            exit;
+        }
+
         
         //6. inform user whether order is placed or not
-        header('location: ../payment.php?order_status=Order placed successfully');
+        // header('location: ../payment.php?');
         
     }
 

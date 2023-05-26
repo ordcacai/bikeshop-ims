@@ -6,135 +6,123 @@
         exit;
     }
 ?>
-<?php include('sidemenu.php'); ?>
 
 <?php
 
-if(isset($_GET['order_id'])){
-
-    $order_id = $_GET['order_id'];
-
-    $stmt = $conn->prepare("SELECT * FROM orders WHERE order_id = ?");
-    $stmt->bind_param("i", $order_id);
-    $stmt->execute();
-    $orders = $stmt->get_result();//array
-
-    $stmt1 = $conn->prepare("SELECT * FROM order_items WHERE order_id = ?");
-    $stmt1->bind_param("i", $order_id);
-    $stmt1->execute();
-    $order_items = $stmt1->get_result();//array
-
-}else if(isset($_POST['invoice_submit'])){
-
-    $order_id = $_POST['order_id'];
-    $shipping_fee = $_POST['shipping_fee'];
-    
-
-    $stmt = $conn->prepare("UPDATE orders SET shipping_fee=? WHERE order_id = ?");
-    $stmt->bind_param('si', $shipping_fee, $order_id);
-    $stmt->execute();
-    
-    if($stmt->execute()){
-
-    header('location: orders.php?invoice_created=Invoice has been created successfully!');
-
+    //1. determine page no.
+    if(isset($_GET['page_no']) && $_GET['page_no'] != ""){
+        //if user has already entered page then page number is the one that they selected
+        $page_no = $_GET['page_no'];
     }else{
-
-    header('location: orders.php?invoice_failed=Error occured, Please try again.');
-
+        //if user just entered the page then default page is 1
+        $page_no = 1;
     }
 
-}else{
-    header('location: view_order.php');
-}
+    //2. return number of products
+    $stmt1 = $conn->prepare("SELECT COUNT(*) As total_records FROM orders");
+    $stmt1->execute();
+    $stmt1->bind_result($total_records);
+    $stmt1->store_result();
+    $stmt1->fetch();
+
+    //3. products per page
+    $total_records_per_page = 5;
+    $offset = ($page_no-1) * $total_records_per_page;
+    $previous_page = $page_no - 1;
+    $next_page = $page_no + 1;
+    $adjacents = "2";
+    $total_no_of_pages = ceil($total_records/$total_records_per_page);
+
+    //4. get all products
+    $stmt2 = $conn->prepare("SELECT * FROM orders ORDER BY order_id DESC LIMIT $offset, $total_records_per_page");
+    $stmt2->execute();
+    $orders = $stmt2->get_result();//array
 
 ?>
+<?php
+
+
+
+?>
+<?php include('sidemenu.php'); ?>
 
 <div class="main-content">
-<a href="view_order.php" class="return"><i class="fas fa-chevron-circle-left"></i></a>
-    <div class="container p-5" style="border: solid 1px black;">
-        <h2 class="form-weight-bold mb-5">Invoice</h2>
-        <form method='POST' action='invoice.php'>
-        <div class='row'>
-                <div class='col-md-12'>
-                    <h5 class='text-success mb-4'>Product Details</h5>
-                    <table class='table table-bordered table-striped table-hover'>
+    <div class="container-fluid">
+            <h1 class="my-4">Invoice</h1>
+        
+                <?php if(isset($_GET['invoice_created'])){ ?>
+                    <p class="text-center" style="color: green;"><?php echo $_GET['invoice_created']; ?></p>   
+                <?php }?>
+
+                <?php if(isset($_GET['invoice_failed'])){ ?>
+                    <p class="text-center" style="color: red;"><?php echo $_GET['invoice_failed']; ?></p>   
+                <?php }?>
+
+                <?php if(isset($_GET['invoice_uploaded'])){ ?>
+                    <p class="text-center" style="color: green;"><?php echo $_GET['invoice_uploaded']; ?></p>   
+                <?php }?>
+
+                <?php if(isset($_GET['invoice_sent'])){ ?>
+                    <p class="text-center" style="color: green;"><?php echo $_GET['invoice_sent']; ?></p>   
+                <?php }?>
+            
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover table-sm text-center">
                     <thead>
                         <tr>
-                        <th>Product Name</th>
-                        <th>Price</th>
-                        <th>Color</th>
-                        <th>Qty</th>
-                        <th>Total</th>
+                            <th scope="col">Order ID</th>
+                            <th scope="col">Customer Name</th>
+                            <th scope="col">Order Date</th>
+                            <th scope="col">Order Status</th>
+                            <th scope="col">Manage Invoice</th>
                         </tr>
                     </thead>
-                    <?php while($row = $order_items->fetch_assoc()){ ?>
-                    <tbody id='product_tbody'>
-                        <tr>
-                        <td><?php echo $row['product_name']; ?></td>
-                        <td><?php echo $row['product_price']; ?></td>
-                        <td><?php echo $row['product_color']; ?></td>
-                        <td><?php echo $row['product_quantity']; ?></td>
-                        <td><?php echo $row['product_price']; ?></td>
-                        </tr>
-                    </tbody>
-                    <?php } ?>
-                    <?php while($row = $orders->fetch_assoc()){ ?>
-                    <tfoot>
-                        <tr>
-                        <td colspan='4' class='text-right text-success' style="text-align: end;">Sub Total:</td>
-                        <td class="text-danger"><?php echo $row['order_cost']; ?></td>
-                        </tr>
-                    </tfoot>
-                    </table>
-                    <p class='text-right' style="text-align: end;">Shipping Fee: <input type='number' name='shipping_fee' id='shipping_fee' class='p-1' required></p>
-                    
-                </div>
-                </div>
-                <div class='row'>
-                <div class='col-md-4 mt-3'>
-                    <h5 class='text-success mt-3'>Invoice Details</h5>
+                    <tbody>
 
-                    <input type="hidden" value="<?php echo $row['order_id']; ?>" name="order_id">
-                    <div class='form-group my-3'>
-                    <label>Order No.</label>
-                    <p style="font-size: 15px;"><?php echo $row['order_id'] ?>
-                    </div>
-                    <div class='form-group my-3'>
-                    <label>Order Date</label>
-                    <p style="font-size: 15px;"><?php echo $row['order_date'] ?>
-                    </div>
+                    <?php while($row = $orders->fetch_assoc()) { ?>
+                        <tr>
+                            <td><a href="<?php echo "create_invoice.php?order_id=".$row['order_id']; ?>"><?php echo $row['order_id']; ?></a></td>
+                            <td><?php echo $row['user_name']; ?></td>
+                            <td><?php echo $row['order_date']; ?></td>
+                            <td><?php echo $row['order_status']; ?></td>
+                            <td>
+                                <a class="btn btn-outline-info" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=VIEW"><i class="fas fa-eye"></i></a>
+                                <a class="btn btn-outline-dark" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=UPLOAD"><i class="fas fa-upload"></i></a>
+                                <a class="btn btn-outline-primary" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=DOWNLOAD"><i class="fas fa-download"></i></a>
+                                <a class="btn btn-outline-success" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=EMAIL"><i class="fas fa-envelope"></i></a>
+                                <!-- <a class="btn btn-outline-danger" style="float:right" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=EMAIL"><i class="fas fa-trash"></i></a> -->
+                            </td>
+                        </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+                    <nav aria-label="Page navigation example" class="text-center">
+                    <ul class="pagination mt-5 justify-content-center">
+                        <li class="page-item">
+                            <a class="page-link <?= ($page_no <= 1) ? 'disabled' : ''; ?> " <?= ($page_no > 1) ? 'href=?page_no=' .$previous_page : ''; ?>>Previous</a>
+                        </li>
+
+
+                        <li class="page-item"><a href="?page_no=1" class="page-link">1</a></li>
+                        <li class="page-item"><a href="?page_no=2" class="page-link">2</a></li>
+
+                            <?php if($page_no >= 3) { ?>
+                                <li class="page-item"><a href="#" class="page-link">...</a></li>
+                                <li class="page-item"><a href="?page_no=<?= $page_no; ?>" class="page-link"><?= $page_no; ?></a></li>
+                            <?php } ?>
+
+                        <li class="page-item">
+                            <a class="page-link <?= ($page_no >= $total_no_of_pages) ? 'disabled' : ''; ?> " <?= ($page_no < $total_no_of_pages) ? 'href=?page_no=' .$next_page : ''; ?>>Next</a>
+                        </li>
+
+                    </ul>
+                </nav>
+
+                <div class="p-10">
+                    <strong>Page <?= $page_no; ?> of <?= $total_no_of_pages ?></strong>
                 </div>
-                <div class='col-md-8 mt-3'>
-                    <h5 class='text-success mt-3'>Customer Details</h5>
-                    <div class='form-group my-3'>
-                    <label>Customer Name</label>
-                    <p style="font-size: 15px;"><?php echo $row['user_name'] ?></p>
-                    </div>
-                    <div class='form-group my-3'>
-                    <label>Contact No.</label>
-                    <p style="font-size: 15px;"><?php echo "+63".$row['user_phone'] ?></p>
-                    </div>
-                    <div class='form-group my-3'>
-                    <label>Address</label>
-                    <p style="font-size: 15px;"><?php echo $row['user_address'] ?></p>
-                    </div>
-                    <div class='form-group my-3'>
-                    <label>Landmark</label>
-                    <p style="font-size: 15px;"><?php echo $row['user_landmark'] ?></p>
-                    </div>
-                    <div class='form-group my-3'>
-                    <label>Payment Method</label>
-                    <p style="font-size: 15px;"><?php echo $row['payment_method'] ?></p>
-                    </div>
-                    <div class='form-group my-3 mb-5'>
-                    <label>Shipping Method</label>
-                    <p style="font-size: 15px;"><?php echo $row['shipping_method'] ?></p>
-                    </div>
-                </div>
-                <?php } ?>
-                </div>
-                <input type='submit' name='invoice_submit' value='Create Invoice' class='btn btn-success' style=" float: right;">
-            </form>
-        </div>
+
+            </div>
     </div>
+</div> 
+
