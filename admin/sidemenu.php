@@ -31,7 +31,7 @@
       <li>
         <div class="iocn-link">
           <a href="inventory.php">
-            <i class='bx bx-book-alt' ></i>
+            <i class='bx bx-package' ></i>
             <span class="link_name">Inventory</span>
           </a>
           <i class='bx bxs-chevron-down arrow' ></i>
@@ -45,7 +45,7 @@
       </li>
       <li>
         <a href="sales.php">
-          <i class='bx bx-pie-chart-alt-2' ></i>
+          <i class='bx bx-money' ></i>
           <span class="link_name">Sales</span>
         </a>
         <ul class="sub-menu blank">
@@ -54,7 +54,7 @@
       </li>
       <li>
         <a href="account.php">
-          <i class='bx bx-line-chart' ></i>
+          <i class='bx bxs-user-account' ></i>
           <span class="link_name">Account</span>
         </a>
         <ul class="sub-menu blank">
@@ -64,7 +64,7 @@
       <li>
         <div class="iocn-link">
           <a href="#">
-            <i class='bx bx-plug' ></i>
+            <i class='bx bxs-report' ></i>
             <span class="link_name">Reports</span>
           </a>
           <i class='bx bxs-chevron-down arrow' ></i>
@@ -78,7 +78,7 @@
       <li>
       <?php if(isset($_SESSION['admin_logged_in'])) { ?>
             <a href="logout.php?logout=1">
-            <i class='bx bx-cog' ></i>
+            <i class='bx bx-log-out' ></i>
             <span class="link_name">Log Out</span>
               </a>
               <ul class="sub-menu blank">
