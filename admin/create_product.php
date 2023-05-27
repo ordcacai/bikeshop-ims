@@ -1,7 +1,6 @@
 <?php
 
-include('header.php');
-include('security.php');
+include('../server/connection.php');
 
 if(isset($_POST['add_product'])){
 

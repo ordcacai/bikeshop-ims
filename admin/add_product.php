@@ -4,7 +4,7 @@ include('sidemenu.php'); ?>
 
 <div class="main-content">
     <div class="container-fluid">
-            <h1 class="my-4">Add New Products</h1>
+            <h1 class="my-4">Add New Product</h1>
             <div class="table-responsive">
 
                 <div class="mx-auto container">
@@ -34,7 +34,7 @@ include('sidemenu.php'); ?>
 
                         <div class="form-group mt-2">
                             <label><strong>Description</strong></label>
-                            <textarea class="form-control" id="product-desc" name="description" rows="5"  placeholder="Description" required></textarea>
+                            <textarea class="form-control" id="product-desc" name="description" rows="7" placeholder="Description" required></textarea>
                         </div>
 
                         <div class="form-group mt-2">
