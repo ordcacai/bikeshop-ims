@@ -95,6 +95,8 @@ $conn->close();
                             <input type="date" class="form-control" id="selectedDate" name="transfer-date" required>
                         </div><br>
 
+                        <button type="button" class="btn btn-primary" onclick="addRow()">Add</button>
+
                         <div class="container">
                             <div id="dynamicForm">
                                 <div class="row">
@@ -119,15 +121,12 @@ $conn->close();
                                     <div class="col">
                                         <label><strong>Quantity</strong></label>
                                         <input type="text" class="form-control" placeholder="Quantity" name="quantity[]">
-                                    </div>
 
-                                    <div class="col">
-                                        <button type="button" class="btn btn-primary" onclick="addRow()">Add</button>
-                                    </div>
+                                     </div>
                                 </div>
                             </div>
-                        </div><br>
-
+                        </div>
+                
                         <div class="form-group my-3">
                             <input type="submit" class="btn btn-primary me-5" name="record-transfer" value="Record Transfer">
                             <a class="btn btn-danger" href="inventory.php">Cancel</a>
@@ -145,11 +144,14 @@ $conn->close();
 
 <!-- Script to add new row -->
 <script>
-        document.getElementById("addButton").addEventListener("click", addRow);
+    function addRow() {
+        var form = document.getElementById("dynamicForm");
+        var row = form.firstElementChild.cloneNode(true);
+        form.appendChild(row);
+    }
+</script>
 
-        function addRow() {
-            var form = document.getElementById("dynamicForm");
-            var row = form.firstElementChild.cloneNode(true);
-            form.appendChild(row);
-        }
-    </script>
+
+
+
+
