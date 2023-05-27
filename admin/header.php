@@ -1,5 +1,5 @@
-<?php session_start(); ?>
-<?php include('../server/connection.php'); ?>
+<?php session_start();
+        include('../server/connection.php'); ?>
 
 <!DOCTYPE html>
 <html lang="en">

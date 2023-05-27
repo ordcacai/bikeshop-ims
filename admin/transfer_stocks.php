@@ -1,10 +1,9 @@
 <?php 
-include('../server/connection.php');
 include('header.php');
-include('sidemenu.php')
 ?>
 
-
+<?php include('security.php');
+include('sidemenu.php'); ?>
 <div class="main-content">
         <div class="container-fluid">
             <h1 class="my-4">Transfer Stocks</h1>

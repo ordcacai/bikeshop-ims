@@ -2,7 +2,7 @@
 
 session_start(); 
 include('../server/connection.php');
-
+include('security.php');
 ?>
 <?php
 

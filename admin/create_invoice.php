@@ -6,7 +6,8 @@
         exit;
     }
 ?>
-<?php include('sidemenu.php'); ?>
+<?php include('security.php');
+include('sidemenu.php'); ?>
 
 <?php
 

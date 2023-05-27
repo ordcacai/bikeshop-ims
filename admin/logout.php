@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+include('security.php');
 
 if(isset($_GET['logout']) && $_GET['logout'] == 1){
 

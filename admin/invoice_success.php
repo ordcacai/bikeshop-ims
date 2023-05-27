@@ -4,6 +4,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 include('header.php');
+include('security.php');
 require('../fpdf/fpdf.php');
 
 if(!isset($_SESSION['logged_in'])){
