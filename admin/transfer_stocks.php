@@ -103,7 +103,7 @@ $conn->close();
                                 <div class="row">
                                     <div class="col">
                                         <label for="selectedOption"><strong>Product Name</strong></label>
-                                        <select class="form-select" name="product-name[]" required>
+                                        <select class="form-select" name="product-name" required>
                                             <option value="">Select an option</option>
                                             <?php
                                             // Output the options as dropdown options
@@ -116,12 +116,12 @@ $conn->close();
 
                                     <div class="col">
                                         <label><strong>Color & Size</strong></label>
-                                        <input type="text" class="form-control" placeholder="Color & Size" name="color-size[]">
+                                        <input type="text" class="form-control" placeholder="Color & Size" name="color-size">
                                     </div>
 
                                     <div class="col">
                                         <label><strong>Quantity</strong></label>
-                                        <input type="text" class="form-control" placeholder="Quantity" name="quantity[]">
+                                        <input type="text" class="form-control" placeholder="Quantity" name="quantity">
 
                                      </div>
                                 </div>
