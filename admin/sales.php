@@ -1,3 +1,4 @@
 <?php include('header.php'); ?>
 
-<?php include('sidemenu.php'); ?>
+<?php include('security.php');
+include('sidemenu.php'); ?>

@@ -60,7 +60,8 @@ $stmt2->execute();
 $products = $stmt2->get_result();
 
 ?>
-<?php include('sidemenu.php'); ?>
+<?php include('security.php');
+include('sidemenu.php'); ?>
 
 <div class="main-content">
         <div class="container-fluid">

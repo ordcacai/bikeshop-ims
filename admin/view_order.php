@@ -29,7 +29,8 @@ if(isset($_GET['order_id'])){
    
 
 ?>
-<?php include('sidemenu.php'); ?>
+<?php include('security.php');
+include('sidemenu.php'); ?>
 
 <div class="main-content">
 <a href="orders.php" class="return"><i class="fas fa-chevron-circle-left"></i></a>

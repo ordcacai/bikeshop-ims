@@ -1,8 +1,8 @@
 <?php 
-include('../server/connection.php');
 include('header.php');
-include('sidemenu.php')
 ?>
+<?php include('security.php');
+include('sidemenu.php'); ?>
 
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -55,6 +55,7 @@ if ($result->num_rows > 0) {
 $conn->close();
                           
 ?>
+
 
 
 <div class="main-content">
