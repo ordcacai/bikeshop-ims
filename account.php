@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 <?php
 
     include('layouts/header.php');
@@ -189,7 +188,6 @@ if(isset($_SESSION['logged_in'])){
         </table>
     </section>
 
-=======
 <?php
 
     include('layouts/header.php');
@@ -371,5 +369,4 @@ if(isset($_SESSION['logged_in'])){
         </table>
     </section>
 
->>>>>>> Stashed changes
     <?php include('layouts/footer.php'); ?>
