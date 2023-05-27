@@ -70,7 +70,7 @@ include('sidemenu.php'); ?>
                         
                         <div class="form-group my-5">
                             <input type="submit" class="btn btn-primary me-5" name="add_product" value="Add Product">
-                            <input type="submit" class="btn btn-danger" name="cancel_btn" value="Cancel">
+                            <a class="btn btn-danger" href="inventory.php">Cancel</a>
                         </div>
 
                     </form>
