@@ -34,7 +34,7 @@
 
                         <div class="form-group mt-2">
                             <label><strong>Description</strong></label>
-                            <input type="text" class="form-control" id="product-desc" name="description" placeholder="Description" required>
+                            <textarea class="form-control" id="product-desc" name="description" rows="5"  placeholder="Description" required></textarea>
                         </div>
 
                         <div class="form-group mt-2">
