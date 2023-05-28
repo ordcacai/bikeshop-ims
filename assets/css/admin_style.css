@@ -21,11 +21,11 @@ body {
     background: darkorange;
     z-index: 100;
     transition: all 0.5s ease;
-  }
+}
   .sidebar.close{
     width: 78px;
   }
-  
+
   .sidebar #btn {
       position: absolute;
       color: #fff;
@@ -36,27 +36,31 @@ body {
       transform: translateX(-50%);
       cursor: pointer;
   }
-  
+
   .sidebar.active #btn {
       left: 90%;
   }
-  
+
   .sidebar .nav-links{
     height: 100%;
     padding: 30px 0 150px 0;
     overflow: auto;
   }
+
   .sidebar.close .nav-links{
     overflow: visible;
   }
+
   .sidebar .nav-links::-webkit-scrollbar{
     display: none;
   }
+
   .sidebar .nav-links li{
     position: relative;
     list-style: none;
     transition: all 0.4s ease;
   }
+  
   .sidebar .nav-links li:hover{
     background: orange;
   }
@@ -345,4 +349,46 @@ input::-webkit-inner-spin-button {
 
 .specification-box {
     margin-right: 40px;
+}
+
+/* Transfer Stocks */
+#addButton {
+  display: inline-block;
+  background-color: darkorange;
+  border: 2px solid #f9881c;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-right: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #000;
+  text-decoration: none;
+  text-align: center;
+  box-shadow: 2px 2px 2px #888888;
+}
+#addButton:hover {
+  background-color: #fca02f;
+  border-color: #fca02f;
+  color: #fff;
+}
+
+/* Transfer Stocks */
+#addButton {
+  display: inline-block;
+  background-color: darkorange;
+  border: 2px solid #f9881c;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-right: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #000;
+  text-decoration: none;
+  text-align: center;
+  box-shadow: 2px 2px 2px #888888;
+}
+#addButton:hover {
+  background-color: #fca02f;
+  border-color: #fca02f;
+  color: #fff;
 }

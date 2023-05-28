@@ -1,16 +1,18 @@
 <?php
 
 session_start();
+include('security.php');
 
 if(isset($_GET['logout']) && $_GET['logout'] == 1){
 
-    if(isset($_SESSION['admin_logged_in'])){
+    if(isset($_SESSION['logged_in'])){
 
-        unset($_SESSION['admin_logged_in']);
-        unset($_SESSION['admin_email']);
-        unset($_SESSION['admin_name']);
+        unset($_SESSION['logged_in']);
+        unset($_SESSION['user_email']);
+        unset($_SESSION['user_name']);
+        unset($_SESSION['user_type']);
 
-        header('location: login.php');
+        header('location: ../login.php');
         exit;
 
     }

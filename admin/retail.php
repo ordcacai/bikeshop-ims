@@ -1,6 +1,95 @@
 <?php include('header.php'); ?>
+<style>
+		textarea {
+			margin-left: 50px;
+            height: 5em;
+		}
+        .button {
+            display: inline-block;
+            background-color: #f9881c;
+            border: 2px solid #f9881c;
+            border-radius: 12px;
+            padding: 10px 20px;
+            margin-right: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #000;
+            text-decoration: none;
+            text-align: center;
+            box-shadow: 2px 2px 2px #888888;
+        }
+        .button:hover {
+            background-color: #fca02f;
+            border-color: #fca02f;
+            color: #fff;
+        }
+        .addButton {
+            display: inline-block;
+            background-color: #f9881c;
+            border: 2px solid #f9881c;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin-right: 10px;
+            font-size: 15px;
+            font-weight: bold;
+            color: #000;
+            text-decoration: none;
+            text-align: center;
+            box-shadow: 2px 2px 2px #888888;
+        }
+        .addButton:hover {
+            background-color: #fca02f;
+            border-color: #fca02f;
+            color: #fff;
+        }
+        .outermode {
+            width: 1000px;
+        }
 
-<?php include('sidemenu.php'); ?>
+        .innermode {
+            margin-left: 50px;
+        }
+        select {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 8px 12px;
+            font-size: 16px;
+            color: #555;
+            background-color: #fff;
+            width: 200px;
+        }
+
+        select:hover {
+            background-color: #f2f2f2;
+        }
+        input[type=text], input[type=tel], input[type=url], textarea {
+			padding: 12px 20px;
+			margin: 8px 0;
+			box-sizing: border-box;
+			border: none;
+			border-bottom: 2px solid grey;
+			border-radius: 4px;
+			transition: border-color 0.3s ease-in-out;
+			width: 30%; /* set width to 50% for all input fields */
+		}
+
+		input[type=text]:hover, input[type=tel]:hover, input[type=url]:hover, textarea:hover {
+			border-color: blue;
+		}
+		/* set width to 50% for the textarea field */
+		textarea {
+			width: 30%;
+		}
+</style>
+<?php
+    if(!isset($_SESSION['admin_logged_in'])){
+        header('location: login.php');
+        exit;
+    }
+?>
+
+<?php include('security.php');
+include('sidemenu.php'); ?>
 
 <div class="main-content">
     <div class="container-fluid">

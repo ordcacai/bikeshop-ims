@@ -1,8 +1,8 @@
 <?php include('header.php'); ?>
 
 <?php
-    if(!isset($_SESSION['admin_logged_in'])){
-        header('location: login.php');
+    if(!isset($_SESSION['logged_in'])){
+        header('location: ../login.php');
         exit;
     }
 ?>
@@ -60,7 +60,8 @@ $stmt2->execute();
 $products = $stmt2->get_result();
 
 ?>
-<?php include('sidemenu.php'); ?>
+<?php include('security.php');
+include('sidemenu.php'); ?>
 
 <div class="main-content">
         <div class="container-fluid">

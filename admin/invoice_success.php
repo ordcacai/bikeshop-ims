@@ -4,11 +4,12 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 include('header.php');
+include('security.php');
 require('../fpdf/fpdf.php');
 
-if(!isset($_SESSION['admin_logged_in'])){
+if(!isset($_SESSION['logged_in'])){
 
-    header('location: login.php');
+    header('location: ../login.php');
     exit;
 
 }else if(isset($_GET['order_id'])){

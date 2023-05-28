@@ -1,12 +1,13 @@
 <?php include('header.php'); ?>
 
 <?php
-    if(!isset($_SESSION['admin_logged_in'])){
-        header('location: login.php');
+    if(!isset($_SESSION['logged_in'])){
+        header('location: ../login.php');
         exit;
     }
 ?>
-<?php include('sidemenu.php'); ?>
+<?php include('security.php');
+include('sidemenu.php'); ?>
 
 <?php
 
