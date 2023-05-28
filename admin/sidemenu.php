@@ -84,7 +84,7 @@ if(!isset($_SESSION['logged_in'])){
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Reports</a></li>
           <li><a href="report_stocks.php">Stock Report</a></li>
-          <li><a href="#">Sales Report</a></li>
+          <li><a href="report_sales.php">Sales Report</a></li>
         </ul>
       </li>
       <li>
