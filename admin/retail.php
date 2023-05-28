@@ -103,20 +103,24 @@
 
                         <div class="col">
                         <label for="price">Price:</label>
-                        <input type="text" name="Price[]" class="form-control" maxlength="10" placeholder="Price">
+                        <input type="text" name="Price[]" class="form-control" maxlength="10" placeholder="Price"><br>
                         </div>
                         
                         <div class="col">
                         <label for="colorSize">Color and Size:</label>
-                        <input type="text" name="Color[]" class="form-control" maxlength="50" placeholder="Color and Size">
+                        <input type="text" name="Color[]" class="form-control" maxlength="50" placeholder="Color and Size"><br>
                         </div>
                         
                         <div class="col">
                         <label for="quantity">Quantity:</label>
-                        <input type="number" name="Quantity[]" class="form-control" maxlength="3" placeholder="Quantity">
+                        <input type="number" name="Quantity[]" class="form-control" maxlength="3" placeholder="Quantity"><br>
                         </div>
                         
-                        <div class="col"></div> <!-- Empty column for spacing -->
+                        <div class="col">
+                        <div class="input-group">
+                            <button type="button" class="btn btn-danger" onclick="deleteRow(this)">Delete</button><br>
+                        </div>
+                        </div>
                     </div>
 
                     <div class="row">
@@ -133,6 +137,10 @@
                         <label for="quantity">Quantity:</label>
                         </div>
                         <div class="col"></div> <!-- Empty column for spacing -->
+                    </div>
+
+                    <div class="row">
+                        <div class="col">&nbsp;</div> <!-- Label with white space -->
                     </div>
                     </div>
 
@@ -162,8 +170,6 @@
                         row.parentNode.removeChild(row);
                     }
                     </script>
-
-
 
 
                         
@@ -209,12 +215,25 @@
         toggleForm();
     };
 
-    document.getElementById('clearButton').addEventListener('click', function() {
-        document.getElementById('wsname').value = '';
-        document.getElementById('wsphone').value = '';
-        document.getElementById('wsaddress').value = '';
-        document.getElementById('wscourier').value = '';
-    })
+    
 //Script to add row
 
+</script>
+
+<script>
+    // Get references to the input fields and the clear button
+    var nameInput = document.getElementById('wsname');
+    var phoneInput = document.getElementById('wsphone');
+    var addressInput = document.getElementById('wsaddress');
+    var courierInput = document.getElementById('wscourier');
+    var clearButton = document.getElementById('clearButton');
+
+    // Add a click event listener to the clear button
+    clearButton.addEventListener('click', function() {
+        // Clear the input field values
+        nameInput.value = '';
+        phoneInput.value = '';
+        addressInput.value = '';
+        courierInput.value = '';
+    });
 </script>
