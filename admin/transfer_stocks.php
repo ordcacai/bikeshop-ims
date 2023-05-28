@@ -7,19 +7,70 @@ include('sidemenu.php'); ?>
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve form data
+    
     $product_name = $_POST["name"];
     $location_from = $_POST["location_from"];
     $location_to = $_POST["location_to"];
     $quantity = $_POST["quantity"];
     $color_size = $_POST["color_size"];
     $transfer_date = $_POST["transfer_date"];
+
+    // Perform validation
+$errors = array();
+
+// Check if quantity is a positive integer
+if (!ctype_digit($quantity) || $quantity <= 0) {
+    $errors[] = "Quantity must be a positive integer.";
+}
+
+// Check if color-size is not empty
+if (empty($color_size)) {
+    $errors[] = "Color & Size cannot be empty.";
+}
+
+// Check if the product name corresponds to the correct product ID
+$sql = "SELECT product_id FROM products WHERE product_name = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $product_name);
+$stmt->execute();
+$stmt->bind_result($product_id);
+$stmt->fetch();
+$stmt->close();
+
+if (!$product_id) {
+    $errors[] = "Invalid product name.";
+}
+
+// Check if there are any errors
+if (!empty($errors)) {
+    // Display error messages
+    foreach ($errors as $error) {
+        echo $error . "<br>";
+    }
+    // Terminate the script or redirect back to the form page
+    exit();
+}
+
+// Update the quantity in location_to
+$sql_update_to = "UPDATE inventory SET quantity = quantity + ? WHERE location = ? AND product_id = ?";
+$stmt_update_to = $conn->prepare($sql_update_to);
+$stmt_update_to->bind_param("isi", $quantity, $location_to, $product_id);
+$stmt_update_to->execute();
+$stmt_update_to->close();
+
+// Subtract the quantity from location_from
+$sql_update_from = "UPDATE inventory SET quantity = quantity - ? WHERE location = ? AND product_id = ?";
+$stmt_update_from = $conn->prepare($sql_update_from);
+$stmt_update_from->bind_param("isi", $quantity, $location_from, $product_id);
+$stmt_update_from->execute();
+$stmt_update_from->close();
     
 
     // Prepare and execute the SQL statement
     $sql = "INSERT INTO stock_transfer (product_name, location_from, location_to, 
         quantity, color_size, transfer_date) VALUES (?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssiss", $product_name, $location_from, $location_to, $quantity,
+    $stmt->bind_param("sssiss", $product_id, $location_from, $location_to, $quantity,
         $color_size, $transfer_date);
     
     if ($stmt->execute()) {
@@ -64,15 +115,15 @@ $conn->close();
             <div class="table-responsive">
 
                 <div class="mx-auto container">
-                    <form method="post" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
+                    <form method="post" action="<?php echo $_SERVER["REQUES_METHOD"]; ?>">
 
                         <div class="form-group mt-2">
                             <label><strong>From</strong></label>
                             <select class="form-select" required name="from">
 
-                                <option value="supplier">Supplier</option>
                                 <option value="vmtc">VM Trece</option>
                                 <option value="vmsr">VM Sta Rosa</option>
+                                <option value="vmmain">VM Main</option>
                                 <option value="shopee">Shopee Stocks</option>
 
                             </select>
@@ -82,7 +133,6 @@ $conn->close();
                             <label><strong>To</strong></label>
                             <select class="form-select" required name="to">
 
-                                <option value="supplier">Supplier</option>
                                 <option value="vmtc">VM Trece</option>
                                 <option value="vmsr">VM Sta Rosa</option>
                                 <option value="vmmain">VM Main</option>
