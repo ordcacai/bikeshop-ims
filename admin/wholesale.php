@@ -74,7 +74,7 @@
 		}
 
 		input[type=text]:hover, input[type=tel]:hover, input[type=url]:hover, textarea:hover {
-			border-color: blue;
+			border-color: #f9881c;
 		}
 		/* set width to 50% for the textarea field */
 		textarea {
@@ -127,7 +127,7 @@ include('sidemenu.php'); ?>
                 <input type="text" id="landmark" name="landmark" placeholder="Ex: Manila Post Office"><br>
 
                 <label for="location">Location Link:</label><br>
-                <input type="url" id="location" name="location" placeholder="Ex: https://ul.waze.com/ul?ll=69"><br>
+                <input type="url" id="location" name="location" placeholder="Ex: https://ul.waze.com/ul?ll=69....."><br>
             </form>
             <hr style="height: 3px; border: none; color: #000; background-color: #000; width: 60%;">
             <br><h3 class="tertiary">Add Products</h3>
