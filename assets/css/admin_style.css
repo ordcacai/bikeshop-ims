@@ -272,9 +272,9 @@ body {
 }
 
 .card-header button:hover {
-    background-color: orange;
+    background-color: #c04d00;
     color: white;
-    border: 1px solid orange;
+    border: 1px solid #c04d00;
 }
 
 .product {
@@ -407,8 +407,8 @@ input::-webkit-inner-spin-button {
     }
 
     .product-image {
-        width: 27%; /* Adjust the width as desired */
-      }
+        width: 27%; /* Adjust the width as desired
+      } */
 
 
       .product-table {
@@ -468,12 +468,8 @@ input::-webkit-inner-spin-button {
           background-color: darkorange;
           color: #fff;
           border: none;
-          padding: 8px 16px;
-          border-radius: 4px;
           text-decoration: none;
-          font-weight: bold;
           transition: background-color 0.3s ease;
-          font-size: 18px;
       }
   
       .btn-primary:hover {

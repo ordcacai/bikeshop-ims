@@ -10,6 +10,12 @@
         if(isset($_POST['add_order'])){
 
         //1. get user info and store in database
+        //$order_type = $_POST['order_type'];
+        $wsname = $_POST['wsname'];
+        $wsphone = $_POST['wsphone'];
+        $wsaddress = $_POST['wsaddress'];
+        $wscourier = $_POST['wscourier'];
+        $order_status = ['order_status'];
         $user_name = $_POST['name'];
         $user_phone = $_POST['phone'];
         $user_address = $_POST['address'];
@@ -17,8 +23,7 @@
         $location_link = $_POST['location'];
         $payment_method = $_POST['payment_method'];
         $shipping_method = $_POST['shipping_method'];
-        $order_cost = $_SESSION['total'];
-        $order_status = ['order_status'];
+        //$order_cost = $_SESSION['total'];
         $user_id = $_SESSION['user_id'];
         $order_date = date('Y-m-d H:i:s');
 
@@ -28,9 +33,9 @@
 
         // move_uploaded_file($payment_image,"../assets/imgs/".$payment_image_name);
     
-        $stmt = $conn->prepare("INSERT INTO orders (order_status, user_name, user_id, user_phone, user_address, user_landmark, location_link, payment_method, shipping_method, order_date) VALUES (?,?,?,?,?,?,?,?,?,?); ");
+        $stmt = $conn->prepare("INSERT INTO orders (wsname,wsphone,wsaddress,wscourier, order_status, user_name, user_id, user_phone, user_address, user_landmark, location_link, shipping_method, payment_method, order_date) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?); ");
     
-        $stmt->bind_param('ssiissssss', $order_status, $user_name, $user_id, $user_phone, $user_address, $user_landmark, $location_link, $payment_method, $shipping_method, $order_date);
+        $stmt->bind_param('sissssiissssss',$wsname, $wsphone, $wsaddress, $wscourier, $order_status, $user_name, $user_id, $user_phone, $user_address, $user_landmark, $location_link,  $shipping_method, $payment_method, $order_date);
     
         $stmt_status = $stmt->execute();
     
