@@ -10,16 +10,27 @@
                 <h2 class="my-4">Order Information</h2>
                 
                 <hr style="height: 3px; border: none; color: #000; background-color: #000; width: 100%;">
-                    <form id="create-form" enctype="multipart/form-data" method="POST" action="create_order.php">
+                    <form id="create-form" enctype="multipart/form-data" method="POST" action="create_order_wholesale.php">
                         <p style="color: red;"><?php if(isset($_GET['error'])){ echo $_GET['error']; } ?></p>
 
                         <h4 class="my-4">Order Type</h4>
 
-                            <input type="radio" class="btn-check" name="order_type" id="info-outlined" autocomplete="off" checked>
-                            <label class="btn btn-outline-info" for="info-outlined">Retail</label>    
+                        <input type="radio" class="btn-check" name="order_type" id="info-outlined" autocomplete="off">
+                        <label class="btn btn-outline-info" for="info-outlined">Retail</label>
 
-                            <input type="radio" class="btn-check" name="order_type" id="success-outlined" autocomplete="off">
-                            <label class="btn btn-outline-success" for="success-outlined">Wholesale</label>
+                        <input type="radio" class="btn-check" name="order_type" id="success-outlined" autocomplete="off" checked>
+                        <label class="btn btn-outline-success" for="success-outlined">Wholesale</label>
+
+                        <script>
+                        // Get the wholesale radio button element
+                        const retailRadioButton = document.getElementById("info-outlined");
+
+                        // Add a click event listener to the wholesale radio button
+                        retailRadioButton.addEventListener("click", function() {
+                            // Redirect to the wholesale.php page
+                            window.location.href = "retail.php";
+                        });
+                        </script>
 
                             <h4 class="my-4">Package Label Information <span class="badge rounded-pill bg-success">FOR WHOLESALE ONLY</span></h4>
 
@@ -170,7 +181,7 @@
                     <br>
                     <div id="sub-options-container" style="display:none;">
                         <label for="sub-options"><strong>Courier:</strong></label>
-                        <select class="form-control" id="sub-options" name="shipping_method" style="width: 500px">
+                        <select class="form-control" id="sub-options" name="shipping_method" style="width: 500px" >
                             <option value="">-- Select Courier --</option>
                             <option value="Capex">Capex</option>
                             <option value="AP Cargo">AP Cargo</option>
@@ -194,7 +205,7 @@
                     <br><br>
                     <div id="cashPayments">
                     <label for="payment_type"><strong>Cash payments</strong></label>
-                    <select class="form-control cash-payment" id="payment_type" name="payment_method" style="width: 500px">
+                    <select class="form-control cash-payment" id="payment_type" name="payment_method" style="width: 500px" >
                         <option value="">-- Select Cash Method --</option>
                         <option value="BPI (Bank Transfer)">BPI (Bank Transfer)</option>
                         <option value="BDO (Bank Transfer)">BDO (Bank Transfer)</option>
@@ -204,7 +215,7 @@
                     </div>
                     <div id="installmentOptions">
                     <label for="payment_type"><strong>Installment Options</strong></label>
-                    <select class="form-control installment-options" id="installment_type" name="payment_method" style="width: 500px">
+                    <select class="form-control installment-options" id="installment_type" name="payment_method" style="width: 500px" >
                         <option value="">-- Select Installment Type --</option>
                         <option value="homecredit">Home Credit</option>
                         <option value="billease">BillEase</option>
@@ -260,11 +271,6 @@
                     </script>
 
 <script>
-                            // Disable the form initially
-                            document.getElementById("wsname").disabled = true;
-                            document.getElementById("wsphone").disabled = true;
-                            document.getElementById("wsaddress").disabled = true;
-                            document.getElementById("wscourier").disabled = true;
 
                             // Add event listener to the radio buttons
                             var retailRadioButton = document.getElementById("info-outlined");

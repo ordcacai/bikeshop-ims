@@ -15,11 +15,11 @@
 
                         <h4 class="my-4">Order Type</h4>
 
-                            <input type="radio" class="btn-check" name="order_type" id="info-outlined" autocomplete="off" checked>
-                            <label class="btn btn-outline-info" for="info-outlined">Retail</label>    
+                        <input type="radio" class="btn-check" name="order_type" id="info-outlined" autocomplete="off" checked>
+                        <label class="btn btn-outline-info" for="info-outlined">Retail</label>
 
-                            <input type="radio" class="btn-check" name="order_type" id="success-outlined" autocomplete="off" action="create_order_wholesale.php">
-                            <label class="btn btn-outline-success" for="success-outlined">Wholesale</label>
+                        <input type="radio" class="btn-check" name="order_type" id="success-outlined" autocomplete="off">
+                        <label class="btn btn-outline-success" for="success-outlined">Wholesale</label>
 
                             <h4 class="my-4">Package Label Information <span class="badge rounded-pill bg-success">FOR WHOLESALE ONLY</span></h4>
 
@@ -160,7 +160,7 @@
                 <hr style="height: 3px; border: none; color: #000; background-color: #000; width: 100%;">
                 <h4>Mode of Delivery</h4>
                     <label for="main-options"><strong>Select an option:</strong></label>
-                    <select class="form-control" id="main-options" name="shipping_method" onchange="showSubOptionsOrTextBox()" style="width: 500px">
+                    <select class="form-control" id="main-options" name="shipping_method" style="width: 500px">
                         <option value="">-- Select Delivery Type --</option>
                         <option value="In-house Delivery">In-house Delivery (Selected Areas in Metro Manila only)</option>
                         <option value="option2">Freight (Select for Specific Cargo Options)</option>
@@ -183,7 +183,7 @@
                
                 <h4>Mode of Payment</h4>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="payment_type" id="inlineRadio1" value="cash" checked>
+                        <input class="form-check-input" type="radio" name="payment_type" id="inlineRadio1" value="cash" checked >
                         <label class="form-check-label" for="inlineRadio1">Cash</label>
                     </div>
                     <div class="form-check form-check-inline">
@@ -194,7 +194,7 @@
                     <br><br>
                     <div id="cashPayments">
                     <label for="payment_type"><strong>Cash payments</strong></label>
-                    <select class="form-control cash-payment" id="payment_type" name="payment_method" style="width: 500px">
+                    <select class="form-control" id="payment_type" name="payment_method" style="width: 500px">
                         <option value="">-- Select Cash Method --</option>
                         <option value="BPI (Bank Transfer)">BPI (Bank Transfer)</option>
                         <option value="BDO (Bank Transfer)">BDO (Bank Transfer)</option>
@@ -204,7 +204,7 @@
                     </div>
                     <div id="installmentOptions">
                     <label for="payment_type"><strong>Installment Options</strong></label>
-                    <select class="form-control installment-options" id="installment_type" name="payment_method" style="width: 500px">
+                    <select class="form-control" id="installment_type" name="payment_method" style="width: 500px">
                         <option value="">-- Select Installment Type --</option>
                         <option value="homecredit">Home Credit</option>
                         <option value="billease">BillEase</option>
@@ -265,30 +265,6 @@
                             document.getElementById("wsphone").disabled = true;
                             document.getElementById("wsaddress").disabled = true;
                             document.getElementById("wscourier").disabled = true;
-
-                            // Add event listener to the radio buttons
-                            var retailRadioButton = document.getElementById("info-outlined");
-                            var wholesaleRadioButton = document.getElementById("success-outlined");
-
-                            retailRadioButton.addEventListener("change", function() {
-                                if (retailRadioButton.checked) {
-                                // Disable the form if Retail is selected
-                                document.getElementById("wsname").disabled = true;
-                                document.getElementById("wsphone").disabled = true;
-                                document.getElementById("wsaddress").disabled = true;
-                                document.getElementById("wscourier").disabled = true;
-                                }
-                            });
-
-                            wholesaleRadioButton.addEventListener("change", function() {
-                                if (wholesaleRadioButton.checked) {
-                                // Enable the form if Wholesale is selected
-                                document.getElementById("wsname").disabled = false;
-                                document.getElementById("wsphone").disabled = false;
-                                document.getElementById("wsaddress").disabled = false;
-                                document.getElementById("wscourier").disabled = false;
-                                }
-                            });
                             </script>
     
 //Script to add row
@@ -381,3 +357,14 @@
             }
             });
             </script>
+
+<script>
+                        // Get the wholesale radio button element
+                        const wholesaleRadioButton = document.getElementById("success-outlined");
+
+                        // Add a click event listener to the wholesale radio button
+                        wholesaleRadioButton.addEventListener("click", function() {
+                            // Redirect to the wholesale.php page
+                            window.location.href = "wholesale.php";
+                        });
+                        </script>
