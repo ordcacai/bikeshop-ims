@@ -59,34 +59,34 @@ include('sidemenu.php'); ?>
                         <div class="col">
                             <div class="form-group mt-2">
                                 <label><strong>Base Price</strong></label>
-                                <input type="text" class="form-control" id="base-price" min="1" max="500000" name="base-price" placeholder="Base Price" required>
+                                <input type="text" class="form-control" id="base-price" min="1" max="500000" name="base_price" placeholder="Base Price" required>
                             </div>
 
                             <div class="form-group mt-2">
                                 <label><strong>Retail Price</strong></label>
-                                <input type="text" class="form-control" id="retail-price" min="1" max="500000" name="retail-price" placeholder="Retail Price" required>
+                                <input type="text" class="form-control" id="retail-price" min="1" max="500000" name="retail_price" placeholder="Retail Price" required>
                             </div>
 
                             <div class="form-group mt-2">
                                 <label><strong>Wholesale Price</strong></label>
-                                <input type="text" class="form-control" id="ws-price" min="1" max="500000" name="ws-price" placeholder="Wholesale Price" required>
+                                <input type="text" class="form-control" id="ws-price" min="1" max="500000" name="ws_price" placeholder="Wholesale Price" required>
                             </div>
 
                             <div class="form-group mt-2">
                                 <label><strong>Discounted Price</strong></label>
-                                <input type="number" class="form-control" id="product-disc" name="discount" min="1" max="100" placeholder="Discounted Price" required>
+                                <input type="number" class="form-control" id="product-disc" name="discount_price" placeholder="Discounted Price" required>
                             </div>
                         </div>
                     </div><br><br>
 
-                    <h4>Add Stocks  <button type="button" class="btn btn-primary" onclick="addRow()">+</button></h4>
+                    <!-- <h4>Add Stocks  <button type="button" class="add-more-form btn btn-primary ">+</button></h4> -->
 
-                    <div class="container">
-                            <div id="dynamicForm">
+                    <!-- <div class="container"> -->
+                            <div class="dynamicForm">
                                 <div class="row">
                                     <div class="col">
                                         <label><strong>Color & Size</strong></label>
-                                        <input type="text" class="form-control" placeholder="Color & Size" name="color-size">
+                                        <input type="text" class="form-control" placeholder="Color & Size" name="color_size">
                                     </div>
 
                                     <div class="col">
@@ -96,7 +96,9 @@ include('sidemenu.php'); ?>
                                      </div>
                                 </div>
                             </div>
-                        </div>
+                        <!-- </div> -->
+
+                        <!-- <div class="add-new-form pt-3"></div> -->
 
                         <div class="form-group my-5">
                             <input type="submit" class="btn btn-primary me-5" name="add_product" value="Add Product">
@@ -106,7 +108,6 @@ include('sidemenu.php'); ?>
                     </form>
 
                 </div>
-
             </div>
 
         </main>
@@ -115,9 +116,33 @@ include('sidemenu.php'); ?>
 
 <!-- Script to add new row -->
 <script>
-    function addRow() {
-        var form = document.getElementById("dynamicForm");
-        var row = form.firstElementChild.cloneNode(true);
-        form.appendChild(row);
-    }
+    // $(document).ready(function () {
+
+    //     $(document).on('click', '.remove-btn', function () {
+
+    //         $(this).closest('.dynamicForm').remove();
+
+    //     });
+
+    //     $(document).on('click', '.add-more-form', function () {
+    //         $('.add-new-form').append('<div class="container dynamicForm">\
+    //                         <div>\
+    //                             <div class="row">\
+    //                                 <div class="col-md-5">\
+    //                                     <label><strong>Color & Size</strong></label>\
+    //                                     <input type="text" class="form-control" placeholder="Color & Size" name="color_size">\
+    //                                 </div>\
+    //                                 <div class="col-md-5">\
+    //                                     <label><strong>Quantity</strong></label>\
+    //                                     <input type="text" class="form-control" placeholder="Quantity" name="quantity">\
+    //                                  </div>\
+    //                                  <div class="col-md-2">\
+    //                                     <label><strong>Remove</strong></label>\
+    //                                     <button type="button" class="remove-btn btn btn-danger form-control">Remove</button>\
+    //                                 </div>\
+    //                             </div>\
+    //                         </div>\
+    //                     </div>');
+    //     });
+    // });
 </script>

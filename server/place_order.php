@@ -28,12 +28,6 @@ if(!isset($_SESSION['logged_in'])){
         $order_status = "not paid";
         $user_id = $_SESSION['user_id'];
         $order_date = date('Y-m-d H:i:s');
-
-        // $payment_image = $_FILES['payment']['tmp_name'];
-
-        // $payment_image_name = $order_date."1.jpeg";
-
-        // move_uploaded_file($payment_image,"../assets/imgs/".$payment_image_name);
     
         $stmt = $conn->prepare("INSERT INTO orders (order_cost, order_status, user_name, user_email, user_id, user_phone, user_city, user_address, user_landmark, location_link, payment_method, shipping_method, order_date) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?); ");
     
@@ -62,7 +56,19 @@ if(!isset($_SESSION['logged_in'])){
             $product_image = $product['product_image'];
             $product_price = $product['product_price'];
             $product_quantity = $product['product_quantity'];
-    
+            
+            $stmt3 = $conn->prepare('SELECT product_quantity FROM products WHERE product_id = ?');
+            $stmt3->bind_param('i', $product_id);
+            $stmt3->execute();
+            $products = $stmt3->get_result();
+
+            foreach($products as $product){
+
+            $new_quantity = $product['product_quantity'] - $product_quantity;
+
+            $stmt4 = $conn->prepare('UPDATE products SET product_quantity = ? WHERE product_id = ?');
+            $stmt4->bind_param('ii', $new_quantity, $product_id);
+            $stmt4->execute();
             //4. store each single item in database (order_items)
             $stmt1 = $conn->prepare("INSERT INTO order_items (order_id, product_id, product_name, product_color, product_image, product_price, product_quantity, user_id, order_date)
                             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
@@ -70,10 +76,12 @@ if(!isset($_SESSION['logged_in'])){
             $stmt1->bind_param('iisssiiis', $order_id, $product_id, $product_name, $product_color, $product_image, $product_price, $product_quantity, $user_id, $order_date);
     
             $stmt1->execute();
-    
+            }
+           
         }
         
         $_SESSION['order_id'] = $order_id;
+
         //5. remove everything from cart
         if(isset($_POST['place_order'])){
 

@@ -55,7 +55,7 @@ if(isset($_POST['register'])){
                 //if there is already a registered user with this email, display error msg
                 if($num_rows != 0){
 
-                    header('location: create_user.php?error=User with this email already exist!');
+                    echo '<script>alert("User with this email already exist!");</script>';
 
                 //if there is no user registered in the email, create a new user
                 }else{
