@@ -193,7 +193,7 @@
 
                     <br><br>
                     <div id="cashPayments">
-                    <label for="payment_type"><strong>Cash payments</strong></label>
+                    <label for="payment_type"><strong>Cash payments</strong></label> 
                     <select class="form-control" id="payment_type" name="payment_method" style="width: 500px">
                         <option value="">-- Select Cash Method --</option>
                         <option value="BPI (Bank Transfer)">BPI (Bank Transfer)</option>
