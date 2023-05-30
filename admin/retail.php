@@ -8,37 +8,41 @@
             <div class="table-responsive">
                 <div class="mx-auto container">
                 <h2 class="my-4">Order Information</h2>
-                <h4 class="my-4">Order Type</h4>
-                <div class="form-check form-switch" style="display: flex; align-items: center;">
-                    <label class="form-check-label" for="disableSwitch" style="margin-right: 55px;">WHOLESALE</label>
-                    <input class="form-check-input" type="checkbox" id="disableSwitch" onchange="toggleForm()" style="margin-right: 15px;" />
-                    <label class="form-check-label" for="disableSwitch">RETAIL</label>
-                </div>
+                
                 <hr style="height: 3px; border: none; color: #000; background-color: #000; width: 100%;">
-                    <form id="create-form" enctype="multipart/form-data" method="POST" action="create_order.php">
+                    <form id="create-form" enctype="multipart/form-data" method="POST" action="create_order_retail.php">
                         <p style="color: red;"><?php if(isset($_GET['error'])){ echo $_GET['error']; } ?></p>
 
-                        <h4 class="my-4">Package Label Information <span class="badge rounded-pill bg-warning text-dark">FOR WHOLESALE ONLY</span></h4>
+                        <h4 class="my-4">Order Type</h4>
 
-                        <div class="form-group mt-2">
+                            <input type="radio" class="btn-check" name="order_type" id="info-outlined" autocomplete="off" checked>
+                            <label class="btn btn-outline-info" for="info-outlined">Retail</label>    
+
+                            <input type="radio" class="btn-check" name="order_type" id="success-outlined" autocomplete="off" action="create_order_wholesale.php">
+                            <label class="btn btn-outline-success" for="success-outlined">Wholesale</label>
+
+                            <h4 class="my-4">Package Label Information <span class="badge rounded-pill bg-success">FOR WHOLESALE ONLY</span></h4>
+
+                            <div class="form-group mt-2">
                             <label><strong>Name:</strong></label>
-                             <input type="text" class="form-control" id="wsname" name="wsname" placeholder="Ex: Lalisa Manoban">
-                        </div>
+                            <input type="text" class="form-control" id="wsname" name="wsname" placeholder="Ex: Lalisa Manoban">
+                            </div>
 
-                        <div class="form-group mt-2">
+                            <div class="form-group mt-2">
                             <label><strong>Phone Number:</strong></label><br>
                             <input type="tel" class="form-control" id="wsphone" name="wsphone" placeholder="Ex: 09*********">
-                        </div>
+                            </div>
 
-                        <div class="form-group mt-2">
+                            <div class="form-group mt-2">
                             <label><strong>Address:</strong></label>
                             <textarea class="form-control" id="wsaddress" name="wsaddress" placeholder="Ex: 59C. Gen. Ordoñez Ave., Marikina City"></textarea>
-                        </div>
+                            </div>
 
-                        <div class="form-group mt-2">
+                            <div class="form-group mt-2">
                             <label><strong>Preferred Courier:</strong></label>
-                             <input type="text" class="form-control" id="wscourier" name="wscourier" placeholder="Ex: Lalamove">
-                        </div>
+                            <input type="text" class="form-control" id="wscourier" name="wscourier" placeholder="Ex: Lalamove">
+                            </div>
+
                         <div class="form-group mt-2">
                             <button type="button" class="btn btn-secondary" style="float: right;" id="clearButton">Clear</button><br>
                         </div><br>
@@ -152,7 +156,7 @@
                     </div>
 
                     
-
+                            <!-- DELIVERIES -->
                 <hr style="height: 3px; border: none; color: #000; background-color: #000; width: 100%;">
                 <h4>Mode of Delivery</h4>
                     <label for="main-options"><strong>Select an option:</strong></label>
@@ -174,35 +178,41 @@
                             <option value="Seastar Cargo">Seastar Cargo</option>
                         </select><br>
                     </div>
-                    <h4>Mode of Payment</h4>
-                    <label for="payment_type"><strong>Payment Type:</strong></label>
-                        <select class="form-control" id="payment_type" name="payment_method" onchange="showPaymentOptions()" style="width: 500px">
-                            <option value="">-- Select Payment Type --</option>
-                            <option value="cash">Cash Payments</option>
-                            <option value="installment">Installment Options</option>
-                        </select><br>
-                        
-                        <div id="cash_options" style="display:none;">
-                            <label for="cash_method"><strong>Cash Method:</strong></label>
-                            <select class="form-control" id="cash_method" name="payment_method" style="width: 500px">
-                            <option value="">-- Select Cash Method --</option>
-                            <option value="BPI (Bank Transfer)">BPI (Bank Transfer)</option>
-                            <option value="BDO (Bank Transfer)">BDO (Bank Transfer)</option>
-                            <option value="GCash">GCash</option>
-                            <option value="Cash">Cash</option>
-                            </select><br>
-                        </div>
-                        
-                        <div id="installment_options" style="display:none;">
-                            <label for="installment_type"><strong>Installment Type:</strong></label>
-                            <select class="form-control" id="installment_type" name="payment_method"  style="width: 500px">
-                            <option value="">-- Select Installment Type --</option>
-                            <option value="homecredit">Home Credit</option>
-                            <option value="billease">BillEase</option>
-                            <option value="atome">Atome</option>
-                            <option value="bdocreditcard">BDO Credit Card</option>
-                            </select><br>
-                        </div>
+                        <!-- PAYMENTS -->
+                <hr style="height: 3px; border: none; color: #000; background-color: #000; width: 100%;">
+               
+                <h4>Mode of Payment</h4>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="payment_type" id="inlineRadio1" value="cash" checked>
+                        <label class="form-check-label" for="inlineRadio1">Cash</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="payment_type" id="inlineRadio2" value="installment">
+                        <label class="form-check-label" for="inlineRadio2">Installment</label>
+                    </div>
+
+                    <br><br>
+                    <div id="cashPayments">
+                    <label for="payment_type"><strong>Cash payments</strong></label>
+                    <select class="form-control cash-payment" id="payment_type" name="payment_method" style="width: 500px">
+                        <option value="">-- Select Cash Method --</option>
+                        <option value="BPI (Bank Transfer)">BPI (Bank Transfer)</option>
+                        <option value="BDO (Bank Transfer)">BDO (Bank Transfer)</option>
+                        <option value="GCash">GCash</option>
+                        <option value="Cash">Cash</option>
+                    </select>
+                    </div>
+                    <div id="installmentOptions">
+                    <label for="payment_type"><strong>Installment Options</strong></label>
+                    <select class="form-control installment-options" id="installment_type" name="payment_method" style="width: 500px">
+                        <option value="">-- Select Installment Type --</option>
+                        <option value="homecredit">Home Credit</option>
+                        <option value="billease">BillEase</option>
+                        <option value="atome">Atome</option>
+                        <option value="bdocreditcard">BDO Credit Card</option>
+                    </select>
+                    </div>
+
                 <hr style="height: 3px; border: none; color: #000; background-color: #000; width: 100%;">
 
                 <h3 class="tertiary"><strong>Remarks:</strong></h3>
@@ -224,32 +234,62 @@
 </div>
 
 <script>
-    var input = document.getElementById("myInput");
-    var text = input.value;
-    var middleIndex = Math.floor(text.length / 2);
-    
-    input.focus();
-    input.setSelectionRange(middleIndex, middleIndex);
+                    // Get references to the radio inputs and the dropdowns
+                    const cashRadio = document.getElementById("inlineRadio1");
+                    const installmentRadio = document.getElementById("inlineRadio2");
+                    const cashPaymentsSection = document.getElementById("cashPayments");
+                    const installmentOptionsSection = document.getElementById("installmentOptions");
 
-    function toggleForm() {
-        var switchInput = document.getElementById("disableSwitch");
-        var nameField = document.getElementById("wsname");
-        var phoneField = document.getElementById("wsphone");
-        var addressField = document.getElementById("wsaddress");
-        var pcourierField = document.getElementById("wscourier");
-        
-        nameField.disabled = switchInput.checked;
-        phoneField.disabled = switchInput.checked;
-        addressField.disabled = switchInput.checked;
-        pcourierField.disabled = switchInput.checked;
-    }
+                    // Function to handle the radio input change event
+                    function handlePaymentTypeChange() {
+                        if (cashRadio.checked) {
+                        cashPaymentsSection.style.display = "block";
+                        installmentOptionsSection.style.display = "none";
+                        } else if (installmentRadio.checked) {
+                        cashPaymentsSection.style.display = "none";
+                        installmentOptionsSection.style.display = "block";
+                        }
+                    }
 
-    
-    // Disable form on page load
-    window.onload = function() {
-        toggleForm();
-    };
+                    // Add event listener to the radio inputs
+                    cashRadio.addEventListener("change", handlePaymentTypeChange);
+                    installmentRadio.addEventListener("change", handlePaymentTypeChange);
 
+                    // Initialize the dropdowns based on the initial radio input state
+                    handlePaymentTypeChange();
+                    </script>
+
+<script>
+                            // Disable the form initially
+                            document.getElementById("wsname").disabled = true;
+                            document.getElementById("wsphone").disabled = true;
+                            document.getElementById("wsaddress").disabled = true;
+                            document.getElementById("wscourier").disabled = true;
+
+                            // Add event listener to the radio buttons
+                            var retailRadioButton = document.getElementById("info-outlined");
+                            var wholesaleRadioButton = document.getElementById("success-outlined");
+
+                            retailRadioButton.addEventListener("change", function() {
+                                if (retailRadioButton.checked) {
+                                // Disable the form if Retail is selected
+                                document.getElementById("wsname").disabled = true;
+                                document.getElementById("wsphone").disabled = true;
+                                document.getElementById("wsaddress").disabled = true;
+                                document.getElementById("wscourier").disabled = true;
+                                }
+                            });
+
+                            wholesaleRadioButton.addEventListener("change", function() {
+                                if (wholesaleRadioButton.checked) {
+                                // Enable the form if Wholesale is selected
+                                document.getElementById("wsname").disabled = false;
+                                document.getElementById("wsphone").disabled = false;
+                                document.getElementById("wsaddress").disabled = false;
+                                document.getElementById("wscourier").disabled = false;
+                                }
+                            });
+                            </script>
     
 //Script to add row
 
