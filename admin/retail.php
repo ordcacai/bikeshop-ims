@@ -1,6 +1,7 @@
 <?php include('header.php'); ?>
 
-<?php include('sidemenu.php'); ?>
+<?php include('security.php');
+include('sidemenu.php'); ?>
 
 <div class="main-content">
     <div class="container-fluid">
@@ -160,7 +161,7 @@
                 <hr style="height: 3px; border: none; color: #000; background-color: #000; width: 100%;">
                 <h4>Mode of Delivery</h4>
                     <label for="main-options"><strong>Select an option:</strong></label>
-                    <select class="form-control" id="main-options" name="shipping_method" style="width: 500px">
+                    <select class="form-control" id="main-options" required name="shipping_method" style="width: 500px">
                         <option value="">-- Select Delivery Type --</option>
                         <option value="In-house Delivery">In-house Delivery (Selected Areas in Metro Manila only)</option>
                         <option value="option2">Freight (Select for Specific Cargo Options)</option>
@@ -170,7 +171,7 @@
                     <br>
                     <div id="sub-options-container" style="display:none;">
                         <label for="sub-options"><strong>Courier:</strong></label>
-                        <select class="form-control" id="sub-options" name="shipping_method" style="width: 500px">
+                        <select class="form-control" id="sub-options" required name="shipping_method" style="width: 500px">
                             <option value="">-- Select Courier --</option>
                             <option value="Capex">Capex</option>
                             <option value="AP Cargo">AP Cargo</option>
@@ -194,7 +195,7 @@
                     <br><br>
                     <div id="cashPayments">
                     <label for="payment_type"><strong>Cash payments</strong></label> 
-                    <select class="form-control" id="payment_type" name="payment_method" style="width: 500px">
+                    <select class="form-control" id="payment_type" required name="payment_method" style="width: 500px">
                         <option value="">-- Select Cash Method --</option>
                         <option value="BPI (Bank Transfer)">BPI (Bank Transfer)</option>
                         <option value="BDO (Bank Transfer)">BDO (Bank Transfer)</option>
@@ -204,7 +205,7 @@
                     </div>
                     <div id="installmentOptions">
                     <label for="payment_type"><strong>Installment Options</strong></label>
-                    <select class="form-control" id="installment_type" name="payment_method" style="width: 500px">
+                    <select class="form-control" id="installment_type" required name="payment_method" style="width: 500px">
                         <option value="">-- Select Installment Type --</option>
                         <option value="homecredit">Home Credit</option>
                         <option value="billease">BillEase</option>

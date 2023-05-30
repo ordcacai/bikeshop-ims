@@ -1,8 +1,8 @@
 <?php include('header.php'); ?>
 <?php
     
-    if(!isset($_SESSION['admin_logged_in'])){
-        header('location: login.php');
+    if(!isset($_SESSION['logged_in'])){
+        header('location: ../login.php');
         exit;
 
     }else{
@@ -36,7 +36,7 @@
     
         $stmt = $conn->prepare("INSERT INTO orders (order_type,wsname,wsphone,wsaddress,wscourier, order_status, user_name, user_id, user_phone, user_address, user_landmark, location_link, shipping_method, payment_method, order_date) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?); ");
     
-        $stmt->bind_param('ssissssisssssis', $order_type, $wsname, $wsphone, $wsaddress, $wscourier, $order_status, $user_name, $user_id, $user_phone, $user_address, $user_landmark, $location_link,  $shipping_method, $payment_method, $order_date);
+        $stmt->bind_param('ssissssisssssss', $order_type, $wsname, $wsphone, $wsaddress, $wscourier, $order_status, $user_name, $user_id, $user_phone, $user_address, $user_landmark, $location_link,  $shipping_method, $payment_method, $order_date);
     
         $stmt_status = $stmt->execute();
     
