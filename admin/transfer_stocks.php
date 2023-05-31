@@ -1,7 +1,6 @@
 <?php 
 include('header.php');
-?>
-<?php include('security.php');
+include('security.php');
 include('sidemenu.php'); ?>
 
 <?php
@@ -15,78 +14,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $color_size = $_POST["color_size"];
     $transfer_date = $_POST["transfer_date"];
 
-    // Perform validation
-$errors = array();
+    $prod_name = "SELECT product_id FROM products WHERE product_name = '$product_name'";
+    $result = $conn->query($prod_name);
 
-// Check if quantity is a positive integer
-if (!ctype_digit($quantity) || $quantity <= 0) {
-    $errors[] = "Quantity must be a positive integer.";
-}
-
-// Check if color-size is not empty
-if (empty($color_size)) {
-    $errors[] = "Color & Size cannot be empty.";
-}
-
-// Check if the product name corresponds to the correct product ID
-$sql = "SELECT product_id FROM products WHERE product_name = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $product_name);
-$stmt->execute();
-$stmt->bind_result($product_id);
-$stmt->fetch();
-$stmt->close();
-
-if (!$product_id) {
-    $errors[] = "Invalid product name.";
-}
-
-// Check if there are any errors
-if (!empty($errors)) {
-    // Display error messages
-    foreach ($errors as $error) {
-        echo $error . "<br>";
-    }
-    // Terminate the script or redirect back to the form page
-    exit();
-}
-
-// Update the quantity in location_to
-$sql_update_to = "UPDATE inventory SET quantity = quantity + ? WHERE location = ? AND product_id = ?";
-$stmt_update_to = $conn->prepare($sql_update_to);
-$stmt_update_to->bind_param("isi", $quantity, $location_to, $product_id);
-$stmt_update_to->execute();
-$stmt_update_to->close();
-
-// Subtract the quantity from location_from
-$sql_update_from = "UPDATE inventory SET quantity = quantity - ? WHERE location = ? AND product_id = ?";
-$stmt_update_from = $conn->prepare($sql_update_from);
-$stmt_update_from->bind_param("isi", $quantity, $location_from, $product_id);
-$stmt_update_from->execute();
-$stmt_update_from->close();
-    
-
-    // Prepare and execute the SQL statement
-    $sql = "INSERT INTO stock_transfer (product_name, location_from, location_to, 
-        quantity, color_size, transfer_date) VALUES (?, ?, ?, ?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssiss", $product_id, $location_from, $location_to, $quantity,
-        $color_size, $transfer_date);
-    
-    if ($stmt->execute()) {
-        echo "Stock transfer recorded successfully.";
-    } else {
-        echo "Error recording stock transfer: " . $stmt->error;
+    if ($result->num_rows == 0) {
+        // Product name does not match any product ID
+        echo "Invalid product selected.";
+        exit;
     }
 
-    // Close the prepared statement
-    $stmt->close();
+    $sql_subtract = "UPDATE stocks SET quantity = quantity - $quantity WHERE location = '$location_from' AND product_id = (SELECT product_id FROM products WHERE product_name = '$product_name')";
+    $sql_add = "UPDATE stocks SET quantity = quantity + $quantity WHERE location = '$location_to' AND product_id = (SELECT product_id FROM products WHERE product_name = '$product_name')";
+
+    // Execute the queries
+    $conn->query($sql_subtract);
+    $conn->query($sql_add);
 }
 ?>
 
 <?php
-
-// Retrieve options from the database
+// Retrieve product options from the database
 $sql = "SELECT product_id, product_name FROM products";
 $result = $conn->query($sql);
 
@@ -154,7 +101,7 @@ $conn->close();
                                     <div class="col">
                                         <label for="selectedOption"><strong>Product Name</strong></label>
                                         <select class="form-select" name="product-name" required>
-                                            <option value="">Select an option</option>
+                                            <option value="">Select a product</option>
                                             <?php
                                             // Output the options as dropdown options
                                             foreach ($options as $id => $name) {

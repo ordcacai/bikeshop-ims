@@ -34,25 +34,17 @@
     $total_no_of_pages = ceil($total_records/$total_records_per_page);
 
     //4. get all products
-    $stmt2 = $conn->prepare("SELECT * FROM products LIMIT $offset, $total_records_per_page");
+    $stmt2 = $conn->prepare("SELECT * FROM products ORDER BY product_id DESC LIMIT $offset, $total_records_per_page");
     $stmt2->execute();
     $products = $stmt2->get_result();//array
 
 ?>
-<div class="container-fluid">
-    <div class="row" style="min-height:1000px">
-
-    <?php include('security.php');
+<?php include('security.php');
 include('sidemenu.php'); ?>
 
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 mt-2">
-                <h1 class="mb-5">Dashboard</h1>
-                <div class="btn-toolbar mb-2 mb-md-0">
-                    <div class="btn-group me-2"></div>
-                </div>
-            </div>
-            <h1 class="mb-4">Products</h1>
+<div class="main-content">
+    <div class="container-fluid">
+            <h1 class="my-4">Products</h1>
 
                 <?php if(isset($_GET['edit_success_message'])){ ?>
                     <p class="text-center" style="color: green;"><?php echo $_GET['edit_success_message']; ?></p>   

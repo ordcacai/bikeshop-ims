@@ -53,7 +53,7 @@ if ($category === 'Ebike') {
     $category_condition = "WHERE product_category = 'parts'";
 }
 
-$query = "SELECT * FROM products $category_condition LIMIT ?, ?";
+$query = "SELECT * FROM products $category_condition ORDER BY product_id DESC LIMIT ?, ?";
 $stmt2 = $conn->prepare($query);
 $stmt2->bind_param("ii", ...$params);
 $stmt2->execute();
@@ -68,7 +68,7 @@ include('sidemenu.php'); ?>
             <h1 class="my-4">Inventory</h1>
 
            <!--Tab Menu -->
-           <div class="d-flex justify-content-left mb-4">
+           <div class="d-flex justify-content-center mb-4">
     <ul class="nav nav-tabs">
         <li class="nav-item">
             <a class="nav-link <?= ($category === 'Ebike' || $category === '') ? 'active' : ''; ?>" href="?category=Ebike&page_no=<?= $page_no ?>">Ebikes</a>

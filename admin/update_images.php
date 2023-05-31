@@ -1,6 +1,6 @@
 <?php
 
-include('../server/connection.php');
+include('header.php');
 include('security.php');
 
 if(isset($_POST['update_images'])){

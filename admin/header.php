@@ -1,5 +1,6 @@
 <?php session_start();
-        include('../server/connection.php'); ?>
+        include('../server/connection.php'); 
+        include('security.php');?>
 
 <!DOCTYPE html>
 <html lang="en">
