@@ -1,15 +1,13 @@
-<?php include('header.php'); ?>
+<?php include('header.php');
+ob_start();
 
-<?php
     if(!isset($_SESSION['logged_in'])){
         header('location: ../login.php');
         exit;
     }
-?>
-<?php include('security.php');
-include('sidemenu.php'); ?>
 
-<?php
+include('security.php');
+include('sidemenu.php'); 
 
 if(isset($_GET['order_id'])){
 
@@ -38,17 +36,19 @@ if(isset($_GET['order_id'])){
     if($stmt->execute()){
 
     header('location: invoice.php?invoice_created=Invoice has been created successfully!');
+    exit;
 
     }else{
 
     header('location: invoice.php?invoice_failed=Error occured, Please try again.');
+    exit;
 
     }
 
 }else{
     header('location: view_order.php');
 }
-
+ob_end_flush();
 ?>
 
 <div class="main-content">
