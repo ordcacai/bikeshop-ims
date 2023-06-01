@@ -3,15 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
-<<<<<<< HEAD
 -- Generation Time: May 29, 2023 at 05:37 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
-=======
--- Generation Time: May 27, 2023 at 05:41 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 7.4.29
->>>>>>> e3c51bfbf6aa878007aba1a432b2c0574bde297f
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -60,7 +54,6 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-<<<<<<< HEAD
 INSERT INTO `orders` (`order_id`, `wsname`, `wsphone`, `wsaddress`, `wscourier`, `order_cost`, `order_status`, `user_name`, `user_email`, `user_id`, `user_phone`, `user_city`, `user_address`, `user_landmark`, `location_link`, `payment_method`, `shipping_method`, `payment_image`, `order_date`, `shipping_fee`) VALUES
 (1, '', 0, '', '', 100.00, 'paid', '', '', 1, 2147483647, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City, San Antonio', '', '0', '', '', '', '2023-03-30', 0.00),
 (3, '', 0, '', '', 200.00, 'not paid', '', '', 1, 2147483647, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City, San Antonio', '', '0', '', '', '', '2023-03-31', 0.00),
@@ -83,30 +76,6 @@ INSERT INTO `orders` (`order_id`, `wsname`, `wsphone`, `wsaddress`, `wscourier`,
 (32, '', 0, '', '', 500300.00, 'not paid', 'Merylle Antoinette Fernandez', 'meryllefernandez11@gmail.com', 1, 9551500074, 'Manila', '1864 Int. 20 Dapo Street, Pandacan Manila, Metro Manila', 'Near Jollibee', 'https://www.google.com/maps/place/Dapo,+Pandacan,+Manila,+1011+Metro+Manila/@14.5850114,121.0003481,19z/data=!3m1!4b1!4m6!3m5!1s0x3397c992f2110d39:0x4c930884d45d455a!8m2!3d14.5850114!4d121.0009918!16s%2Fg%2F11c2v0js4b?entry=ttu', 'COD', 'Lalamove', '', '2023-05-25', 100.00),
 (33, '', 0, '', '', 500300.00, 'not paid', 'Sofia Anne De Vera', 'sofiaanne030@gmail.com', 1, 9212503098, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City', 'Near Robinson\'s Galleria', 'https://www.google.com/maps/place/Corinthian+Executive+Regency,+Ortigas+Ave,+San+Antonio,+Pasig,+Metro+Manila/data=!4m2!3m1!1s0x3397c8198c943bdb:0xf92bf96244ed9ae8?sa=X&ved=2ahUKEwiAhu2w1OL-AhUppVYBHeelAKQQ8gF6BAgNEAI', 'COD', 'Grab', '', '2023-05-25', 100.00),
 (36, '', 0, '', '', 700800.00, 'not paid', 'Mary Anne De Vera', 'maryanne.devera@yahoo.com', 1, 9457794646, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City', 'Near Robinson\'s Galleria', 'https://www.google.com/maps/place/Corinthian+Executive+Regency,+Ortigas+Ave,+San+Antonio,+Pasig,+Metro+Manila/data=!4m2!3m1!1s0x3397c8198c943bdb:0xf92bf96244ed9ae8?sa=X&ved=2ahUKEwiAhu2w1OL-AhUppVYBHeelAKQQ8gF6BAgNEAI', 'E-Wallet', 'Grab', '', '2023-05-26', 200.00);
-=======
-INSERT INTO `orders` (`order_id`, `order_cost`, `order_status`, `user_name`, `user_email`, `user_id`, `user_phone`, `user_city`, `user_address`, `user_landmark`, `location_link`, `payment_method`, `shipping_method`, `payment_image`, `order_date`, `shipping_fee`) VALUES
-(1, '100.00', 'paid', '', '', 1, 2147483647, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City, San Antonio', '', '0', '', '', '', '2023-03-30', '0.00'),
-(3, '200.00', 'not paid', '', '', 1, 2147483647, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City, San Antonio', '', '0', '', '', '', '2023-03-31', '0.00'),
-(4, '300.00', 'delivered', '', '', 1, 2147483647, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City, San Antonio', '', '0', '', '', '', '2023-03-31', '0.00'),
-(9, '400.00', 'not paid', '', '', 1, 2147483647, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City, San Antonio', '', '0', '', '', '', '2023-04-01', '0.00'),
-(10, '100.00', 'not paid', '', '', 1, 2147483647, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City, San Antonio', '', '0', '', '', '', '2023-04-04', '0.00'),
-(11, '100.00', 'not paid', '', '', 1, 2147483647, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City, San Antonio', '', '0', '', '', '', '2023-04-05', '0.00'),
-(12, '100.00', 'not paid', '', '', 1, 2147483647, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City, San Antonio', '', '0', '', '', '', '2023-04-24', '0.00'),
-(13, '100.00', 'not paid', '', '', 1, 2147483647, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City, San Antonio', '', '0', '', '', '', '2023-04-24', '0.00'),
-(14, '100.00', 'not paid', '', '', 1, 2147483647, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City, San Antonio', '', '0', '', '', '', '2023-04-24', '0.00'),
-(16, '100.00', 'not paid', '', '', 1, 2147483647, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City', '', '0', 'E-Wallet', '', '', '2023-05-06', '0.00'),
-(19, '100.00', 'not paid', '', '', 1, 2147483647, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City', '', '0', 'E-Wallet', '', 'C:\\xampp\\tmp\\php1D7B.tmp', '2023-05-06', '0.00'),
-(20, '100.00', 'not paid', '', '', 1, 2147483647, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City', '', '0', 'E-Wallet', '', 'C:\\xampp\\tmp\\php410.tmp', '2023-05-06', '0.00'),
-(21, '100.00', 'not paid', '', '', 1, 2147483647, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City', '', '0', 'E-Wallet', '', 'C:\\xampp\\tmp\\php8732.tmp', '2023-05-06', '0.00'),
-(22, '1000.00', 'not paid', 'Charles Zedrick De Vera', '', 1, 2147483647, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City', '', '0', 'E-Wallet', '', '', '2023-05-06', '0.00'),
-(23, '1000.00', 'not paid', 'Charles Zedrick De Vera', '', 1, 2147483647, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City', '', '', 'E-Wallet', '', '', '2023-05-07', '0.00'),
-(24, '1000.00', 'not paid', 'Charles Zedrick De Vera', '', 1, 2147483647, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City', 'rob', 'https://www.google.com/maps/place/Corinthian+Executive+Regency,+Ortigas+Ave,+San+Antonio,+Pasig,+Metro+Manila/data=!4m2!3m1!1s0x3397c8198c943bdb:0xf92bf96244ed9ae8?sa=X&ved=2ahUKEwiAhu2w1OL-AhUppVYBHeelAKQQ8gF6BAgNEAI', 'E-Wallet', 'LBC', '', '2023-05-07', '0.00'),
-(25, '100.00', 'not paid', 'Charles Zedrick De Vera', '', 1, 9684491551, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City', 'corinthian', 'https://www.google.com/maps/place/Corinthian+Executive+Regency,+Ortigas+Ave,+San+Antonio,+Pasig,+Metro+Manila/data=!4m2!3m1!1s0x3397c8198c943bdb:0xf92bf96244ed9ae8?sa=X&ved=2ahUKEwiAhu2w1OL-AhUppVYBHeelAKQQ8gF6BAgNEAI', 'COD', 'J&T', '', '2023-05-07', '0.00'),
-(28, '9999.99', 'not paid', 'Charles Zedrick De Vera', '', 1, 9684491551, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City', 'corinthian', 'https://www.google.com/maps/place/Corinthian+Executive+Regency,+Ortigas+Ave,+San+Antonio,+Pasig,+Metro+Manila/data=!4m2!3m1!1s0x3397c8198c943bdb:0xf92bf96244ed9ae8?sa=X&ved=2ahUKEwiAhu2w1OL-AhUppVYBHeelAKQQ8gF6BAgNEAI', 'E-Wallet', 'Lalamove', '', '2023-05-15', '0.00'),
-(32, '500300.00', 'not paid', 'Merylle Antoinette Fernandez', 'meryllefernandez11@gmail.com', 1, 9551500074, 'Manila', '1864 Int. 20 Dapo Street, Pandacan Manila, Metro Manila', 'Near Jollibee', 'https://www.google.com/maps/place/Dapo,+Pandacan,+Manila,+1011+Metro+Manila/@14.5850114,121.0003481,19z/data=!3m1!4b1!4m6!3m5!1s0x3397c992f2110d39:0x4c930884d45d455a!8m2!3d14.5850114!4d121.0009918!16s%2Fg%2F11c2v0js4b?entry=ttu', 'COD', 'Lalamove', '', '2023-05-25', '100.00'),
-(33, '500300.00', 'not paid', 'Sofia Anne De Vera', 'sofiaanne030@gmail.com', 1, 9212503098, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City', 'Near Robinson\'s Galleria', 'https://www.google.com/maps/place/Corinthian+Executive+Regency,+Ortigas+Ave,+San+Antonio,+Pasig,+Metro+Manila/data=!4m2!3m1!1s0x3397c8198c943bdb:0xf92bf96244ed9ae8?sa=X&ved=2ahUKEwiAhu2w1OL-AhUppVYBHeelAKQQ8gF6BAgNEAI', 'COD', 'Grab', '', '2023-05-25', '100.00'),
-(36, '700800.00', 'not paid', 'Mary Anne De Vera', 'maryanne.devera@yahoo.com', 1, 9457794646, 'Pasig City', '3106 Corinthian Executive Regency Ortigas Avenue Pasig City', 'Near Robinson\'s Galleria', 'https://www.google.com/maps/place/Corinthian+Executive+Regency,+Ortigas+Ave,+San+Antonio,+Pasig,+Metro+Manila/data=!4m2!3m1!1s0x3397c8198c943bdb:0xf92bf96244ed9ae8?sa=X&ved=2ahUKEwiAhu2w1OL-AhUppVYBHeelAKQQ8gF6BAgNEAI', 'E-Wallet', 'Grab', '', '2023-05-26', '200.00');
->>>>>>> e3c51bfbf6aa878007aba1a432b2c0574bde297f
 
 -- --------------------------------------------------------
 
@@ -204,7 +173,6 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `product_name`, `product_category`, `product_description`, `product_image`, `product_image2`, `product_image3`, `product_image4`, `product_price`, `product_bp`, `product_wsp`, `product_special_offer`, `product_color`, `product_size`, `product_quantity`) VALUES
-<<<<<<< HEAD
 (2, 'Mountain Bike', 'Bike', 'Silver Mountain Bike', 'featured1.png', 'featured1.png', 'featured1.png', 'featured1.png', 100.00, 0.00, 0.00, 0.00, 'silver', '', 0),
 (3, 'Mountain Bike', 'Bike', 'Silver Mountain Bike', 'featured1.png', 'featured1.png', 'featured1.png', 'featured1.png', 100.00, 0.00, 0.00, 0.00, 'silver', '', 0),
 (4, 'Mountain Bike', 'Bike', 'Silver Mountain Bike', 'featured1.png', 'featured1.png', 'featured1.png', 'featured1.png', 100.00, 0.00, 0.00, 0.00, 'silver', '', 0),
@@ -214,17 +182,6 @@ INSERT INTO `products` (`product_id`, `product_name`, `product_category`, `produ
 (8, 'Shimano Ultegra Groupset', 'parts', 'Groupset for Road bike', 'parts1.png', 'parts1.png', 'parts1.png', 'parts1.png', 200.00, 0.00, 0.00, 0.00, 'classic', '', 0),
 (9, 'Mountain Bike', 'Bike', 'Silver Mountain Bike', '1.jpeg', '2.jpeg', '3.jpeg', '4.jpeg', 100.00, 0.00, 0.00, 0.00, 'silver', '', 0),
 (14, 'test', 'Bike', 'test', 'test1.jpeg', 'test2.jpeg', 'test3.jpeg', 'test4.jpeg', 100000.00, 0.00, 0.00, 1.00, 'red', '', 0);
-=======
-(2, 'Mountain Bike', 'Bike', 'Silver Mountain Bike', 'featured1.png', 'featured1.png', 'featured1.png', 'featured1.png', '100.00', '0.00', '0.00', '0.00', 'silver', '', 0),
-(3, 'Mountain Bike', 'Bike', 'Silver Mountain Bike', 'featured1.png', 'featured1.png', 'featured1.png', 'featured1.png', '100.00', '0.00', '0.00', '0.00', 'silver', '', 0),
-(4, 'Mountain Bike', 'Bike', 'Silver Mountain Bike', 'featured1.png', 'featured1.png', 'featured1.png', 'featured1.png', '100.00', '0.00', '0.00', '0.00', 'silver', '', 0),
-(5, 'Shimano Ultegra Groupset', 'parts', 'Groupset for Road bike', 'parts1.png', 'parts1.png', 'parts1.png', 'parts1.png', '200.00', '0.00', '0.00', '0.00', 'classic', '', 0),
-(6, 'Shimano Ultegra Groupset', 'parts', 'Groupset for Road bike', 'parts1.png', 'parts1.png', 'parts1.png', 'parts1.png', '200.00', '0.00', '0.00', '0.00', 'classic', '', 0),
-(7, 'Shimano Ultegra Groupset', 'parts', 'Groupset for Road bike', 'parts1.png', 'parts1.png', 'parts1.png', 'parts1.png', '200.00', '0.00', '0.00', '0.00', 'classic', '', 0),
-(8, 'Shimano Ultegra Groupset', 'parts', 'Groupset for Road bike', 'parts1.png', 'parts1.png', 'parts1.png', 'parts1.png', '200.00', '0.00', '0.00', '0.00', 'classic', '', 0),
-(9, 'Mountain Bike', 'Bike', 'Silver Mountain Bike', '1.jpeg', '2.jpeg', '3.jpeg', '4.jpeg', '100.00', '0.00', '0.00', '0.00', 'silver', '', 0),
-(14, 'test', 'Bike', 'test', 'test1.jpeg', 'test2.jpeg', 'test3.jpeg', 'test4.jpeg', '100000.00', '0.00', '0.00', '1.00', 'red', '', 0);
->>>>>>> e3c51bfbf6aa878007aba1a432b2c0574bde297f
 
 -- --------------------------------------------------------
 
@@ -238,11 +195,7 @@ CREATE TABLE `stocks` (
   `product_name` varchar(255) NOT NULL,
   `quantity` int(255) NOT NULL,
   `color_size` int(255) NOT NULL
-<<<<<<< HEAD
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-=======
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
->>>>>>> e3c51bfbf6aa878007aba1a432b2c0574bde297f
 
 -- --------------------------------------------------------
 
@@ -259,11 +212,7 @@ CREATE TABLE `stock_transfer` (
   `quantity` int(255) NOT NULL,
   `color_size` varchar(50) NOT NULL,
   `transfer_date` date NOT NULL
-<<<<<<< HEAD
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-=======
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
->>>>>>> e3c51bfbf6aa878007aba1a432b2c0574bde297f
 
 -- --------------------------------------------------------
 

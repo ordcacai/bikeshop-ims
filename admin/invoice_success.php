@@ -143,6 +143,7 @@ if($_GET['ACTION']=='VIEW'){
 }else if($_GET['ACTION']=='EMAIL'){
 
     require ('../vendor/autoload.php');
+    require ('credential.php');
 
     $order_id = $_GET['order_id'];
 
@@ -151,7 +152,123 @@ if($_GET['ACTION']=='VIEW'){
     $stmt->execute();
     $orders = $stmt->get_result();
 
-    $pdf->Output($file_location.$file_name, 'F');
+    $invoice = $pdf->Output($file_location.$file_name, 'S');
+
+    while($row = $orders->fetch_assoc()) {
+
+        $user_name = $row['user_name'];
+        $order_id = $row['order_id'];
+
+        $body = '';
+        $body .="<html>
+        <head>
+        <style type='text/css'> 
+        body {
+        font-family: Calibri;
+        font-size:16px;
+        color:#000;
+        }
+        .center {
+            padding: 10px;
+            text-align: center;
+          }
+        </style>
+        </head>
+        <body>
+
+        <div class='center'>
+        <h3>Hello $user_name!</h3>
+        <br>
+        <br>
+        <strong>We have received your order!</strong> This message is to confirm that Vykes MNL have received your order request.
+        <br>
+        <br>
+        <strong>Order #: $order_id</strong>
+        <br>
+        <br>
+        Please find attached invoice copy and payment details below. Thank you.
+        <br>
+        <br>
+        <br>
+        <h4>GCASH</h4>
+        <br>
+        <br>
+        <strong>Account Name:</strong> Vicente Quijano<br>
+        <strong>Account no:</strong> 0920 582 5062<br><br>
+        <strong>Account Name:</strong> Sofronia Quijano<br>
+        <strong>Account no:</strong> 0949 679 4535<br><br>
+        <h4>BPI</h4>
+        <br>
+        <br>
+        <strong>Account Name:</strong> Vicente Quijano<br>
+        <strong>Account no:</strong> 1649 3227 93<br><br>
+        <br>
+        <br>
+        <h4>BDO</h4>
+        <br>
+        <br>
+        <strong>Account Name:</strong> Vicente Quijano<br>
+        <strong>Account no:</strong> 0078 6016 6574<br><br>
+        <br><br>
+        <img src='cid:gcash1'>
+        <img src='cid:gcash2'>
+        <img src='cid:bpi'>
+        <img src='cid:bdo'>
+        </div>
+        </body>
+        </html>";
+
+//Create an instance; passing `true` enables exceptions
+$mail = new PHPMailer(true);
+
+    try {
+        //Server settings
+        // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+        $mail->isSMTP();                                            //Send using SMTP
+        $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+        $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+        $mail->Username   = EMAIL;                     //SMTP username
+        $mail->Password   = PASS;                               //SMTP password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+        $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+        //Recipients
+        $mail->setFrom(EMAIL, 'Vykes MNL');
+        $mail->addAddress($row['user_email'], $user_name);     //Add a recipient
+        $mail->addReplyTo(EMAIL, 'Vykes MNL');
+
+        //Attachments
+        $mail->addStringAttachment($invoice, $file_name);
+        $mail->addEmbeddedImage('../assets/imgs/gcash1.jpg', 'gcash1');
+        $mail->addEmbeddedImage('../assets/imgs/gcash2.jpg', 'gcash2');
+        $mail->addEmbeddedImage('../assets/imgs/bpi.jpg', 'bpi');
+        $mail->addEmbeddedImage('../assets/imgs/bdo.jpg', 'bdo');  
+
+        //Content
+        $mail->isHTML(true);                                  //Set email format to HTML
+        $mail->Subject = 'Vykes MNL Order Invoice';
+        $mail->Body    = $body;
+        $mail->AltBody = $body;
+
+        $mail->send();
+        header('location: invoice.php?invoice_sent=Invoice has been emailed successfully!');
+        exit; 
+    } catch (Exception $e) {
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    }
+
+}
+}else if($_GET['ACTION']=='COMPLETE'){
+    
+    require ('../vendor/autoload.php');
+    require ('credential.php');
+
+    $order_id = $_GET['order_id'];
+
+    $stmt = $conn->prepare('SELECT * FROM orders WHERE order_id=?');
+    $stmt->bind_param('i', $order_id);
+    $stmt->execute();
+    $orders = $stmt->get_result();
 
     while($row = $orders->fetch_assoc()) {
 
@@ -165,16 +282,38 @@ if($_GET['ACTION']=='VIEW'){
         font-size:16px;
         color:#000;
         }
+        .center {
+            padding: 10px;
+            text-align: center;
+          }
         </style>
         </head>
         <body>
-        Dear $user_name,
+        <div class='center'>
+        <h1>Vykes MNL</h1>
+        <h3>PAYMENT CONFIRMATION</h3>
         <br>
         <br>
-        Please find attached invoice copy.
+        <br>
+        Hello $user_name!
         <br>
         <br>
-        Thank you!
+        <strong>We have received you payment! </strong>
+        <br>
+        <br>
+        This message is to confirm that Vykes MNL has received your payment. If there's something wrong with your order please do contact us immediately. Thank you.
+        <br>
+        <br>
+        <br>
+        For inquiries/question, please contact us at:<br><br>
+        <strong>Facebook: https://www.facebook.com/vykesmnl</strong><br>
+        <strong>Instagram: https://www.instagram.com/vykesmnl</strong><br>
+        <strong>Email: vykesmnl@gmail.com</strong><br>
+        <strong>Contact #: 0956 225 6879</strong><br>
+        <br>
+        <br>
+        THANK YOU FOR TRUSTING VYKES MNL!
+        </div>
         </body>
         </html>";
 
@@ -187,24 +326,24 @@ $mail = new PHPMailer(true);
         $mail->isSMTP();                                            //Send using SMTP
         $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mail->Username   = 'itcapstone2023@gmail.com';                     //SMTP username
-        $mail->Password   = 'oxgbjeygudtqlyog';                               //SMTP password
+        $mail->Username   = EMAIL;                     //SMTP username
+        $mail->Password   = PASS;                               //SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
         $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
         //Recipients
-        $mail->setFrom('itcapstone2023@gmail.com', 'Vykes MNL');
+        $mail->setFrom(EMAIL, 'Vykes MNL');
         $mail->addAddress($row['user_email'], $user_name);     //Add a recipient
-        $mail->addReplyTo('itcapstone2023@gmail.com', 'Vykes MNL');
+        $mail->addReplyTo(PASS, 'Vykes MNL');
 
         //Attachments
-        $mail->addAttachment($file_location.$file_name);         //Add attachments
+        // $mail->addAttachment($file_location.$file_name);         //Add attachments
 
         //Content
         $mail->isHTML(true);                                  //Set email format to HTML
         $mail->Subject = 'Vykes MNL Order Invoice';
         $mail->Body    = $body;
-        $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+        $mail->AltBody = $body;
 
         $mail->send();
         header('location: invoice.php?invoice_sent=Invoice has been emailed successfully!');
@@ -212,8 +351,8 @@ $mail = new PHPMailer(true);
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
-
 }
+
 }else{
 	echo "Record not found for PDF.";
 }
