@@ -143,6 +143,7 @@ if($_GET['ACTION']=='VIEW'){
 }else if($_GET['ACTION']=='EMAIL'){
 
     require ('../vendor/autoload.php');
+    require ('credential.php');
 
     $order_id = $_GET['order_id'];
 
@@ -166,27 +167,54 @@ if($_GET['ACTION']=='VIEW'){
         font-family: Calibri;
         font-size:16px;
         color:#000;
-        text-align:center;
         }
+        .center {
+            padding: 10px;
+            text-align: center;
+          }
         </style>
         </head>
         <body>
-        Dear $user_name,
+
+        <div class='center'>
+        <h3>Hello $user_name!</h3>
         <br>
         <br>
         <strong>We have received your order!</strong> This message is to confirm that Vykes MNL have received your order request.
         <br>
         <br>
-        <strong>Order #: </strong> $order_id
+        <strong>Order #: $order_id</strong>
         <br>
         <br>
         Please find attached invoice copy and payment details below. Thank you.
         <br>
         <br>
-        <img src='cid:gcash1' alt='#'>
-        <img src='cid:gcash2' alt='#'>
-        <img src='cid:bpi' alt='#'>
-        <img src='cid:bdo' alt='#'>
+        <br>
+        <h4>GCASH</h4>
+        <br>
+        <br>
+        <strong>Account Name:</strong> Vicente Quijano<br>
+        <strong>Account no:</strong> 0920 582 5062<br><br>
+        <strong>Account Name:</strong> Sofronia Quijano<br>
+        <strong>Account no:</strong> 0949 679 4535<br><br>
+        <h4>BPI</h4>
+        <br>
+        <br>
+        <strong>Account Name:</strong> Vicente Quijano<br>
+        <strong>Account no:</strong> 1649 3227 93<br><br>
+        <br>
+        <br>
+        <h4>BDO</h4>
+        <br>
+        <br>
+        <strong>Account Name:</strong> Vicente Quijano<br>
+        <strong>Account no:</strong> 0078 6016 6574<br><br>
+        <br><br>
+        <img src='cid:gcash1'>
+        <img src='cid:gcash2'>
+        <img src='cid:bpi'>
+        <img src='cid:bdo'>
+        </div>
         </body>
         </html>";
 
@@ -199,28 +227,28 @@ $mail = new PHPMailer(true);
         $mail->isSMTP();                                            //Send using SMTP
         $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mail->Username   = 'itcapstone2023@gmail.com';                     //SMTP username
-        $mail->Password   = 'oxgbjeygudtqlyog';                               //SMTP password
+        $mail->Username   = EMAIL;                     //SMTP username
+        $mail->Password   = PASS;                               //SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
         $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
         //Recipients
-        $mail->setFrom('itcapstone2023@gmail.com', 'Vykes MNL');
+        $mail->setFrom(EMAIL, 'Vykes MNL');
         $mail->addAddress($row['user_email'], $user_name);     //Add a recipient
-        $mail->addReplyTo('itcapstone2023@gmail.com', 'Vykes MNL');
+        $mail->addReplyTo(EMAIL, 'Vykes MNL');
 
         //Attachments
-        $mail->addAttachment($file_location.$file_name); 
-        $mail->addEmbeddedImage('../assets/imgs/gcash1.jpg','gcash1');         //Add attachments
-        $mail->addEmbeddedImage('../assets/imgs/gcash2.jpg','gcash2'); 
-        $mail->addEmbeddedImage('../assets/imgs/bpi.jpg','bpi'); 
-        $mail->addEmbeddedImage('../assets/imgs/bdo.jpg','bdo'); 
+        $mail->addAttachment($file_location.$file_name);
+        $mail->addEmbeddedImage('../assets/imgs/gcash1.jpg', 'gcash1');
+        $mail->addEmbeddedImage('../assets/imgs/gcash2.jpg', 'gcash2');
+        $mail->addEmbeddedImage('../assets/imgs/bpi.jpg', 'bpi');
+        $mail->addEmbeddedImage('../assets/imgs/bdo.jpg', 'bdo');  
 
         //Content
         $mail->isHTML(true);                                  //Set email format to HTML
         $mail->Subject = 'Vykes MNL Order Invoice';
         $mail->Body    = $body;
-        $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+        $mail->AltBody = $body;
 
         $mail->send();
         header('location: invoice.php?invoice_sent=Invoice has been emailed successfully!');
@@ -233,6 +261,7 @@ $mail = new PHPMailer(true);
 }else if($_GET['ACTION']=='COMPLETE'){
     
     require ('../vendor/autoload.php');
+    require ('credential.php');
 
     $order_id = $_GET['order_id'];
 
@@ -252,17 +281,21 @@ $mail = new PHPMailer(true);
         font-family: Calibri;
         font-size:16px;
         color:#000;
-        text-align: center;
         }
+        .center {
+            padding: 10px;
+            text-align: center;
+          }
         </style>
         </head>
         <body>
+        <div class='center'>
         <h1>Vykes MNL</h1>
         <h3>PAYMENT CONFIRMATION</h3>
         <br>
         <br>
         <br>
-        Dear $user_name,
+        Hello $user_name!
         <br>
         <br>
         <strong>We have received you payment! </strong>
@@ -280,6 +313,7 @@ $mail = new PHPMailer(true);
         <br>
         <br>
         THANK YOU FOR TRUSTING VYKES MNL!
+        </div>
         </body>
         </html>";
 
@@ -292,15 +326,15 @@ $mail = new PHPMailer(true);
         $mail->isSMTP();                                            //Send using SMTP
         $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mail->Username   = 'itcapstone2023@gmail.com';                     //SMTP username
-        $mail->Password   = 'oxgbjeygudtqlyog';                               //SMTP password
+        $mail->Username   = EMAIL;                     //SMTP username
+        $mail->Password   = PASS;                               //SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
         $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
         //Recipients
-        $mail->setFrom('itcapstone2023@gmail.com', 'Vykes MNL');
+        $mail->setFrom(EMAIL, 'Vykes MNL');
         $mail->addAddress($row['user_email'], $user_name);     //Add a recipient
-        $mail->addReplyTo('itcapstone2023@gmail.com', 'Vykes MNL');
+        $mail->addReplyTo(PASS, 'Vykes MNL');
 
         //Attachments
         // $mail->addAttachment($file_location.$file_name);         //Add attachments
@@ -309,7 +343,7 @@ $mail = new PHPMailer(true);
         $mail->isHTML(true);                                  //Set email format to HTML
         $mail->Subject = 'Vykes MNL Order Invoice';
         $mail->Body    = $body;
-        $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+        $mail->AltBody = $body;
 
         $mail->send();
         header('location: invoice.php?invoice_sent=Invoice has been emailed successfully!');
