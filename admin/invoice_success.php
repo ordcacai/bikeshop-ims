@@ -152,7 +152,7 @@ if($_GET['ACTION']=='VIEW'){
     $stmt->execute();
     $orders = $stmt->get_result();
 
-    $pdf->Output($file_location.$file_name, 'F');
+    $invoice = $pdf->Output($file_location.$file_name, 'S');
 
     while($row = $orders->fetch_assoc()) {
 
@@ -238,7 +238,7 @@ $mail = new PHPMailer(true);
         $mail->addReplyTo(EMAIL, 'Vykes MNL');
 
         //Attachments
-        $mail->addAttachment($file_location.$file_name);
+        $mail->addStringAttachment($invoice, $file_name);
         $mail->addEmbeddedImage('../assets/imgs/gcash1.jpg', 'gcash1');
         $mail->addEmbeddedImage('../assets/imgs/gcash2.jpg', 'gcash2');
         $mail->addEmbeddedImage('../assets/imgs/bpi.jpg', 'bpi');
