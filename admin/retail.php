@@ -14,13 +14,13 @@ include('sidemenu.php'); ?>
                     <form id="create-form" enctype="multipart/form-data" method="POST" action="create_order_retail.php">
                         <p style="color: red;"><?php if(isset($_GET['error'])){ echo $_GET['error']; } ?></p>
 
-                        <h4 class="my-4">Order Type</h4>
+                        <h4 class="my-4">Order Type <span class="badge rounded-pill bg-warning">Select Order Type</span></h4>
 
-                        <input type="radio" class="btn-check" name="order_type" id="info-outlined" autocomplete="off" checked>
-                        <label class="btn btn-outline-info" for="info-outlined">Retail</label>
+                        <select class="form-control" id="orderType" name="order_type" style="width: 300px" onchange="redirectPage()">
+                            <option value="retail">Retail</option>
+                            <option value="wholesale">Wholesale</option>
+                        </select>
 
-                        <input type="radio" class="btn-check" name="order_type" id="success-outlined" autocomplete="off">
-                        <label class="btn btn-outline-success" for="success-outlined">Wholesale</label>
 
                             <h4 class="my-4">Package Label Information <span class="badge rounded-pill bg-success">FOR WHOLESALE ONLY</span></h4>
 
@@ -217,7 +217,7 @@ include('sidemenu.php'); ?>
                 <hr style="height: 3px; border: none; color: #000; background-color: #000; width: 100%;">
 
                 <h3 class="tertiary"><strong>Remarks:</strong></h3>
-                <form method="post">
+                
                     <textarea class="form-control" style="width: 500px" id="input" name="remarks" rows="10" cols="50" maxlength="300" placeholder="Enter your remarks here."></textarea><br>
                 
                         <div class="form-group my-5">
@@ -268,9 +268,6 @@ include('sidemenu.php'); ?>
                             document.getElementById("wscourier").disabled = true;
                             </script>
     
-//Script to add row
-
-</script>
 
 <script>
     // Get references to the input fields and the clear button
@@ -360,12 +357,12 @@ include('sidemenu.php'); ?>
             </script>
 
 <script>
-                        // Get the wholesale radio button element
-                        const wholesaleRadioButton = document.getElementById("success-outlined");
+                            function redirectPage() {
+                                var selectElement = document.getElementById("orderType");
+                                var selectedValue = selectElement.value;
 
-                        // Add a click event listener to the wholesale radio button
-                        wholesaleRadioButton.addEventListener("click", function() {
-                            // Redirect to the wholesale.php page
-                            window.location.href = "wholesale.php";
-                        });
+                                if (selectedValue === "wholesale") {
+                                    window.location.href = "wholesale.php";
+                                }
+                            }
                         </script>
