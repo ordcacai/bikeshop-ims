@@ -161,7 +161,7 @@ include('sidemenu.php'); ?>
                 <hr style="height: 3px; border: none; color: #000; background-color: #000; width: 100%;">
                 <h4>Mode of Delivery</h4>
                     <label for="main-options"><strong>Select an option:</strong></label>
-                    <select class="form-control" id="main-options" required name="shipping_method" style="width: 500px">
+                    <select class="form-control" id="main-options" required name="shipping_method" onchange="showSubOptionsOrTextBox()" style="width: 500px">
                         <option value="">-- Select Delivery Type --</option>
                         <option value="In-house Delivery">In-house Delivery (Selected Areas in Metro Manila only)</option>
                         <option value="option2">Freight (Select for Specific Cargo Options)</option>
@@ -171,7 +171,7 @@ include('sidemenu.php'); ?>
                     <br>
                     <div id="sub-options-container" style="display:none;">
                         <label for="sub-options"><strong>Courier:</strong></label>
-                        <select class="form-control" id="sub-options" required name="shipping_method" style="width: 500px">
+                        <select class="form-control" id="sub-options" required name="shipping_method" style="width: 500px" >
                             <option value="">-- Select Courier --</option>
                             <option value="Capex">Capex</option>
                             <option value="AP Cargo">AP Cargo</option>
