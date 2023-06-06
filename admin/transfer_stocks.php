@@ -66,26 +66,31 @@ $conn->close();
                         <input style="width:300px" type="date" class="form-control" id="selectedDate" name="transfer_date" required>
                     </div><br>
 
-                    <button type="button" class="btn btn-primary" id="add">Add</button>
-
                     <div class="container">
                         <div id="dynamicForm">
                             <div class="row">
                                 <div class="col">
-                                    <label for="selectedOption"><strong>Product Name</strong></label>
+                                <label for="selectedOption"><strong>Product Name</strong></label>
+                                        <select class="form-select" name="product-name" required>
+                                            <option value="">Select an option</option>
+                                            <?php
+                                            // Output the options as dropdown options
+                                            foreach ($options as $id => $name) {
+                                                echo "<option value=\"$id\">$name</option>";
+                                            }
+                                            ?>
+                                        </select>
                                 </div>
+
                                 <div class="col">
                                     <label><strong>Color & Size</strong></label>
+                                    <input type="text" class="form-control" placeholder="Color & Size" name="color-size">
                                 </div>
+
                                 <div class="col">
                                     <label><strong>Quantity</strong></label>
+                                    <input type="text" class="form-control" placeholder="Quantity" name="quantity">
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col" id="name"></div>
-                                <div class="col" id="color"></div>
-                                <div class="col" id="quantity"></div>
-                            </div>
                         </div>
                     </div>
 

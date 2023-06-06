@@ -11,10 +11,10 @@
             <div class="footer-one col-lg-3 col-md-6 col-sm-12">
                 <h5 class="pb-2">Featured Items</h5>
                 <ul class="text-uppercase">
-                    <li><a href="#">Mountain Bikes</a></li>
-                    <li><a href="#">Kiddie Bikes</a></li>
-                    <li><a href="#">E-Bikes</a></li>
-                    <li><a href="#">Parts & Accessories</a></li>
+                    <li><a href="shop.php">Mountain Bikes</a></li>
+                    <li><a href="shop.php">Kiddie Bikes</a></li>
+                    <li><a href="shop.php">E-Bikes</a></li>
+                    <li><a href="shop.php">Parts & Accessories</a></li>
                 </ul>
             </div>
 <!-- Payment Methods -->
