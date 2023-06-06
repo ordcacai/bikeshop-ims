@@ -13,23 +13,22 @@
                     <form id="create-form" enctype="multipart/form-data" method="POST" action="create_order_wholesale.php">
                         <p style="color: red;"><?php if(isset($_GET['error'])){ echo $_GET['error']; } ?></p>
 
-                        <h4 class="my-4">Order Type</h4>
+                        <h4 class="my-4">Order Type <span class="badge rounded-pill bg-warning">Select Order Type</span></h4>
 
-                        <input type="radio" class="btn-check" name="order_type" id="info-outlined" autocomplete="off">
-                        <label class="btn btn-outline-info" for="info-outlined">Retail</label>
-
-                        <input type="radio" class="btn-check" name="order_type" id="success-outlined" autocomplete="off" checked>
-                        <label class="btn btn-outline-success" for="success-outlined">Wholesale</label>
+                        <select class="form-control" id="orderType" name="order_type" style="width: 300px" onchange="redirectPage()">
+                            <option value="wholesale">Wholesale</option>
+                            <option value="retail">Retail</option>
+                        </select>
 
                         <script>
-                        // Get the wholesale radio button element
-                        const retailRadioButton = document.getElementById("info-outlined");
+                            function redirectPage() {
+                                var selectElement = document.getElementById("orderType");
+                                var selectedValue = selectElement.value;
 
-                        // Add a click event listener to the wholesale radio button
-                        retailRadioButton.addEventListener("click", function() {
-                            // Redirect to the wholesale.php page
-                            window.location.href = "retail.php";
-                        });
+                                if (selectedValue === "retail") {
+                                    window.location.href = "retail.php";
+                                }
+                            }
                         </script>
 
                             <h4 class="my-4">Package Label Information <span class="badge rounded-pill bg-success">FOR WHOLESALE ONLY</span></h4>
