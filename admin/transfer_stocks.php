@@ -63,7 +63,7 @@ $conn->close();
 
                     <div class="form-group mt-2">
                         <label for="selectedDate"><strong>Transfer Date</strong></label>
-                        <input type="date" class="form-control" id="selectedDate" name="transfer_date" required>
+                        <input style="width:300px" type="date" class="form-control" id="selectedDate" name="transfer_date" required>
                     </div><br>
 
                     <button type="button" class="btn btn-primary" id="add">Add</button>
@@ -106,47 +106,9 @@ $conn->close();
 
 <!-- Script to add new row -->
 <script>
-    // function addRow() {
-    //     var form = document.getElementById("dynamicForm");
-    //     var row = form.firstElementChild.cloneNode(true);
-    //     form.appendChild(row);
-    // }
-
-    $(document).ready(function() {
-        var count = 0;
-    $("#add").click(function() {
-        count++;
-        var name = 'name-' + count;
-        var nameElement = $('<select>', {
-            class: 'form-select',
-            name: name
-        }).html(`
-            <?php
-                // Output the options as dropdown options
-                foreach ($options as $id => $name) {
-                    echo "<option value=\"$name\">$name</option>";
-                }
-            ?>
-        `);
-
-        var color = 'color_size-' + count;
-        var colorElement = $('<input>', {
-            type: "text",
-            class: 'form-select',
-            name: color
-        });
-        
-        var quantity = 'quantity-' + count;
-        var quantityElement = $('<input>', {
-            type: "text",
-            class: 'form-select',
-            name: quantity
-        });
-
-        $("#name").append(nameElement);
-        $("#color").append(colorElement);
-        $("#quantity").append(quantityElement);
-
-    })
-});
+    function addRow() {
+    var form = document.getElementById("dynamicForm");
+    var row = form.firstElementChild.cloneNode(true);
+    form.appendChild(row);
+    }
 </script>

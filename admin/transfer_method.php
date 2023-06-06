@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $transfer_date = $_POST["transfer_date"];
 
     $stmt = $conn->prepare("INSERT INTO stock_transfer (product_name, location_from, location_to, quantity, color_size, transfer_date) VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param('ssssss', $product_name, $location_from, $location_to, $quantity, $color_size, $transfer_date);
+    $stmt->bind_param('sssiss', $product_name, $location_from, $location_to, $quantity, $color_size, $transfer_date);
     $stmt->execute();
     
 }
