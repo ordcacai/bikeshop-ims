@@ -6,17 +6,15 @@ include('sidemenu.php'); ?>
 <div class="main-content">
     <div class="container-fluid">
             <h1 class="my-4">Add Orders</h1>
-            <div class="table-responsive">
-                <div class="mx-auto container">
                 <h2 class="my-4">Order Information</h2>
                 
                 <hr style="height: 3px; border: none; color: #000; background-color: #000; width: 100%;">
-                    <form id="create-form" enctype="multipart/form-data" method="POST" action="create_order_retail.php">
+        <form id="create-form" enctype="multipart/form-data" method="POST" action="create_order_retail.php">
                         <p style="color: red;"><?php if(isset($_GET['error'])){ echo $_GET['error']; } ?></p>
 
                         <h4 class="my-4">Order Type <span class="badge rounded-pill bg-warning">Select Order Type</span></h4>
 
-                        <select class="form-control" id="orderType" name="order_type" style="width: 300px" onchange="redirectPage()">
+                        <select class="form-control" id="orderType" required name="order_type" style="width: 300px" onchange="redirectPage()">
                             <option value="retail">Retail</option>
                             <option value="wholesale">Wholesale</option>
                         </select>
@@ -51,7 +49,7 @@ include('sidemenu.php'); ?>
 
                 <h4 class="my-4">Customer Information</h4>
                 <label for="orderStatus"><strong>Order Status</strong></label>
-                        <select class="form-control" id="orderStatus" name="order_status" style="width: 500px">
+                        <select class="form-control" id="orderStatus" required name="order_status" style="width: 500px">
                             <option value="">-- Select Order Status --</option>
                             <option value="Pending">Pending</option>
                             <option value="For Delivery">For Delivery/Ship out</option>
@@ -224,13 +222,7 @@ include('sidemenu.php'); ?>
                             <input type="submit" class="btn btn-warning me-5" name="add_order" value="Confirm Order">
                         </div>
 
-                    </form>
-
-                </div>
-
-            </div>
-
-        </main>
+        </form>
     </div>
 </div>
 
