@@ -11,27 +11,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Perform validation
     $errors = array();
 
-    // Check if quantity is a positive integer
-    if (!ctype_digit($quantity) || $quantity <= 0) {
+    // Check if the product name corresponds to the correct product ID
+    $sql = "SELECT product_id, product_name FROM products WHERE product_name = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("is", $product_id, $product_name);
+    $stmt->execute();
+    $stmt->get_result();
+
+
+    if (!$product_id) {
+        $errors[] = "Invalid product name.";
+    }
+
+     // Check if quantity is a positive integer
+     if (!ctype_digit($quantity) || $quantity <= 0) {
         $errors[] = "Quantity must be a positive integer.";
     }
 
     // Check if color-size is not empty
     if (empty($color_size)) {
         $errors[] = "Color & Size cannot be empty.";
-    }
-
-    // Check if the product name corresponds to the correct product ID
-    $sql = "SELECT product_id FROM products WHERE product_name = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $product_name);
-    $stmt->execute();
-    $stmt->bind_result($product_id);
-    $stmt->fetch();
-    $stmt->close();
-
-    if (!$product_id) {
-        $errors[] = "Invalid product name.";
     }
 
     // Check if there are any errors

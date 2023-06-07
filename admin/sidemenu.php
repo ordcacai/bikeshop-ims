@@ -55,7 +55,7 @@ if(!isset($_SESSION['logged_in'])){
           <li><a href="transfer_stocks.php">Transfer Stocks</a></li>
         </ul>
       </li>
-      <li>
+    <!--  <li>
         <a href="sales.php">
           <i class='bx bx-money' ></i>
           <span class="link_name">Sales</span>
@@ -63,7 +63,7 @@ if(!isset($_SESSION['logged_in'])){
         <ul class="sub-menu blank">
           <li><a class="link_name" href="sales.php">Sales</a></li>
         </ul>
-      </li>
+      </li> -->
       <li>
         <a href="account.php">
           <i class='bx bxs-user-account' ></i>
