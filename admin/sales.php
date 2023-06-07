@@ -31,7 +31,7 @@ $adjacents = "2";
 $total_no_of_pages = ceil($total_records / $total_records_per_page);
 
 // 4. Get sales records
-$stmt2 = $conn->prepare("SELECT orders.order_date, order_items.product_name, order_items.product_price, order_items.product_quantity, (order_items.product_price * order_items.product_quantity) AS total_cost, orders.shipping_method, products.product_bp, (order_items.product_price * order_items.product_quantity) AS gross_income
+$stmt2 = $conn->prepare("SELECT orders.order_date, order_items.product_name, order_items.product_price, order_items.product_quantity, (order_items.product_price * order_items.product_quantity) AS total_cost, orders.shipping_method, products.product_bp, ((order_items.product_price - products.product_bp) * order_items.product_quantity) AS gross_income
 FROM orders
 INNER JOIN order_items ON orders.order_id = order_items.order_id
 INNER JOIN products ON order_items.product_id = products.product_id

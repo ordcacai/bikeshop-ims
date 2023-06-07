@@ -5,7 +5,7 @@
 <div class="main-content">
     <div class="container-fluid">
             <h1 class="my-4">Add Orders</h1>
-                
+                <div class="mx-auto container">
                 <h2 class="my-4">Order Information</h2>
                 
                 <hr style="height: 3px; border: none; color: #000; background-color: #000; width: 100%;">
@@ -216,28 +216,27 @@
                             <h3 class="tertiary"><strong>Remarks:</strong></h3>
                             <textarea class="form-control" style="width: 500px" id="input" name="remarks" rows="10" cols="50" maxlength="300" placeholder="Enter your remarks here."></textarea><br>
                         
-                        <!-- <div class="form-group my-5"> -->
+                        <div class="form-group my-5">
                             <input type="submit" class="btn btn-warning me-5" name="add_order" value="Confirm Order">
                         </div>
-                            
+
                     </form>
-                        
+
                 </div>
+
         </main>
     </div>
 </div>
 <script>
-    function redirectPage() {
-        var orderType = document.getElementById("orderType").value;
-        var customerFields = document.getElementById("customerFields");
+                                    function redirectPage() {
+                                        var selectElement = document.getElementById("orderType");
+                                        var selectedValue = selectElement.value;
 
-        if (orderType === "retail") {
-            customerFields.style.display = "block";
-        } else {
-            customerFields.style.display = "none";
-        }
-    }
- </script>
+                                        if (selectedValue === "retail") {
+                                            window.location.href = "retail.php";
+                                        }
+                                    }
+                                </script>
 <script>
                     // Get references to the radio inputs and the dropdowns
                     const cashRadio = document.getElementById("inlineRadio1");
