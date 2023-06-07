@@ -41,88 +41,58 @@ $stmt2->execute();
 $sales = $stmt2->get_result(); // Array
 ?>
 
+<link rel="stylesheet" type="text/css" href="admin_style.css">
+
 <?php include('security.php');
 include('sidemenu.php'); ?>
 
-<link rel="stylesheet" type="text/css" href="../admin_style.css">
+
 
 <div class="main-content">
     <div class="container-fluid">
         <h1 class="my-4">Sales</h1>
 
-        <?php if (isset($_GET['edit_success_message'])) { ?>
-            <p class="text-center" style="color: green;"><?php echo $_GET['edit_success_message']; ?></p>
-        <?php } ?>
-
-        <?php if (isset($_GET['edit_failure_message'])) { ?>
-            <p class="text-center" style="color: red;"><?php echo $_GET['edit_failure_message']; ?></p>
-        <?php } ?>
-
-        <?php if (isset($_GET['delete_success_message'])) { ?>
-            <p class="text-center" style="color: green;"><?php echo $_GET['delete_success_message']; ?></p>
-        <?php } ?>
-
-        <?php if (isset($_GET['delete_failure_message'])) { ?>
-            <p class="text-center" style="color: red;"><?php echo $_GET['delete_failure_message']; ?></p>
-        <?php } ?>
-
-        <?php if (isset($_GET['product_created'])) { ?>
-            <p class="text-center" style="color: green;"><?php echo $_GET['product_created']; ?></p>
-        <?php } ?>
-
-        <?php if (isset($_GET['product_failed'])) { ?>
-            <p class="text-center" style="color: red;"><?php echo $_GET['product_failed']; ?></p>
-        <?php } ?>
-
-        <?php if (isset($_GET['images_updated'])) { ?>
-            <p class="text-center" style="color: green;"><?php echo $_GET['images_updated']; ?></p>
-        <?php } ?>
-
-        <?php if (isset($_GET['images_failed'])) { ?>
-            <p class="text-center" style="color: red;"><?php echo $_GET['images_failed']; ?></p>
-        <?php } ?>
-
-        <form method="post" class="mb-4">
-            <div class="form-row align-items-end">
-                <div class="col-md-3">
-                    <label for="start_date">Start Date</label>
-                    <input type="date" name="start_date" id="start_date" class="form-control">
-                </div>
-                <div class="col-md-3">
-                    <label for="end_date">End Date</label>
-                    <input type="date" name="end_date" id="end_date" class="form-control">
-                </div>
-                <div class="col-md-2 mt-auto">
-                    <button type="submit" name="apply" class="btn btn-primary">Apply</button>
-                </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form action="" method="POST" class="d-flex justify-content-center align-items-center mb-4">
+                    <div class="form-group mx-2">
+                        <label for="start_date">Start Date:</label>
+                        <input type="date" name="start_date" id="start_date" class="form-control" value="<?php echo isset($_POST['start_date']) ? $_POST['start_date'] : ''; ?>">
+                    </div>
+                    <div class="form-group mx-2">
+                        <label for="end_date">End Date:</label>
+                        <input type="date" name="end_date" id="end_date" class="form-control" value="<?php echo isset($_POST['end_date']) ? $_POST['end_date'] : ''; ?>">
+                    </div>
+                    <div class="form-group mx-2">
+                        <button type="submit" name="apply" class="btn btn-primary">Apply</button>
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
 
         <div class="table-responsive">
-            <table class="table table-striped table-bordered table-hover table-sm">
+            <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col">Date</th>
-                        <th scope="col">Product Name</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">QTY</th>
-                        <th scope="col">Total Cost</th>
-                        <th scope="col">MOP</th>
-                        <th scope="col">Base</th>
-                        <th scope="col">Gross Income</th>
+                        <th>Order Date</th>
+                        <th>Product Name</th>
+                        <th>Product Price</th>
+                        <th>Product Quantity</th>
+                        <th>Total Cost</th>
+                        <th>Shipping Method</th>
+                        <th>Gross Income</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($sales as $sale) { ?>
+                    <?php while ($row = $sales->fetch_assoc()) { ?>
                         <tr>
-                            <td><?php echo $sale['order_date']; ?></td>
-                            <td><?php echo $sale['product_name']; ?></td>
-                            <td><?php echo "₱" . $sale['product_price']; ?></td>
-                            <td><?php echo $sale['product_quantity']; ?></td>
-                            <td><?php echo "₱" . $sale['total_cost']; ?></td>
-                            <td><?php echo $sale['shipping_method']; ?></td>
-                            <td><?php echo "₱" . $sale['product_bp']; ?></td>
-                            <td><?php echo "₱" . $sale['gross_income']; ?></td>
+                            <td><?php echo $row['order_date']; ?></td>
+                            <td><?php echo $row['product_name']; ?></td>
+                            <td><?php echo $row['product_price']; ?></td>
+                            <td><?php echo $row['product_quantity']; ?></td>
+                            <td><?php echo $row['total_cost']; ?></td>
+                            <td><?php echo $row['shipping_method']; ?></td>
+                            <td><?php echo $row['gross_income']; ?></td>
                         </tr>
                     <?php } ?>
                 </tbody>
@@ -131,27 +101,9 @@ include('sidemenu.php'); ?>
 
         <?php if (isset($_POST['apply'])) { ?>
             <div class="total-gross-income">
-                <strong style="size: 25px; color: darkorange; font-weight: bold; text-decoration: underline;">Total Gross Income: <?php echo "₱" . calculateTotalGrossIncome($conn, $_POST['start_date'], $_POST['end_date']); ?></strong>
+                <strong style="alighnment: center; size: 25px; color: darkorange; font-weight: bold; text-decoration: underline;">Total Gross Income: <?php echo "₱" . calculateTotalGrossIncome($conn, $_POST['start_date'], $_POST['end_date']); ?></strong>
             </div>
         <?php } ?>
-
-        <?php
-        function calculateTotalGrossIncome($conn, $start_date, $end_date)
-        {
-            $stmt = $conn->prepare("SELECT SUM(order_items.product_price * order_items.product_quantity) AS total_gross_income
-            FROM orders
-            INNER JOIN order_items ON orders.order_id = order_items.order_id
-            WHERE orders.order_date BETWEEN ? AND ?");
-            $stmt->bind_param("ss", $start_date, $end_date);
-            $stmt->execute();
-            $stmt->bind_result($total_gross_income);
-            $stmt->fetch();
-            $stmt->close();
-
-            return $total_gross_income;
-        }
-        ?>
-
         <nav aria-label="Page navigation example" class="text-center">
             <ul class="pagination mt-5 justify-content-center">
                 <li class="page-item <?php if ($page_no <= 1) {
@@ -224,21 +176,42 @@ include('sidemenu.php'); ?>
         </nav>
     </div>
 </div>
-<style>
+
+<?php
+function calculateTotalGrossIncome($conn, $start_date = null, $end_date = null)
+{
     
-    .total-gross-income {
+        if ($start_date === null || $end_date === null) {
+            return 0; // Return 0 or any other default value when the dates are not provided
+        }
+    
+    $stmt = $conn->prepare("SELECT SUM(order_items.product_price * order_items.product_quantity) AS total_income
+                            FROM orders
+                            INNER JOIN order_items ON orders.order_id = order_items.order_id
+                            WHERE orders.order_date >= ? AND orders.order_date <= ?");
+    $stmt->bind_param("ss", $start_date, $end_date);
+    $stmt->execute();
+    $stmt->bind_result($total_income);
+    $stmt->store_result();
+    $stmt->fetch();
+    $stmt->close();
+
+    return $total_income;
+}
+?>
+
+<style>
+        .total-gross-income {
         margin-top: 30px;
         background-color: #f5f5f5;
         padding: 10px;
         text-align: center;
     }
 
-    .total-gross-income strong {
+    .total-gross-income{
         size: 40px;
         color: darkorange;
         font-weight: bold;
         text-decoration: underline;
     }
-    </style>
-
-
+</style>
