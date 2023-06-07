@@ -83,7 +83,53 @@ include('sidemenu.php'); ?>
         </div>
         <div class="buttons-container">
             <a href="edit_product.php?product_id=<?php echo $product['product_id']; ?>" class="btn btn-primary me-4">Edit</a>
-            <a href="inventory.php" class="btn btn-secondary">Cancel</a>
+            
+            <button type="button" class="btn btn-success me-4" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Add Variant</button>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <form action="add_variant.php" method="POST">
+                    <div class="modal-content">
+                    <div class="modal-header mb-3">
+                        <h5 class="modal-title" id="exampleModalLabel">Add Variant</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <h4 class="ms-3">Add Stocks  <button type="button" class="add-more-form btn btn-primary ">+</button></h4>
+                    <div class="modal-body">
+                        
+                            <div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <label><strong>Color & Size</strong></label>
+                                        <input type="text" class="form-control" placeholder="Color & Size" name="color_size">
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label><strong>Quantity</strong></label>
+                                        <input type="text" class="form-control" placeholder="Quantity" name="quantity">
+                                     </div>
+                                     <div class="col-md-2">
+                                        <label><strong>Remove</strong></label>
+                                        <button type="button" class="remove-btn btn btn-danger form-control">X</button>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                    </div>
+
+                    <div class="add-new-form pt-2"></div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-primary" value="Add Variant/s">
+                    </div>
+                    </div>
+                </form>
+                </div>
+                </div>
+                <a href="inventory.php" class="btn btn-secondary">Cancel</a>
         </div>
     </div>
 </div>
@@ -120,4 +166,37 @@ include('sidemenu.php'); ?>
         currentIndex = (currentIndex - 1 + images.length) % images.length;
         fadeOut();
     }
+</script>
+
+<!-- Script to add new row -->
+<script>
+    $(document).ready(function () {
+
+        $(document).on('click', '.remove-btn', function () {
+
+            $(this).closest('.modal-body').remove();
+
+        });
+
+        $(document).on('click', '.add-more-form', function () {
+            $('.add-new-form').append('<div class="modal-body">\
+                            <div>\
+                                <div class="row">\
+                                    <div class="col-md-5">\
+                                        <label><strong>Color & Size</strong></label>\
+                                        <input type="text" class="form-control" placeholder="Color & Size" name="color_size">\
+                                    </div>\
+                                    <div class="col-md-5">\
+                                        <label><strong>Quantity</strong></label>\
+                                        <input type="text" class="form-control" placeholder="Quantity" name="quantity">\
+                                     </div>\
+                                     <div class="col-md-2">\
+                                        <label><strong>Remove</strong></label>\
+                                        <button type="button" class="remove-btn btn btn-danger form-control">X</button>\
+                                    </div>\
+                                </div>\
+                            </div>\
+                        </div>');
+        });
+    });
 </script>

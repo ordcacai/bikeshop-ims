@@ -7,23 +7,12 @@ include('transfer_method.php');
 
 <?php
 // Retrieve product options from the database
-$sql = "SELECT product_id, product_name FROM products";
-$result = $conn->query($sql);
 
-// Array to store options
-$options = array();
-
-if ($result->num_rows > 0) {
-    // Loop through the result and store options in the array
-    while ($row = $result->fetch_assoc()) {
-        $options[$row['product_id']] = $row['product_name'];
-    }
-} else {
-    echo "No options found.";
-}
+$stmt = $conn->prepare('SELECT * FROM products');
+$stmt->execute();
+$product = $stmt->get_result();
 
 // Close the database connection
-$conn->close();
 
 ?>
 
@@ -71,14 +60,15 @@ $conn->close();
                             <div class="row">
                                 <div class="col">
                                 <label for="selectedOption"><strong>Product Name</strong></label>
-                                        <select class="form-select" name="product-name" required>
+                                        <select class="form-select" required name="product-name" required>
                                             <option value="">Select an option</option>
-                                            <?php
-                                            // Output the options as dropdown options
-                                            foreach ($options as $id => $name) {
-                                                echo "<option value=\"$id\">$name</option>";
-                                            }
-                                            ?>
+                                            
+                                            <?php while($row = $product->fetch_assoc()){ ?>
+
+                                               <option value="<?php echo $row['product_id'];?>"><?php echo $row['product_name'];?></option>
+
+                                            <?php } ?>
+                                            
                                         </select>
                                         
 
