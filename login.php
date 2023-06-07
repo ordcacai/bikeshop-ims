@@ -65,7 +65,7 @@ if(isset($_POST['login_btn'])){
         //Login error
         }else{
 
-            header('location: login.php?error=Email or Password entered do not match.');
+            header('location: login.php?error= Email or Password entered do not match.');
 
         }
     }
