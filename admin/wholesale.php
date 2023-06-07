@@ -292,7 +292,6 @@
     
 <!-- Script to add row -->
 
-</script>
 
 <script>
     // Get references to the input fields and the clear button

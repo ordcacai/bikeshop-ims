@@ -30,7 +30,8 @@
     
         $stmt = $conn->prepare("INSERT INTO orders (order_type, order_status, user_name, user_id, user_phone, user_address, user_landmark, location_link, shipping_method, payment_method, order_date) VALUES (?,?,?,?,?,?,?,?,?,?,?); ");
         
-        $stmt->bind_param('sssiissssss', $order_type, $order_status, $user_name, $user_id, $user_phone, $user_address, $user_landmark, $location_link,  $shipping_method, $payment_method, $order_date);
+        $stmt->bind_param('sssiissssss', $order_type, $order_status, $user_name, $user_id, $user_phone, 
+        $user_address, $user_landmark, $location_link,  $shipping_method, $payment_method, $order_date);
     
         $stmt_status = $stmt->execute();
     

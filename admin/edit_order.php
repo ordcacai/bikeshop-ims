@@ -78,6 +78,7 @@ include('sidemenu.php'); ?>
                                 <option value="paid" <?php if($order['order_status'] == 'paid'){echo "selected";} ?>>Paid</option>
                                 <option value="shipped" <?php if($order['order_status'] == 'shipped'){echo "selected";} ?>>Shipped</option>
                                 <option value="delivered" <?php if($order['order_status'] == 'delivered'){echo "selected";} ?>>Delivered</option>
+                                <option value="cancelled" <?php if($order['order_status'] == 'cancelled'){echo "selected";} ?>>Cancelled</option>
 
                             </select>
                         </div>

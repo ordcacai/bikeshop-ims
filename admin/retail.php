@@ -6,6 +6,7 @@ include('sidemenu.php'); ?>
 <div class="main-content">
     <div class="container-fluid">
             <h1 class="my-4">Add Orders</h1>
+            <div class="mx-auto container">
                 <h2 class="my-4">Order Information</h2>
                 
                 <hr style="height: 3px; border: none; color: #000; background-color: #000; width: 100%;">
@@ -223,6 +224,7 @@ include('sidemenu.php'); ?>
                         </div>
 
         </form>
+        </div>
     </div>
 </div>
 

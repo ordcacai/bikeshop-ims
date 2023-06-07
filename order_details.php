@@ -13,7 +13,7 @@ if(isset($_POST['order_details_btn']) && isset($_POST['order_id'])){
     $order_id = $_POST['order_id'];
     $order_status = $_POST['order_status'];
 
-    $stmt = $conn->prepare("SELECT * FROM order_items WHERE order_id = ?");
+    $stmt = $conn->prepare("SELECT * FROM order_items WHERE order_id = ? ");
     $stmt->bind_param('i', $order_id);
     $stmt->execute();
 
@@ -89,10 +89,9 @@ function calculateTotalOrderPrice($order_details){
 
         <?php if($order_status == "not paid"){ ?>
 
-            <form style="float: right;" action="payment.php" method="POST">
+            <form style="float: right;" action="admin/cancel_order.php" method="POST">
                 <input type="hidden" name="order_total_price" value="<?php echo $order_total_price;?>">
                 <input type="hidden" name="order_status" value="<?php echo $order_status;?>">
-                <input type="submit" name="order_pay_btn" class="btn btn-primary" value="Pay Now">
             </form>
 
         <?php }?>
