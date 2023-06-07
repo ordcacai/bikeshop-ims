@@ -28,7 +28,6 @@ $stmt->close();
 <?php include('security.php');
 include('sidemenu.php'); ?>
 
-<link rel="stylesheet" type="text/css" href="admin_style.css">
 
 
 <div class="main-content">

@@ -19,6 +19,19 @@ if(isset($_GET['product_id'])){
 
     $product = $stmt->get_result(); //<- Array
 
+    $stmt5 = $conn->prepare("SELECT * FROM products WHERE product_id = ?");
+    $stmt5->bind_param("i", $product_id);
+
+    $stmt5->execute();
+    $products = $stmt5->get_result(); //<- Array
+
+    $stmt3 = $conn->prepare("SELECT quantity, color_size FROM stocks WHERE product_id = ?");
+    $stmt3->bind_param("i", $product_id);
+
+    $stmt3->execute();
+
+    $stock = $stmt3->get_result(); //<- Array
+
     $stmt1 = $conn->prepare("SELECT * FROM products WHERE product_category = 'Bike' LIMIT 4");
     $stmt1->execute();
     $bike = $stmt1->get_result(); //<- Array
@@ -65,15 +78,21 @@ if(isset($_GET['product_id'])){
 
             <div class="col-lg-6 col-md-12 col-sm-12 mx-5">
                 <h6><?php echo $row['product_category']; ?></h6>
-                <h6><?php echo $row['product_color']; ?></h6>
                 <h3 class="pb-2"><?php echo $row['product_name']; ?></h3>
                 <h2 class="pb-2 pt-2">₱<?php echo $row['product_price']; ?></h2>
-
+                    
                 <form method="POST" action="cart.php">
                     <input type="hidden" name="product_id" value="<?php echo $row['product_id']; ?>">
                     <input type="hidden" name="product_image" value="<?php echo $row['product_image']; ?>">
                     <input type="hidden" name="product_name" value="<?php echo $row['product_name']; ?>">
-                    <input type="hidden" name="product_color" value="<?php echo $row['product_color']; ?>">
+                    <?php }?>
+                    <select class="form-select mb-4" required name="product_color" required>
+                        <option value="">Select a Color</option>
+                        <?php foreach($stock as $row){?>
+                        <option value="<?php echo $row['color_size'];?>"><?php echo $row['color_size'];?></option>
+                        <?php }?>
+                    </select>
+                    <?php while($row = $products->fetch_assoc()){ ?>
                     <input type="hidden" name="product_price" value="<?php echo $row['product_price']; ?>">
                     <input type="number" name="product_quantity" value="1">
                     <button class="buy-btn mb-4" type="submit" name="add_to_cart">Add to Cart</button>
