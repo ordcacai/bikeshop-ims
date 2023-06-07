@@ -56,7 +56,7 @@ if(isset($_POST['register'])){
                     $stmt = $conn->prepare("INSERT INTO users (user_name, user_email, user_password)
                                             VALUES (?, ?, ?)");
                     $stmt->bind_param('sss', $name, $email, md5($password));
-                    
+
                     //register the account
                     if($stmt->execute()){
 
@@ -65,6 +65,7 @@ if(isset($_POST['register'])){
                         $_SESSION['user_email'] = $email;
                         $_SESSION['user_name'] = $name;
                         $_SESSION['logged_in'] = true;
+
                         header('location: account.php?register_success=Registered Successfully!');
 
                     //account registration failed
