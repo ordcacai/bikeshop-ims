@@ -50,38 +50,6 @@ include('sidemenu.php'); ?>
     <div class="container-fluid">
         <h1 class="my-4">Sales</h1>
 
-        <?php if (isset($_GET['edit_success_message'])) { ?>
-            <p class="text-center" style="color: green;"><?php echo $_GET['edit_success_message']; ?></p>
-        <?php } ?>
-
-        <?php if (isset($_GET['edit_failure_message'])) { ?>
-            <p class="text-center" style="color: red;"><?php echo $_GET['edit_failure_message']; ?></p>
-        <?php } ?>
-
-        <?php if (isset($_GET['delete_success_message'])) { ?>
-            <p class="text-center" style="color: green;"><?php echo $_GET['delete_success_message']; ?></p>
-        <?php } ?>
-
-        <?php if (isset($_GET['delete_failure_message'])) { ?>
-            <p class="text-center" style="color: red;"><?php echo $_GET['delete_failure_message']; ?></p>
-        <?php } ?>
-
-        <?php if (isset($_GET['product_created'])) { ?>
-            <p class="text-center" style="color: green;"><?php echo $_GET['product_created']; ?></p>
-        <?php } ?>
-
-        <?php if (isset($_GET['product_failed'])) { ?>
-            <p class="text-center" style="color: red;"><?php echo $_GET['product_failed']; ?></p>
-        <?php } ?>
-
-        <?php if (isset($_GET['images_updated'])) { ?>
-            <p class="text-center" style="color: green;"><?php echo $_GET['images_updated']; ?></p>
-        <?php } ?>
-
-        <?php if (isset($_GET['images_failed'])) { ?>
-            <p class="text-center" style="color: red;"><?php echo $_GET['images_failed']; ?></p>
-        <?php } ?>
-
         <form method="post" class="mb-4">
             <div class="form-row align-items-end">
                 <div class="col-md-3">

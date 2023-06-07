@@ -21,18 +21,25 @@ $images[] = $product['product_image'];
 $images[] = $product['product_image2'];
 $images[] = $product['product_image3'];
 $images[] = $product['product_image4'];
+
+$stmt->close();
 ?>
 
 <?php include('security.php');
 include('sidemenu.php'); ?>
 
-<link rel="stylesheet" type="text/css" href="admin_style.css">
 
 
 <div class="main-content">
     <div class="container-fluid">
         <h1 class="my-4">Product Details</h1>
 
+            <?php if(isset($_SESSION['status'])){ ?>
+                
+                    <h4 class="alert alert-success"><?php echo $_SESSION['status']; ?></h4>
+
+            <?php unset($_SESSION['status']); }?>
+        
         <div class="product-details-container mt-5">
             <div class="product-image">
                 <div class="product-carousel-container">

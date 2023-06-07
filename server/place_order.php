@@ -57,17 +57,17 @@ if(!isset($_SESSION['logged_in'])){
             $product_price = $product['product_price'];
             $product_quantity = $product['product_quantity'];
             
-            $stmt3 = $conn->prepare('SELECT product_quantity FROM products WHERE product_id = ?');
-            $stmt3->bind_param('i', $product_id);
+            $stmt3 = $conn->prepare('SELECT quantity FROM stocks WHERE product_id = ? AND color_size = ?');
+            $stmt3->bind_param('is', $product_id, $product_color);
             $stmt3->execute();
             $products = $stmt3->get_result();
 
             foreach($products as $product){
 
-            $new_quantity = $product['product_quantity'] - $product_quantity;
+            $new_quantity = $product['quantity'] - $product_quantity;
 
-            $stmt4 = $conn->prepare('UPDATE products SET product_quantity = ? WHERE product_id = ?');
-            $stmt4->bind_param('ii', $new_quantity, $product_id);
+            $stmt4 = $conn->prepare('UPDATE stocks SET quantity = ? WHERE product_id = ? AND color_size = ?');
+            $stmt4->bind_param('iis', $new_quantity, $product_id, $product_color);
             $stmt4->execute();
             //4. store each single item in database (order_items)
             $stmt1 = $conn->prepare("INSERT INTO order_items (order_id, product_id, product_name, product_color, product_image, product_price, product_quantity, user_id, order_date)
