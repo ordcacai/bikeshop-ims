@@ -9,9 +9,19 @@
 
 <?php
 
-    $stmt = $conn->prepare("SELECT COUNT(*) As total_records_users FROM users");
+    $stmt = $conn->prepare("SELECT COUNT(*) As total_records_users FROM users WHERE user_type='user'");
     $stmt->execute();
     $stmt->bind_result($total_records_users);
+    $stmt->store_result();
+    $stmt->fetch();
+
+?>
+
+<?php
+
+    $stmt = $conn->prepare("SELECT COUNT(*) As total_records_users FROM users WHERE user_type='employee'");
+    $stmt->execute();
+    $stmt->bind_result($total_records_employees);
     $stmt->store_result();
     $stmt->fetch();
 
@@ -115,15 +125,7 @@ chart2.render();
     <div class="container-fluid mb-5">
             <h1 class="my-4">Dashboard</h1>
                     <div class="cards">
-                        <div class="card-single">
-                            <div>
-                                <h1><?php echo $total_records_users; ?></h1>
-                                <span>Customers</span>
-                            </div>
-                            <div>
-                                <span><i class="fas fa-users"></i></span>
-                            </div>
-                        </div>
+                        
                         <div class="card-single">
                             <div>
                                 <h1><?php echo $total_records_orders; ?></h1>
@@ -133,6 +135,7 @@ chart2.render();
                                 <span><i class="fas fa-clipboard-list"></i></span>
                             </div>
                         </div>
+                        
                         <div class="card-single">
                             <div>
                                 <h1><?php echo $total_records_products; ?></h1>
@@ -142,13 +145,24 @@ chart2.render();
                                 <span><i class="fas fa-box"></i></span>
                             </div>
                         </div>
+                        
                         <div class="card-single">
                             <div>
-                                <h1>₱999,999</h1>
-                                <span>Income</span>
+                                <h1><?php echo $total_records_employees; ?></h1>
+                                <span>Employees</span>
                             </div>
                             <div>
-                                <span><i class="fas fa-wallet"></i></span>
+                                <span><i class="fas fa-user-check"></i></span>
+                            </div>
+                        </div>
+
+                        <div class="card-single">
+                            <div>
+                                <h1><?php echo $total_records_users; ?></h1>
+                                <span>Customers</span>
+                            </div>
+                            <div>
+                                <span><i class="fas fa-users"></i></span>
                             </div>
                         </div>
                     </div>
