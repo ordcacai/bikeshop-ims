@@ -10,7 +10,6 @@
         if(isset($_POST['add_order'])){
 
         //1. get user info and store in database
-        //$order_type = $_POST['order_type'];
         $order_type = $_POST['order_type'];
         $wsname = $_POST['wsname'];
         $wsphone = $_POST['wsphone'];

@@ -295,9 +295,6 @@
                                 }
                             });
                             </script>
-    
-//Script to add row
-
 </script>
 
 <script>
@@ -318,7 +315,6 @@
     });
 </script>
 <script>
-
                     function addRow() {
                         // Clone the row template
                         var newRow = document.querySelector("#rowTemplate").cloneNode(true);
@@ -343,7 +339,7 @@
                         var row = button.closest(".row");
                         row.parentNode.removeChild(row);
                     }
-                    </script>
+</script>
     <script>
             function showSubOptionsOrTextBox() {
                 var mainOptions = document.getElementById("main-options");

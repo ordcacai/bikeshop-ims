@@ -1,13 +1,13 @@
 <?php include('header.php'); ?>
 
-<?php include('security.php');
-include('sidemenu.php'); ?>
+<?php include('security.php'); ?>
+<?php include('sidemenu.php'); ?>
 
 <div class="main-content">
     <div class="container-fluid">
-            <h1 class="my-4">Add Orders</h1>
-            <div class="table-responsive">
-                <div class="mx-auto container">
+        <h1 class="my-4">Add Orders</h1>
+        <div class="table-responsive">
+            <div class="mx-auto container">
                 <h2 class="my-4">Order Information</h2>
                 
                 <hr style="height: 3px; border: none; color: #000; background-color: #000; width: 100%;">
@@ -87,12 +87,13 @@ include('sidemenu.php'); ?>
 
                 <h4 class="my-4">Add Products</h4>
                     <div style="text-align: left; margin-bottom: 10px;">
-                    <input type="button" class="btn btn-secondary me-5" onclick="addRow()" value="Add an Item">
+                        <input type="button" class="btn btn-secondary me-5" onclick="addRow()" value="Add an Item">
                     </div>
+                    
                     <div id="productRows" class="form-group mt-2">
                     <div class="row" id="rowTemplate" style="display: none;">
                         <div class="col">
-                        <label for="itemName">Item Name:</label>
+                            <label for="itemName">Item Name:</label>
                         <?php
                         // Retrieve data from MySQL database
                         $sql = "SELECT product_id, product_name FROM products";
@@ -194,24 +195,24 @@ include('sidemenu.php'); ?>
 
                     <br><br>
                     <div id="cashPayments">
-                    <label for="payment_type"><strong>Cash payments</strong></label> 
-                    <select class="form-control" id="payment_type" required name="payment_method" style="width: 500px">
-                        <option value="">-- Select Cash Method --</option>
-                        <option value="BPI (Bank Transfer)">BPI (Bank Transfer)</option>
-                        <option value="BDO (Bank Transfer)">BDO (Bank Transfer)</option>
-                        <option value="GCash">GCash</option>
-                        <option value="Cash">Cash</option>
-                    </select>
+                        <label for="payment_type"><strong>Cash payments</strong></label> 
+                        <select class="form-control" id="payment_type" required name="payment_method" style="width: 500px">
+                            <option value="">-- Select Cash Method --</option>
+                            <option value="BPI (Bank Transfer)">BPI (Bank Transfer)</option>
+                            <option value="BDO (Bank Transfer)">BDO (Bank Transfer)</option>
+                            <option value="GCash">GCash</option>
+                            <option value="Cash">Cash</option>
+                        </select>
                     </div>
                     <div id="installmentOptions">
-                    <label for="payment_type"><strong>Installment Options</strong></label>
-                    <select class="form-control" id="installment_type" required name="payment_method" style="width: 500px">
-                        <option value="">-- Select Installment Type --</option>
-                        <option value="homecredit">Home Credit</option>
-                        <option value="billease">BillEase</option>
-                        <option value="atome">Atome</option>
-                        <option value="bdocreditcard">BDO Credit Card</option>
-                    </select>
+                        <label for="payment_type"><strong>Installment Options</strong></label>
+                        <select class="form-control" id="installment_type" required name="payment_method" style="width: 500px">
+                            <option value="">-- Select Installment Type --</option>
+                            <option value="homecredit">Home Credit</option>
+                            <option value="billease">BillEase</option>
+                            <option value="atome">Atome</option>
+                            <option value="bdocreditcard">BDO Credit Card</option>
+                        </select>
                     </div>
 
                 <hr style="height: 3px; border: none; color: #000; background-color: #000; width: 100%;">
@@ -220,17 +221,15 @@ include('sidemenu.php'); ?>
                 
                     <textarea class="form-control" style="width: 500px" id="input" name="remarks" rows="10" cols="50" maxlength="300" placeholder="Enter your remarks here."></textarea><br>
                 
-                        <div class="form-group my-5">
+                        
                             <input type="submit" class="btn btn-warning me-5" name="add_order" value="Confirm Order">
-                        </div>
 
-                    </form>
+        </form>
 
                 </div>
 
             </div>
 
-        </main>
     </div>
 </div>
 
@@ -312,8 +311,18 @@ include('sidemenu.php'); ?>
                         var row = button.closest(".row");
                         row.parentNode.removeChild(row);
                     }
-                    </script>
-    <script>
+</script>
+<script>
+                            function redirectPage() {
+                                var selectElement = document.getElementById("orderType");
+                                var selectedValue = selectElement.value;
+
+                                if (selectedValue === "wholesale") {
+                                    window.location.href = "wholesale.php";
+                                }
+                            }
+</script>
+<script>
             function showSubOptionsOrTextBox() {
                 var mainOptions = document.getElementById("main-options");
                 var subOptionsContainer = document.getElementById("sub-options-container");
@@ -356,13 +365,3 @@ include('sidemenu.php'); ?>
             });
             </script>
 
-<script>
-                            function redirectPage() {
-                                var selectElement = document.getElementById("orderType");
-                                var selectedValue = selectElement.value;
-
-                                if (selectedValue === "wholesale") {
-                                    window.location.href = "wholesale.php";
-                                }
-                            }
-                        </script>
