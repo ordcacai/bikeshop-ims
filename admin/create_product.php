@@ -37,6 +37,30 @@ if (isset($_POST['add_product'])) {
     $image_name2, $image_name3, $image_name4, $retail_price, $base_price, $ws_price, $product_special_offer, $product_color_size, $product_quantity);
 
     if ($stmt->execute()) {
+
+        $product_id = $stmt->insert_id;
+
+        for($i=0; $i<count($_POST['row']); $i++){
+        $product_name = $_POST['name'];
+        $color_size = $_POST['color_size'][$i];
+        $quantity = $_POST['quantity'][$i];
+
+    
+    
+    if($product_id !== '' && $product_name !== '' && $color_size !== '' && $quantity !== ''){
+
+        $query = $conn->prepare('INSERT INTO stocks (product_id, product_name, quantity, color_size) VALUES (?, ?, ?, ?)');
+        $query->bind_param('isis', $product_id, $product_name, $quantity, $color_size);
+        $query->execute();
+
+    }else{
+
+        echo '<div class="alert alert-danger" role="alert">Error Submitting in Data</div>';
+
+    }
+}
+
+
         header('location: inventory.php?product_added=Product has been created successfully!');
         exit;
     } else {
