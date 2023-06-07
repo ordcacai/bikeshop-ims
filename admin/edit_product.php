@@ -43,24 +43,14 @@ if(isset($_GET['product_id'])){
 
 ?>
 
-<div class="container-fluid">
-    <div class="row" style="min-height:1000px">
-
-    <?php include('security.php');
+<?php include('security.php');
 include('sidemenu.php'); ?>
 
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 mt-2">
-                <h1 class="primary">Dashboard</h1>
-                <div class="btn-toolbar mb-2 mb-md-0">
-                    <div class="btn-group me-2"></div>
-                </div>
-            </div>
 
-            <h2 class="form-weight-bold mt-3 my-3">Edit Products</h2>
-            <div class="table-responsive">
 
-                <div class="mx-auto container">
+<div class="main-content">
+    <div class="container">
+            <h1 class="form-weight-bold my-4">Edit Products</h1>
 
                     <form id="edit-form" method="POST" action="edit_product.php">
                         <p style="color: red;"><?php if(isset($_GET['error'])){ echo $_GET['error']; } ?></p>
@@ -83,10 +73,10 @@ include('sidemenu.php'); ?>
                             <input type="number" class="form-control" id="product-disc" value="<?php echo $product['product_special_offer']; ?>" name="discount" min="1" max="100" placeholder="Discount" required>
                         </div>
 
-                        <div class="form-group mt-2">
+                        <!-- <div class="form-group mt-2">
                             <label><strong>Color</strong></label>
                             <input type="text" class="form-control" id="product-color" value="<?php echo $product['product_color']; ?>" name="color" placeholder="Color" required>
-                        </div>
+                        </div> -->
 
                         <div class="form-group mt-2">
                             <label><strong>Description</strong></label>
@@ -110,12 +100,6 @@ include('sidemenu.php'); ?>
                         <?php } ?>
 
                     </form>
-
-                </div>
-
-            </div>
-
-        </main>
     </div>
 </div>
 
