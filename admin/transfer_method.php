@@ -1,6 +1,7 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
+    $product_id = $_POST['product_id'];
     $product_name = $_POST["product-name"];
     $location_from = $_POST["location_from"];
     $location_to = $_POST["location_to"];
@@ -12,9 +13,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $errors = array();
 
     // Check if the product name corresponds to the correct product ID
-    $sql = "SELECT product_id, product_name FROM products WHERE product_name = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("is", $product_id, $product_name);
+    $stmt = $conn->prepare("SELECT product_id, product_name FROM products WHERE product_name = ?");
+    $stmt->bind_param("s", $product_name);
     $stmt->execute();
     $stmt->get_result();
 

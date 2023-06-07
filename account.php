@@ -73,7 +73,7 @@ if(isset($_SESSION['logged_in'])){
 
     if($_SESSION['user_type']=='user'){
     $user_id = $_SESSION['user_id'];
-    $stmt = $conn->prepare("SELECT * FROM orders WHERE user_id = ?");
+    $stmt = $conn->prepare("SELECT * FROM orders WHERE user_id = ? ORDER BY order_id DESC");
     $stmt->bind_param('i', $user_id);
     $stmt->execute();
 

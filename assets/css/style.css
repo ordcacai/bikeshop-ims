@@ -202,7 +202,7 @@ h6{
     background-repeat: no-repeat;
     background-size: cover;
     border: 1px black solid;
-    padding: 50px;
+    
 }
 
 #new .one{
@@ -227,15 +227,9 @@ h6{
     color: black;
 }
 
-#new .one:nth-child(1) .details{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: start;
-}
 
-#new .one:nth-child(2) .details{
+
+#new .one .details{
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -243,13 +237,6 @@ h6{
     text-align: center;
 }
 
-#new .one:nth-child(3) .details{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: flex-end;
-    text-align: right;
-}
 
 /* Shop */
 
