@@ -42,17 +42,17 @@ include('sidemenu.php'); ?>
 
                             <div class="form-group mt-2">
                                 <label><strong>Image 2</strong></label>
-                                <input type="file" class="form-control" id="image2" name="image2" placeholder="Image 2" required>
+                                <input type="file" class="form-control" id="image2" name="image2" placeholder="Image 2" >
                             </div>
 
                             <div class="form-group mt-2">
                                 <label><strong>Image 3</strong></label>
-                                <input type="file" class="form-control" id="image3" name="image3" placeholder="Image 3" required>
+                                <input type="file" class="form-control" id="image3" name="image3" placeholder="Image 3" >
                             </div>
 
                             <div class="form-group mt-2">
                                 <label><strong>Image 4</strong></label>
-                                <input type="file" class="form-control" id="image4" name="image4" placeholder="Image 4" required>
+                                <input type="file" class="form-control" id="image4" name="image4" placeholder="Image 4" >
                             </div>
                         </div>
 
