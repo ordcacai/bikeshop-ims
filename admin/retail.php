@@ -4,6 +4,13 @@
 
 <div class="main-content">
     <div class="container-fluid">
+    <i class="fas fa-chevron-circle-left" style="font-size: 50px; color: #f9881c; cursor: pointer;" onclick="goBack()" onmouseover="this.style.backgroundColor='#d6d6d7'" onmouseout="this.style.backgroundColor='transparent'"></i>
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script>
+
             <h1 class="my-4">Add Orders</h1>
                 <div class="mx-auto container">
                 <h2 class="my-4">Order Information</h2>

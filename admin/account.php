@@ -61,6 +61,13 @@ if(!isset($_SESSION['logged_in'])){
 
 <div class="main-content">
     <div class="container-fluid">
+    <i class="fas fa-chevron-circle-left" style="font-size: 50px; color: #f9881c; cursor: pointer;" onclick="goBack()" onmouseover="this.style.backgroundColor='#d6d6d7'" onmouseout="this.style.backgroundColor='transparent'"></i>
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script>
+
             <h1 class="my-4">Account Management</h1>
             <a class="btn btn-success btn mb-4" style="float:right;" href="create_user.php"><i class="fas fa-plus-circle"></i> Create Account</a>
 
