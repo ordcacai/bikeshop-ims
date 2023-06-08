@@ -109,10 +109,10 @@ if(isset($_POST['search'])){
                         <div class="col-lg-12 col-md-12 col-sm-12">
 
                             <p>Price</p>
-                            <input type="range" class="form-range w-50" name="price" value="<?php if(isset($price)){echo $price;}else{echo "100";} ?>" min="1"  max="1000"id="customRange2">
+                            <input type="range" class="form-range w-50" name="price" value="<?php if(isset($price)){echo $price;}else{echo "100";} ?>" min="1000"  max="50000"id="customRange2">
                             <div class="w-50">
-                                <span style="float: left;">₱1</span>
-                                <span style="float: right;">₱1000</span>
+                                <span style="float: left;">₱1,000</span>
+                                <span style="float: right;">₱50,000</span>
                             </div>
 
                         </div>
