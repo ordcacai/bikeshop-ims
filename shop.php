@@ -82,7 +82,7 @@ if(isset($_POST['search'])){
 
 <!-- Search -->
 <div id="shop-container">
-<section id="search" class="my-5 py-5"> 
+<section id="search" class="my-5 py-5 ms-5"> 
         <div class="container mt-5 py-5">
             <h4 class="text-center">Search Products</h4>
             <hr>
