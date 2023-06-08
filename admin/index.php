@@ -174,7 +174,7 @@ chart2.render();
                             <div class="card-header">
                                     <h3>Best Selling Products</h3>
 
-                                    <button onclick="window.location.href='products.php';">View All <span><i class="fas fa-eye"></i></span></button>
+                                    <button onclick="window.location.href='inventory.php';">View All <span><i class="fas fa-eye"></i></span></button>
                                 </div>
                                 <div id="chartContainer" style="height: 499px; width: 100%;"></div>
                             </div>
@@ -217,7 +217,7 @@ chart2.render();
                             <div class="card-header">
                                     <h3>Stocks</h3>
 
-                                    <button onclick="window.location.href='products.php';">View All <span><i class="fas fa-eye"></i></span></button>
+                                    <button onclick="window.location.href='inventory.php';">View All <span><i class="fas fa-eye"></i></span></button>
                                 </div>
                                 <div id="chartContainer2" style="height: 363px; width: 100%;"></div>
                             </div>
