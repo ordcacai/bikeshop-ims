@@ -353,6 +353,13 @@ footer .contact{
     color:gray;
 }
 
+@media (max-width: 575.98px) {
+    footer{
+        width: 100%;
+    }
+
+
+}
 /* Product View */
 
 .small-img-group{
@@ -544,14 +551,14 @@ th:last-child{
 
 #login-form{
     width: 70%;
-    /* margin: 5px auto; */
+    margin: 5px auto;
     text-align: center;
     border-top: 3px darkorange solid; 
 }
 
 #login-form input{
     width: 70%;
-    /* margin: 5px auto; */
+    margin: 5px auto;
 }
 
 #login-form #login-btn{
@@ -572,6 +579,21 @@ th:last-child{
     color: #ffae42;
 }
 
+@media (max-width: 575.98px) {
+    #login-form{
+        width: 100%;
+        margin: 5px auto;
+        text-align: center;
+        border-top: 3px darkorange solid; 
+    }
+    
+    #login-form input{
+        width: 100%;
+        margin: 5px auto;
+    }
+
+
+}
 /* Register */
 
 #register-form{
@@ -605,6 +627,19 @@ th:last-child{
     color: #ffae42;
 }
 
+@media (max-width: 575.98px) {
+    #register-form{
+        width: 100%;
+        margin: 5px auto;
+        text-align: center;
+        border-top: 3px darkorange solid;
+    }
+    
+    #register-form input{
+        width: 100%;
+        margin: 5px auto;
+    }
+}
 /* Account */
 
 #account-form{
