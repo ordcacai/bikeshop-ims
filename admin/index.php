@@ -77,13 +77,13 @@
 ?>
 
 <?php
-    $stmt6 = $conn->prepare("SELECT product_name, product_quantity FROM products ORDER BY product_quantity DESC LIMIT 10");
+    $stmt6 = $conn->prepare("SELECT product_name, quantity FROM stocks ORDER BY quantity DESC LIMIT 10");
     $stmt6->execute();
     $stocks = $stmt6->get_result();//array
     $dataPoints2 = array();
     foreach($stocks as $row){
 
-    array_push($dataPoints2, array("y" => $row['product_quantity'], "label" => $row['product_name'] ));
+    array_push($dataPoints2, array("y" => $row['quantity'], "label" => $row['product_name'] ));
 
     }
 ?>
