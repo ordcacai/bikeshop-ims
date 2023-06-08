@@ -46,6 +46,7 @@ include('sidemenu.php'); ?>
 <div class="main-content">
     <div class="container-fluid">
             <h1 class="my-4">Stocks</h1>
+            <a class="btn btn-secondary btn mb-5 me-4" style="float:right;" href="print_stocks.php"><i class="fas fa-print"></i> Print</a>
 
                 <?php if(isset($_GET['edit_success_message'])){ ?>
                     <p class="text-center" style="color: green;"><?php echo $_GET['edit_success_message']; ?></p>   

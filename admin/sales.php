@@ -8,30 +8,32 @@ if (!isset($_SESSION['logged_in'])) {
 ?>
 
 <?php
-// 1. Determine page number
-if (isset($_GET['page_no']) && $_GET['page_no'] != "") {
+//1. determine page no.
+if(isset($_GET['page_no']) && $_GET['page_no'] != ""){
+    //if user has already entered page then page number is the one that they selected
     $page_no = $_GET['page_no'];
-} else {
+}else{
+    //if user just entered the page then default page is 1
     $page_no = 1;
 }
 
-// 2. Return number of records
-$stmt1 = $conn->prepare("SELECT COUNT(*) AS total_records FROM orders");
+//2. return number of products
+$stmt1 = $conn->prepare("SELECT COUNT(*) As total_records FROM orders");
 $stmt1->execute();
 $stmt1->bind_result($total_records);
 $stmt1->store_result();
 $stmt1->fetch();
 
-// 3. Records per page
+//3. products per page
 $total_records_per_page = 5;
-$offset = ($page_no - 1) * $total_records_per_page;
+$offset = ($page_no-1) * $total_records_per_page;
 $previous_page = $page_no - 1;
 $next_page = $page_no + 1;
 $adjacents = "2";
-$total_no_of_pages = ceil($total_records / $total_records_per_page);
+$total_no_of_pages = ceil($total_records/$total_records_per_page);
 
 // 4. Get sales records
-$stmt2 = $conn->prepare("SELECT orders.order_date, order_items.product_name, order_items.product_price, order_items.product_quantity, (order_items.product_price - products.product_bp) * order_items.product_quantity AS total_cost, orders.shipping_method, products.product_bp, ((order_items.product_price - products.product_bp) * order_items.product_quantity) AS gross_income
+$stmt2 = $conn->prepare("SELECT orders.order_date, order_items.product_name, order_items.product_price, order_items.product_quantity, order_items.product_price * order_items.product_quantity AS total_cost, orders.shipping_method, products.product_bp, products.product_wsp, ((order_items.product_price - products.product_bp) * order_items.product_quantity) AS gross_income
 FROM orders
 INNER JOIN order_items ON orders.order_id = order_items.order_id
 INNER JOIN products ON order_items.product_id = products.product_id
@@ -51,9 +53,11 @@ include('sidemenu.php'); ?>
 <div class="main-content">
     <div class="container-fluid">
         <h1 class="my-4">Sales</h1>
+        
 
         <div class="row">
             <div class="col-md-12">
+            <a class="btn btn-secondary btn mb-5 me-4" style="float:right;" href="print_sales.php"><i class="fas fa-print"></i> Print</a>
                 <form action="" method="POST" class="d-flex justify-content-center align-items-center mb-4">
                     <div class="form-group mx-2">
                         <label for="start_date">Start Date:</label>
@@ -77,10 +81,11 @@ include('sidemenu.php'); ?>
                         <th>Order Date</th>
                         <th>Product Name</th>
                         <th>Product Price</th>
+                        <th>Product Base Price</th>
                         <th>Product Quantity</th>
                         <th>Total Cost</th>
-                        <th>Shipping Method</th>
                         <th>Gross Income</th>
+                        <th>Shipping Method</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -89,10 +94,11 @@ include('sidemenu.php'); ?>
                             <td><?php echo $row['order_date']; ?></td>
                             <td><?php echo $row['product_name']; ?></td>
                             <td><?php echo $row['product_price']; ?></td>
+                            <td><?php echo $row['product_bp']; ?></td>
                             <td><?php echo $row['product_quantity']; ?></td>
                             <td><?php echo $row['total_cost']; ?></td>
-                            <td><?php echo $row['shipping_method']; ?></td>
                             <td><?php echo $row['gross_income']; ?></td>
+                            <td><?php echo $row['shipping_method']; ?></td>
                         </tr>
                     <?php } ?>
                 </tbody>
@@ -105,75 +111,30 @@ include('sidemenu.php'); ?>
             </div>
         <?php } ?>
         <nav aria-label="Page navigation example" class="text-center">
-            <ul class="pagination mt-5 justify-content-center">
-                <li class="page-item <?php if ($page_no <= 1) {
-                                            echo 'disabled';
-                                        } ?>">
-                    <a class="page-link" <?php if ($page_no > 1) {
-                                                echo "href='?page_no=$previous_page'";
-                                            } ?>>Previous</a>
-                </li>
+                    <ul class="pagination mt-5 justify-content-center">
+                        <li class="page-item">
+                            <a class="page-link <?= ($page_no <= 1) ? 'disabled' : ''; ?> " <?= ($page_no > 1) ? 'href=?page_no=' .$previous_page : ''; ?>>Previous</a>
+                        </li>
 
-                <?php
-                if ($total_no_of_pages <= 10) {
-                    for ($counter = 1; $counter <= $total_no_of_pages; $counter++) {
-                        if ($counter == $page_no) {
-                            echo "<li class='page-item active'><a class='page-link'>$counter</a></li>";
-                        } else {
-                            echo "<li class='page-item'><a class='page-link' href='?page_no=$counter'>$counter</a></li>";
-                        }
-                    }
-                } elseif ($total_no_of_pages > 10) {
-                    if ($page_no <= 4) {
-                        for ($counter = 1; $counter < 8; $counter++) {
-                            if ($counter == $page_no) {
-                                echo "<li class='page-item active'><a class='page-link'>$counter</a></li>";
-                            } else {
-                                echo "<li class='page-item'><a class='page-link' href='?page_no=$counter'>$counter</a></li>";
-                            }
-                        }
-                        echo "<li class='page-item'><a class='page-link'>...</a></li>";
-                        echo "<li class='page-item'><a class='page-link' href='?page_no=$second_last'>$second_last</a></li>";
-                        echo "<li class='page-item'><a class='page-link' href='?page_no=$total_no_of_pages'>$total_no_of_pages</a></li>";
-                    } elseif ($page_no > 4 && $page_no < $total_no_of_pages - 4) {
-                        echo "<li class='page-item'><a class='page-link' href='?page_no=1'>1</a></li>";
-                        echo "<li class='page-item'><a class='page-link' href='?page_no=2'>2</a></li>";
-                        echo "<li class='page-item'><a class='page-link'>...</a></li>";
-                        for ($counter = $page_no - $adjacents; $counter <= $page_no + $adjacents; $counter++) {
-                            if ($counter == $page_no) {
-                                echo "<li class='page-item active'><a class='page-link'>$counter</a></li>";
-                            } else {
-                                echo "<li class='page-item'><a class='page-link' href='?page_no=$counter'>$counter</a></li>";
-                            }
-                        }
-                        echo "<li class='page-item'><a class='page-link'>...</a></li>";
-                        echo "<li class='page-item'><a class='page-link' href='?page_no=$second_last'>$second_last</a></li>";
-                        echo "<li class='page-item'><a class='page-link' href='?page_no=$total_no_of_pages'>$total_no_of_pages</a></li>";
-                    } else {
-                        echo "<li class='page-item'><a class='page-link' href='?page_no=1'>1</a></li>";
-                        echo "<li class='page-item'><a class='page-link' href='?page_no=2'>2</a></li>";
-                        echo "<li class='page-item'><a class='page-link'>...</a></li>";
 
-                        for ($counter = $total_no_of_pages - 6; $counter <= $total_no_of_pages; $counter++) {
-                            if ($counter == $page_no) {
-                                echo "<li class='page-item active'><a class='page-link'>$counter</a></li>";
-                            } else {
-                                echo "<li class='page-item'><a class='page-link' href='?page_no=$counter'>$counter</a></li>";
-                            }
-                        }
-                    }
-                }
-                ?>
+                        <li class="page-item"><a href="?page_no=1" class="page-link">1</a></li>
+                        <li class="page-item"><a href="?page_no=2" class="page-link">2</a></li>
 
-                <li class="page-item <?php if ($page_no >= $total_no_of_pages) {
-                                            echo 'disabled';
-                                        } ?>">
-                    <a class="page-link" <?php if ($page_no < $total_no_of_pages) {
-                                                echo "href='?page_no=$next_page'";
-                                            } ?>>Next</a>
-                </li>
-            </ul>
-        </nav>
+                            <?php if($page_no >= 3) { ?>
+                                <li class="page-item"><a href="#" class="page-link">...</a></li>
+                                <li class="page-item"><a href="?page_no=<?= $page_no; ?>" class="page-link"><?= $page_no; ?></a></li>
+                            <?php } ?>
+
+                        <li class="page-item">
+                            <a class="page-link <?= ($page_no >= $total_no_of_pages) ? 'disabled' : ''; ?> " <?= ($page_no < $total_no_of_pages) ? 'href=?page_no=' .$next_page : ''; ?>>Next</a>
+                        </li>
+
+                    </ul>
+                </nav>
+
+                <div class="p-10">
+                    <strong>Page <?= $page_no; ?> of <?= $total_no_of_pages ?></strong>
+                </div>
     </div>
 </div>
 
@@ -199,7 +160,3 @@ function calculateTotalGrossIncome($conn, $start_date = null, $end_date = null)
     return $total_income;
 }
 ?>
-
-<style>
-    
-</style>

@@ -44,7 +44,6 @@ class PDF extends FPDF{
         $this->Cell(0	,5,'59C Gen Ordonez Ave ',0,1,'R');
         $this->Cell(0	,5,'Marikina City, Philippines, 1800',0,1,'R');
         $this->Cell(0	,5,'Phone No. +63 9562256879',0,1,'R');
-        $this->Cell(0	,5,'Fax [+12345678]',0,1,'R');
         $this->Line(0,48,210,48);
         //make a dummy empty cell as a vertical spacer
         $this->Cell(189	,20,'',0,1);//end of line
