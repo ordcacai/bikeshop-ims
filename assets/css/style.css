@@ -297,11 +297,11 @@ h6{
 
 /* Footer */
 
-Footer{
+footer{
     background-color: #222222;
 }
 
-Footer h5{
+footer h5{
     color: white;
     font-weight: 700;
     font-size: 1.2rem;
@@ -353,9 +353,10 @@ footer .contact{
     color:gray;
 }
 
-@media (max-width: 575.98px) {
+@media (max-width: 991.98px) {
     footer{
         width: 100%;
+        background-color: #222222;
     }
 
 
@@ -405,6 +406,14 @@ footer .contact{
     display: flex;
     justify-content: center;
 
+}
+
+@media (max-width: 991.98px) {
+    #shop-container {
+
+        display: none;
+    
+    }
 }
 
 #search .btn{
@@ -579,17 +588,14 @@ th:last-child{
     color: #ffae42;
 }
 
-@media (max-width: 575.98px) {
+@media (max-width: 991.98px) {
     #login-form{
         width: 100%;
-        margin: 5px auto;
-        text-align: center;
-        border-top: 3px darkorange solid; 
+        margin: 0;
     }
     
     #login-form input{
         width: 100%;
-        margin: 5px auto;
     }
 
 
@@ -627,7 +633,7 @@ th:last-child{
     color: #ffae42;
 }
 
-@media (max-width: 575.98px) {
+@media (max-width: 991.98px) {
     #register-form{
         width: 100%;
         margin: 5px auto;

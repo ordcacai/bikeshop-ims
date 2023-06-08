@@ -74,12 +74,11 @@ if(isset($_POST['login_btn'])){
     
     <!-- Login -->
 
-    <section class="my-t py-5">
-        <div class="container text-center mt-3 pt-5">
+    <section>
+        <div class="text-center mt-3 pt-5">
             <h2 class="form-weight-bold mt-5 my-3">Login</h2>
         </div>
 
-        <div class="mx-auto container">
             <form action="login.php" id="login-form" method="POST">
                 <p style="color:red;" class="text-center"><?php if(isset($_GET['error'])){ echo $_GET['error'];} ?></p>
                 <div class="form-group">
@@ -97,11 +96,8 @@ if(isset($_POST['login_btn'])){
                     <a href="register.php" id="register-url" class="btn">Don't have an Account? Register Here</a>
                 </div>
             </form>
-        </div>
     </section>
 
     <?php include('layouts/footer.php'); ?>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
 </body>
 </html>

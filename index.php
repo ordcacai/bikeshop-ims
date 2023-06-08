@@ -5,7 +5,7 @@
 ?>   
     
     <!-- Home -->
-
+<section>
       <section id="home">
         <div class="container">
             <h5>NEW ARRIVAL</h5>
@@ -146,7 +146,7 @@
 
         </div>
       </section>
-
+      </section>
 <?php
 
 include('layouts/footer.php');
