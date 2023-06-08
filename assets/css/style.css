@@ -408,6 +408,14 @@ footer .contact{
 
 }
 
+@media (max-width: 991.98px) {
+    #shop-container {
+
+        display: none;
+    
+    }
+}
+
 #search .btn{
     background-color: darkorange;
     color: white;
