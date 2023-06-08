@@ -798,7 +798,7 @@ h5.card-title {
 #billease_banner{
     background-image: url('../imgs/bill_logo.png');
     width: 100%;
-    height: 80vh;
+    height: 50vh;
     background-size: cover;
     background-position-x: center;
     background-position-y: -180px;
@@ -941,12 +941,26 @@ div.scroll-container {
   }
 
   #van_banner{
-    background-image: url('../imgs/del_bg.png');
+    background-image: url('../imgs/del_van.png');
     width: 100%;
-    height: 80vh;
+    height: 60vh;
     background-size: cover;
     background-position-x: center;
-    background-position-y: -200px;
+    background-position-y: -150px;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#cc_banner{
+    background-image: url('../imgs/cc.png');
+    width: 100%;
+    height: 60vh;
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: -150px;
     background-repeat: no-repeat;
     display: flex;
     flex-direction: column;

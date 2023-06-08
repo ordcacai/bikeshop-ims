@@ -24,9 +24,6 @@ include('layouts/header.php');
       <a class="nav-link" data-toggle="pill" href="atome.php" id="nav-pill-1">Atome App</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-toggle="pill" href="cashalo.php" id="nav-pill-1">Cashalo App</a>
-    </li>
-    <li class="nav-item">
       <a class="nav-link" data-toggle="pill" href="cc.php" id="nav-pill-1">Credit Cards</a>
     </li>
   </ul>  

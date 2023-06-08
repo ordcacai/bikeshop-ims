@@ -53,7 +53,7 @@
 
             <!-- 1st Product -->
             <div class="one col-lg-4 col-md-12 col-sm-12 p-0">
-                <img src="assets/imgs/new_bike.jpg" class="img-fluid">
+                <img src="assets/imgs/new_bike4.jpg" class="img-fluid">
                 <div class="details">
                     <h2>Product Name</h2>
                     <button onclick="window.location.href='shop.php';" class="text-uppercase">Shop Now</button>
@@ -61,7 +61,7 @@
             </div>
             <!-- 2nd Product -->
             <div class="one col-lg-4 col-md-12 col-sm-12 p-0">
-                <img src="assets/imgs/new_bike3.jpg" class="img-fluid">
+                <img src="assets/imgs/new_bike5.jpg" class="img-fluid">
                 <div class="details">
                     <h2>Product Name</h2>
                     <button onclick="window.location.href='shop.php';" class="text-uppercase">Shop Now</button>
@@ -69,7 +69,7 @@
             </div>
             <!-- 3rd Product -->
             <div class="one col-lg-4 col-md-12 col-sm-12 p-0">
-                <img src="assets/imgs/new_bike2.jpg" class="img-fluid">
+                <img src="assets/imgs/new_bike6.jpg" class="img-fluid">
                 <div class="details">
                     <h2>Product Name</h2>
                     <button onclick="window.location.href='shop.php';" class="text-uppercase">Shop Now</button>
