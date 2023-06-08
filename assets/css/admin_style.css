@@ -395,30 +395,31 @@ input::-webkit-inner-spin-button {
 
 /* CSS FOR PRODUCT DETAILS */
 
-  .main-content {
+.main-content {
         padding: 20px;
     }
 
-    .product-details-container {
+.product-details-container {
         display: flex;
         align-items: flex-start;
         justify-content: flex-start;
         gap: 50px;
     }
 
-    .product-image {
+.product-image {
         width: 27%; /* Adjust the width as desired
       } */
+    }
 
 
-      .product-table {
+.product-table {
           width: 100%;
           border-collapse: collapse;
           margin-top: 20px;
       }
   
-      .product-table th,
-      .product-table td {
+.product-table th,
+.product-table td {
           padding: 10px;
           text-align: left;
           border-bottom: 1px solid #ccc;
