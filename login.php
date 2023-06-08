@@ -74,7 +74,7 @@ if(isset($_POST['login_btn'])){
     
     <!-- Login -->
 
-    <section class="my-t py-5">
+    <section class="py-5">
         <div class="text-center mt-3 pt-5">
             <h2 class="form-weight-bold mt-5 my-3">Login</h2>
         </div>
