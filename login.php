@@ -79,7 +79,7 @@ if(isset($_POST['login_btn'])){
             <h2 class="form-weight-bold mt-5 my-3">Login</h2>
         </div>
 
-        <div class="mx-auto container">
+        <div class=" container">
             <form action="login.php" id="login-form" method="POST">
                 <p style="color:red;" class="text-center"><?php if(isset($_GET['error'])){ echo $_GET['error'];} ?></p>
                 <div class="form-group">
