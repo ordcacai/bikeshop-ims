@@ -582,8 +582,7 @@ th:last-child{
 @media (max-width: 991.98px) {
     #login-form{
         width: 100%;
-        text-align: center;
-        border-top: 3px darkorange solid; 
+        margin: 0;
     }
     
     #login-form input{
