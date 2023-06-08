@@ -157,7 +157,7 @@
                             <div class="row">
                                 <div class="col">&nbsp;</div> <!-- Label with white space -->
                             </div>
-                            </div>
+                        </div>
 
                     <hr style="height: 3px; border: none; color: #000; background-color: #000; width: 100%;">
 
