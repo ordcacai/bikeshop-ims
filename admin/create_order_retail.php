@@ -36,16 +36,37 @@ include('../server/connection.php');
     
         $stmt_status = $stmt->execute();
     
-        if(!$stmt_status){
-    
+        if(!$stmt_status){ 
+        
             header('location: retail.php');
             exit;
     
-        }
+        }else{
+    
 
         $order_id = $stmt->insert_id;
+            
+        for($i=0; $i<count($_POST['row']); $i++){
+            $product_name = $_POST['options'][$i];
+            $product_color = $_POST['Color'][$i];
+            $product_price = $_POST['Price'][$i];
+            $product_quantity = $_POST['Quantity'][$i];
 
-        header('location: orders.php?order_created=Order placed successfully!');
+                if($order_id !== '' && $product_name !== '' && $product_color !== '' && $product_price !== '' && $product_quantity !== ''){
 
+                    $query = $conn->prepare('INSERT INTO order_items (order_id, product_name, product_color, product_price, product_quantity ) VALUES (?, ?, ?, ?, ?)');
+                    $query->bind_param('issii', $order_id, $product_name, $product_color, $product_price, $product_quantity );
+                    $query->execute();
+            
+                }else{
+            
+                    echo '<div class="alert alert-danger" role="alert">Error Submitting in Data</div>';
+            
+                }
+
+            }
+
+            header('location: orders.php?order_created=Order placed successfully!');
+        }
     }
 ?>  
