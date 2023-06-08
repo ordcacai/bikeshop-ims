@@ -297,11 +297,11 @@ h6{
 
 /* Footer */
 
-Footer{
+footer{
     background-color: #222222;
 }
 
-Footer h5{
+footer h5{
     color: white;
     font-weight: 700;
     font-size: 1.2rem;
@@ -354,8 +354,9 @@ footer .contact{
 }
 
 @media (max-width: 991.98px) {
-    Footer{
+    footer{
         width: 100%;
+        background-color: #222222;
     }
 
 
