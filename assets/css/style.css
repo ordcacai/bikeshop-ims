@@ -792,8 +792,8 @@ h5.card-title {
     width: 100%;
     height: 80vh;
     background-size: cover;
-    background-position-x: -50px;
-    background-position-y: -100px;
+    background-position-x: -400px;
+    background-position-y: -150px;
     background-repeat: no-repeat;
     display: flex;
     flex-direction: column;

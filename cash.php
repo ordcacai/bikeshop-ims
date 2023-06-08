@@ -3,9 +3,10 @@
 
 <!-- Cash Content -->
 
-        <div id="cashbanner" class="container">
-            <h1>Flexible Mode of Payments</h1>
-            <p>We accept online payments through Bank Transfer or Gcash.</p>
+        <div  class="container">
+            <h1 class="text-center mt-5 pt-4">Flexible Mode of Payments</h1>
+            <p class="text-center">We accept online payments through Bank Transfer or Gcash.</p>
+            <div id="cashbanner"></div> 
         </div>
 
 
