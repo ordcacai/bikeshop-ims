@@ -87,15 +87,9 @@ function calculateTotalOrderPrice($order_details){
 
         </table>
 
-        <?php if($order_status == "not paid"){ ?>
-
-            <form style="float: right;" action="admin/cancel_order.php" method="POST">
-                <input type="hidden" name="order_total_price" value="<?php echo $order_total_price;?>">
-                <input type="hidden" name="order_status" value="<?php echo $order_status;?>">
-            </form>
-
-        <?php }?>
-
+        <?php if($order_status == 'Pending'){?>
+            <a href="cancel_order.php" style="float: right;" class="btn btn-danger mt-4">Cancel Order<a href=""></a>
+        <?php } ?>
 
     </section>
 

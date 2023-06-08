@@ -47,9 +47,10 @@
 <button class="accordion">How do I cancel my order?</button>
 <div class="panel my-3">
   <p>1. Insert your name, email, reason of cancellation and your message in the form.</p>
-  <p>2. Include the order ID of the order you want to cancel in the message box.</p>
+  <p>2. Insert the Order ID of the order you want to be cancelled.</p>
   <p>3. Click submit and wait for an email response from our employee.</p>
-  <p class="ms-5 mt-5">If you want to request an order cancellation please <a href="cancel_order.php" style="text-decoration:none;">click here.</a></p>
+  <p class="ms-5">Do take note, that you can only cancel your order if your order status is pending.</p>
+  <p class="ms-5">If you want to request an order cancellation please <a href="cancel_order.php" style="text-decoration:none;">click here.</a></p>
   
 </div>
 

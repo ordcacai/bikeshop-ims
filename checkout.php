@@ -78,10 +78,19 @@ if ( !empty($_SESSION['cart'])){
                             <label><strong>Payment Method</strong></label>
                             <select class="form-select" required name="payment_method">
 
-                                <option value="E-Wallet">E-Wallet</option>
-                                <option value="Online Banking">Online Banking</option>
-                                <option value="Credit Card">Credit Card</option>
-                                <option value="COD">Cash on Delivery</option>
+                                <option value="">--Select Payment Method--</option>
+                                <optgroup label="Cash Payments">
+                                    <option value="BPI (Bank Transfer)">BPI (Bank Transfer)</option>
+                                    <option value="BDO (Bank Transfer)">BDO (Bank Transfer)</option>
+                                    <option value="GCash">GCash</option>
+                                    <option value="Cash">Cash</option>
+                                </optgroup>
+                                <optgroup label="Installment">
+                                    <option value="homecredit">Home Credit</option>
+                                    <option value="billease">BillEase</option>
+                                    <option value="atome">Atome</option>
+                                    <option value="bdocreditcard">BDO Credit Card</option>
+                                </optgroup>
 
                             </select>
                 </div>
@@ -90,10 +99,13 @@ if ( !empty($_SESSION['cart'])){
                             <label><strong>Shipping Method</strong></label>
                             <select class="form-select" required name="shipping_method">
 
-                                <option value="LBC">LBC</option>
-                                <option value="Lalamove">Lalamove</option>
-                                <option value="Grab">Grab</option>
-                                <option value="J&T">J&T</option>
+                                    <option value="">-- Select Shipping Method --</option>
+                                    <option value="In-house Delivery">In-house Delivery (Selected Areas in Metro Manila only)</option>
+                                    <option value="Victory Liner Drop & Go and other bus cargo">Victory Liner Drop & Go and other bus cargo (Luzon Area)</option>
+                                    <option value="Capex">Capex</option>
+                                    <option value="AP Cargo">AP Cargo</option>
+                                    <option value="Jades Cargo">Jades Cargo</option>
+                                    <option value="Seastar Cargo">Seastar Cargo</option>
 
                             </select>
                 </div>

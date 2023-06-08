@@ -19,6 +19,7 @@ if(!isset($_SESSION['logged_in'])){
     $name = $_POST['name'];
     $email = $_POST['email'];
     $subject = $_POST['subject'];
+    $order_id = $_POST['order_id'];
     $message = $_POST['message'];
 
 
@@ -32,10 +33,15 @@ if(!isset($_SESSION['logged_in'])){
         font-size:16px;
         color:#000;
         }
+        .center {
+            padding: 10px;
+            text-align: center;
+          }
         </style>
         </head>
         <body>
-        <div class='center'>
+        <h1 class='center'>Order ID: $order_id</h1>
+        <div >
         <p>$message</p>
         </div>
         </body>
@@ -65,18 +71,18 @@ $mail = new PHPMailer(true);
 
         //Content
         $mail->isHTML(true);                                  //Set email format to HTML
-        $mail->Subject = $subject;
+        $mail->Subject = 'Cancel Order Request: '.$subject;
         $mail->Body    = $body;
         $mail->AltBody = $body;
 
         $mail->send();
-        header('location: cancel_order.php?request_sent=Cancel request has been emailed successfully!');
+        header('location: cancel_order.php?request_sent=Email sent successfully!');
         exit; 
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
 
 }else{
-    header('location: cancel_order.php?request_failed=Cancel request unsuccessful.');
+    header('location: cancel_order.php?request_failed=Cancel order request unsuccessful.');
 }
 ?>

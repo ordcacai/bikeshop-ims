@@ -9,7 +9,22 @@
 
 <!-- Collapsible-->
 <br>
-<div class="container">
+
+<div class="container mb-5">
+                <?php if(isset($_GET['request_sent'])){ ?>
+                        <div class="alert alert-success alert-dismissible mt-5 pt-4 text-center">
+                            <strong><?php echo $_GET['request_sent']; ?></strong> Please check your email and wait a response from our employee.
+                            <a href="cancel_order.php" class="close text-success" data-dismiss="alert" aria-label="close" style="float: right; text-decoration: none;"><strong>&times;</strong></a>
+                        </div>
+                <?php }?>
+
+                <?php if(isset($_GET['request_failed'])){ ?>
+                    <div class="alert alert-success alert-dismissible mt-5 text-center">
+                            <strong><?php echo $_GET['request_failed']; ?></strong> Please try again.
+                            <a href="cancel_order.php" class="close text-success" data-dismiss="alert" aria-label="close" style="float: right; text-decoration: none;"><strong>&times;</strong></a>
+                        </div>
+                <?php }?>
+
   <div class="container text-center mt-5 py-md-5">
       <h2>Cancel Order Request</h2><br>
       <hr class="mx-auto">
@@ -34,6 +49,10 @@
                     <option>Change payment method</option>
                     <option>Wrong Product</option>  
                     </select>
+                </div>
+                <div class="form-group checkout-small-element my-4">
+                    <label><strong>Order ID:</strong></label>
+                    <input type="number" class="form-control" name="order_id" placeholder="Enter the Order ID of the order you want to be cancelled" required>
                 </div>
                 <div class="form-group checkout-small-element my-4">
                     <label><strong>Message:</strong></label>

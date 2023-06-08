@@ -25,13 +25,14 @@ if(!isset($_SESSION['logged_in'])){
         $payment_method = $_POST['payment_method'];
         $shipping_method = $_POST['shipping_method'];
         $order_cost = $_SESSION['total'];
-        $order_status = "not paid";
+        $order_status = "Pending";
+        $order_type = "retail";
         $user_id = $_SESSION['user_id'];
         $order_date = date('Y-m-d H:i:s');
     
-        $stmt = $conn->prepare("INSERT INTO orders (order_cost, order_status, user_name, user_email, user_id, user_phone, user_city, user_address, user_landmark, location_link, payment_method, shipping_method, order_date) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?); ");
+        $stmt = $conn->prepare("INSERT INTO orders (order_type, order_cost, order_status, user_name, user_email, user_id, user_phone, user_city, user_address, user_landmark, location_link, payment_method, shipping_method, order_date) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?); ");
     
-        $stmt->bind_param('isssiisssssss', $order_cost, $order_status, $name, $email, $user_id, $phone, $city, $address, $landmark, $location, $payment_method, $shipping_method, $order_date);
+        $stmt->bind_param('sisssiisssssss',$order_type, $order_cost, $order_status, $name, $email, $user_id, $phone, $city, $address, $landmark, $location, $payment_method, $shipping_method, $order_date);
     
         $stmt_status = $stmt->execute();
     
