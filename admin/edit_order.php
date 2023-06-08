@@ -21,6 +21,35 @@ if(isset($_GET['order_id'])){
 
     if($stmt->execute()){
 
+        if($status == 'delivered'){
+
+            $stmt = $conn->prepare('SELECT * FROM order_items WHERE order_id = ?');
+            $stmt->bind_param('i', $order_id);
+            $stmt->execute();
+            $order_items = $stmt->get_result();
+
+            foreach($order_items as $row){
+            $product_quantity = $row['product_quantity'];
+            $product_id = $row['product_id'];
+            $product_color = $row['product_color'];
+            }
+
+            $stmt1 = $conn->prepare('SELECT quantity FROM stocks WHERE product_id = ? AND color_size = ?');
+            $stmt1->bind_param('is', $product_id, $product_color);
+            $stmt1->execute();
+            $products = $stmt1->get_result();
+
+            foreach($products as $product){
+
+            $new_quantity = $product['quantity'] - $product_quantity;
+
+            $stmt2 = $conn->prepare('UPDATE stocks SET quantity = ? WHERE product_id = ? AND color_size = ?');
+            $stmt2->bind_param('iis', $new_quantity, $product_id, $product_color);
+            $stmt2->execute();
+            }
+
+        }
+
         header('location: orders.php?order_updated=Order has been updated successfully!');
         
     }else{

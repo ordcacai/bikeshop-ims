@@ -95,8 +95,13 @@ include('sidemenu.php'); ?>
                             <td><?php echo $row['user_address']; ?></td>
                             <td><?php echo $row['order_date']; ?></td>
                             <td><?php echo $row['order_status']; ?></td>
+                            <?php if($row['order_status'] == 'delivered' || $row['order_status'] == 'cancelled'){?>
+                            <td></td>
+                            <td><a class="btn btn-danger" href="delete_order.php?order_id=<?php echo $row['order_id']; ?>">Delete</a></td>
+                            <?php }else{?>
                             <td><a class="btn btn-primary" href="edit_order.php?order_id=<?php echo $row['order_id']; ?>">Edit</a></td>
                             <td><a class="btn btn-danger" href="delete_order.php?order_id=<?php echo $row['order_id']; ?>">Delete</a></td>
+                            <?php }?>
                         </tr>
                         <?php } ?>
                     </tbody>

@@ -334,7 +334,7 @@ $mail = new PHPMailer(true);
         //Recipients
         $mail->setFrom(EMAIL, 'Vykes MNL');
         $mail->addAddress($row['user_email'], $user_name);     //Add a recipient
-        $mail->addReplyTo(PASS, 'Vykes MNL');
+        $mail->addReplyTo(EMAIL, 'Vykes MNL');
 
         //Attachments
         // $mail->addAttachment($file_location.$file_name);         //Add attachments
@@ -346,7 +346,7 @@ $mail = new PHPMailer(true);
         $mail->AltBody = $body;
 
         $mail->send();
-        header('location: invoice.php?invoice_sent=Invoice has been emailed successfully!');
+        header('location: invoice.php?invoice_sent=Payment confirmation has been emailed successfully!');
         exit; 
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
