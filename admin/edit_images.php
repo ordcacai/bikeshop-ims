@@ -15,21 +15,12 @@
 
 ?>
 
-<div class="container-fluid">
-    <div class="row" style="min-height:1000px">
-
-    <?php include('security.php');
+<?php include('security.php');
 include('sidemenu.php'); ?>
 
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 mt-2">
-                <h1 class="primary">Dashboard</h1>
-                <div class="btn-toolbar mb-2 mb-md-0">
-                    <div class="btn-group me-2"></div>
-                </div>
-            </div>
-
-            <h2 class="form-weight-bold mt-3 my-3">Edit Product Images</h2>
+<div class="main-content">
+    <div class="container-fluid">
+            <h1 class="form-weight-bold mt-3 my-3">Edit Product Images</h1>
             <div class="table-responsive">
 
                 <div class="mx-auto container">
@@ -42,22 +33,22 @@ include('sidemenu.php'); ?>
 
                         <div class="form-group mt-2">
                             <label><strong>Image 1</strong></label>
-                            <input type="file" class="form-control" id="image1" name="image1" placeholder="Image 1" required>
+                            <input type="file" class="form-control" id="image1" name="image1" placeholder="Image 1">
                         </div>
 
                         <div class="form-group mt-2">
                             <label><strong>Image 2</strong></label>
-                            <input type="file" class="form-control" id="image2" name="image2" placeholder="Image 2" required>
+                            <input type="file" class="form-control" id="image2" name="image2" placeholder="Image 2">
                         </div>
 
                         <div class="form-group mt-2">
                             <label><strong>Image 3</strong></label>
-                            <input type="file" class="form-control" id="image3" name="image3" placeholder="Image 3" required>
+                            <input type="file" class="form-control" id="image3" name="image3" placeholder="Image 3">
                         </div>
 
                         <div class="form-group mt-2">
                             <label><strong>Image 4</strong></label>
-                            <input type="file" class="form-control" id="image4" name="image4" placeholder="Image 4" required>
+                            <input type="file" class="form-control" id="image4" name="image4" placeholder="Image 4">
                         </div>
                         
                         <div class="form-group my-5">
@@ -71,7 +62,6 @@ include('sidemenu.php'); ?>
 
             </div>
 
-        </main>
     </div>
 </div>
 

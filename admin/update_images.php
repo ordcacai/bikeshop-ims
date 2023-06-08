@@ -35,14 +35,16 @@ if(isset($_POST['update_images'])){
 
         if($stmt->execute()){
 
-            header('location: products.php?images_updated=Images has been updated successfully!');
+            header('location: inventory.php?images_updated=Images has been updated successfully!');
 
         }else{
             
-            header('location: products.php?images_failed=Error occured, please try again.');
+            header('location: inventory.php?images_failed=Error occured, please try again.');
 
         }
 
+}else{
+    header('location: inventory.php');
 }
 
 ?>

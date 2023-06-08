@@ -121,7 +121,7 @@ $pdf->Cell(90	,5,$row['user_phone'],0,1);
 
 }
 
-$file_location = "/xampp/htdocs/bikeshop-ims/pdf/";
+$file_location = "/xampp/htdocs/bikeshop-ims/pdf/order-invoice/";
 $datetime = date('dmY_hms');
 $file_name = "Invoice_".$datetime.".pdf";
 
