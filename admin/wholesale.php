@@ -133,7 +133,26 @@ $product = $stmt->get_result();
         </div>
     </div>
 
-<div class="add-new-form"></div>
+                            <div class="row">
+                                <div class="col">
+                                <label for="itemName"><strong>Item Name:</strong></label>
+                                </div>
+                                <div class="col">
+                                <label for="price"><strong>Price:</strong></label>
+                                </div>
+                                <div class="col">
+                                <label for="colorSize"><strong>Color and Size:</strong></label>
+                                </div>
+                                <div class="col">
+                                <label for="quantity"><strong>Quantity:</strong></label>
+                                </div>
+                                <div class="col"></div> <!-- Empty column-->
+                            </div>
+
+                            <div class="row">
+                                <div class="col">&nbsp;</div> <!-- Label with white space -->
+                            </div>
+                            </div>
 
                     <hr style="height: 3px; border: none; color: #000; background-color: #000; width: 100%;">
 
