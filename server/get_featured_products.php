@@ -2,7 +2,7 @@
 
 include('connection.php');
 
-$stmt = $conn->prepare("SELECT * FROM products LIMIT 4");
+$stmt = $conn->prepare("SELECT * FROM products ORDER BY product_id DESC LIMIT 4");
 
 $stmt->execute();
 
