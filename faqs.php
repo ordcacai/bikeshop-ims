@@ -46,6 +46,7 @@
 
 <button class="accordion">How do I cancel my order?</button>
 <div class="panel my-3">
+  <h3 class="my-4">Submit an email through order cancel request method.</h3>
   <p>1. Insert your name, email, reason of cancellation and your message in the form.</p>
   <p>2. Insert the Order ID of the order you want to be cancelled.</p>
   <p>3. Click submit and wait for an email response from our employee.</p>

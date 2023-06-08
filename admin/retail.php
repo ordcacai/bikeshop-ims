@@ -2,6 +2,13 @@
 
 <?php include('sidemenu.php'); ?>
 
+<?php 
+
+$stmt = $conn->prepare('SELECT * FROM products');
+$stmt->execute();
+$product = $stmt->get_result();
+
+?>
 <div class="main-content">
     <div class="container-fluid">
             <h1 class="my-4">Add Orders</h1>
@@ -79,78 +86,47 @@
                                     <br><button type="button" class="btn btn-secondary" style="float: right;" id="clearButton">Clear</button><br>
                                 </div><br>
                                 <hr style="height: 3px; border: none; color: #000; background-color: #000; width: 100%;">
-                        <h4 class="my-4">Add Products</h4>
-                            <div style="text-align: left; margin-bottom: 10px;">
-                                <input type="button" class="btn btn-secondary me-5" onclick="addRow()" value="Add an Item">
-                            </div>
-                            
-                            <!-- ADD ROW -->
-                            <div id="productRows" class="form-group mt-2">
-                                <div class="row" id="rowTemplate" style="display: none;">
-                                    <div class="col">
-                                    <label for="itemName">Item Name:</label>
-                                    <?php
-                                    // Retrieve data from MySQL database
-                                        $sql = "SELECT product_id, product_name FROM products";
-                                        $result = $conn->query($sql);
 
-                                    // Generate dropdown menu with options
-                                        echo '<select name="options[]" class="form-control">';
-                                        echo '<option value="">--Select Item--</option>'; // Add a placeholder option
-                                        if ($result->num_rows > 0) {
-                                            while ($row = $result->fetch_assoc()) {
-                                            echo '<option value="' . $row["product_id"] . '">' . $row["product_name"] . '</option>';
-                                        }
-                                        }
-                                        echo '</select>';
+                            <h4>Add Stocks  <button type="button" class="add-more-form btn btn-primary ">+</button></h4>
 
-                                    // Close MySQL database connection
-                                        $conn->close();
-                                    ?>
-                                    </div>
+                            <div class="container dynamicForm">
+                                    <div>
+                                        <div class="row">
+                                            <input type="hidden" class="form-control sl" name="row[]" value=1>
+                                            <div class="col-md-4">
+                                            <label for="selectedOption"><strong>Product Name</strong></label>
+                                                    <select class="form-select" required name="product-name[]" required>
+                                                        <option value="">Select an option</option>
+                                                        
+                                                        <?php while($row = $product->fetch_assoc()){ ?>
 
-                                    <div class="col">
-                                        <label for="price">Price:</label>
-                                            <input type="number" name="Price[]" class="form-control" maxlength="10" placeholder="Price"><br>
-                                    </div>
-                                
-                                    <div class="col">
-                                        <label for="colorSize">Color and Size:</label>
-                                            <input type="text" name="Color[]" class="form-control" maxlength="50" placeholder="Color and Size"><br>
-                                    </div>
-                                
-                                    <div class="col">
-                                        <label for="quantity">Quantity:</label>
-                                            <input type="number" name="Quantity[]" class="form-control" maxlength="3" placeholder="Quantity"><br>
-                                    </div>
-                                
-                                    <div class="col">
-                                        <div class="input-group">
-                                            <button type="button" class="btn btn-danger" onclick="deleteRow(this)">Delete</button><br>
+                                                        <option value="<?php echo $row['product_id'];?>"><?php echo $row['product_name'];?></option>
+
+                                                        <?php } ?>
+                                                        
+                                                    </select>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label><strong>Color & Size</strong></label>
+                                                <input type="text" class="form-control" placeholder="Color & Size" name="color_size[]">
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label><strong>Price</strong></label>
+                                                <input type="number" class="form-control" placeholder="Price" name="price[]">
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label><strong>Quantity</strong></label>
+                                                <input type="number" class="form-control" placeholder="Quantity" name="quantity[]">
+                                            </div>
+                                            <div class="col-md-1">
+                                                <label><strong>Remove</strong></label>
+                                                <button type="button" class="remove-btn btn btn-danger form-control"><i class="fas fa-trash"></i></button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="row">
-                                <div class="col">
-                                <label for="itemName"><strong>Item Name:</strong></label>
-                                </div>
-                                <div class="col">
-                                <label for="price"><strong>Price:</strong></label>
-                                </div>
-                                <div class="col">
-                                <label for="colorSize"><strong>Color and Size:</strong></label>
-                                </div>
-                                <div class="col">
-                                <label for="quantity"><strong>Quantity:</strong></label>
-                                </div>
-                                <div class="col"></div> <!-- Empty column-->
-                            </div>
-
-                            <div class="row">
-                                <div class="col">&nbsp;</div> <!-- Label with white space -->
-                            </div>
-                            </div>
+                            <div class="add-new-form"></div>
 
                     <hr style="height: 3px; border: none; color: #000; background-color: #000; width: 100%;">
 
@@ -258,30 +234,55 @@
     });
 </script>
 <script>
-    function addRow() {
-    // Clone the row template
-        var newRow = document.querySelector("#rowTemplate").cloneNode(true);
-        newRow.style.display = "flex"; // Show the cloned row
+    $(document).ready(function () {
 
-    // Remove labels for the subsequent rows
-        var labels = newRow.querySelectorAll("label");
-        labels.forEach(function(label) {
-        label.parentNode.removeChild(label);
+        $(document).on('click', '.remove-btn', function () {
+
+            $(this).closest('.dynamicForm').remove();
+
         });
 
-    // Move the delete button to the right side of the row
-        var deleteButton = newRow.querySelector(".col:last-child");
-        newRow.removeChild(deleteButton);
-        newRow.appendChild(deleteButton);
-
-    // Append the cloned row to the container
-        document.getElementById("productRows").appendChild(newRow);
-        }
-
-    function deleteRow(button) {
-        var row = button.closest(".row");
-            row.parentNode.removeChild(row);
-    }
+        $(document).on('click', '.add-more-form', function () {
+            var length = $('.sl').length;
+            var i = parseInt(length)+parseInt(1);
+            var newrow = $('.add-new-form').append('<div class="container dynamicForm">\
+                            <div>\
+                                <div class="row">\
+                                    <input type="hidden" class="form-control sl" name="row[]" value="'+i+'">\
+                                    <div class="col-md-4">\
+                                            <label for="selectedOption"><strong>Product Name</strong></label>\
+                                                    <select class="form-select" required name="product-name[]" required>\
+                                                        <option value="">Select an option</option>\
+                                                        \
+                                                        <?php while($row = $product->fetch_assoc()){ ?>\
+                                                        \
+                                                        <option value="<?php echo $row['product_id'];?>"><?php echo $row['product_name'];?></option>\
+                                                        \
+                                                        <?php } ?>\
+                                                        \
+                                                    </select>\
+                                            </div>\
+                                    <div class="col-md-3">\
+                                        <label><strong>Color & Size</strong></label>\
+                                        <input type="text" class="form-control" placeholder="Color & Size" name="color_size[]">\
+                                    </div>\
+                                    <div class="col-md-2">\
+                                                <label><strong>Price</strong></label>\
+                                                <input type="number" class="form-control" placeholder="Price" name="price[]">\
+                                    </div>\
+                                    <div class="col-md-2">\
+                                        <label><strong>Quantity</strong></label>\
+                                        <input type="text" class="form-control" placeholder="Quantity" name="quantity[]">\
+                                     </div>\
+                                     <div class="col-md-1">\
+                                        <label><strong>Remove</strong></label>\
+                                        <button type="button" class="remove-btn btn btn-danger form-control"><i class="fas fa-trash"></i></button>\
+                                    </div>\
+                                </div>\
+                            </div>\
+                        </div>');
+        });
+    });
 </script>
 <script>
     function showPaymentOptions() {
