@@ -3,7 +3,7 @@
 <?php
 
 
-if(isset($_GET['product_id'])){
+if(isset($_GET['stock_id'])){
 
     $product_id = $_GET['product_id'];
     $stmt = $conn->prepare("SELECT * FROM products WHERE product_id=?");
@@ -51,7 +51,7 @@ include('sidemenu.php'); ?>
 
 <div class="main-content">
     <div class="container">
-            <h1 class="form-weight-bold my-4">Edit Products</h1>
+            <h1 class="form-weight-bold my-4">Edit Stocks</h1>
 
                     <form id="edit-form" method="POST" action="edit_product.php">
                         <p style="color: red;"><?php if(isset($_GET['error'])){ echo $_GET['error']; } ?></p>

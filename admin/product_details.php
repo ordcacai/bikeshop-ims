@@ -23,11 +23,17 @@ $images[] = $product['product_image3'];
 $images[] = $product['product_image4'];
 ?>
 
+<?php 
+
+$stmt1 = $conn->prepare("SELECT * FROM stocks WHERE product_id = ?");
+$stmt1->bind_param("i", $product_id);
+$stmt1->execute();
+$stock = $stmt1->get_result();
+
+?>
+
 <?php include('security.php');
 include('sidemenu.php'); ?>
-
-<link rel="stylesheet" type="text/css" href="css/admin_style.css">
-
 
 <div class="main-content">
     <div class="container-fluid">
@@ -44,33 +50,48 @@ include('sidemenu.php'); ?>
                         <button class="carousel-button" onclick="carouselNext()">&gt;</button>
                     </div>
                 </div>
-            </div>
+            </div><br>
             <div class="product-info">
-                <table class="product-table">
+                <table class="product-table mx-5">
                     <tr>
-                        <th>SRP</th>
+                        <th>Product Name</th>
+                        <td><?php echo $product['product_name']; ?></td>
+                    </tr>
+                    <tr>
+                        <th>Retail Price</th>
                         <td><?php echo $product['product_price']; ?></td>
                     </tr>
                     <tr>
-                        <th>WSP</th>
+                        <th>Base Price</th>
+                        <td><?php echo $product['product_bp']; ?></td>
+                    </tr>
+                    <tr>
+                        <th>Wholesale Price</th>
+                        <td><?php echo $product['product_wsp']; ?></td>
+                    </tr>
+                    <tr>
+                        <th>Discounted Price</th>
                         <td><?php echo $product['product_special_offer']; ?></td>
                     </tr>
-                    <tr>
-                        <th>Stocks</th>
-                        <td><?php echo $product['product_quantity']; ?></td>
-                    </tr>
-                    <tr>
+                </table>
+            </div><br>
+            <div class="product-info ms-5">
+                <table class="product-table">
+                <tr>
                         <th>Color & Size</th>
-                        <td><?php echo $product['product_color']; ?>, <?php echo $product['product_size']; ?></td>
-                    </tr>
-                    <tr>
                         <th>QTY</th>
-                        <td><?php echo $product['product_quantity']; ?></td>
                     </tr>
+                    <?php foreach($stock as $row){ ?>
+                    <tr>
+                        
+                        <td><?php echo $row['color_size']; ?></td>
+                        <td><?php echo $row['quantity']; ?></td>
+                    </tr>
+                    <?php } ?>
                 </table>
             </div>
         </div>
-        <div class="specifications-box">
+        <div class="specifications-box mt-5 pt-5">
             <h2>Specifications</h2>
             <table class="specifications-table">
                 <tr>
@@ -82,7 +103,7 @@ include('sidemenu.php'); ?>
             </table>
         </div>
         <div class="buttons-container">
-            <a href="edit_product.php?product_id=<?php echo $product['product_id']; ?>" class="btn btn-primary me-4">Edit</a>
+            <a href="edit_product.php?product_id=<?php echo $product['product_id']; ?>" class="btn btn-primary btn-lg py-2 px-4 me-4" style="font-weight: 500; font-size: 19px;">Edit</a>
             <a href="inventory.php" class="btn btn-secondary">Cancel</a>
         </div>
     </div>
