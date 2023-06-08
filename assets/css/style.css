@@ -354,7 +354,7 @@ footer .contact{
 }
 
 @media (max-width: 991.98px) {
-    footer{
+    Footer{
         width: 100%;
     }
 
@@ -581,13 +581,13 @@ th:last-child{
 
 @media (max-width: 991.98px) {
     #login-form{
-        width: 100%;
+        width: 20%;
         text-align: center;
         border-top: 3px darkorange solid; 
     }
     
     #login-form input{
-        width: 100%;
+        width: 20%;
     }
 
 
