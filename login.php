@@ -74,7 +74,7 @@ if(isset($_POST['login_btn'])){
     
     <!-- Login -->
 
-    <section class="py-5">
+    <section>
         <div class="text-center mt-3 pt-5">
             <h2 class="form-weight-bold mt-5 my-3">Login</h2>
         </div>
@@ -99,7 +99,5 @@ if(isset($_POST['login_btn'])){
     </section>
 
     <?php include('layouts/footer.php'); ?>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
 </body>
 </html>

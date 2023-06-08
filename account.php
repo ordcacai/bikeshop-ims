@@ -123,7 +123,7 @@ if(isset($_SESSION['logged_in'])){
 ?>  
     
     <!-- Account -->
-
+    <section>
     <section class="my-5 py-5">
         <div class="row container mx-auto">
             <div class="text-center mt-5 pt-5 col-lg-6 col-md-12 col-sm-12">
@@ -242,6 +242,7 @@ if(isset($_SESSION['logged_in'])){
                 <div class="p-10">
                     <strong>Page <?= $page_no; ?> of <?= $total_no_of_pages ?></strong>
                 </div>
+    </section>
     </section>
 
     <?php include('layouts/footer.php'); ?>
