@@ -353,7 +353,7 @@ footer .contact{
     color:gray;
 }
 
-@media (max-width: 575.98px) {
+@media (max-width: 991.98px) {
     footer{
         width: 100%;
     }
@@ -579,7 +579,7 @@ th:last-child{
     color: #ffae42;
 }
 
-@media (max-width: 575.98px) {
+@media (max-width: 991.98px) {
     #login-form{
         width: 100%;
         margin: 5px auto;
@@ -627,7 +627,7 @@ th:last-child{
     color: #ffae42;
 }
 
-@media (max-width: 575.98px) {
+@media (max-width: 991.98px) {
     #register-form{
         width: 100%;
         margin: 5px auto;
