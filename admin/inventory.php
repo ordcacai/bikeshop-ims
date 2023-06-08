@@ -82,10 +82,6 @@ include('sidemenu.php'); ?>
     </ul>
 </div>
 
-            <?php if(isset($_GET['edit_success_message'])){ ?>
-                <p class="text-center" style="color: green;"><?php echo $_GET['edit_success_message']; ?></p>
-            <?php }?>
-
                 <?php if(isset($_GET['edit_success_message'])){ ?>
                     <p class="text-center" style="color: green;"><?php echo $_GET['edit_success_message']; ?></p>   
                 <?php }?>
@@ -121,7 +117,7 @@ include('sidemenu.php'); ?>
             
                 
             <div class="table-responsive">
-                <table class="table table-striped table-bordered table-hover table-sm">
+                <table class="table table-striped table-bordered table-hover table-sm text-center">
                     <thead>
                         <tr>
                             <th scope="col">Product Name</th>
@@ -129,6 +125,9 @@ include('sidemenu.php'); ?>
                             <th scope="col">SRP</th>
                             <th scope="col">WSP</th>
                             <th scope="col">QTY</th>
+                            <th scope="col">Edit</th>
+                            <th scope="col">Delete</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -138,8 +137,11 @@ include('sidemenu.php'); ?>
         <td><a href="product_details.php?product_id=<?php echo $product['product_id']; ?>"><?php echo $product['product_name']; ?></a></td>
         <td><?php echo $product['product_id']; ?></td>
         <td><?php echo "₱".$product['product_price']; ?></td>
-        <td><?php echo "₱".$product['product_special_offer']; ?></td>
+        <td><?php echo "₱".$product['product_wsp']; ?></td>
         <td><?php echo $product['product_quantity']; ?></td>
+        <td><a href="edit_product.php?product_id=<?php echo $product['product_id']; ?>" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+            <a href="edit_images.php?product_id=<?php echo $product['product_id']; ?>&amp;product_name=<?php echo $product['product_name']; ?>" class="btn btn-success"><i class="fas fa-images"></i></a></td>
+        <td><a href="delete_product.php?product_id=<?php echo $product['product_id']; ?>" class="btn btn-danger"><i class="fas fa-trash"></i></a></td>
     </tr>
 <?php } ?>
 

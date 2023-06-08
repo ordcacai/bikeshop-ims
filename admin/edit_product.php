@@ -16,27 +16,28 @@ if(isset($_GET['product_id'])){
     $product_id = $_POST['product_id'];
     $name = $_POST['name'];
     $price = $_POST['price'];
+    $bp = $_POST['bp'];
+    $wsp = $_POST['wsp'];
     $discount = $_POST['discount'];
-    $color = $_POST['color'];
     $description = $_POST['description'];
     $category = $_POST['category'];
 
-    $stmt = $conn->prepare("UPDATE products SET product_name=?, product_price=?, product_special_offer=?, product_color=?, product_description=?, product_category=? WHERE product_id = ?");
-    $stmt->bind_param('sssssss', $name, $price, $discount, $color, $description, $category, $product_id);
+    $stmt = $conn->prepare("UPDATE products SET product_name=?, product_price=?, product_bp=?, product_wsp=?, product_special_offer=?, product_description=?, product_category=? WHERE product_id = ?");
+    $stmt->bind_param('siiiisss', $name, $price, $bp, $wsp, $discount, $description, $category, $product_id);
     $stmt->execute();
 
     if($stmt->execute()){
 
-        header('location: products.php?edit_success_message=Product has been updated successfully!');
+        header('location: inventory.php?edit_success_message=Product has been updated successfully!');
         
     }else{
 
-        header('location: products.php?edit_failure_message=Error occured, Please try again.');
+        header('location: inventory.php?edit_failure_message=Error occured, Please try again.');
 
     }
 
 }else{
-    header('location: products.php');
+    header('location: inventory.php');
     exit;
 }
 
@@ -64,19 +65,24 @@ include('sidemenu.php'); ?>
                         </div>
                         
                         <div class="form-group mt-2">
-                            <label><strong>Price</strong></label>
-                            <input type="text" class="form-control" id="product-price" value="<?php echo $product['product_price']; ?>" min="1" max="500000" name="price" placeholder="Price" required>
+                            <label><strong>Retail Price</strong></label>
+                            <input type="number" class="form-control" id="product-price" value="<?php echo $product['product_price']; ?>" min="1" max="500000" name="price" placeholder="Retail Price" required>
                         </div>
 
                         <div class="form-group mt-2">
-                            <label><strong>Product Discount</strong></label>
-                            <input type="number" class="form-control" id="product-disc" value="<?php echo $product['product_special_offer']; ?>" name="discount" min="1" max="100" placeholder="Discount" required>
+                            <label><strong>Base Price</strong></label>
+                            <input type="number" class="form-control" id="product-price" value="<?php echo $product['product_bp']; ?>" min="1" max="500000" name="bp" placeholder="Base Price" required>
                         </div>
 
-                        <!-- <div class="form-group mt-2">
-                            <label><strong>Color</strong></label>
-                            <input type="text" class="form-control" id="product-color" value="<?php echo $product['product_color']; ?>" name="color" placeholder="Color" required>
-                        </div> -->
+                        <div class="form-group mt-2">
+                            <label><strong>Wholesale Price</strong></label>
+                            <input type="number" class="form-control" id="product-price" value="<?php echo $product['product_wsp']; ?>" min="1" max="500000" name="wsp" placeholder="Wholesale Price" required>
+                        </div>
+
+                        <div class="form-group mt-2">
+                            <label><strong>Discounted Price</strong></label>
+                            <input type="number" class="form-control" id="product-disc" value="<?php echo $product['product_special_offer']; ?>" name="discount" placeholder="Discounted Price" required>
+                        </div>
 
                         <div class="form-group mt-2">
                             <label><strong>Description</strong></label>
@@ -88,6 +94,7 @@ include('sidemenu.php'); ?>
                             <select class="form-select" required name="category">
 
                                 <option value="Bike" <?php if($product['product_category'] == 'Bike'){echo "selected";} ?>>Bike</option>
+                                <option value="Ebike" <?php if($product['product_category'] == 'Ebike'){echo "selected";} ?>>E-bike</option>
                                 <option value="parts" <?php if($product['product_category'] == 'parts'){echo "selected";} ?>>Parts & Accessories</option>
 
                             </select>

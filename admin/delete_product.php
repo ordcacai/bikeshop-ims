@@ -18,11 +18,11 @@ include('security.php');
         
         if($stmt->execute()){
 
-            header('location: products.php?delete_success_message=Product has been deleted successfully!');
+            header('location: inventory.php?delete_success_message=Product has been deleted successfully!');
 
         }else{
 
-            header('location: products.php?delete_failure_message=Product could not be deleted.');
+            header('location: inventory.php?delete_failure_message=Product could not be deleted.');
             
         }
 
