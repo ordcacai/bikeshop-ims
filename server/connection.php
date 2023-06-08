@@ -2,7 +2,7 @@
         $host = 'srv598.hstgr.io';
         $db = 'u564301412_vmnl_db';
         $user = 'u564301412_vmnl_db';
-        $password = 'VykesMNL2023';
+        $password = 'rX^raBl57';
 
         // Create connection 
         $conn = new mysqli($host, $user, $password, $db);
