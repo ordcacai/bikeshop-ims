@@ -26,10 +26,10 @@ session_start();
         <div class="container">
           <img class="logo" src="assets/imgs/logo_fav.png">
           <h2 class="company"><span>Vykes </span>MNL</h2>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse nav-buttons" id="navbarSupportedContent">
+          <div class="collapse navbar-collapse nav-buttons">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
               <li class="nav-item">

@@ -44,6 +44,11 @@ if(isset($_GET['product_id'])){
     $stmt1->execute();
     $ebike = $stmt1->get_result(); //<- Array
 
+    $query = $conn->prepare('SELECT quantity FROM stocks WHERE product_id = ?');
+    $query->bind_param('i', $product_id);
+    $quantity = $query->get_result();
+
+
     //no product_id given
 }else{
     header('location: index.php');
@@ -59,19 +64,19 @@ if(isset($_GET['product_id'])){
             <?php while($row = $product->fetch_assoc()){ ?>
 
             <div class="col-lg-5 col-md-6 col-sm-12">
-                <img src="assets/imgs/<?php echo $row['product_image']; ?>" class="img-fluid w-100 pb-1" id="mainImg">
+                <img src="assets/imgs/<?php echo $row['product_image']; ?>" class="img-fluid w-100 pb-1" id="mainImg" alt="">
                 <div class="small-img-group">
                     <div class="small-img-col">
-                        <img src="assets/imgs/<?php echo $row['product_image']; ?>" width="100%" class="small-img">
+                        <img src="assets/imgs/<?php echo $row['product_image']; ?>" width="100%" class="small-img" alt="">
                     </div>
                     <div class="small-img-col">
-                        <img src="assets/imgs/<?php echo $row['product_image2']; ?>" width="100%" class="small-img">
+                        <img src="assets/imgs/<?php echo $row['product_image2']; ?>" width="100%" class="small-img" alt="">
                     </div>
                     <div class="small-img-col">
-                        <img src="assets/imgs/<?php echo $row['product_image3']; ?>" width="100%" class="small-img">
+                        <img src="assets/imgs/<?php echo $row['product_image3']; ?>" width="100%" class="small-img" alt="">
                     </div>
                     <div class="small-img-col">
-                        <img src="assets/imgs/<?php echo $row['product_image4']; ?>" width="100%" class="small-img">
+                        <img src="assets/imgs/<?php echo $row['product_image4']; ?>" width="100%" class="small-img" alt="">
                     </div>
                 </div>
             </div>
@@ -94,7 +99,7 @@ if(isset($_GET['product_id'])){
                     </select>
                     <?php while($row = $products->fetch_assoc()){ ?>
                     <input type="hidden" name="product_price" value="<?php echo $row['product_price']; ?>">
-                    <input type="number" name="product_quantity" value="1">
+                    <input type="number" name="product_quantity" value="1" min="1" max="<?php echo $quantity ?>">
                     <button class="buy-btn mb-4" type="submit" name="add_to_cart">Add to Cart</button>
                 </form>
 
@@ -120,7 +125,7 @@ if(isset($_GET['product_id'])){
 
                     <!-- 1st Related -->
                     <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-                        <img src="assets/imgs/<?php echo $row['product_image']; ?>" class="img-fluid mb-3">
+                        <img src="assets/imgs/<?php echo $row['product_image']; ?>" class="img-fluid mb-3" href="<?php echo "product_view.php?product_id=".$row['product_id']; ?>">
                         <div class="star">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>

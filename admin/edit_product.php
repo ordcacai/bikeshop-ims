@@ -3,7 +3,7 @@
 <?php
 
 
-if(isset($_GET['stock_id'])){
+if(isset($_GET['product_id'])){
 
     $product_id = $_GET['product_id'];
     $stmt = $conn->prepare("SELECT * FROM products WHERE product_id=?");

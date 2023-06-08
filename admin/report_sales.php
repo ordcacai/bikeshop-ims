@@ -51,6 +51,7 @@ include('sidemenu.php'); ?>
 <div class="main-content">
     <div class="container-fluid">
         <h1 class="my-4">Sales</h1>
+        <a class="btn btn-secondary btn mb-5 me-4" style="float:right;" href="print_sales.php"><i class="fas fa-print"></i> Print</a>
 
         <div class="row">
             <div class="col-md-12">

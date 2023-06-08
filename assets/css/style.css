@@ -150,6 +150,7 @@ h6{
     .nav-buttons ul .fas{
         margin: 20px 5px 10px 20px;
     }
+
 }
 
 /* Home */
@@ -542,10 +543,9 @@ th:last-child{
 /* Login */
 
 #login-form{
-    width: 60%;
+    width: 90%;
     margin: 5px auto;
     text-align: center;
-    padding: 80px;
     border-top: 3px darkorange solid; 
 }
 
@@ -575,10 +575,9 @@ th:last-child{
 /* Register */
 
 #register-form{
-    width: 60%;
+    width: 90%;
     margin: 5px auto;
     text-align: center;
-    padding: 50px;
     border-top: 3px darkorange solid;
 }
 

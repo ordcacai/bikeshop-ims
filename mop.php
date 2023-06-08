@@ -10,9 +10,9 @@ include('layouts/header.php');
 
 <div class="container mt-1">
   <!-- Nav Pills -->
-  <ul class="nav nav-pills">
+  <ul class="nav nav-pills justify-content-center">
     <li class="nav-item">
-      <a class="nav-link active" data-toggle="pill" href="cash.php" id="nav-pill-1">Cash | Gcash | Bank Transfer</a>
+      <a class="nav-link" data-toggle="pill" href="cash.php" id="nav-pill-1">Cash | Gcash | Bank Transfer</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" data-toggle="pill" href="hc.php" id="nav-pill-1">Home Credit</a>
