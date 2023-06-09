@@ -237,7 +237,7 @@ chart2.render();
                                             <img src="<?php echo "../assets/imgs/".$product['product_image']; ?>" style="width: 60px; height: 50px;">
                                                 <div>
                                                     <h4><?php echo $product['product_name']; ?></h4>
-                                                    <small><?php echo "₱".$product['product_price']; ?></small>
+                                                    <small><?php echo "₱".number_format($product['product_price'],2); ?></small>
                                                 </div>
                                             </div>
                                             <div class="configure">

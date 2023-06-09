@@ -142,7 +142,7 @@ function calculateTotalCart(){
                             <img src="assets/imgs/<?php echo $value['product_image']; ?>"/>
                             <div>
                                 <p><?php echo $value['product_name']; ?></p>
-                                <small><span>₱</span><?php echo $value['product_price']; ?></small>
+                                <small><span>₱</span><?php echo number_format($value['product_price'],2); ?></small>
                                 <br>
                                 <small><span></span><?php echo $value['product_color']; ?></small>
                                 <br>
@@ -164,7 +164,7 @@ function calculateTotalCart(){
 
                     <td>
                         <span>₱</span>
-                        <span class="product-price"><?php echo $value['product_quantity'] *  $value['product_price']; ?></span>
+                        <span class="product-price"><?php echo number_format($value['product_quantity'],2 *  $value['product_price'],2); ?></span>
                     </td>
                 </tr>
 

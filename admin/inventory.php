@@ -136,8 +136,8 @@ include('sidemenu.php'); ?>
     <tr>
         <td><a href="product_details.php?product_id=<?php echo $product['product_id']; ?>"><?php echo $product['product_name']; ?></a></td>
         <td><?php echo $product['product_id']; ?></td>
-        <td><?php echo "₱".$product['product_price']; ?></td>
-        <td><?php echo "₱".$product['product_wsp']; ?></td>
+        <td><?php echo "₱".number_format($product['product_price'],2);; ?></td>
+        <td><?php echo "₱".number_format($product['product_bp'],2); ?></td>
         <td><?php echo $product['product_quantity']; ?></td>
         <td><a href="edit_product.php?product_id=<?php echo $product['product_id']; ?>" class="btn btn-primary"><i class="fas fa-edit"></i></a>
             <a href="edit_images.php?product_id=<?php echo $product['product_id']; ?>&amp;product_name=<?php echo $product['product_name']; ?>" class="btn btn-success"><i class="fas fa-images"></i></a></td>

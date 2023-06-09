@@ -76,7 +76,7 @@ function calculateTotalOrderPrice($order_details){
                     </td>
 
                     <td>
-                        <span>₱<?php echo $row['product_price']; ?></span>
+                        <span>₱<?php echo number_format($row['product_price'],2); ?></span>
                     </td>
 
                     <td>

@@ -93,8 +93,8 @@ include('sidemenu.php'); ?>
                         <tr>
                             <td><?php echo $row['order_date']; ?></td>
                             <td><?php echo $row['product_name']; ?></td>
-                            <td><?php echo $row['product_price']; ?></td>
-                            <td><?php echo $row['product_bp']; ?></td>
+                            <td><?php echo number_format($row['product_price'],2); ?></td>
+                            <td><?php number_format($row['product_bp'],2); ?></td>
                             <td><?php echo $row['product_quantity']; ?></td>
                             <td><?php echo $row['total_cost']; ?></td>
                             <td><?php echo $row['gross_income']; ?></td>

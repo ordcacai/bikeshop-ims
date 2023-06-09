@@ -71,27 +71,29 @@ $pdf->SetFont('Arial','',12);
 
 //display the items
 while($row = $order_items->fetch_assoc()){
+    $total = $row['product_price'] * $row['product_quantity'];
 	$pdf->Cell(80	,5,$row['product_name'],1,0,'C');
 	//add thousand separator using number_format function
-	$pdf->Cell(25	,5,number_format($row['product_price']),1,0,'C');
+	$pdf->Cell(25	,5,number_format($row['product_price'],2),1,0,'C');
     $pdf->Cell(25	,5,$row['product_color'],1,0,'C');
     $pdf->Cell(20	,5,number_format($row['product_quantity']),1,0,'C');
-	$pdf->Cell(40	,5,number_format($row['product_price'] * $row['product_quantity']),1,1,'C');//end of line
+	$pdf->Cell(40	,5,number_format($total,2),1,1,'C');//end of line
 }
 
 while($row = $orders->fetch_assoc()){
+$total_due = $row['shipping_fee'] + $row['order_cost'];
 $pdf->Cell(189	,5,'',0,1);
 $pdf->Cell(130	,5,'',0,0);
 $pdf->Cell(30	,5,'Shipping Fee',1,0);
-$pdf->Cell(30	,5,number_format($row['shipping_fee']),1,1,'R');//end of line
+$pdf->Cell(30	,5,number_format($row['shipping_fee'],2),1,1,'R');//end of line
 
 $pdf->Cell(130	,5,'',0,0);
 $pdf->Cell(30	,5,'Subtotal',1,0);
-$pdf->Cell(30	,5,number_format($row['order_cost']),1,1,'R');//end of line
+$pdf->Cell(30	,5,number_format($row['order_cost'],2),1,1,'R');//end of line
 
 $pdf->Cell(130	,5,'',0,0);
 $pdf->Cell(30	,5,'Total Due',1,0);
-$pdf->Cell(30	,5,number_format($row['shipping_fee'] + $row['order_cost']),1,1,'R');//end of line
+$pdf->Cell(30	,5,number_format($total_due, 2),1,1,'R');//end of line
 $pdf->Cell(189	,30,'',0,1);//end of line
 
 //billing address

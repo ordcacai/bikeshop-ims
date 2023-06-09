@@ -71,12 +71,12 @@ while($row = $orders->fetch_assoc()){
 	//add thousand separator using number_format function
     $pdf->Cell(55	,5,$row['product_name'],1,0,'C');
     $pdf->Cell(55	,5,$row['user_name'],1,0,'C');
-    $pdf->Cell(20	,5,number_format($row['product_price']),1,0,'C');
+    $pdf->Cell(20	,5,number_format($row['product_price'],2),1,0,'C');
     $pdf->Cell(10	,5,number_format($row['product_quantity']),1,0,'C');//end of line
-	$pdf->Cell(25	,5,number_format($total),1,0,'C');
+	$pdf->Cell(25	,5,number_format($total,2),1,0,'C');
     $pdf->Cell(45	,5,$row['payment_method'],1,0,'C');
-    $pdf->Cell(20	,5,number_format($row['product_bp']),1,0,'C');
-    $pdf->Cell(23	,5,number_format($sub_total_gross),1,1,'C');
+    $pdf->Cell(20	,5,number_format($row['product_bp'],2),1,0,'C');
+    $pdf->Cell(23	,5,number_format($sub_total_gross,2),1,1,'C');
     
 	
 }   
@@ -84,7 +84,7 @@ while($row = $orders->fetch_assoc()){
     $pdf->Cell(235	,5,'',0,0);
     $pdf->Cell(43	,5,'Total Gross Income:',1,1,'C');
     $pdf->Cell(235	,5,'',0,0);
-    $pdf->Cell(43	,5,number_format($main_total),1,1,'C');
+    $pdf->Cell(43	,5,number_format($main_total,2),1,1,'C');
 
 $file_location = "/xampp/htdocs/bikeshop-ims/pdf/stock-report/";
 $datetime = date('dmY_hms');
