@@ -126,45 +126,50 @@ chart2.render();
             <h1 class="my-4">Dashboard</h1>
                     <div class="cards">
                         
+                    <a href="orders.php" style="text-decoration: none;color:black;">
                         <div class="card-single">
                             <div>
-                                <h1><?php echo $total_records_orders; ?></h1>
+                                <h1><?php echo number_format($total_records_orders,0,'',','); ?></h1>
                                 <span>Orders</span>
                             </div>
                             <div>
                                 <span><i class="fas fa-clipboard-list"></i></span>
                             </div>
                         </div>
-                        
+                        </a>
+                        <a href="inventory.php" style="text-decoration: none;color:black;">
                         <div class="card-single">
                             <div>
-                                <h1><?php echo $total_records_products; ?></h1>
+                                <h1><?php echo number_format($total_records_products,0,'',','); ?></h1>
                                 <span>Products</span>
                             </div>
                             <div>
                                 <span><i class="fas fa-box"></i></span>
                             </div>
                         </div>
-                        
+                        </a>
+                        <a href="account.php" style="text-decoration: none;color:black;">
                         <div class="card-single">
                             <div>
-                                <h1><?php echo $total_records_employees; ?></h1>
+                                <h1><?php echo number_format($total_records_employees,0,'',','); ?></h1>
                                 <span>Employees</span>
                             </div>
                             <div>
                                 <span><i class="fas fa-user-check"></i></span>
                             </div>
                         </div>
-
+                        </a>
+                        <a href="/index.php" style="text-decoration: none;color:black;">
                         <div class="card-single">
                             <div>
-                                <h1><?php echo $total_records_users; ?></h1>
+                                <h1><?php echo number_format($total_records_users,0,'',','); ?></h1>
                                 <span>Customers</span>
                             </div>
                             <div>
                                 <span><i class="fas fa-users"></i></span>
                             </div>
                         </div>
+                        </a>
                     </div>
 
                     <div class="recent-grid">  
