@@ -69,7 +69,7 @@
             </div>
             <!-- 3rd Product -->
             <div class="one col-lg-4 col-md-12 col-sm-12 p-0">
-                <img src="assets/imgs/Shimano Sora FC-R3000 Crankset1.jpeg" class="img-fluid">
+                <img src="assets/imgs/Shimano Deore M4100 Shifters1.jpeg" class="img-fluid">
                 <div class="details">
                     <h2>Parts</h2>
                     <button onclick="window.location.href='shop.php';" class="text-uppercase">Shop Now</button>
