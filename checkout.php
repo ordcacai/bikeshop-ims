@@ -41,12 +41,13 @@ if ( !empty($_SESSION['cart'])){
 
                 <div class="form-group checkout-small-element">
                     <label><strong>Name:</strong></label>
-                    <input type="text" class="form-control" id="checkout-name" name="name" placeholder="Name" required>
+                    <input type="text" class="form-control" id="checkout-name" name="name" placeholder="Name" required value="<?php echo $_SESSION['user_name'];?>">
+                   
                 </div>
 
                 <div class="form-group checkout-small-element">
                     <label><strong>Email:</strong></label>
-                    <input type="email" class="form-control" id="checkout-email" name="email" placeholder="Email" required>
+                    <input type="email" class="form-control" id="checkout-email" name="email" placeholder="Email" required value="<?php echo $_SESSION['user_email'];?>">
                 </div>
 
                 <div class="form-group checkout-small-element">

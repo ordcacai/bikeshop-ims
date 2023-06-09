@@ -105,6 +105,21 @@ if(isset($_GET['product_id'])){
 
                 <h4 class="mt-5 mb-3">Product Details</h4>
                 <span><?php echo $row['product_description']; ?></span>
+
+                <?php if ($row['product_category'] === 'Bike') { ?>
+                    <h4 class="mt-5 mb-3">Warranty Information</h4>
+                    <span><i class="bi bi-exclamation-triangle"></i> 7 Days Warranty for parts.<br></span>
+                    <span><i class="bi bi-exclamation-triangle"></i> 1 Month free tuning and adjustment.<br></span>
+                <?php } elseif ($row['product_category'] === 'parts') { ?>
+                    <h4 class="mt-5 mb-3">Warranty Information</h4>
+                    <span><i class="bi bi-exclamation-triangle"></i> Warranty is for defective items only. You must check the product upon purchase.<br></span>
+                <?php } elseif ($row['product_category'] === 'Ebike') { ?>
+                    <h4 class="mt-5 mb-3">Warranty Information</h4>
+                    <span><i class="bi bi-exclamation-triangle"></i> 7 Days Parts Replacement (controller, motor, charger)<br></span>
+                    <span><i class="bi bi-exclamation-triangle"></i> 3 MONTHS WARRANTY FOR BATTERY. Other parts not included.<br></span>
+                    <span><i class="bi bi-exclamation-triangle"></i> 1 MONTH FREE SERVICE WARRANTY </span>
+                <?php } ?>
+
             </div>
              
         </div>
