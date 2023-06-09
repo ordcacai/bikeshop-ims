@@ -1,5 +1,5 @@
 <?php
-        $host = '31.220.110.201'; 
+        $host = 'localhost'; 
         $db = 'u564301412_vmnl_db'; 
         $user = 'u564301412_vmnl_db'; 
         $password = 'VykesMNL23'; 
