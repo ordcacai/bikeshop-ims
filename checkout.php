@@ -6,6 +6,12 @@
 
 <?php
 
+if(!isset($_SESSION['logged_in'])){
+
+    header('location: login.php');
+    exit;
+
+}
 
 if ( !empty($_SESSION['cart'])){
 
@@ -117,7 +123,7 @@ if ( !empty($_SESSION['cart'])){
                 </div> -->
 
                 <div class="form-group checkout-btn-container">
-                    <p>Total: ₱<?php echo $_SESSION['total']; ?></p>
+                    <p>Total: ₱<?php echo number_format($_SESSION['total'],2); ?></p>
                     <input type="submit" class="btn" id="checkout-btn" name="place_order" value="Place Order">
                 </div>
             </form>

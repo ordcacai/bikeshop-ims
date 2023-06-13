@@ -84,7 +84,7 @@ if(isset($_POST['search'])){
 <div id="shop-container">
 <section id="search" class="my-5 py-5 ms-5"> 
         <div class="container mt-5 py-5">
-            <h4 class="text-center">Filter Products</h4>
+            <h4 class="text-center">Search Products</h4>
             <hr>
         
 
@@ -154,7 +154,7 @@ if(isset($_POST['search'])){
                     <i class="fas fa-star"></i>
                 </div>
                 <h5 class="p-name"><?php echo $row['product_name']; ?></h5>
-                <h4 class="p-price">₱<?php echo $row['product_price']; ?></h4>
+                <h4 class="p-price">₱<?php echo number_format($row['product_price'],2); ?></h4>
                 <a class="btn buy-btn" href="<?php echo "product_view.php?product_id=".$row['product_id']; ?>">Buy Now</a>       
             </div>
 

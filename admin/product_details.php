@@ -59,19 +59,19 @@ include('sidemenu.php'); ?>
                     </tr>
                     <tr>
                         <th>Retail Price</th>
-                        <td><?php echo $product['product_price']; ?></td>
+                        <td><?php echo number_format($product['product_price'],2); ?></td>
                     </tr>
                     <tr>
                         <th>Base Price</th>
-                        <td><?php echo $product['product_bp']; ?></td>
+                        <td><?php echo number_format($product['product_bp'],2); ?></td>
                     </tr>
                     <tr>
                         <th>Wholesale Price</th>
-                        <td><?php echo $product['product_wsp']; ?></td>
+                        <td><?php echo number_format($product['product_bp'],2); ?></td>
                     </tr>
                     <tr>
                         <th>Discounted Price</th>
-                        <td><?php echo $product['product_special_offer']; ?></td>
+                        <td><?php echo number_format($product['product_special_offer'],2); ?></td>
                     </tr>
                 </table>
             </div><br>

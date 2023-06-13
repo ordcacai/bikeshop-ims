@@ -73,10 +73,10 @@ ob_end_flush();
                     <tbody id='product_tbody'>
                         <tr>
                         <td><?php echo $row['product_name']; ?></td>
-                        <td><?php echo $row['product_price']; ?></td>
+                        <td><?php echo number_format($row['product_price'],2); ?></td>
                         <td><?php echo $row['product_color']; ?></td>
                         <td><?php echo $row['product_quantity']; ?></td>
-                        <td><?php echo $row['product_price']; ?></td>
+                        <td><?php echo number_format($row['product_price'],2); ?></td>
                         </tr>
                     </tbody>
                     <?php } ?>
@@ -84,7 +84,7 @@ ob_end_flush();
                     <tfoot>
                         <tr>
                         <td colspan='4' class='text-right text-success' style="text-align: end;">Sub Total:</td>
-                        <td class="text-danger"><?php echo $row['order_cost']; ?></td>
+                        <td class="text-danger"><?php echo number_format($row['order_cost'],2); ?></td>
                         </tr>
                     </tfoot>
                     </table>

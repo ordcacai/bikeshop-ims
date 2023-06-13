@@ -103,7 +103,7 @@
                     <i class="fas fa-star"></i>
                 </div>
                 <h5 class="p-name"><?php echo $row['product_name'];?></h5>
-                <h4 class="p-price">₱<?php echo $row['product_price'];?></h4>
+                <h4 class="p-price">₱<?php echo number_format($row['product_price'],2); ?></h4>
                 <a href="<?php echo "product_view.php?product_id=".$row['product_id'];?>"><button class="buy-btn">Buy Now</button></a>
                 
             </div>
@@ -137,7 +137,7 @@
                     <i class="fas fa-star"></i>
                 </div>
                 <h5 class="p-name"><?php echo $row['product_name'];?></h5>
-                <h4 class="p-price">₱<?php echo $row['product_price'];?></h4>
+                <h4 class="p-price">₱<?php echo number_format($row['product_price'],2);?></h4>
                 <a href="<?php echo "product_view.php?product_id=".$row['product_id'];?>"><button class="buy-btn">Buy Now</button></a>
                 
             </div>

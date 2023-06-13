@@ -84,7 +84,7 @@ if(isset($_GET['product_id'])){
             <div class="col-lg-6 col-md-12 col-sm-12 mx-5">
                 <h6><?php echo $row['product_category']; ?></h6>
                 <h3 class="pb-2"><?php echo $row['product_name']; ?></h3>
-                <h2 class="pb-2 pt-2">₱<?php echo $row['product_price']; ?></h2>
+                <h2 class="pb-2 pt-2">₱<?php echo number_format($row['product_price'],2); ?></h2>
                     
                 <form method="POST" action="cart.php">
                     <input type="hidden" name="product_id" value="<?php echo $row['product_id']; ?>">
@@ -98,7 +98,7 @@ if(isset($_GET['product_id'])){
                         <?php }?>
                     </select>
                     <?php while($row = $products->fetch_assoc()){ ?>
-                    <input type="hidden" name="product_price" value="<?php echo $row['product_price']; ?>">
+                    <input type="hidden" name="product_price" value="<?php echo number_format($row['product_price'],2); ?>">
                     <input type="number" name="product_quantity" value="1" min="1" max="<?php echo $quantity ?>">
                     <button class="buy-btn mb-4" type="submit" name="add_to_cart">Add to Cart</button>
                 </form>
@@ -149,7 +149,7 @@ if(isset($_GET['product_id'])){
                             <i class="fas fa-star"></i>
                         </div>
                         <h5 class="p-name"><?php echo $row['product_name']; ?></h5>
-                        <h4 class="p-price">₱<?php echo $row['product_price']; ?></h4>
+                        <h4 class="p-price">₱<?php echo number_format($row['product_price'],2); ?></h4>
                         <button class="buy-btn" href="<?php echo "product_view.php?product_id=".$row['product_id']; ?>">Buy Now</button>
                         
                     </div>
@@ -170,7 +170,7 @@ if(isset($_GET['product_id'])){
                             <i class="fas fa-star"></i>
                         </div>
                         <h5 class="p-name"><?php echo $row['product_name']; ?></h5>
-                        <h4 class="p-price">₱<?php echo $row['product_price']; ?></h4>
+                        <h4 class="p-price">₱<?php echo number_format($row['product_price'],2); ?></h4>
                         <button class="buy-btn" href="<?php echo "product_view.php?product_id=".$row['product_id']; ?>">Buy Now</button>
                         
                     </div>
@@ -191,7 +191,7 @@ if(isset($_GET['product_id'])){
                             <i class="fas fa-star"></i>
                         </div>
                         <h5 class="p-name"><?php echo $row['product_name']; ?></h5>
-                        <h4 class="p-price">₱<?php echo $row['product_price']; ?></h4>
+                        <h4 class="p-price">₱<?php echo number_format($row['product_price'],2); ?></h4>
                         <button class="buy-btn" href="<?php echo "product_view.php?product_id=".$row['product_id']; ?>">Buy Now</button>
                         
                     </div>
