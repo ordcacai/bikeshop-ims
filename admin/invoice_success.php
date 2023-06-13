@@ -218,10 +218,10 @@ if($_GET['ACTION']=='VIEW'){
         <br>
         <br>
         <br>
-        <strong>NOTICE:</strong> The content of this email is confidential and intended for the recipient specified in message only. 
+        <i><strong>NOTICE:</strong> The content of this email is confidential and intended for the recipient specified in message only. 
         It is strictly forbidden to share any part of this message with any third party, without a written consent of the sender. 
         If you received this message by mistake, please reply to this message and follow with its deletion, so that we can ensure 
-        such a mistake does not occur in the future.
+        such a mistake does not occur in the future.</i>
         </div>
         </body>
         </html>";
@@ -324,10 +324,10 @@ $mail = new PHPMailer(true);
         <br>
         <br>
         <br>
-        <strong>NOTICE:</strong> The content of this email is confidential and intended for the recipient specified in message only. 
+        <i><strong>NOTICE:</strong> The content of this email is confidential and intended for the recipient specified in message only. 
         It is strictly forbidden to share any part of this message with any third party, without a written consent of the sender. 
         If you received this message by mistake, please reply to this message and follow with its deletion, so that we can ensure 
-        such a mistake does not occur in the future.
+        such a mistake does not occur in the future.</i>
         </div>
         </body>
         </html>";
