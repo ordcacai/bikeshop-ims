@@ -125,7 +125,7 @@ include('sidemenu.php'); ?>
                             <th scope="col">SRP</th>
                             <th scope="col">WSP</th>
                             <!-- <th scope="col">QTY</th> -->
-                            <th scope="col">Edit</th>
+                            <th scope="col">Update</th>
                             <th scope="col">Delete</th>
 
                         </tr>
