@@ -12,7 +12,6 @@
                 <h5 class="pb-2">Featured Items</h5>
                 <ul class="text-uppercase">
                     <li><a href="shop.php">Mountain Bikes</a></li>
-                    <li><a href="shop.php">Kiddie Bikes</a></li>
                     <li><a href="shop.php">E-Bikes</a></li>
                     <li><a href="shop.php">Parts & Accessories</a></li>
                 </ul>

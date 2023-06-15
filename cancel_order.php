@@ -1,9 +1,19 @@
 <?php
 
     include('layouts/header.php');
+    include('server/connection.php');
     
 
 ?> 
+
+<?php
+
+    $stmt = $conn->prepare("SELECT order_id FROM orders WHERE user_id = ? AND order_status = 'Pending'");
+    $stmt->bind_param('i', $_SESSION['user_id']);
+    $stmt->execute();
+    $order_id = $stmt->get_result();
+
+?>
 
 <section>
 
@@ -51,8 +61,13 @@
                     </select>
                 </div>
                 <div class="form-group checkout-small-element my-4">
-                    <label><strong>Order ID:</strong></label>
-                    <input type="number" class="form-control" name="order_id" placeholder="Enter the Order ID of the order you want to be cancelled" required>
+                        <select class="form-control" required name="order_id" id="exampleFormControlSelect1">
+                        
+                        <?php foreach($order_id as $row){?>
+                        <option value="<?php echo $row['order_id']; ?>"><?php echo $row['order_id']; ?></option>
+                        <?php }?>
+
+                        </select>
                 </div>
                 <div class="form-group checkout-small-element my-4">
                     <label><strong>Message:</strong></label>

@@ -1,5 +1,7 @@
 <?php
+date_default_timezone_set('Asia/Singapore');
 include('../server/connection.php');
+
     
         if(isset($_POST['add_order'])){
 
@@ -20,7 +22,7 @@ include('../server/connection.php');
         $remarks = $_POST['remarks'];
         //$order_cost = $_SESSION['total'];
         $user_id = $_SESSION['user_id'];
-        $order_date = date('Y-m-d H:i:s');
+        $order_date = date('Y-m-d');
 
         // $payment_image = $_FILES['payment']['tmp_name'];
 

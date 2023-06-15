@@ -6,6 +6,12 @@
 
 <?php
 
+if(!isset($_SESSION['logged_in'])){
+
+    header('location: login.php');
+    exit;
+
+}
 
 if ( !empty($_SESSION['cart'])){
 
@@ -41,12 +47,13 @@ if ( !empty($_SESSION['cart'])){
 
                 <div class="form-group checkout-small-element">
                     <label><strong>Name:</strong></label>
-                    <input type="text" class="form-control" id="checkout-name" name="name" placeholder="Name" required>
+                    <input type="text" class="form-control" id="checkout-name" name="name" placeholder="Name" required value="<?php echo $_SESSION['user_name'];?>">
+                   
                 </div>
 
                 <div class="form-group checkout-small-element">
                     <label><strong>Email:</strong></label>
-                    <input type="email" class="form-control" id="checkout-email" name="email" placeholder="Email" required>
+                    <input type="email" class="form-control" id="checkout-email" name="email" placeholder="Email" required value="<?php echo $_SESSION['user_email'];?>">
                 </div>
 
                 <div class="form-group checkout-small-element">
@@ -116,7 +123,7 @@ if ( !empty($_SESSION['cart'])){
                 </div> -->
 
                 <div class="form-group checkout-btn-container">
-                    <p>Total: ₱<?php echo $_SESSION['total']; ?></p>
+                    <p>Total: ₱<?php echo number_format($_SESSION['total'],2); ?></p>
                     <input type="submit" class="btn" id="checkout-btn" name="place_order" value="Place Order">
                 </div>
             </form>

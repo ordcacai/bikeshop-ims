@@ -21,11 +21,11 @@ if(isset($_POST['search'])){
     }
 
     $category = $_POST['category'];
-    $price = $_POST['price'];
+    // $price = $_POST['price'];
 
     //2. return number of products
-    $stmt = $conn->prepare("SELECT COUNT(*) As total_records FROM products WHERE product_category=? AND product_price<=?");
-    $stmt->bind_param('si', $category, $price);
+    $stmt = $conn->prepare("SELECT COUNT(*) As total_records FROM products WHERE product_category=?");
+    $stmt->bind_param('s', $category);
     $stmt->execute();
     $stmt->bind_result($total_records);
     $stmt->store_result();
@@ -40,8 +40,8 @@ if(isset($_POST['search'])){
     $total_no_of_pages = ceil($total_records/$total_records_per_page);
 
     //4. get all products
-    $stmt2 = $conn->prepare("SELECT * FROM products WHERE product_category=? AND product_price<=? LIMIT $offset, $total_records_per_page");
-    $stmt2->bind_param("si", $category, $price);
+    $stmt2 = $conn->prepare("SELECT * FROM products WHERE product_category=? LIMIT $offset, $total_records_per_page");
+    $stmt2->bind_param("s", $category);
     $stmt2->execute();
     $products = $stmt2->get_result();//array
 
@@ -82,20 +82,26 @@ if(isset($_POST['search'])){
 
 <!-- Search -->
 <div id="shop-container">
-<section id="search" class="my-5 py-5 ms-2"> 
+<section id="search" class="my-5 py-5 ms-5"> 
         <div class="container mt-5 py-5">
-            <h4>Search Products</h4>
+            <h4 class="text-center">Search Products</h4>
             <hr>
-        </div>
+        
 
             <form action="shop.php" method="POST">
                 <div class="row mx-auto container">
                     <div class="col-lg-12 col-md-12 col-sm-12">
         
                         <p>Category</p>
+                        
                         <div class="form-check">
                             <input type="radio" class="form-check-input" id="category_one" value="Bike" type="radio" name="category" <?php if(isset($category) && $category == 'Bike'){echo 'checked';} ?>>
-                            <label for="flexRadioDefault1" class="form-check-label">Bike</label>
+                            <label for="flexRadioDefault2" class="form-check-label">Bike</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" id="category_one" value="EBike" type="radio" name="category" <?php if(isset($category) && $category == 'EBike'){echo 'checked';} ?>>
+                            <label for="flexRadioDefault2" class="form-check-label">E-Bike</label>
                         </div>
 
                         <div class="form-check">
@@ -105,7 +111,7 @@ if(isset($_POST['search'])){
 
                     </div>
 
-                    <div class="row mx-auto container mt-5">
+                    <!-- <div class="row mx-auto container mt-5">
                         <div class="col-lg-12 col-md-12 col-sm-12">
 
                             <p>Price</p>
@@ -116,13 +122,14 @@ if(isset($_POST['search'])){
                             </div>
 
                         </div>
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="form-group my-3 mx-3">
                     <input type="submit" name="search" value="Search" class="btn btn-primary">
                 </div>
             </form>
+        </div>
     </section>
 
     <!-- Shop -->
@@ -147,7 +154,7 @@ if(isset($_POST['search'])){
                     <i class="fas fa-star"></i>
                 </div>
                 <h5 class="p-name"><?php echo $row['product_name']; ?></h5>
-                <h4 class="p-price">₱<?php echo $row['product_price']; ?></h4>
+                <h4 class="p-price">₱<?php echo number_format($row['product_price'],2); ?></h4>
                 <a class="btn buy-btn" href="<?php echo "product_view.php?product_id=".$row['product_id']; ?>">Buy Now</a>       
             </div>
 

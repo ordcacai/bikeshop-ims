@@ -44,7 +44,6 @@ class PDF extends FPDF{
         $this->Cell(0	,5,'59C Gen Ordonez Ave ',0,1,'R');
         $this->Cell(0	,5,'Marikina City, Philippines, 1800',0,1,'R');
         $this->Cell(0	,5,'Phone No. +63 9562256879',0,1,'R');
-        $this->Cell(0	,5,'Fax [+12345678]',0,1,'R');
         $this->Line(0,48,210,48);
         //make a dummy empty cell as a vertical spacer
         $this->Cell(189	,20,'',0,1);//end of line
@@ -72,27 +71,29 @@ $pdf->SetFont('Arial','',12);
 
 //display the items
 while($row = $order_items->fetch_assoc()){
+    $total = $row['product_price'] * $row['product_quantity'];
 	$pdf->Cell(80	,5,$row['product_name'],1,0,'C');
 	//add thousand separator using number_format function
-	$pdf->Cell(25	,5,number_format($row['product_price']),1,0,'C');
+	$pdf->Cell(25	,5,number_format($row['product_price'],2),1,0,'C');
     $pdf->Cell(25	,5,$row['product_color'],1,0,'C');
     $pdf->Cell(20	,5,number_format($row['product_quantity']),1,0,'C');
-	$pdf->Cell(40	,5,number_format($row['product_price'] * $row['product_quantity']),1,1,'C');//end of line
+	$pdf->Cell(40	,5,number_format($total,2),1,1,'C');//end of line
 }
 
 while($row = $orders->fetch_assoc()){
+$total_due = $row['shipping_fee'] + $row['order_cost'];
 $pdf->Cell(189	,5,'',0,1);
 $pdf->Cell(130	,5,'',0,0);
 $pdf->Cell(30	,5,'Shipping Fee',1,0);
-$pdf->Cell(30	,5,number_format($row['shipping_fee']),1,1,'R');//end of line
+$pdf->Cell(30	,5,number_format($row['shipping_fee'],2),1,1,'R');//end of line
 
 $pdf->Cell(130	,5,'',0,0);
 $pdf->Cell(30	,5,'Subtotal',1,0);
-$pdf->Cell(30	,5,number_format($row['order_cost']),1,1,'R');//end of line
+$pdf->Cell(30	,5,number_format($row['order_cost'],2),1,1,'R');//end of line
 
 $pdf->Cell(130	,5,'',0,0);
 $pdf->Cell(30	,5,'Total Due',1,0);
-$pdf->Cell(30	,5,number_format($row['shipping_fee'] + $row['order_cost']),1,1,'R');//end of line
+$pdf->Cell(30	,5,number_format($total_due, 2),1,1,'R');//end of line
 $pdf->Cell(189	,30,'',0,1);//end of line
 
 //billing address
@@ -214,6 +215,13 @@ if($_GET['ACTION']=='VIEW'){
         <img src='cid:gcash2'>
         <img src='cid:bpi'>
         <img src='cid:bdo'>
+        <br>
+        <br>
+        <br>
+        <i><strong>NOTICE:</strong> The content of this email is confidential and intended for the recipient specified in message only. 
+        It is strictly forbidden to share any part of this message with any third party, without a written consent of the sender. 
+        If you received this message by mistake, please reply to this message and follow with its deletion, so that we can ensure 
+        such a mistake does not occur in the future.</i>
         </div>
         </body>
         </html>";
@@ -313,6 +321,13 @@ $mail = new PHPMailer(true);
         <br>
         <br>
         THANK YOU FOR TRUSTING VYKES MNL!
+        <br>
+        <br>
+        <br>
+        <i><strong>NOTICE:</strong> The content of this email is confidential and intended for the recipient specified in message only. 
+        It is strictly forbidden to share any part of this message with any third party, without a written consent of the sender. 
+        If you received this message by mistake, please reply to this message and follow with its deletion, so that we can ensure 
+        such a mistake does not occur in the future.</i>
         </div>
         </body>
         </html>";

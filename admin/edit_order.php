@@ -91,7 +91,7 @@ include('sidemenu.php'); ?>
                         
                         <div class="form-group my-3">
                             <label><strong>Order Price</strong></label>
-                            <p class="my-4"><?php echo $order['order_cost']; ?></p>
+                            <p class="my-4"><?php echo number_format($order['order_cost'],2); ?></p>
                         </div>
 
                         <div class="form-group my-3">

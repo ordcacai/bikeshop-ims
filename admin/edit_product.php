@@ -3,7 +3,7 @@
 <?php
 
 
-if(isset($_GET['stock_id'])){
+if(isset($_GET['product_id'])){
 
     $product_id = $_GET['product_id'];
     $stmt = $conn->prepare("SELECT * FROM products WHERE product_id=?");
@@ -66,22 +66,22 @@ include('sidemenu.php'); ?>
                         
                         <div class="form-group mt-2">
                             <label><strong>Retail Price</strong></label>
-                            <input type="number" class="form-control" id="product-price" value="<?php echo $product['product_price']; ?>" min="1" max="500000" name="price" placeholder="Retail Price" required>
+                            <input type="number" class="form-control" id="product-price" value="<?php echo number_format($product['product_price'],2); ?>" min="1" max="500000" name="price" placeholder="Retail Price" required>
                         </div>
 
                         <div class="form-group mt-2">
                             <label><strong>Base Price</strong></label>
-                            <input type="number" class="form-control" id="product-price" value="<?php echo $product['product_bp']; ?>" min="1" max="500000" name="bp" placeholder="Base Price" required>
+                            <input type="number" class="form-control" id="product-price" value="<?php echo number_format($product['product_bp'],2); ?>" min="1" max="500000" name="bp" placeholder="Base Price" required>
                         </div>
 
                         <div class="form-group mt-2">
                             <label><strong>Wholesale Price</strong></label>
-                            <input type="number" class="form-control" id="product-price" value="<?php echo $product['product_wsp']; ?>" min="1" max="500000" name="wsp" placeholder="Wholesale Price" required>
+                            <input type="number" class="form-control" id="product-price" value="<?php echo number_format($product['product_wsp'],2); ?>" min="1" max="500000" name="wsp" placeholder="Wholesale Price" required>
                         </div>
 
                         <div class="form-group mt-2">
                             <label><strong>Discounted Price</strong></label>
-                            <input type="number" class="form-control" id="product-disc" value="<?php echo $product['product_special_offer']; ?>" name="discount" placeholder="Discounted Price" required>
+                            <input type="number" class="form-control" id="product-disc" value="<?php echo number_format($product['product_special_offer'],2); ?>" name="discount" placeholder="Discounted Price" required>
                         </div>
 
                         <div class="form-group mt-2">

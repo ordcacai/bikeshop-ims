@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('Asia/Singapore');
 
 session_start();
 include('connection.php');
@@ -28,7 +29,7 @@ if(!isset($_SESSION['logged_in'])){
         $order_status = "Pending";
         $order_type = "retail";
         $user_id = $_SESSION['user_id'];
-        $order_date = date('Y-m-d H:i:s');
+        $order_date = date('Y-m-d');
     
         $stmt = $conn->prepare("INSERT INTO orders (order_type, order_cost, order_status, user_name, user_email, user_id, user_phone, user_city, user_address, user_landmark, location_link, payment_method, shipping_method, order_date) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?); ");
     

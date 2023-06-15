@@ -44,6 +44,11 @@ if(isset($_GET['product_id'])){
     $stmt1->execute();
     $ebike = $stmt1->get_result(); //<- Array
 
+    $query = $conn->prepare('SELECT quantity FROM stocks WHERE product_id = ?');
+    $query->bind_param('i', $product_id);
+    $quantity = $query->get_result();
+
+
     //no product_id given
 }else{
     header('location: index.php');
@@ -59,19 +64,19 @@ if(isset($_GET['product_id'])){
             <?php while($row = $product->fetch_assoc()){ ?>
 
             <div class="col-lg-5 col-md-6 col-sm-12">
-                <img src="assets/imgs/<?php echo $row['product_image']; ?>" class="img-fluid w-100 pb-1" id="mainImg">
+                <img src="assets/imgs/<?php echo $row['product_image']; ?>" class="img-fluid w-100 pb-1" id="mainImg" alt="">
                 <div class="small-img-group">
                     <div class="small-img-col">
-                        <img src="assets/imgs/<?php echo $row['product_image']; ?>" width="100%" class="small-img">
+                        <img src="assets/imgs/<?php echo $row['product_image']; ?>" width="100%" class="small-img" alt="">
                     </div>
                     <div class="small-img-col">
-                        <img src="assets/imgs/<?php echo $row['product_image2']; ?>" width="100%" class="small-img">
+                        <img src="assets/imgs/<?php echo $row['product_image2']; ?>" width="100%" class="small-img" alt="">
                     </div>
                     <div class="small-img-col">
-                        <img src="assets/imgs/<?php echo $row['product_image3']; ?>" width="100%" class="small-img">
+                        <img src="assets/imgs/<?php echo $row['product_image3']; ?>" width="100%" class="small-img" alt="">
                     </div>
                     <div class="small-img-col">
-                        <img src="assets/imgs/<?php echo $row['product_image4']; ?>" width="100%" class="small-img">
+                        <img src="assets/imgs/<?php echo $row['product_image4']; ?>" width="100%" class="small-img" alt="">
                     </div>
                 </div>
             </div>
@@ -79,7 +84,7 @@ if(isset($_GET['product_id'])){
             <div class="col-lg-6 col-md-12 col-sm-12 mx-5">
                 <h6><?php echo $row['product_category']; ?></h6>
                 <h3 class="pb-2"><?php echo $row['product_name']; ?></h3>
-                <h2 class="pb-2 pt-2">₱<?php echo $row['product_price']; ?></h2>
+                <h2 class="pb-2 pt-2">₱<?php echo number_format($row['product_price'],2); ?></h2>
                     
                 <form method="POST" action="cart.php">
                     <input type="hidden" name="product_id" value="<?php echo $row['product_id']; ?>">
@@ -93,13 +98,28 @@ if(isset($_GET['product_id'])){
                         <?php }?>
                     </select>
                     <?php while($row = $products->fetch_assoc()){ ?>
-                    <input type="hidden" name="product_price" value="<?php echo $row['product_price']; ?>">
-                    <input type="number" name="product_quantity" value="1">
+                    <input type="hidden" name="product_price" value="<?php echo number_format($row['product_price'],2); ?>">
+                    <input type="number" name="product_quantity" value="1" min="1" max="<?php echo $quantity ?>">
                     <button class="buy-btn mb-4" type="submit" name="add_to_cart">Add to Cart</button>
                 </form>
 
                 <h4 class="mt-5 mb-3">Product Details</h4>
                 <span><?php echo $row['product_description']; ?></span>
+
+                <?php if ($row['product_category'] === 'Bike') { ?>
+                    <h4 class="mt-5 mb-3">Warranty Information</h4>
+                    <span><i class="bi bi-exclamation-triangle"></i> 7 Days Warranty for parts.<br></span>
+                    <span><i class="bi bi-exclamation-triangle"></i> 1 Month free tuning and adjustment.<br></span>
+                <?php } elseif ($row['product_category'] === 'parts') { ?>
+                    <h4 class="mt-5 mb-3">Warranty Information</h4>
+                    <span><i class="bi bi-exclamation-triangle"></i> Warranty is for defective items only. You must check the product upon purchase.<br></span>
+                <?php } elseif ($row['product_category'] === 'Ebike') { ?>
+                    <h4 class="mt-5 mb-3">Warranty Information</h4>
+                    <span><i class="bi bi-exclamation-triangle"></i> 7 Days Parts Replacement (controller, motor, charger)<br></span>
+                    <span><i class="bi bi-exclamation-triangle"></i> 3 MONTHS WARRANTY FOR BATTERY. Other parts not included.<br></span>
+                    <span><i class="bi bi-exclamation-triangle"></i> 1 MONTH FREE SERVICE WARRANTY </span>
+                <?php } ?>
+
             </div>
              
         </div>
@@ -120,7 +140,7 @@ if(isset($_GET['product_id'])){
 
                     <!-- 1st Related -->
                     <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-                        <img src="assets/imgs/<?php echo $row['product_image']; ?>" class="img-fluid mb-3">
+                        <img src="assets/imgs/<?php echo $row['product_image']; ?>" class="img-fluid mb-3" href="<?php echo "product_view.php?product_id=".$row['product_id']; ?>">
                         <div class="star">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
@@ -129,7 +149,7 @@ if(isset($_GET['product_id'])){
                             <i class="fas fa-star"></i>
                         </div>
                         <h5 class="p-name"><?php echo $row['product_name']; ?></h5>
-                        <h4 class="p-price">₱<?php echo $row['product_price']; ?></h4>
+                        <h4 class="p-price">₱<?php echo number_format($row['product_price'],2); ?></h4>
                         <button class="buy-btn" href="<?php echo "product_view.php?product_id=".$row['product_id']; ?>">Buy Now</button>
                         
                     </div>
@@ -150,7 +170,7 @@ if(isset($_GET['product_id'])){
                             <i class="fas fa-star"></i>
                         </div>
                         <h5 class="p-name"><?php echo $row['product_name']; ?></h5>
-                        <h4 class="p-price">₱<?php echo $row['product_price']; ?></h4>
+                        <h4 class="p-price">₱<?php echo number_format($row['product_price'],2); ?></h4>
                         <button class="buy-btn" href="<?php echo "product_view.php?product_id=".$row['product_id']; ?>">Buy Now</button>
                         
                     </div>
@@ -171,7 +191,7 @@ if(isset($_GET['product_id'])){
                             <i class="fas fa-star"></i>
                         </div>
                         <h5 class="p-name"><?php echo $row['product_name']; ?></h5>
-                        <h4 class="p-price">₱<?php echo $row['product_price']; ?></h4>
+                        <h4 class="p-price">₱<?php echo number_format($row['product_price'],2); ?></h4>
                         <button class="buy-btn" href="<?php echo "product_view.php?product_id=".$row['product_id']; ?>">Buy Now</button>
                         
                     </div>

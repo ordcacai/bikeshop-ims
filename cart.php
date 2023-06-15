@@ -21,7 +21,7 @@ if(isset($_POST['add_to_cart'])){
                 'product_id' => $_POST['product_id'],
                 'product_name' => $_POST['product_name'],
                 'product_color' => $_POST['product_color'],
-                'product_price' => $_POST['product_price'],
+                'product_price' => str_replace(',', '', $_POST['product_price']),
                 'product_image' => $_POST['product_image'],
                 'product_quantity' => $_POST['product_quantity']
         );
@@ -142,7 +142,7 @@ function calculateTotalCart(){
                             <img src="assets/imgs/<?php echo $value['product_image']; ?>"/>
                             <div>
                                 <p><?php echo $value['product_name']; ?></p>
-                                <small><span>₱</span><?php echo $value['product_price']; ?></small>
+                                <small><span>₱</span><?php echo number_format($value['product_price'],2,'.',','); ?></small>
                                 <br>
                                 <small><span></span><?php echo $value['product_color']; ?></small>
                                 <br>
@@ -157,14 +157,14 @@ function calculateTotalCart(){
                     <td>
                         <form method="POST" action="cart.php">
                             <input type="hidden" name="product_id" value="<?php echo $value['product_id']; ?>"/>
-                            <input type="number" name="product_quantity" value="<?php echo $value['product_quantity']; ?>"/>
+                            <input type="number" name="product_quantity" value="<?php echo $value['product_quantity']; ?>" min="1"/>
                             <input type="submit" name="edit_quantity" class="edit-btn" value="Edit"/>
                         </form>
                     </td>
 
                     <td>
                         <span>₱</span>
-                        <span class="product-price"><?php echo $value['product_quantity'] *  $value['product_price']; ?></span>
+                        <span class="product-price"><?php echo number_format($value['product_quantity'] *  $value['product_price'],2,'.',','); ?></span>
                     </td>
                 </tr>
 
@@ -180,7 +180,7 @@ function calculateTotalCart(){
 
                         <?php if(isset($_SESSION['cart'])){ ?>
 
-                            <td>₱<?php echo $_SESSION['total']; ?></td>
+                            <td>₱<?php echo number_format($_SESSION['total'],2,'.',','); ?></td>
 
                         <?php } ?>
 

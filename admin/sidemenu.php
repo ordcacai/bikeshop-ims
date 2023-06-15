@@ -37,7 +37,7 @@ if(!isset($_SESSION['logged_in'])){
           <li><a class="link_name" href="orders.php">Orders</a></li>
           <li><a href="orders.php">View Orders</a></li>
           <li><a href="retail.php">Add Order</a></li>
-          <li><a href="invoice.php">Order Invoice</a></li>
+          <li><a href="invoice.php">Invoice & Payments</a></li>
         </ul>
       </li>
       <li>

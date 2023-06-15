@@ -5,7 +5,7 @@
 ?>   
     
     <!-- Home -->
-
+<section>
       <section id="home">
         <div class="container">
             <h5>NEW ARRIVAL</h5>
@@ -53,25 +53,25 @@
 
             <!-- 1st Product -->
             <div class="one col-lg-4 col-md-12 col-sm-12 p-0">
-                <img src="assets/imgs/new_bike.jpg" class="img-fluid">
+                <img src="assets/imgs/new_bike4.jpg" class="img-fluid">
                 <div class="details">
-                    <h2>Product Name</h2>
+                    <h2>E-Bike</h2>
                     <button onclick="window.location.href='shop.php';" class="text-uppercase">Shop Now</button>
                 </div>
             </div>
             <!-- 2nd Product -->
             <div class="one col-lg-4 col-md-12 col-sm-12 p-0">
-                <img src="assets/imgs/new_bike3.jpg" class="img-fluid">
+                <img src="assets/imgs/new_bike5.jpg" class="img-fluid">
                 <div class="details">
-                    <h2>Product Name</h2>
+                    <h2>Bike</h2>
                     <button onclick="window.location.href='shop.php';" class="text-uppercase">Shop Now</button>
                 </div>
             </div>
             <!-- 3rd Product -->
             <div class="one col-lg-4 col-md-12 col-sm-12 p-0">
-                <img src="assets/imgs/new_bike2.jpg" class="img-fluid">
+                <img src="assets/imgs/Shimano Deore M4100 Shifters1.jpeg" class="img-fluid">
                 <div class="details">
-                    <h2>Product Name</h2>
+                    <h2>Parts</h2>
                     <button onclick="window.location.href='shop.php';" class="text-uppercase">Shop Now</button>
                 </div>
             </div>
@@ -103,7 +103,7 @@
                     <i class="fas fa-star"></i>
                 </div>
                 <h5 class="p-name"><?php echo $row['product_name'];?></h5>
-                <h4 class="p-price">₱<?php echo $row['product_price'];?></h4>
+                <h4 class="p-price">₱<?php echo number_format($row['product_price'],2); ?></h4>
                 <a href="<?php echo "product_view.php?product_id=".$row['product_id'];?>"><button class="buy-btn">Buy Now</button></a>
                 
             </div>
@@ -137,7 +137,7 @@
                     <i class="fas fa-star"></i>
                 </div>
                 <h5 class="p-name"><?php echo $row['product_name'];?></h5>
-                <h4 class="p-price">₱<?php echo $row['product_price'];?></h4>
+                <h4 class="p-price">₱<?php echo number_format($row['product_price'],2);?></h4>
                 <a href="<?php echo "product_view.php?product_id=".$row['product_id'];?>"><button class="buy-btn">Buy Now</button></a>
                 
             </div>
@@ -146,7 +146,7 @@
 
         </div>
       </section>
-
+      </section>
 <?php
 
 include('layouts/footer.php');

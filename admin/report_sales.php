@@ -51,6 +51,7 @@ include('sidemenu.php'); ?>
 <div class="main-content">
     <div class="container-fluid">
         <h1 class="my-4">Sales</h1>
+        <a class="btn btn-secondary btn mb-5 me-4" style="float:right;" href="print_sales.php"><i class="fas fa-print"></i> Print</a>
 
         <div class="row">
             <div class="col-md-12">
@@ -77,6 +78,7 @@ include('sidemenu.php'); ?>
                         <th>Order Date</th>
                         <th>Product Name</th>
                         <th>Product Price</th>
+                        <th>Base Price</th>
                         <th>Product Quantity</th>
                         <th>Total Cost</th>
                         <th>Shipping Method</th>
@@ -88,11 +90,12 @@ include('sidemenu.php'); ?>
                         <tr>
                             <td><?php echo $row['order_date']; ?></td>
                             <td><?php echo $row['product_name']; ?></td>
-                            <td><?php echo $row['product_price']; ?></td>
+                            <td><?php echo number_format($row['product_price'],2); ?></td>
+                            <td><?php echo number_format($row['product_bp'],2); ?></td>
                             <td><?php echo $row['product_quantity']; ?></td>
-                            <td><?php echo $row['total_cost']; ?></td>
+                            <td><?php echo number_format($row['total_cost'],2); ?></td>
                             <td><?php echo $row['shipping_method']; ?></td>
-                            <td><?php echo $row['gross_income']; ?></td>
+                            <td><?php echo number_format($row['gross_income'],2); ?></td>
                         </tr>
                     <?php } ?>
                 </tbody>
