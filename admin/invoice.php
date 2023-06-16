@@ -49,7 +49,7 @@ include('sidemenu.php'); ?>
 
 <div class="main-content">
     <div class="container-fluid">
-            <h1 class="my-4">Invoice</h1>
+            <h1 class="my-4">Invoice and Payments</h1>
         
                 <?php if(isset($_GET['invoice_created'])){ ?>
                     <p class="text-center" style="color: green;"><?php echo $_GET['invoice_created']; ?></p>   

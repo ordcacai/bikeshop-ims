@@ -669,14 +669,16 @@ th:last-child{
     background-color: #ffae42;
 }
 
-.account-info #order-btn, #logout-btn{
+.account-info #order-btn, #logout-btn, #change-pass-btn1{
     color: darkorange;
     text-decoration: none;
 }
 
-.account-info #order-btn:hover, #logout-btn:hover{
+.account-info #order-btn:hover, #logout-btn:hover, #change-pass-btn1:hover{
     color: #ffae42;
 }
+
+
 
 /* Orders */
 

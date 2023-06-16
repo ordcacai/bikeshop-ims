@@ -41,12 +41,12 @@ if(isset($_POST['change_password'])){
     //Check if password don't match
     if($password !== $confirmPassword){
 
-        header('location: account.php?error=Passwords dont match!');
+        header('location: account.php?error=Passwords do not match!');
     
     //Check if password don't have 6 characters
     }else if((strlen($password) < 6)){
 
-        header('location: account.php?error=Password must be atleast 6 Characters!');
+        header('location: account.php?error=Password must be at least 6 Characters!');
 
     //if password matched    
     }else{
@@ -60,7 +60,7 @@ if(isset($_POST['change_password'])){
 
         }else{
 
-            header('location: account.php?error=Password change unssucessful.');
+            header('location: account.php?error=Password change unsuccessful.');
                     
         }
 
@@ -123,50 +123,73 @@ if(isset($_SESSION['logged_in'])){
 ?>  
     
     <!-- Account -->
-    <section>
-    <section class="my-5 py-5">
-        <div class="row container mx-auto">
-            <div class="text-center mt-5 pt-5 col-lg-6 col-md-12 col-sm-12">
+<section>
+    <div class="container text-center mt-5 py-md-5">
+        <h2>MY ACCOUNT</h2><br>
+        <hr class="mx-auto">
+    </div>
+
+    <div class="container mt-5">
+    <div class="row">
+      <div class="col-sm-10">
+      <div class="row container mx-auto">
+            <div class="pt-2 col-lg-6 col-md-12 col-sm-12">
             <p class="text-center" style="color:green;"><?php if(isset($_GET['login_success'])){ echo $_GET['login_success']; }?></p>
             <p class="text-center" style="color:green;"><?php if(isset($_GET['register_success'])){ echo $_GET['register_success']; }?></p>
-                <h3 class="font-weight-bold">Account Details</h3>
-                <hr class="mx-auto">
-                <div class="account-info">
+                 <div class="account-info">
                     <p>Name: <span> <?php if(isset($_SESSION['user_name'])){echo $_SESSION['user_name'];} ?></span></p>
                     <p>Email: <span> <?php if(isset($_SESSION['user_email'])){echo $_SESSION['user_email'];} ?></span></p>
                     <p><a href="#orders" id="order-btn">Your Orders</a></p>
                     <p><a href="account.php?logout=1" id="logout-btn">Logout</a></p>
+                    <p><a href= "" id="change-pass-btn1" data-bs-toggle="modal" data-bs-target="#changePasswordModal">Change Password</a></p>
+                     <!-- Modal for Change Password -->
+                    <div class="modal fade" id="changePasswordModal">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title"></h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                        <form action="account.php" method="POST" id="account-form">
+                            <p class="text-center" style="color:red;"><?php if(isset($_GET['error'])){ echo $_GET['error']; }?></p>
+                            <p class="text-center" style="color:green;"><?php if(isset($_GET['message'])){ echo $_GET['message']; }?></p>
+                            
+                            <h3>Change Password</h3>
+                            <hr class="mx-auto mb-5">
+                            <div class="form-group">
+                                <label for="">Password</label>
+                                <input type="password" class="form-control" id="account-password" name="password" placeholder="Password" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Confirm Password</label>
+                                <input type="password" class="form-control" id="account-confirm-password" name="confirmPassword" placeholder="Confirm Password" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn" id="change-password-btn" name="change_password" value="Change Password">
+                            </div>
+                        </form>
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                        </div>
+                        
+                        </div>
+                    </div>
+                    </div>
                 </div>
-            </div>
+      </div>
 
-            <div class="col-lg-6 col-md-12 col-sm-12">
-                <form action="account.php" method="POST" id="account-form">
-                    <p class="text-center" style="color:red;"><?php if(isset($_GET['error'])){ echo $_GET['error']; }?></p>
-                    <p class="text-center" style="color:green;"><?php if(isset($_GET['message'])){ echo $_GET['message']; }?></p>
-                    
-                    <h3>Change Password</h3>
-                    <hr class="mx-auto mb-5">
-                    <div class="form-group">
-                        <label for="">Password</label>
-                        <input type="password" class="form-control" id="account-password" name="password" placeholder="Password" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="">Confirm Password</label>
-                        <input type="password" class="form-control" id="account-confirm-password" name="confirmPassword" placeholder="Confirm Password" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" class="btn" id="change-password-btn" name="change_password" value="Change Password">
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Orders -->
-
-    <section id="orders" class="orders container my-5 py-5">
+      <div id="orders" class="col-sm-10 orders container my-5 py-5">
+      
         <div class="container mt-2">
-            <h2 class="font-weight-bold text-center">Your Orders</h2>
+            <h3 class="font-weight-bold text-center">Your Orders</h3>
             <hr class="mx-auto">
         </div>
 
@@ -242,7 +265,9 @@ if(isset($_SESSION['logged_in'])){
                 <div class="p-10">
                     <strong>Page <?= $page_no; ?> of <?= $total_no_of_pages ?></strong>
                 </div>
-    </section>
-    </section>
+      </div>  
+    </div>
+
+</section>
 
     <?php include('layouts/footer.php'); ?>
