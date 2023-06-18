@@ -76,6 +76,7 @@ include('sidemenu.php'); ?>
                             <th scope="col">Order Date</th>
                             <th scope="col">Order Status</th>
                             <th scope="col">Manage Invoice</th>
+                            <th scope="col">Manage Payment</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -91,7 +92,10 @@ include('sidemenu.php'); ?>
                                 <a class="btn btn-outline-primary" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=UPLOAD"><i class="fas fa-upload"></i></a>
                                 <a class="btn btn-outline-danger" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=DOWNLOAD"><i class="fas fa-download"></i></a>
                                 <a class="btn btn-outline-info" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=EMAIL"><i class="fas fa-envelope"></i></a>
-                                <a class="btn btn-outline-success" style="float:right" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=COMPLETE"><i class="fas fa-check"></i></a>
+                            </td>
+                            <td>
+                            <a class="btn btn-outline-success" href="payment.php"><i class="fas fa-pen"></i></a>
+                            <a class="btn btn-outline-success" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=COMPLETE"><i class="fas fa-check"></i></a>
                             </td>
                         </tr>
                         <?php } ?>

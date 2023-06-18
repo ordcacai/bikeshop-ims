@@ -8,6 +8,24 @@ include('sidemenu.php');?>
     }
 ?>
 
+<?php
+
+// Check if order_id is provided in the URL
+//if (!isset($_GET['order_id'])) {
+ //   header('location: invoice.php');
+  //  exit;
+//}
+
+// Retrieve the product details from the database based on the provided product_id
+$order_id = $_GET['order_id'];
+$stmt = $conn->prepare("SELECT * FROM orders WHERE order_id = ?");
+$stmt->bind_param("i", $order_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$product = $result->fetch_assoc();
+
+?>
+
 
 <div class="main-content">
     <div class="container-fluid">
@@ -16,7 +34,7 @@ include('sidemenu.php');?>
 
                 <div class="mx-auto container">
 
-                    <form id="create-form" enctype="multipart/form-data" method="POST" action="">
+                    <form id="create-form" enctype="multipart/form-data" method="POST" action="record_payment.php">
                         <p style="color: red;"><?php if(isset($_GET['error'])){ echo $_GET['error']; } ?></p>
 
                         <div class="form-group mt-2">
@@ -40,7 +58,7 @@ include('sidemenu.php');?>
                         <div class="col">
                             <div class="form-group mt-2">
                                 <label><strong>Reference Number</strong></label>
-                                <input type="text" class="form-control" id="ref_number" name="ref_" required>
+                                <input type="text" class="form-control" id="ref_number" name="ref_num" required>
                             </div>
                         
                             <div class="form-group mt-2">
@@ -58,7 +76,7 @@ include('sidemenu.php');?>
 
                         <div class="form-group mt-2">
                                 <label><strong>Attach File</strong></label>
-                                <input type="file" class="form-control" id="image4" name="image4" placeholder="Image 4" >
+                                <input type="file" class="form-control" id="image" name="image" placeholder="Image 4" >
                         </div>
                         
                         <div class="form-group my-5">
