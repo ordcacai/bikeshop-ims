@@ -11,7 +11,7 @@ if (isset($_POST['record_payment'])) {
     $order_id = $_POST['order_id'];
 
     $image = $_FILES['image']['tmp_name']; // Uploaded file
-    $image_name = $order_id . "1.jpeg"; // Image name
+    $image_name = $order_id . "payment.jpeg"; // Image name
     move_uploaded_file($image, "../assets/imgs/" . $image_name); // Upload image
 
     // Record Payment
