@@ -102,9 +102,11 @@ include('sidemenu.php'); ?>
                                 <a id="email1" class="btn btn-outline-info" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=EMAIL"><i class="fas fa-envelope"></i></a>
                             </td>
                             <td>
-                            <a id="email2" class="btn btn-outline-success" href="payment.php"><i class="fas fa-pen"></i></a>
                             <a class="btn btn-outline-success" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=COMPLETE"><i class="fas fa-check"></i></a>
                                 <?php }?>
+                            </td>
+                            <td>
+                            <a id="email2" class="btn btn-outline-success" href="<?php echo "payment.php?order_id=".$row['order_id']; ?>"><i class="fas fa-pen"></i></a>
                             </td>
                         </tr>
                         <?php } ?>

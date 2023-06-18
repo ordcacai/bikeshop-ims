@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 17, 2023 at 07:40 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.0.28
+-- Generation Time: Jun 18, 2023 at 04:53 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -50,16 +50,16 @@ CREATE TABLE `orders` (
   `remarks` longtext NOT NULL,
   `shipping_fee` decimal(6,2) NOT NULL,
   `invoice_no` bigint(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `orders`
 --
 
 INSERT INTO `orders` (`order_id`, `order_type`, `wsname`, `wsphone`, `wsaddress`, `wscourier`, `order_cost`, `order_status`, `user_name`, `user_email`, `user_id`, `user_phone`, `user_city`, `user_address`, `user_landmark`, `location_link`, `payment_method`, `shipping_method`, `order_date`, `remarks`, `shipping_fee`, `invoice_no`) VALUES
-(1, 'retail', '', 0, '', '', 2990.00, 'delivered', 'Yuri Andrew Bayonito', 'yandrewab2000@gmail.com', 4, 9497317030, 'Muntinlupa City', '1 Maya Lane Liberty Homes, Cupang, Muntinlupa City', 'Uratex', 'https://ul.waze.com/ul?ll=14.58448679%2C120.98440647&navigate=yes&zoom=17&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location', 'Cash', 'Seastar Cargo', '2023-06-08', '', 100.00, 202306081),
-(2, 'retail', '', 0, '', '', 7200.00, 'Pending', 'asd', 'sds@sdfmd', 2, 0, 'dfs', 'sdfd', 'sdfsd', 'sdfd', 'GCash', 'Capex', '2023-06-08', '', 0.00, 202306082),
-(3, 'retail', '', 0, '', '', 9000.00, 'Pending', 'cust_demo', 'demo@vykesmnl.com', 2, 9999999, 'dfs', 'asd', 'asdas', 'asd', 'GCash', 'Capex', '2023-06-08', '', 0.00, 202306083);
+(1, 'retail', '', 0, '', '', '2990.00', 'delivered', 'Yuri Andrew Bayonito', 'yandrewab2000@gmail.com', 4, 9497317030, 'Muntinlupa City', '1 Maya Lane Liberty Homes, Cupang, Muntinlupa City', 'Uratex', 'https://ul.waze.com/ul?ll=14.58448679%2C120.98440647&navigate=yes&zoom=17&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location', 'Cash', 'Seastar Cargo', '2023-06-08', '', '100.00', 202306081),
+(2, 'retail', '', 0, '', '', '7200.00', 'Pending', 'asd', 'sds@sdfmd', 2, 0, 'dfs', 'sdfd', 'sdfsd', 'sdfd', 'GCash', 'Capex', '2023-06-08', '', '0.00', 202306082),
+(3, 'retail', '', 0, '', '', '9000.00', 'Pending', 'cust_demo', 'demo@vykesmnl.com', 2, 9999999, 'dfs', 'asd', 'asdas', 'asd', 'GCash', 'Capex', '2023-06-08', '', '0.00', 202306083);
 
 -- --------------------------------------------------------
 
@@ -78,16 +78,33 @@ CREATE TABLE `order_items` (
   `product_quantity` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `order_date` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `order_items`
 --
 
 INSERT INTO `order_items` (`item_id`, `order_id`, `product_id`, `product_name`, `product_color`, `product_image`, `product_price`, `product_quantity`, `user_id`, `order_date`) VALUES
-(1, 1, '1', 'Shimano Deore CS-M5100 Sprocket', 'Silver', 'Shimano Deore CS-M5100 Sprocket1.jpeg', 2990.00, 1, 4, '2023-06-08 09:54:38'),
-(2, 2, '2', 'Shimano MT201 Hydraulic Brakeset', 'Black', 'Shimano MT201 Hydraulic Brakeset1.jpeg', 1800.00, 4, 2, '2023-06-08 14:14:57'),
-(3, 3, '2', 'Shimano MT201 Hydraulic Brakeset', 'Black', 'Shimano MT201 Hydraulic Brakeset1.jpeg', 1800.00, 5, 2, '2023-06-08 14:28:30');
+(1, 1, '1', 'Shimano Deore CS-M5100 Sprocket', 'Silver', 'Shimano Deore CS-M5100 Sprocket1.jpeg', '2990.00', 1, 4, '2023-06-08 09:54:38'),
+(2, 2, '2', 'Shimano MT201 Hydraulic Brakeset', 'Black', 'Shimano MT201 Hydraulic Brakeset1.jpeg', '1800.00', 4, 2, '2023-06-08 14:14:57'),
+(3, 3, '2', 'Shimano MT201 Hydraulic Brakeset', 'Black', 'Shimano MT201 Hydraulic Brakeset1.jpeg', '1800.00', 5, 2, '2023-06-08 14:28:30');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payments`
+--
+
+CREATE TABLE `payments` (
+  `payment_id` int(11) NOT NULL,
+  `cust_name` varchar(100) CHARACTER SET latin1 NOT NULL,
+  `amount` decimal(8,2) NOT NULL,
+  `payment_date` varchar(100) NOT NULL,
+  `ref_num` int(50) NOT NULL,
+  `mop` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `notes` text CHARACTER SET latin1 NOT NULL,
+  `image` varchar(255) CHARACTER SET latin1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -108,27 +125,27 @@ CREATE TABLE `products` (
   `product_bp` decimal(8,2) NOT NULL,
   `product_wsp` decimal(8,2) NOT NULL,
   `product_special_offer` decimal(10,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`product_id`, `product_name`, `product_category`, `product_description`, `product_image`, `product_image2`, `product_image3`, `product_image4`, `product_price`, `product_bp`, `product_wsp`, `product_special_offer`) VALUES
-(1, 'Shimano Deore CS-M5100 Sprocket', 'parts', 'Shimano Deore CS-M5100 11spd 11-51T Sprocket \r\n\r\n- Model: M5100 \r\n- 11spd \r\n- 11-51T ', 'Shimano Deore CS-M5100 Sprocket1.jpeg', 'Shimano Deore CS-M5100 Sprocket2.jpeg', 'Shimano Deore CS-M5100 Sprocket3.jpeg', 'Shimano Deore CS-M5100 Sprocket4.jpeg', 2990.00, 2424.00, 2750.00, 2800.00),
-(2, 'Shimano MT201 Hydraulic Brakeset', 'parts', 'Shimano MT201 Hydrualic Brakeset\r\n\r\n- hydraulic \r\n- alloy levers \r\n- model: MT201', 'Shimano MT201 Hydraulic Brakeset1.jpeg', 'Shimano MT201 Hydraulic Brakeset2.jpeg', 'Shimano MT201 Hydraulic Brakeset3.jpeg', 'Shimano MT201 Hydraulic Brakeset4.jpeg', 1800.00, 1450.00, 1550.00, 1700.00),
-(3, 'Shimano Deore M4100 Shifters', 'parts', 'Shimano Deore M4100 Shifters\r\n\r\n- model: M4100 \r\n- 10spd ', 'Shimano Deore M4100 Shifters1.jpeg', 'Shimano Deore M4100 Shifters2.jpeg', 'Shimano Deore M4100 Shifters3.jpeg', 'Shimano Deore M4100 Shifters4.jpeg', 1300.00, 936.00, 1100.00, 1200.00),
-(4, 'Shimano Sora FC-R3000 Crankset', 'parts', 'Shimano Sora FC-R3000 Crankset\r\n\r\n- Model: FC-R3000 \r\n- 50x34x170mm \r\n- 9-Spd \r\n- without bottom bracket', 'Shimano Sora FC-R3000 Crankset1.jpeg', 'Shimano Sora FC-R3000 Crankset2.jpeg', 'Shimano Sora FC-R3000 Crankset3.jpeg', 'Shimano Sora FC-R3000 Crankset4.jpeg', 3690.00, 2876.00, 3280.00, 3400.00),
-(5, 'Ebike Code 117', 'Ebike', 'Ebike Code 117\r\n\r\nSpecifications:\r\n•Controller: 1 Tube\r\n•Range: 45-60km\r\n•Capacity: 350kg load weight\r\n•Battery: 60v 20ah - 800watts\r\n•Front: Disc brake\r\n•Rear: Drum brake\r\n•With Storage box and Side Mirrors\r\n•Alloy Braket for Storage box', 'Ebike Code 1171.jpeg', 'Ebike Code 1172.jpeg', 'Ebike Code 1173.jpeg', 'Ebike Code 1174.jpeg', 30000.00, 22500.00, 24500.00, 26800.00),
-(6, 'Tirich Rainer MTB 27.5', 'Bike', 'Specifications:\r\n• Tirich Alloy Frame Internal Cabling\r\n• Tirich Suspension Fork with Lock out\r\n• Logan Hydraulic Brakeset\r\n• 10 Speed\r\n• RD: Smach RX10 10s Shifters and Rear Derailleur\r\n• Tirich Chainwheel 1x34T\r\n• Tirich Cockpit Alloy\r\n• Moser Quick Rel', 'Tirich Rainer MTB 27.51.jpeg', 'Tirich Rainer MTB 27.52.jpeg', 'Tirich Rainer MTB 27.53.jpeg', 'Tirich Rainer MTB 27.54.jpeg', 9990.00, 8000.00, 8500.00, 8790.00),
-(7, 'Ebike Code 113', 'Ebike', 'Specifications:\r\n•Brake: Drum Brake\r\n•Range: 40-50km\r\n•Tire: 14x2.5 Tubeless\r\n•Capacity: 150kg load weight\r\n•Battery: 48v 20ah - 500watts\r\n•Charging Time: 7-8hrs\r\n•Digital Panel\r\n•With front basket\r\n•With center and side stand\r\n•With head light\r\n•With fro', 'Ebike Code 1131.jpeg', 'Ebike Code 1132.jpeg', 'Ebike Code 1133.jpeg', 'Ebike Code 1134.jpeg', 16200.00, 12000.00, 13900.00, 14500.00),
-(8, 'Ebike Code 205', 'Ebike', 'Specifications:\r\n•Seat: 2-seater\r\n•Brake: Drum Brake\r\n•Range: 35-45km\r\n•Tire: 14x2.5 Tubeless\r\n•Capacity: 200kg load weight\r\n•Battery: 48v 20ah - 600watts\r\n•Charging Time: 7-8hrs\r\n•With side mirror\r\n•With storage box', 'Ebike Code 2051.jpeg', 'Ebike Code 2052.jpeg', 'Ebike Code 2053.jpeg', 'Ebike Code 2054.jpeg', 34000.00, 26000.00, 30000.00, 31500.00),
-(9, 'Mountainpeak Striker Road Bike (Sora)', 'Bike', 'Specifications:\r\n• Alloy Aero Frame\r\n• 2x9 Speed\r\n• Mountainpeak Alloy Fork\r\n• STI Shimano Sora Shifters\r\n• RD: Shimano Sora\r\n• FD: Shimano Sora\r\n• Mechanical Disc Brakes\r\n• Branta Strive Dropbar\r\n• Branta Alloy Rims\r\n• Prowheel Ounce Crankset\r\n• Quick Re', 'Mountainpeak Striker Road Bike (Sora)1.jpeg', 'Mountainpeak Striker Road Bike (Sora)2.jpeg', 'Mountainpeak Striker Road Bike (Sora)3.jpeg', 'Mountainpeak Striker Road Bike (Sora)4.jpeg', 24000.00, 20250.00, 21250.00, 22000.00),
-(10, 'Mountainpeak Falcon Gravel Bike', 'Bike', 'Specifications:\r\n• Mountainpeak Carbon T700 Frame\r\n• Mountainpeak Carbon T700 Fork\r\n• 2x9 Speed\r\n• Shimano Sora STI Shifters\r\n• FD: Shimano Sora\r\n• RD: Shimano Sora\r\n• Prowheel Ounce Hollowtech Crankset\r\n• Actuated Hydraulic Funone Disc brakes\r\n• Mountain', 'Mountainpeak Falcon Gravel Bike1.jpeg', 'Mountainpeak Falcon Gravel Bike2.jpeg', 'Mountainpeak Falcon Gravel Bike3.jpeg', 'Mountainpeak Falcon Gravel Bike4.jpeg', 41000.00, 36500.00, 37500.00, 38000.00),
-(11, 'Mountainpeak Titans 27.5 ', 'Bike', 'Specifications:\r\n• Alloy Frame Internal Cabling\r\n• MTP XS1 Airfork with Lock out\r\n• 12 Speed\r\n• RD: Shimano Deore M6100\r\n• Shimano Deore M6100 Shifters\r\n• Nutt Hydraulic Brakes\r\n• Charm Hollowtech Crankset\r\n• Brenta Stem\r\n• Mountainpeak Velo Saddle\r\n• Mou', 'Mountainpeak Titans 27.5 1.jpeg', 'Mountainpeak Titans 27.5 2.jpeg', 'Mountainpeak Titans 27.5 3.jpeg', 'Mountainpeak Titans 27.5 4.jpeg', 26000.00, 20000.00, 21000.00, 22000.00),
-(12, 'Foxter Lincoln 27.5', 'Bike', 'Specifications:\r\n• Alloy Foxter Frame\r\n• Foxter Suspension Fork with Lock Out\r\n• 2x8 Speed\r\n• Shimano Shifters\r\n• Smach Hydraulic Brakeset\r\n• FD: Shimano Altus\r\n• RD: Shimano Tourney\r\n• Prowheel Crankset\r\n• Kenda Tires 27.5/29x2.10\r\n• Quick Release Foxter', 'Foxter Lincoln 27.51.jpeg', 'Foxter Lincoln 27.52.jpeg', 'Foxter Lincoln 27.53.jpeg', 'Foxter Lincoln 27.54.jpeg', 13000.00, 9800.00, 10400.00, 11800.00),
-(13, 'Ebike Code 114', 'Ebike', 'Specifications:\r\n•Brake: Drum Brake\r\n•Range: 35-45km\r\n•Tire: 14x2.5 Tubeless\r\n•Capacity: 100kg load weight\r\n•Battery: 48v 12ah - 350watts\r\n•Charging Time: 7-8hrs\r\n•Digital Panel\r\n•With front basket\r\n•With center and side stand\r\n•With head light\r\n•With fro', 'Ebike Code 1141.jpeg', 'Ebike Code 1142.jpeg', 'Ebike Code 1143.jpeg', 'Ebike Code 1144.jpeg', 14200.00, 8500.00, 10500.00, 12500.00),
-(14, 'Ebike Code 008b', 'Ebike', 'Specifications:\r\n•Seat: 3-seater\r\n•Brake: Drum Brake\r\n•Range: 35-45km\r\n•Tire: 14x2.5 Tubeless\r\n•Capacity: 350kg load weight\r\n•Battery: 60v 20ah - 600watts\r\n•Charging Time: 7-8hrs', 'Ebike Code 008b1.jpeg', 'Ebike Code 008b2.jpeg', 'Ebike Code 008b3.jpeg', 'Ebike Code 008b4.jpeg', 47150.00, 34300.00, 38900.00, 42900.00);
+(1, 'Shimano Deore CS-M5100 Sprocket', 'parts', 'Shimano Deore CS-M5100 11spd 11-51T Sprocket \r\n\r\n- Model: M5100 \r\n- 11spd \r\n- 11-51T ', 'Shimano Deore CS-M5100 Sprocket1.jpeg', 'Shimano Deore CS-M5100 Sprocket2.jpeg', 'Shimano Deore CS-M5100 Sprocket3.jpeg', 'Shimano Deore CS-M5100 Sprocket4.jpeg', '2990.00', '2424.00', '2750.00', '2800.00'),
+(2, 'Shimano MT201 Hydraulic Brakeset', 'parts', 'Shimano MT201 Hydrualic Brakeset\r\n\r\n- hydraulic \r\n- alloy levers \r\n- model: MT201', 'Shimano MT201 Hydraulic Brakeset1.jpeg', 'Shimano MT201 Hydraulic Brakeset2.jpeg', 'Shimano MT201 Hydraulic Brakeset3.jpeg', 'Shimano MT201 Hydraulic Brakeset4.jpeg', '1800.00', '1450.00', '1550.00', '1700.00'),
+(3, 'Shimano Deore M4100 Shifters', 'parts', 'Shimano Deore M4100 Shifters\r\n\r\n- model: M4100 \r\n- 10spd ', 'Shimano Deore M4100 Shifters1.jpeg', 'Shimano Deore M4100 Shifters2.jpeg', 'Shimano Deore M4100 Shifters3.jpeg', 'Shimano Deore M4100 Shifters4.jpeg', '1300.00', '936.00', '1100.00', '1200.00'),
+(4, 'Shimano Sora FC-R3000 Crankset', 'parts', 'Shimano Sora FC-R3000 Crankset\r\n\r\n- Model: FC-R3000 \r\n- 50x34x170mm \r\n- 9-Spd \r\n- without bottom bracket', 'Shimano Sora FC-R3000 Crankset1.jpeg', 'Shimano Sora FC-R3000 Crankset2.jpeg', 'Shimano Sora FC-R3000 Crankset3.jpeg', 'Shimano Sora FC-R3000 Crankset4.jpeg', '3690.00', '2876.00', '3280.00', '3400.00'),
+(5, 'Ebike Code 117', 'Ebike', 'Ebike Code 117\r\n\r\nSpecifications:\r\n•Controller: 1 Tube\r\n•Range: 45-60km\r\n•Capacity: 350kg load weight\r\n•Battery: 60v 20ah - 800watts\r\n•Front: Disc brake\r\n•Rear: Drum brake\r\n•With Storage box and Side Mirrors\r\n•Alloy Braket for Storage box', 'Ebike Code 1171.jpeg', 'Ebike Code 1172.jpeg', 'Ebike Code 1173.jpeg', 'Ebike Code 1174.jpeg', '30000.00', '22500.00', '24500.00', '26800.00'),
+(6, 'Tirich Rainer MTB 27.5', 'Bike', 'Specifications:\r\n• Tirich Alloy Frame Internal Cabling\r\n• Tirich Suspension Fork with Lock out\r\n• Logan Hydraulic Brakeset\r\n• 10 Speed\r\n• RD: Smach RX10 10s Shifters and Rear Derailleur\r\n• Tirich Chainwheel 1x34T\r\n• Tirich Cockpit Alloy\r\n• Moser Quick Rel', 'Tirich Rainer MTB 27.51.jpeg', 'Tirich Rainer MTB 27.52.jpeg', 'Tirich Rainer MTB 27.53.jpeg', 'Tirich Rainer MTB 27.54.jpeg', '9990.00', '8000.00', '8500.00', '8790.00'),
+(7, 'Ebike Code 113', 'Ebike', 'Specifications:\r\n•Brake: Drum Brake\r\n•Range: 40-50km\r\n•Tire: 14x2.5 Tubeless\r\n•Capacity: 150kg load weight\r\n•Battery: 48v 20ah - 500watts\r\n•Charging Time: 7-8hrs\r\n•Digital Panel\r\n•With front basket\r\n•With center and side stand\r\n•With head light\r\n•With fro', 'Ebike Code 1131.jpeg', 'Ebike Code 1132.jpeg', 'Ebike Code 1133.jpeg', 'Ebike Code 1134.jpeg', '16200.00', '12000.00', '13900.00', '14500.00'),
+(8, 'Ebike Code 205', 'Ebike', 'Specifications:\r\n•Seat: 2-seater\r\n•Brake: Drum Brake\r\n•Range: 35-45km\r\n•Tire: 14x2.5 Tubeless\r\n•Capacity: 200kg load weight\r\n•Battery: 48v 20ah - 600watts\r\n•Charging Time: 7-8hrs\r\n•With side mirror\r\n•With storage box', 'Ebike Code 2051.jpeg', 'Ebike Code 2052.jpeg', 'Ebike Code 2053.jpeg', 'Ebike Code 2054.jpeg', '34000.00', '26000.00', '30000.00', '31500.00'),
+(9, 'Mountainpeak Striker Road Bike (Sora)', 'Bike', 'Specifications:\r\n• Alloy Aero Frame\r\n• 2x9 Speed\r\n• Mountainpeak Alloy Fork\r\n• STI Shimano Sora Shifters\r\n• RD: Shimano Sora\r\n• FD: Shimano Sora\r\n• Mechanical Disc Brakes\r\n• Branta Strive Dropbar\r\n• Branta Alloy Rims\r\n• Prowheel Ounce Crankset\r\n• Quick Re', 'Mountainpeak Striker Road Bike (Sora)1.jpeg', 'Mountainpeak Striker Road Bike (Sora)2.jpeg', 'Mountainpeak Striker Road Bike (Sora)3.jpeg', 'Mountainpeak Striker Road Bike (Sora)4.jpeg', '24000.00', '20250.00', '21250.00', '22000.00'),
+(10, 'Mountainpeak Falcon Gravel Bike', 'Bike', 'Specifications:\r\n• Mountainpeak Carbon T700 Frame\r\n• Mountainpeak Carbon T700 Fork\r\n• 2x9 Speed\r\n• Shimano Sora STI Shifters\r\n• FD: Shimano Sora\r\n• RD: Shimano Sora\r\n• Prowheel Ounce Hollowtech Crankset\r\n• Actuated Hydraulic Funone Disc brakes\r\n• Mountain', 'Mountainpeak Falcon Gravel Bike1.jpeg', 'Mountainpeak Falcon Gravel Bike2.jpeg', 'Mountainpeak Falcon Gravel Bike3.jpeg', 'Mountainpeak Falcon Gravel Bike4.jpeg', '41000.00', '36500.00', '37500.00', '38000.00'),
+(11, 'Mountainpeak Titans 27.5 ', 'Bike', 'Specifications:\r\n• Alloy Frame Internal Cabling\r\n• MTP XS1 Airfork with Lock out\r\n• 12 Speed\r\n• RD: Shimano Deore M6100\r\n• Shimano Deore M6100 Shifters\r\n• Nutt Hydraulic Brakes\r\n• Charm Hollowtech Crankset\r\n• Brenta Stem\r\n• Mountainpeak Velo Saddle\r\n• Mou', 'Mountainpeak Titans 27.5 1.jpeg', 'Mountainpeak Titans 27.5 2.jpeg', 'Mountainpeak Titans 27.5 3.jpeg', 'Mountainpeak Titans 27.5 4.jpeg', '26000.00', '20000.00', '21000.00', '22000.00'),
+(12, 'Foxter Lincoln 27.5', 'Bike', 'Specifications:\r\n• Alloy Foxter Frame\r\n• Foxter Suspension Fork with Lock Out\r\n• 2x8 Speed\r\n• Shimano Shifters\r\n• Smach Hydraulic Brakeset\r\n• FD: Shimano Altus\r\n• RD: Shimano Tourney\r\n• Prowheel Crankset\r\n• Kenda Tires 27.5/29x2.10\r\n• Quick Release Foxter', 'Foxter Lincoln 27.51.jpeg', 'Foxter Lincoln 27.52.jpeg', 'Foxter Lincoln 27.53.jpeg', 'Foxter Lincoln 27.54.jpeg', '13000.00', '9800.00', '10400.00', '11800.00'),
+(13, 'Ebike Code 114', 'Ebike', 'Specifications:\r\n•Brake: Drum Brake\r\n•Range: 35-45km\r\n•Tire: 14x2.5 Tubeless\r\n•Capacity: 100kg load weight\r\n•Battery: 48v 12ah - 350watts\r\n•Charging Time: 7-8hrs\r\n•Digital Panel\r\n•With front basket\r\n•With center and side stand\r\n•With head light\r\n•With fro', 'Ebike Code 1141.jpeg', 'Ebike Code 1142.jpeg', 'Ebike Code 1143.jpeg', 'Ebike Code 1144.jpeg', '14200.00', '8500.00', '10500.00', '12500.00'),
+(14, 'Ebike Code 008b', 'Ebike', 'Specifications:\r\n•Seat: 3-seater\r\n•Brake: Drum Brake\r\n•Range: 35-45km\r\n•Tire: 14x2.5 Tubeless\r\n•Capacity: 350kg load weight\r\n•Battery: 60v 20ah - 600watts\r\n•Charging Time: 7-8hrs', 'Ebike Code 008b1.jpeg', 'Ebike Code 008b2.jpeg', 'Ebike Code 008b3.jpeg', 'Ebike Code 008b4.jpeg', '47150.00', '34300.00', '38900.00', '42900.00');
 
 -- --------------------------------------------------------
 
@@ -142,7 +159,7 @@ CREATE TABLE `stocks` (
   `product_name` varchar(255) NOT NULL,
   `quantity` int(255) NOT NULL,
   `color_size` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `stocks`
@@ -189,7 +206,7 @@ CREATE TABLE `stock_transfer` (
   `color_size` varchar(50) NOT NULL,
   `transfer_date` date NOT NULL,
   `transfer_type` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `stock_transfer`
@@ -222,7 +239,7 @@ CREATE TABLE `users` (
   `user_email` varchar(100) NOT NULL,
   `user_password` varchar(100) NOT NULL,
   `user_type` varchar(250) NOT NULL DEFAULT 'user'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
@@ -250,6 +267,12 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `order_items`
   ADD PRIMARY KEY (`item_id`);
+
+--
+-- Indexes for table `payments`
+--
+ALTER TABLE `payments`
+  ADD PRIMARY KEY (`payment_id`);
 
 --
 -- Indexes for table `products`
@@ -291,6 +314,12 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `order_items`
   MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `payments`
+--
+ALTER TABLE `payments`
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `products`
