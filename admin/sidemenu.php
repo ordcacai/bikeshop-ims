@@ -52,7 +52,6 @@ if(!isset($_SESSION['logged_in'])){
           <li><a class="link_name" href="inventory.php">Inventory</a></li>
           <li><a href="inventory.php">View Products</a></li>
           <li><a href="add_product.php">Add Product</a></li>
-          <li><a href="transfer_stocks.php">Transfer Stocks</a></li>
         </ul>
       </li>
     <!--  <li>

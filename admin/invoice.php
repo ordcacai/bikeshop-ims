@@ -88,14 +88,23 @@ include('sidemenu.php'); ?>
                             <td><?php echo $row['order_date']; ?></td>
                             <td><?php echo $row['order_status']; ?></td>
                             <td>
-                                <a class="btn btn-outline-secondary" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=VIEW"><i class="fas fa-eye"></i></a>
+                                <?php if($_SESSION['user_type'] == 'admin') {?>
+                                <a class="btn btn-outline-secondary" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=VIEW" target="_blank"><i class="fas fa-eye"></i></a>
                                 <a class="btn btn-outline-primary" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=UPLOAD"><i class="fas fa-upload"></i></a>
                                 <a class="btn btn-outline-danger" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=DOWNLOAD"><i class="fas fa-download"></i></a>
-                                <a class="btn btn-outline-info" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=EMAIL"><i class="fas fa-envelope"></i></a>
+                                <a id="email1" class="btn btn-outline-info" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=EMAIL"><i class="fas fa-envelope"></i></a>
+                                <a id="email2" class="btn btn-outline-success" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=COMPLETE"><i class="fas fa-check"></i></a>
+                                <a id="reset_btn" class="btn btn-outline-dark" style="float:right"><i class="fas fa-undo"></i></a>
+                                <?php } else{?>
+                                <a class="btn btn-outline-secondary" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=VIEW" target="_blank"><i class="fas fa-eye"></i></a>
+                                <a class="btn btn-outline-primary" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=UPLOAD"><i class="fas fa-upload"></i></a>
+                                <a class="btn btn-outline-danger" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=DOWNLOAD"><i class="fas fa-download"></i></a>
+                                <a id="email1" class="btn btn-outline-info" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=EMAIL"><i class="fas fa-envelope"></i></a>
                             </td>
                             <td>
-                            <a class="btn btn-outline-success" href="payment.php"><i class="fas fa-pen"></i></a>
+                            <a id="email2" class="btn btn-outline-success" href="payment.php"><i class="fas fa-pen"></i></a>
                             <a class="btn btn-outline-success" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=COMPLETE"><i class="fas fa-check"></i></a>
+                                <?php }?>
                             </td>
                         </tr>
                         <?php } ?>
@@ -130,4 +139,19 @@ include('sidemenu.php'); ?>
             </div>
     </div>
 </div> 
+<!-- <script>
+    $(function (){
+        $('#email1').click(function(){
+            $(this).attr("disabled", true);
+        });
+
+        $('#email2').click(function(){
+            $(this).attr("disabled", true);
+        });
+        $('#reset_btn').click(function(){
+            $('#email1').attr("disabled", false);
+            $('#email2').attr("disabled", false);
+        });
+    });
+</script> -->
 
