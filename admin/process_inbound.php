@@ -10,6 +10,8 @@ include('../server/connection.php');
         $location_to = $_POST['location_to'];
         $transfer_date = $_POST['transfer_date'];
         $transfer_type = $_POST['transfer_type'];
+        $supplier_name = $_POST['supplier_name'];
+        $reference_no = $_POST['reference_no'];
             
         for($i=0; $i<count($_POST['row']); $i++){
             $product_id = $_POST['options'][$i];
@@ -26,8 +28,8 @@ include('../server/connection.php');
             }
                 if($product_id !== '' && $product_quantity !== '' && $product_name !== '' && $color_size !== ''){
 
-                    $query = $conn->prepare('INSERT INTO stock_transfer (product_id, product_name, location_from, location_to, quantity, color_size, transfer_date, transfer_type ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
-                    $query->bind_param('isssisss', $product_id, $product_name, $location_from, $location_to, $product_quantity, $color_size, $transfer_date, $transfer_type );
+                    $query = $conn->prepare('INSERT INTO stock_transfer (product_id, product_name, location_from, location_to, supplier_name, reference_number, quantity, color_size, transfer_date, transfer_type ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+                    $query->bind_param('isssssisss', $product_id, $product_name, $location_from, $location_to, $supplier_name, $reference_no, $product_quantity, $color_size, $transfer_date, $transfer_type );
                     $query->execute();
 
                     $stmt1 = $conn->prepare('SELECT quantity FROM stocks WHERE product_id = ? AND color_size = ?');

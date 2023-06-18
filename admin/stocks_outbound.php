@@ -34,10 +34,10 @@ $stock = $stmt->get_result();
                         <label><strong>To</strong></label>
                         <select class="form-select" required name="location_to">
 
-                            <option value="vmtc">VM Trece</option>
-                            <option value="vmsr">VM Sta Rosa</option>
-                            <option value="shopee">Shopee Stocks</option>
-                            <option value="supplier">Supplier</option>
+                            <option value="VMTC">VM Trece</option>
+                            <option value="VMSR">VM Sta Rosa</option>
+                            <option value="Shopee">Shopee Stocks</option>
+                            <option value="Supplier">Supplier</option>
 
                         </select>
                     </div><br>
@@ -48,7 +48,7 @@ $stock = $stmt->get_result();
                     </div><br>
                     <hr style="height: 3px; border: none; color: #000; background-color: #000; width: 100%;">
                     <div style="text-align: left; margin-bottom: 10px;">
-                                <input type="button" class="btn btn-primary me-5" onclick="addRow()" value="Add an Item">
+                                <input type="button" class="btn btn-primary me-5 my-3" onclick="addRow()" value="Add an Item">
                             </div>
                             
                             <!-- ADD ROW -->

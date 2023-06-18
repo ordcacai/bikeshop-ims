@@ -27,28 +27,38 @@ $stock = $stmt->get_result();
 
                     <div class="form-group mt-2">
                         <label><strong>From</strong></label>
-                        <select class="form-select" required name="location_from">
+                        <select id="category" class="form-select" required name="location_from">
 
-                            <option value="vmtc">VM Trece</option>
-                            <option value="vmsr">VM Sta Rosa</option>
-                            <option value="shopee">Shopee Stocks</option>
-                            <option value="supplier">Supplier</option>
+                            <option value="VMTC">VM Trece</option>
+                            <option value="VMSR">VM Sta Rosa</option>
+                            <option value="Shopee">Shopee Stocks</option>
+                            <option value="Supplier">Supplier</option>
 
                         </select>
-                    </div><br>
+                    </div>
+
+                    <div class="form-group mt-2" style="display: none" id="supplier_name">
+                        <label><strong>Supplier Name</strong></label>
+                        <input style="width:300px" type="text" class="form-control" name="supplier_name">
+                    </div>
+
+                    <div class="form-group mt-2" style="display: none" id="supplier_ref">
+                        <label><strong>Reference Number</strong></label>
+                        <input style="width:300px" type="text" class="form-control" name="reference_no">
+                    </div>
 
                     <div class="form-group mt-2">
                         <label><strong>To</strong></label>
                         <input style="width:300px" type="text" class="form-control" id="selectedDate" name="location_to" value="VM Main" readonly>
-                    </div><br>
+                    </div>
 
                     <div class="form-group mt-2">
                         <label for="selectedDate"><strong>Inbound Date</strong></label>
                         <input style="width:300px" type="date" class="form-control" id="selectedDate" name="transfer_date" required>
-                    </div><br>
+                    </div>
                     <hr style="height: 3px; border: none; color: #000; background-color: #000; width: 100%;">
                     <div style="text-align: left; margin-bottom: 10px;">
-                                <input type="button" class="btn btn-primary me-5" onclick="addRow()" value="Add an Item">
+                                <input type="button" class="btn btn-primary me-5 my-3" onclick="addRow()" value="Add an Item">
                             </div>
                             
                             <!-- ADD ROW -->
@@ -148,4 +158,17 @@ $stock = $stmt->get_result();
         var row = button.closest(".row");
             row.parentNode.removeChild(row);
     }
+</script>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('#category').change(function() {
+      if ($(this).val() == 'supplier') {
+        $('#supplier_name').show();
+        $('#supplier_ref').show();
+      } else {
+        $('#supplier_name').hide();
+        $('#supplier_ref').hide();
+      }
+    });
+  });
 </script>

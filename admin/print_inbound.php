@@ -11,7 +11,7 @@ if(!isset($_SESSION['logged_in'])){
 
 }else{
 
-    $stmt = $conn->prepare("SELECT * FROM stocks");
+    $stmt = $conn->prepare("SELECT * FROM stock_transfer WHERE transfer_type = 'Inbound' AND DATE(transfer_date) = curdate()");
     $stmt->execute();
     $stocks = $stmt->get_result();//array
 
@@ -44,32 +44,33 @@ $pdf->AddPage();
 
 //Cell(width , height , text , border , end line , [align] )
 $pdf->SetFont('Arial','B',18);
-$pdf->Cell(0	,5,'Stock Report',0,1,'C');
+$pdf->Cell(0	,5,'Inbound Report',0,1,'C');
 //invoice contents
 $pdf->Cell(59	,10,'',0,1);//end of line
 $pdf->SetFont('Arial','B',12);
 
-$pdf->Cell(20	,5,'Stock ID',1,0,'C');
 $pdf->Cell(25	,5,'Product ID',1,0,'C');
 $pdf->Cell(80	,5,'Product Name',1,0,'C');
-$pdf->Cell(40	,5,'Color & Size',1,0,'C');
-$pdf->Cell(25	,5,'Quantity',1,1,'C');//end of line
+$pdf->Cell(35	,5,'Color & Size',1,0,'C');
+$pdf->Cell(25	,5,'Quantity',1,0,'C');
+$pdf->Cell(25	,5,'From',1,1,'C');//end of line
 
 $pdf->SetFont('Arial','',12);
 
 //display the items
 while($row = $stocks->fetch_assoc()){
-	$pdf->Cell(20	,5,$row['stock_id'],1,0,'C');
 	//add thousand separator using number_format function
 	$pdf->Cell(25	,5,number_format($row['product_id']),1,0,'C');
     $pdf->Cell(80	,5,$row['product_name'],1,0,'C');
-    $pdf->Cell(40	,5,$row['color_size'],1,0,'C');
-	$pdf->Cell(25	,5,number_format($row['quantity']),1,1,'C');//end of line
+    $pdf->Cell(35	,5,$row['color_size'],1,0,'C');
+	$pdf->Cell(25	,5,number_format($row['quantity']),1,0,'C');
+    $pdf->Cell(25	,5,$row['location_from'],1,1,'C');
+    //end of line
 }
 
 $file_location = "/xampp/htdocs/bikeshop-ims/pdf/stock-report/";
 $datetime = date('dmY_hms');
-$file_name = "Stock-Report_".$datetime.".pdf";
+$file_name = "Inbound-Report_".$datetime.".pdf";
 
 $pdf->Output($file_name, 'I'); 
 
