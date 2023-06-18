@@ -21,10 +21,10 @@ if (isset($_POST['record_payment'])) {
 
     // Execute the statement and handle errors
     if ($stmt->execute()) {
-        header('location: payment.php?payment_recorded=Payment recorded successfully!');
+        header('location: invoice.php?payment_recorded=Payment recorded successfully!');
         exit;
     } else {
-        header('location: payment.php?payment_recordedFailed=Error occurred, please try again.');
+        header('location: invoice.php?payment_recordedFailed=Error occurred, please try again.');
         exit;
     }
 }
