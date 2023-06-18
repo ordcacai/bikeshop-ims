@@ -76,6 +76,7 @@ include('sidemenu.php'); ?>
                             <th scope="col">Order Date</th>
                             <th scope="col">Order Status</th>
                             <th scope="col">Manage Invoice</th>
+                            <th scope="col">Manage Payment</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -99,9 +100,31 @@ include('sidemenu.php'); ?>
                                 <a class="btn btn-outline-primary" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=UPLOAD"><i class="fas fa-upload"></i></a>
                                 <a class="btn btn-outline-danger" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=DOWNLOAD"><i class="fas fa-download"></i></a>
                                 <a id="email1" class="btn btn-outline-info" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=EMAIL"><i class="fas fa-envelope"></i></a>
-                                <a id="email2" class="btn btn-outline-success" style="float:right" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=COMPLETE"><i class="fas fa-check"></i></a>
+                            </td>
+                            <td>
+                            <a class="btn btn-outline-success" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=COMPLETE"><i class="fas fa-check"></i></a>
                                 <?php }?>
                             </td>
+
+                            <!--Check if payment is already recorded-->
+                            <td>
+                            <?php
+                                $order_id = $row['order_id']; // Get the order ID
+                                $check_payment_stmt = $conn->prepare("SELECT * FROM payments WHERE order_id = ?");
+                                $check_payment_stmt->bind_param('i', $order_id);
+                                $check_payment_stmt->execute();
+                                $payment_result = $check_payment_stmt->get_result();
+
+                                if ($payment_result->num_rows > 0) {
+                                    // Payment record exists, disable the payment button
+                                    ?>
+                                    <button class="btn btn-outline-success" disabled><i class="fas fa-pen"></i></button>
+                                <?php } else { ?>
+                                    <!-- Payment record does not exist, enable the payment button -->
+                                    <a class="btn btn-outline-success" href="<?php echo "payment.php?order_id=" . $row['order_id']; ?>"><i class="fas fa-pen"></i></a>
+                                <?php } ?>
+                            </td>
+
                         </tr>
                         <?php } ?>
                     </tbody>

@@ -22,6 +22,11 @@ if(isset($_GET['order_id'])){
     $stmt1->execute();
     $order_items = $stmt1->get_result();//array
 
+    $stmt2 = $conn->prepare("SELECT * FROM payments WHERE order_id = ?");
+    $stmt2->bind_param("i", $order_id);
+    $stmt2->execute();
+    $payments = $stmt2->get_result();//array
+
 }else{
     header('location: orders.php');
 }
@@ -83,12 +88,28 @@ include('sidemenu.php'); ?>
                 <p style="font-size: 15px;"><strong>Landmark:</strong> <?php echo $row['user_landmark'] ?></p>
                 <p style="font-size: 15px;"><strong>Location Link:</strong> <?php echo $row['location_link'] ?></p>
                 <p style="font-size: 15px;"><strong>Shipping Method:</strong> <?php echo $row['shipping_method'] ?></p>
-                <p style="font-size: 15px;"><strong>Payment Method:</strong> <?php echo $row['payment_method'] ?></p>
-            <?php } ?>
-                  
-        </div>
+            <?php } ?>   
+        </div><br>
+        <?php while($row = $payments->fetch_assoc()){ ?>
+        <h3 class="mt-4">Payment Information:</h3>
+        <hr>
+        <div class="container">
+                <p style="font-size: 15px;"><strong>Amount Received:</strong> ₱<?php echo number_format($row['amount'],2); ?></p>
+                <p style="font-size: 15px;"><strong>Reference Number:</strong> <?php echo $row['ref_num'] ?></p>
+                <p style="font-size: 15px;"><strong>Payment Date:</strong> <?php echo $row['pay_date'] ?></p>
+                <p style="font-size: 15px;"><strong>Payment Method:</strong> <?php echo $row['mop'] ?></p>
+                <p style="font-size: 15px;"><strong>Notes:</strong> <?php echo $row['notes'] ?></p>
+                <?php } ?>
 
-        <a class="btn btn-primary my-5 px-5" href="edit_order.php?order_id=<?php echo $order_id ?>" style="float: right;" >Edit</a> 
-        
+                <?php if ($payments->num_rows === 0) { ?>
+                <h3 class="mt-4">Payment Information:</h3>
+                <hr>
+                <div class="container">
+                    <p style="font-size: 15px;">No payment information found for this order.</p>
+                </div>
+                <?php } ?>
+
+            <a class="btn btn-primary my-5 px-5" href="edit_order.php?order_id=<?php echo $order_id ?>" style="float: right;" >Edit</a> 
+        </div>
     </div>
 </div> 

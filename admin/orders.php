@@ -81,8 +81,8 @@ include('sidemenu.php'); ?>
                             <th scope="col">User Address</th>
                             <th scope="col">Order Date</th>
                             <th scope="col">Order Status</th>
-                            <th scope="col">Edit</th>
-                            <th scope="col">Delete</th>
+                            <th scope="col">Actions</th>
+                           
                         </tr>
                     </thead>
                     <tbody>
@@ -96,11 +96,16 @@ include('sidemenu.php'); ?>
                             <td><?php echo $row['order_date']; ?></td>
                             <td><?php echo $row['order_status']; ?></td>
                             <?php if($row['order_status'] == 'delivered' || $row['order_status'] == 'cancelled'){?>
-                            <td></td>
-                            <td><a class="btn btn-danger" href="delete_order.php?order_id=<?php echo $row['order_id']; ?>">Delete</a></td>
+                            
+                            <td><a class="btn btn-danger" href="delete_order.php?order_id=<?php echo $row['order_id']; ?>" 
+                            onclick="return confirm('Are you sure you want to delete this order? All records under this order will be deleted PERMANENTLY.');">Delete</a></td>
                             <?php }else{?>
-                            <td><a class="btn btn-primary" href="edit_order.php?order_id=<?php echo $row['order_id']; ?>">Edit</a></td>
-                            <td><a class="btn btn-danger" href="delete_order.php?order_id=<?php echo $row['order_id']; ?>">Delete</a></td>
+                            <td>
+                                <a class="btn btn-primary" href="edit_order.php?order_id=<?php echo $row['order_id']; ?>">Update</a>
+                                <a class="btn btn-danger" href="delete_order.php?order_id=<?php echo $row['order_id']; ?>"
+                                onclick="return confirm('Are you sure you want to delete this order? All records under this order will be deleted PERMANENTLY.');">Delete</a>
+                            </td>
+                            
                             <?php }?>
                         </tr>
                         <?php } ?>
