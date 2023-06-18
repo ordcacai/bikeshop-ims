@@ -97,11 +97,13 @@ include('sidemenu.php'); ?>
                             <td><?php echo $row['order_status']; ?></td>
                             <?php if($row['order_status'] == 'delivered' || $row['order_status'] == 'cancelled'){?>
                             
-                            <td><a class="btn btn-danger" href="delete_order.php?order_id=<?php echo $row['order_id']; ?>">Delete</a></td>
+                            <td><a class="btn btn-danger" href="delete_order.php?order_id=<?php echo $row['order_id']; ?>" 
+                            onclick="return confirm('Are you sure you want to delete this order? All records under this order will be deleted PERMANENTLY.');">Delete</a></td>
                             <?php }else{?>
                             <td>
                                 <a class="btn btn-primary" href="edit_order.php?order_id=<?php echo $row['order_id']; ?>">Update</a>
-                                <a class="btn btn-danger" href="delete_order.php?order_id=<?php echo $row['order_id']; ?>">Delete</a>
+                                <a class="btn btn-danger" href="delete_order.php?order_id=<?php echo $row['order_id']; ?>"
+                                onclick="return confirm('Are you sure you want to delete this order? All records under this order will be deleted PERMANENTLY.');">Delete</a>
                             </td>
                             
                             <?php }?>

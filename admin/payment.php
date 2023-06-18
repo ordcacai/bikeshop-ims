@@ -77,7 +77,8 @@ $orders = $result->fetch_assoc();
 
 
                         <div class="form-group my-5">
-                            <input type="submit" class="btn btn-primary me-5" name="record_payment" value="Record Payment">
+                            <input type="submit" class="btn btn-primary me-5" name="record_payment" value="Record Payment" 
+                            onclick="return confirm('Are you sure you want to submit the payment? Once you clicked OK, the record will be final and cannot be changed.');">      
                             <a class="btn btn-danger" href="invoice.php">Cancel</a>
                         </div>
 

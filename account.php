@@ -133,7 +133,7 @@ if(isset($_SESSION['logged_in'])){
     <div class="row">
       <div class="col-sm-10">
       <div class="flex-container">
-            <div class="pt-2 col-lg-6 col-md-12 col-sm-12">
+            <div class="col-lg-6 col-md-12 col-sm-12">
             <p class="text-center" style="color:green;"><?php if(isset($_GET['login_success'])){ echo $_GET['login_success']; }?></p>
             <p class="text-center" style="color:green;"><?php if(isset($_GET['register_success'])){ echo $_GET['register_success']; }?></p>
                  <div class="account-info">
@@ -187,7 +187,7 @@ if(isset($_SESSION['logged_in'])){
                     </div>
                     </div>
                 </div>
-            </div>
+        </div>
 
       <div id="orders" class="col-sm-10 orders container">
       
