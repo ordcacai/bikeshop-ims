@@ -103,11 +103,10 @@ include('sidemenu.php'); ?>
                             <label><strong>Order Status</strong></label>
                             <select class="form-select" required name="status">
                             
-                                <option value="not paid" <?php if($order['order_status'] == 'not paid'){echo "selected";} ?>>Not Paid</option>
-                                <option value="paid" <?php if($order['order_status'] == 'paid'){echo "selected";} ?>>Paid</option>
-                                <option value="shipped" <?php if($order['order_status'] == 'shipped'){echo "selected";} ?>>Shipped</option>
-                                <option value="delivered" <?php if($order['order_status'] == 'delivered'){echo "selected";} ?>>Delivered</option>
-                                <option value="cancelled" <?php if($order['order_status'] == 'cancelled'){echo "selected";} ?>>Cancelled</option>
+                                <option value="Pending" <?php if($order['order_status'] == 'Pending'){echo "selected";} ?>>Pending</option>
+                                <option value="Shipped" <?php if($order['order_status'] == 'Shipped'){echo "selected";} ?>>For Delivery/Ship out</option>
+                                <option value="Delivered" <?php if($order['order_status'] == 'Delivered'){echo "selected";} ?>>Delivered</option>
+                                <option value="Cancelled" <?php if($order['order_status'] == 'Cancelled'){echo "selected";} ?>>Cancelled</option>
 
                             </select>
                         </div>
