@@ -71,8 +71,8 @@ include('sidemenu.php'); ?>
                     <p class="text-center" style="color: red;"><?php echo $_GET['order_failed']; ?></p>   
                 <?php }?>
             
-                <ul class="nav nav-pills nav-justified my-5">
-                    <li class="nav-item"><a href="#pending" class="nav-link active" data-toggle="pill">Pending</a></li>
+                <ul class="nav nav-pills nav-justified my-5 custom-nav">
+                    <li class="nav-item"><a href="#pending" class="nav-link active " data-toggle="pill">Pending</a></li>
                     <li class="nav-item"><a href="#shipped" class="nav-link" data-toggle="pill">For Delivery/Ship out</a></li>
                     <li class="nav-item"><a href="#delivered" class="nav-link" data-toggle="pill">Delivered</a></li>
                     <li class="nav-item"><a href="#cancelled" class="nav-link" data-toggle="pill">Cancelled</a></li>
@@ -187,7 +187,7 @@ include('sidemenu.php'); ?>
 
                 ?>
 
-                <div class="tab-pane fade active justify-content-center px-5" id="shipped" >
+                <div class="tab-pane fade justify-content-center px-5" id="shipped" >
 
                 <div class="table-responsive">
                         <table class="table table-striped table-bordered table-hover table-sm text-center">
@@ -198,6 +198,8 @@ include('sidemenu.php'); ?>
                                     <th scope="col">Contact Number</th>
                                     <th scope="col">User Address</th>
                                     <th scope="col">Order Date</th>
+                                    <th scope="col">Date Shipped</th>
+                                    <th scope="col">Track Number</th>
                                     <th scope="col">Order Status</th>
                                     <th scope="col">Actions</th>
                                 
@@ -212,6 +214,8 @@ include('sidemenu.php'); ?>
                                     <td><?php echo "+63 ".$row['user_phone']; ?></td>
                                     <td><?php echo $row['user_address']; ?></td>
                                     <td><?php echo $row['order_date']; ?></td>
+                                    <td><?php echo $row['date_shipped']; ?></td>
+                                    <td><?php echo $row['track_number']; ?></td>
                                     <td><?php echo $row['order_status']; ?></td>
                                     <?php if($row['order_status'] == 'Delivered' || $row['order_status'] == 'Cancelled'){?>
                                     
@@ -293,7 +297,7 @@ include('sidemenu.php'); ?>
 
                 ?>
 
-                <div class="tab-pane fade active justify-content-center px-5" id="delivered" >
+                <div class="tab-pane fade justify-content-center px-5" id="delivered" >
 
                 <div class="table-responsive">
                         <table class="table table-striped table-bordered table-hover table-sm text-center">
@@ -304,6 +308,8 @@ include('sidemenu.php'); ?>
                                     <th scope="col">Contact Number</th>
                                     <th scope="col">User Address</th>
                                     <th scope="col">Order Date</th>
+                                    <th scope="col">Date Shipped</th>
+                                    <th scope="col">Date Delivered</th>
                                     <th scope="col">Order Status</th>
                                     <th scope="col">Actions</th>
                                 
@@ -318,6 +324,8 @@ include('sidemenu.php'); ?>
                                     <td><?php echo "+63 ".$row['user_phone']; ?></td>
                                     <td><?php echo $row['user_address']; ?></td>
                                     <td><?php echo $row['order_date']; ?></td>
+                                    <td><?php echo $row['date_shipped']; ?></td>
+                                    <td><?php echo $row['date_received']; ?></td>
                                     <td><?php echo $row['order_status']; ?></td>
                                     <?php if($row['order_status'] == 'Delivered' || $row['order_status'] == 'Cancelled'){?>
                                     
@@ -399,7 +407,7 @@ include('sidemenu.php'); ?>
 
                 ?>
 
-                <div class="tab-pane fade active justify-content-center px-5" id="cancelled" >
+                <div class="tab-pane fade justify-content-center px-5" id="cancelled" >
 
                 <div class="table-responsive">
                         <table class="table table-striped table-bordered table-hover table-sm text-center">
@@ -410,7 +418,9 @@ include('sidemenu.php'); ?>
                                     <th scope="col">Contact Number</th>
                                     <th scope="col">User Address</th>
                                     <th scope="col">Order Date</th>
+                                    <th scope="col">Cancel Date</th>
                                     <th scope="col">Order Status</th>
+                                    <th scope="col">Reason of Cancellation</th>
                                     <th scope="col">Actions</th>
                                 
                                 </tr>
@@ -424,7 +434,9 @@ include('sidemenu.php'); ?>
                                     <td><?php echo "+63 ".$row['user_phone']; ?></td>
                                     <td><?php echo $row['user_address']; ?></td>
                                     <td><?php echo $row['order_date']; ?></td>
+                                    <td><?php echo $row['cancel_date']; ?></td>
                                     <td><?php echo $row['order_status']; ?></td>
+                                    <td><?php echo $row['cancel_reason']; ?></td>
                                     <?php if($row['order_status'] == 'Delivered' || $row['order_status'] == 'Cancelled'){?>
                                     
                                     <td><a class="btn btn-danger" href="delete_order.php?order_id=<?php echo $row['order_id']; ?>" 
@@ -505,7 +517,7 @@ include('sidemenu.php'); ?>
 
                 ?>
                 
-                <div class="tab-pane fade active justify-content-center px-5" id="walkin" >
+                <div class="tab-pane fade justify-content-center px-5" id="walkin" >
 
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered table-hover table-sm text-center">

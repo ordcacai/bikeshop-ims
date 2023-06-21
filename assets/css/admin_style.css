@@ -359,6 +359,21 @@ input::-webkit-inner-spin-button {
     margin-right: 40px;
 }
 
+/* Orders */
+
+.custom-nav .nav-link {
+  color: darkorange; /* Set text color to white */
+}
+
+.custom-nav .nav-link:hover {
+  background-color: #f9b75d; /* Set text color to white */
+  color: white;
+}
+
+.custom-nav .nav-link.active {
+  background-color: darkorange;
+  cursor: default;
+}
 /* Transfer Stocks */
 #addButton {
   display: inline-block;
