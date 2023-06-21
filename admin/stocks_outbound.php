@@ -43,7 +43,7 @@ $stock = $stmt->get_result();
                     </div><br>
 
                     <div class="form-group mt-2">
-                        <label for="selectedDate"><strong>Inbound Date</strong></label>
+                        <label for="selectedDate"><strong>Outbound Date</strong></label>
                         <input style="width:300px" type="date" class="form-control" id="selectedDate" name="transfer_date" required>
                     </div><br>
                     <hr style="height: 3px; border: none; color: #000; background-color: #000; width: 100%;">
@@ -110,7 +110,7 @@ $stock = $stmt->get_result();
 
                     <div class="form-group my-5">
                         <input type="submit" class="btn btn-success me-5" name="record-transfer" value="Record Transfer">
-                        <a class="btn btn-danger" href="report_stocks.php">Cancel</a>
+                        <a class="btn btn-danger" href="report_outbound.php">Cancel</a>
                         </div>
                     </div>
                     </div>

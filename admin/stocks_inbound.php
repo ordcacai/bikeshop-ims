@@ -25,7 +25,7 @@ $stock = $stmt->get_result();
             <div class="mx-auto container">
                 <form method="post" action="process_inbound.php">
 
-                    <div class="form-group mt-2">
+                    <div class="form-group mt-2" >
                         <label><strong>From</strong></label>
                         <select id="category" class="form-select" required name="location_from">
 
@@ -120,7 +120,7 @@ $stock = $stmt->get_result();
 
                     <div class="form-group my-5">
                         <input type="submit" class="btn btn-success me-5" name="record-transfer" value="Record Transfer">
-                        <a class="btn btn-danger" href="report_stocks.php">Cancel</a>
+                        <a class="btn btn-danger" href="report_inbound.php">Cancel</a>
                         </div>
                     </div>
                     </div>
@@ -162,7 +162,7 @@ $stock = $stmt->get_result();
 <script type="text/javascript">
   $(document).ready(function () {
     $('#category').change(function() {
-      if ($(this).val() == 'supplier') {
+      if ($(this).val() == 'Supplier') {
         $('#supplier_name').show();
         $('#supplier_ref').show();
       } else {
