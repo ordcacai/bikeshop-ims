@@ -65,8 +65,9 @@ $product = $stmt->get_result();
                                 <select class="form-control" id="orderStatus" name="order_status" style="width: 500px">
                                     <option value="">-- Select Order Status --</option>
                                     <option value="Pending">Pending</option>
-                                    <option value="For Delivery">For Delivery/Ship out</option>
+                                    <option value="Shipped">For Delivery/Ship out</option>
                                     <option value="Delivered">Delivered</option>
+                                    <option value="Cancelled">Cancelled</option>
                                     <option value="Walk-In">Walk-In</option>
                                 </select><br>
                                 <!--MAIN FORM-->

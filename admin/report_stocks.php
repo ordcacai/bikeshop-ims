@@ -45,9 +45,10 @@ include('sidemenu.php'); ?>
 
 <div class="main-content">
     <div class="container-fluid">
-            <h1 class="my-4">Stocks</h1>
-            <a class="btn btn-secondary btn mb-5 me-4" style="float:right;" href="print_stocks.php"><i class="fas fa-print"></i> Print</a>
 
+            <h1 class="my-4">Stocks</h1>
+            <a class="btn btn-primary btn mb-5 me-4" style="float:right;" href="print_stocks.php"><i class="fas fa-print"></i> Print</a>
+            
                 <?php if(isset($_GET['edit_success_message'])){ ?>
                     <p class="text-center" style="color: green;"><?php echo $_GET['edit_success_message']; ?></p>   
                 <?php }?>
@@ -56,61 +57,68 @@ include('sidemenu.php'); ?>
                     <p class="text-center" style="color: red;"><?php echo $_GET['edit_failure_message']; ?></p>   
                 <?php }?>
 
-            <div class="table-responsive">
-                <table class="table table-striped table-bordered table-hover table-sm text-center">
-                    <thead>
-                        <tr>
-                            <th scope="col">Stock ID</th>
-                            <th scope="col">Product ID</th>
-                            <th scope="col">Product Name</th>
-                            <th scope="col">Color & Size</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">Edit</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <?php if(isset($_GET['inbound_created'])){ ?>
+                    <p class="text-center" style="color: green;"><?php echo $_GET['inbound_created']; ?></p>   
+                <?php }?>
 
-                    <?php while($row = $stocks->fetch_assoc()) { ?>
-                        <tr>
-                            <td><a href="<?php echo "product_details.php?product_id=".$row['product_id']; ?>"><?php echo $row['stock_id']; ?></a></td>
-                            <td><?php echo $row['product_id']; ?></td>
-                            <td><?php echo $row['product_name']; ?></td>
-                            <td><?php echo $row['color_size']; ?></td>
-                            <td><?php echo $row['quantity']; ?></td>
-                            <td><a href="edit_stocks.php?stock_id=<?php echo $row['stock_id']; ?>" class="btn btn-primary"><i class="fas fa-edit"></i></a></td>
-                        </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
+                <?php if(isset($_GET['outbound_created'])){ ?>
+                    <p class="text-center" style="color: green;"><?php echo $_GET['outbound_created']; ?></p>   
+                <?php }?>
 
-                    <nav aria-label="Page navigation example" class="text-center">
-                    <ul class="pagination mt-5 justify-content-center">
-                        <li class="page-item">
-                            <a class="page-link <?= ($page_no <= 1) ? 'disabled' : ''; ?> " <?= ($page_no > 1) ? 'href=?page_no=' .$previous_page : ''; ?>>Previous</a>
-                        </li>
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover table-sm text-center">
+                        <thead>
+                            <tr>
+                                <th scope="col">Stock ID</th>
+                                <th scope="col">Product ID</th>
+                                <th scope="col">Product Name</th>
+                                <th scope="col">Color & Size</th>
+                                <th scope="col">Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-
-                        <li class="page-item"><a href="?page_no=1" class="page-link">1</a></li>
-                        <li class="page-item"><a href="?page_no=2" class="page-link">2</a></li>
-
-                            <?php if($page_no >= 3) { ?>
-                                <li class="page-item"><a href="#" class="page-link">...</a></li>
-                                <li class="page-item"><a href="?page_no=<?= $page_no; ?>" class="page-link"><?= $page_no; ?></a></li>
+                        <?php while($row = $stocks->fetch_assoc()) { ?>
+                            <tr>
+                                <td><?php echo $row['stock_id']; ?></a></td>
+                                <td><?php echo $row['product_id']; ?></td>
+                                <td><?php echo $row['product_name']; ?></td>
+                                <td><?php echo $row['color_size']; ?></td>
+                                <td><?php echo $row['quantity']; ?></td>
+                            </tr>
                             <?php } ?>
+                        </tbody>
+                    </table>
 
-                        <li class="page-item">
-                            <a class="page-link <?= ($page_no >= $total_no_of_pages) ? 'disabled' : ''; ?> " <?= ($page_no < $total_no_of_pages) ? 'href=?page_no=' .$next_page : ''; ?>>Next</a>
-                        </li>
+                        <nav aria-label="Page navigation example" class="text-center">
+                        <ul class="pagination mt-5 justify-content-center">
+                            <li class="page-item">
+                                <a class="page-link <?= ($page_no <= 1) ? 'disabled' : ''; ?> " <?= ($page_no > 1) ? 'href=?page_no=' .$previous_page : ''; ?>>Previous</a>
+                            </li>
 
-                    </ul>
-                </nav>
 
-                <div class="p-10">
-                    <strong>Page <?= $page_no; ?> of <?= $total_no_of_pages ?></strong>
+                            <li class="page-item"><a href="?page_no=1" class="page-link">1</a></li>
+                            <li class="page-item"><a href="?page_no=2" class="page-link">2</a></li>
+
+                                <?php if($page_no >= 3) { ?>
+                                    <li class="page-item"><a href="#" class="page-link">...</a></li>
+                                    <li class="page-item"><a href="?page_no=<?= $page_no; ?>" class="page-link"><?= $page_no; ?></a></li>
+                                <?php } ?>
+
+                            <li class="page-item">
+                                <a class="page-link <?= ($page_no >= $total_no_of_pages) ? 'disabled' : ''; ?> " <?= ($page_no < $total_no_of_pages) ? 'href=?page_no=' .$next_page : ''; ?>>Next</a>
+                            </li>
+
+                        </ul>
+                    </nav>
+
+                    <div class="p-10">
+                        <strong>Page <?= $page_no; ?> of <?= $total_no_of_pages ?></strong>
+                    </div>
+
                 </div>
 
-            </div>
+        </div>
     </div>
-</div> 
 
 

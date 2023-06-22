@@ -52,7 +52,8 @@ if(!isset($_SESSION['logged_in'])){
           <li><a class="link_name" href="inventory.php">Inventory</a></li>
           <li><a href="inventory.php">View Products</a></li>
           <li><a href="add_product.php">Add Product</a></li>
-          <li><a href="transfer_stocks.php">Transfer Stocks</a></li>
+          <li><a href="report_inbound.php">Inbound</a></li>
+          <li><a href="report_outbound.php">Outbound</a></li>
         </ul>
       </li>
     <!--  <li>
@@ -83,7 +84,7 @@ if(!isset($_SESSION['logged_in'])){
         </div>
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Reports</a></li>
-          <li><a href="report_stocks.php">Stock Report</a></li>
+          <li><a href="report_stocks.php">Stocks Report</a></li>
           <li><a href="report_sales.php">Sales Report</a></li>
         </ul>
       </li>

@@ -49,8 +49,8 @@ $pdf->Cell(0	,5,'Stock Report',0,1,'C');
 $pdf->Cell(59	,10,'',0,1);//end of line
 $pdf->SetFont('Arial','B',12);
 
-$pdf->Cell(25	,5,'Stock ID',1,0,'C');
-$pdf->Cell(20	,5,'Product ID',1,0,'C');
+$pdf->Cell(20	,5,'Stock ID',1,0,'C');
+$pdf->Cell(25	,5,'Product ID',1,0,'C');
 $pdf->Cell(80	,5,'Product Name',1,0,'C');
 $pdf->Cell(40	,5,'Color & Size',1,0,'C');
 $pdf->Cell(25	,5,'Quantity',1,1,'C');//end of line
@@ -59,9 +59,9 @@ $pdf->SetFont('Arial','',12);
 
 //display the items
 while($row = $stocks->fetch_assoc()){
-	$pdf->Cell(25	,5,$row['stock_id'],1,0,'C');
+	$pdf->Cell(20	,5,$row['stock_id'],1,0,'C');
 	//add thousand separator using number_format function
-	$pdf->Cell(20	,5,number_format($row['product_id']),1,0,'C');
+	$pdf->Cell(25	,5,number_format($row['product_id']),1,0,'C');
     $pdf->Cell(80	,5,$row['product_name'],1,0,'C');
     $pdf->Cell(40	,5,$row['color_size'],1,0,'C');
 	$pdf->Cell(25	,5,number_format($row['quantity']),1,1,'C');//end of line

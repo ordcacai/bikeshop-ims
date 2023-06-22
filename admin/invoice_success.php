@@ -103,12 +103,9 @@ $pdf->Cell(100	,5,'BILLED TO:',0,1,);//end of line
 
 $pdf->SetFont('Arial','',12);
 //add dummy cell at beginning of each line for indentation
+$invoice = $row['order_date'].$row['order_id'];
+$invoice_no = str_replace('-','',$invoice);
 $pdf->Cell(59	,5,'',0,1);//end of line
-
-$pdf->Cell(35	,5,'Date:',0,0);
-$pdf->Cell(34	,5,$row['order_date'],0,1);//end of line
-$pdf->Cell(35	,5,'Order #:',0,0);
-$pdf->Cell(24	,5,$row['order_id'],0,1);//end of line
 $pdf->Cell(35	,5,'Customer ID:',0,0);
 $pdf->Cell(25	,5,$row['user_id'],0,1);//end of line
 $pdf->Cell(35	,5,'Customer Name:',0,0);
@@ -119,7 +116,16 @@ $pdf->Cell(35	,5,'Landmark:',0,0);
 $pdf->Cell(90	,5,$row['user_landmark'],0,1);
 $pdf->Cell(35	,5,'Contact:',0,0);
 $pdf->Cell(90	,5,$row['user_phone'],0,1);
+$pdf->Cell(35	,5,'Order #:',0,0);
+$pdf->Cell(24	,5,'000'.$row['order_id'],0,1);//end of line
+$pdf->Cell(35	,5,'Invoice #:',0,0);
+$pdf->Cell(24	,5,$invoice_no,0,1);//end of line
+$pdf->Cell(35	,5,'Date:',0,0);
+$pdf->Cell(34	,5,$row['order_date'],0,1);//end of line
 
+$query = $conn->prepare('UPDATE orders SET invoice_no = ? WHERE order_id = ?');
+$query->bind_param('ii', $invoice_no, $order_id);
+$query->execute();
 }
 
 $file_location = "/xampp/htdocs/bikeshop-ims/pdf/order-invoice/";
