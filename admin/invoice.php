@@ -90,8 +90,46 @@ include('sidemenu.php'); ?>
                                 <a class="btn btn-outline-secondary" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=VIEW"><i class="fas fa-eye"></i></a>
                                 <a class="btn btn-outline-primary" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=UPLOAD"><i class="fas fa-upload"></i></a>
                                 <a class="btn btn-outline-danger" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=DOWNLOAD"><i class="fas fa-download"></i></a>
-                                <a class="btn btn-outline-info" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=EMAIL"><i class="fas fa-envelope"></i></a>
-                                <a class="btn btn-outline-success" style="float:right" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=COMPLETE"><i class="fas fa-check"></i></a>
+                                <?php
+                                    $disabledButtons = [];
+
+                                    if (isset($_GET['order_id']) && isset($_GET['ACTION'])) {
+                                        // Check the action and order ID to determine which button was clicked
+                                        $orderID = $_GET['order_id'];
+                                        $action = $_GET['ACTION'];
+
+                                        // Handle the action accordingly (perform the desired functionality)
+
+                                        // Add the clicked button to the disabledButtons array
+                                        $disabledButtons[] = $action . '_' . $orderID;
+                                    }
+                                ?>
+
+                                <!-- Inside the table body -->
+                                
+                                    <?php if (!in_array('EMAIL_' . $row['order_id'], $disabledButtons)) { ?>
+                                        <a class="btn btn-outline-info" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=EMAIL">
+                                            <i class="fas fa-envelope"></i>
+                                        </a>
+                                    <?php } ?>
+
+                                    <?php if (!in_array('COMPLETE_' . $row['order_id'], $disabledButtons)) { ?>
+                                        <a class="btn btn-outline-success" style="float:right" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=COMPLETE">
+                                            <i class="fas fa-check"></i>
+                                        </a>
+                                    <?php } ?>
+                               
+
+                                <script>
+                                    // Disable the buttons that are present in the disabledButtons array
+                                    <?php foreach ($disabledButtons as $disabledButton) { ?>
+                                        var button = document.querySelector('a[href*="<?php echo $disabledButton; ?>"]');
+                                        if (button) {
+                                            button.classList.add('disabled');
+                                            button.removeAttribute('href');
+                                        }
+                                    <?php } ?>
+                                </script>
                             </td>
                         </tr>
                         <?php } ?>
