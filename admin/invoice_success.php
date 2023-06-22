@@ -128,7 +128,7 @@ $query->bind_param('ii', $invoice_no, $order_id);
 $query->execute();
 }
 
-$file_location = "/xampp/htdocs/bikeshop-ims/pdf/order-invoice/";
+$file_location = "/xampp/htdocs/bikeshop-ims/pdf/";
 $datetime = date('dmY_hms');
 $file_name = "Invoice_".$datetime.".pdf";
 
