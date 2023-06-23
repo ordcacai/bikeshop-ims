@@ -102,69 +102,38 @@ include('sidemenu.php'); ?>
                             <td><?php echo $row['order_date']; ?></td>
                             <td><?php echo $row['order_status']; ?></td>
                             <td>
-                                <?php if($_SESSION['user_type'] == 'admin') {?>
-                                <a class="btn btn-outline-secondary" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=VIEW" target="_blank"><i class="fas fa-eye"></i></a>
-                                <a class="btn btn-outline-primary" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=UPLOAD"><i class="fas fa-upload"></i></a>
-                                <a class="btn btn-outline-danger" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=DOWNLOAD"><i class="fas fa-download"></i></a>
-                                <a id="email1" class="btn btn-outline-info" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=EMAIL" onclick="hideButton('email1')"><i class="fas fa-envelope"></i></a>
-                                <a id="email2" class="btn btn-outline-success"  href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=COMPLETE" onclick="hideButton('email2')"><i class="fas fa-check"></i></a>
+                                <?php $_SESSION['user_type'] == 'admin' && $_SESSION['user_type'] == 'employee' ?>
+                                    <a class="btn btn-outline-secondary action-btn" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=VIEW" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a class="btn btn-outline-primary action-btn" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=UPLOAD"><i class="fas fa-upload"></i></a>
+                                    <a class="btn btn-outline-danger action-btn" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=DOWNLOAD"><i class="fas fa-download"></i></a>
+                                    <a class="btn btn-outline-info action-btn" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=EMAIL" onclick="hideButton(this)"><i class="fas fa-envelope"></i></a>
 
-                                <script>
-                                function hideButton(buttonId) {
+                                    <script>
+                                    function hideButton(button) {
                                     // Hide the button by setting its display property to "none"
-                                    document.getElementById(buttonId).style.display = "none";
+                                    button.style.display = "none";
                                     
                                     // Optional: You can store the hidden state in local storage or a cookie
-                                    localStorage.setItem(buttonId, "hidden");
-                                }
+                                    localStorage.setItem(button.getAttribute("href"), "hidden");
+                                    }
 
-                                // Check if the buttons were previously hidden and hide them on page load
-                                document.addEventListener("DOMContentLoaded", function() {
-                                    var email1Hidden = localStorage.getItem("email1");
-                                    if (email1Hidden === "hidden") {
-                                    document.getElementById("email1").style.display = "none";
+                                    // Check if the buttons were previously hidden and hide them on page load
+                                    document.addEventListener("DOMContentLoaded", function() {
+                                    var buttons = document.getElementsByClassName("action-btn");
+                                    for (var i = 0; i < buttons.length; i++) {
+                                        var button = buttons[i];
+                                        var href = button.getAttribute("href");
+                                        var hiddenState = localStorage.getItem(href);
+                                        if (hiddenState === "hidden") {
+                                        button.style.display = "none";
+                                        }
                                     }
-                                    
-                                    var email2Hidden = localStorage.getItem("email2");
-                                    if (email2Hidden === "hidden") {
-                                    document.getElementById("email2").style.display = "none";
-                                    }
-                                });
-                                </script>
-                                
-                                <?php } else{?>
-                                <a class="btn btn-outline-secondary" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=VIEW" target="_blank"><i class="fas fa-eye"></i></a>
-                                <a class="btn btn-outline-primary" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=UPLOAD"><i class="fas fa-upload"></i></a>
-                                <a class="btn btn-outline-danger" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=DOWNLOAD"><i class="fas fa-download"></i></a>
-                                <a  class="btn btn-outline-info" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=EMAIL" onclick="hideButton('email1')"><i class="fas fa-envelope"></i></a>
-                                <a class="btn btn-outline-success"  href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=COMPLETE" onclick="hideButton('email2')"><i class="fas fa-check"></i></a>
-
-                                <script>
-                                function hideButton(buttonId) {
-                                    // Hide the button by setting its display property to "none"
-                                    document.getElementById(buttonId).style.display = "none";
-                                    
-                                    // Optional: You can store the hidden state in local storage or a cookie
-                                    localStorage.setItem(buttonId, "hidden");
-                                }
-
-                                // Check if the buttons were previously hidden and hide them on page load
-                                document.addEventListener("DOMContentLoaded", function() {
-                                    var email1Hidden = localStorage.getItem("email1");
-                                    if (email1Hidden === "hidden") {
-                                    document.getElementById("email1").style.display = "none";
-                                    }
-                                    
-                                    var email2Hidden = localStorage.getItem("email2");
-                                    if (email2Hidden === "hidden") {
-                                    document.getElementById("email2").style.display = "none";
-                                    }
-                                });
-                                </script>
+                                    });
+                                    </script>
                             </td>
 
                         </tr>
-                        <?php }} ?>
+                        <?php } ?>
                     </tbody>
                 </table>
                     <nav aria-label="Page navigation example" class="text-center">
