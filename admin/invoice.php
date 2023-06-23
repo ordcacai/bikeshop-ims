@@ -93,7 +93,7 @@ include('sidemenu.php'); ?>
                                     <a class="btn btn-outline-primary action-btn" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=UPLOAD"><i class="fas fa-upload"></i></a>
                                     <a class="btn btn-outline-danger action-btn" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=DOWNLOAD"><i class="fas fa-download"></i></a>
                                     <a class="btn btn-outline-info action-btn" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=EMAIL" onclick="hideButton(this)"><i class="fas fa-envelope"></i></a>
-
+                                    <a class="btn btn-outline-success action-btn" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=COMPLETE" onclick="hideButton(this)"><i class="fas fa-check"></i></a>
                                     <script>
                                     function hideButton(button) {
                                     // Hide the button by setting its display property to "none"
@@ -116,6 +116,24 @@ include('sidemenu.php'); ?>
                                     }
                                     });
                                     </script>
+                            </td>
+                            <!--Check if payment is already recorded-->
+                            <td>
+                            <?php
+                                $order_id = $row['order_id']; // Get the order ID
+                                $check_payment_stmt = $conn->prepare("SELECT * FROM payments WHERE order_id = ?");
+                                $check_payment_stmt->bind_param('i', $order_id);
+                                $check_payment_stmt->execute();
+                                $payment_result = $check_payment_stmt->get_result();
+
+                                if ($payment_result->num_rows > 0) {
+                                    // Payment record exists, disable the payment button
+                                    ?>
+                                    <button class="btn btn-outline-success" disabled><i class="fas fa-pen"></i></button>
+                                <?php } else { ?>
+                                    <!-- Payment record does not exist, enable the payment button -->
+                                    <a class="btn btn-outline-success" href="<?php echo "payment.php?order_id=" . $row['order_id']; ?>"><i class="fas fa-pen"></i></a>
+                                <?php } ?>
                             </td>
 
                         </tr>
