@@ -24,6 +24,7 @@ button:hover{
     color: black;
 }
 
+
 body{
     font-family: 'Poppins', sans-serif;
 }
@@ -293,6 +294,23 @@ h6{
 .star i{
     font-size: 0.9rem;
     color: darkorange;
+}
+
+.compare-btn {
+    background-color: darkorange;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+    float: right;
+}
+
+.compare-btn:hover {
+    background-color: orange;
+    color: white;
 }
 
 /* Footer */

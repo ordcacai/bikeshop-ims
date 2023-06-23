@@ -76,7 +76,7 @@ include('sidemenu.php'); ?>
                     <li class="nav-item"><a href="#shipped" class="nav-link" data-toggle="pill">For Delivery/Ship out</a></li>
                     <li class="nav-item"><a href="#delivered" class="nav-link" data-toggle="pill">Delivered</a></li>
                     <li class="nav-item"><a href="#cancelled" class="nav-link" data-toggle="pill">Cancelled</a></li>
-                    <li class="nav-item"><a href="#walkin" class="nav-link" data-toggle="pill">Walk-Ins</a></li>
+                    <!-- <li class="nav-item"><a href="#walkin" class="nav-link" data-toggle="pill">Walk-Ins</a></li> -->
                 </ul>
 
             <div class="tab-content">
@@ -483,112 +483,8 @@ include('sidemenu.php'); ?>
                     </div>
 
                 </div>
-
-                <?php
-
-                    //1. determine page no.
-                    if(isset($_GET['page_no']) && $_GET['page_no'] != ""){
-                        //if user has already entered page then page number is the one that they selected
-                        $page_no_walkin = $_GET['page_no'];
-                    }else{
-                        //if user just entered the page then default page is 1
-                        $page_no_walkin = 1;
-                    }
-
-                    //2. return number of products
-                    $stmt_walkin = $conn->prepare("SELECT COUNT(*) As total_records FROM orders WHERE order_status = 'Walk-In'");
-                    $stmt_walkin->execute();
-                    $stmt_walkin->bind_result($total_records_walkin);
-                    $stmt_walkin->store_result();
-                    $stmt_walkin->fetch();
-
-                    //3. products per page
-                    $total_records_per_page_walkin = 5;
-                    $offset_walkin = ($page_no_walkin-1) * $total_records_per_page_walkin;
-                    $previous_page_walkin = $page_no_walkin - 1;
-                    $next_page_walkin = $page_no_walkin + 1;
-                    $adjacents_walkin = "2";
-                    $total_no_of_pages_walkin = ceil($total_records_walkin/$total_records_per_page_walkin);
-
-                    //4. get all products
-                    $stmt_walkin_1 = $conn->prepare("SELECT * FROM orders WHERE order_status = 'Walk-In' ORDER BY order_id DESC LIMIT $offset_walkin, $total_records_per_page_walkin");
-                    $stmt_walkin_1->execute();
-                    $orders_walkin = $stmt_walkin_1->get_result();//array
-
-                ?>
                 
-                <div class="tab-pane fade justify-content-center px-5" id="walkin" >
-
-                    <div class="table-responsive">
-                        <table class="table table-striped table-bordered table-hover table-sm text-center">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Order ID</th>
-                                    <th scope="col">Customer Name</th>
-                                    <th scope="col">Contact Number</th>
-                                    <th scope="col">User Address</th>
-                                    <th scope="col">Order Date</th>
-                                    <th scope="col">Order Status</th>
-                                    <th scope="col">Actions</th>
-                                
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                            <?php while($row = $orders_walkin->fetch_assoc()) { ?>
-                                <tr>
-                                    <td><a href="<?php echo "view_order.php?order_id=".$row['order_id']; ?>"><?php echo $row['order_id']; ?></a></td>
-                                    <td><?php echo $row['user_name']; ?></td>
-                                    <td><?php echo "+63 ".$row['user_phone']; ?></td>
-                                    <td><?php echo $row['user_address']; ?></td>
-                                    <td><?php echo $row['order_date']; ?></td>
-                                    <td><?php echo $row['order_status']; ?></td>
-                                    <?php if($row['order_status'] == 'Delivered' || $row['order_status'] == 'Cancelled'){?>
-                                    
-                                    <td><a class="btn btn-danger" href="delete_order.php?order_id=<?php echo $row['order_id']; ?>" 
-                                    onclick="return confirm('Are you sure you want to delete this order? All records under this order will be deleted PERMANENTLY.');">Delete</a></td>
-                                    <?php }else{?>
-                                    <td>
-                                        <a class="btn btn-primary" href="edit_order.php?order_id=<?php echo $row['order_id']; ?>">Update</a>
-                                        <a class="btn btn-danger" href="delete_order.php?order_id=<?php echo $row['order_id']; ?>"
-                                        onclick="return confirm('Are you sure you want to delete this order? All records under this order will be deleted PERMANENTLY.');">Delete</a>
-                                    </td>
-                                    
-                                    <?php }?>
-                                </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
-
-                            <nav aria-label="Page navigation example" class="text-center">
-                            <ul class="pagination mt-5 justify-content-center">
-                                <li class="page-item">
-                                    <a class="page-link <?= ($page_no_walkin <= 1) ? 'disabled' : ''; ?> " <?= ($page_no_walkin > 1) ? 'href=?page_no=' .$previous_page_walkin : ''; ?>>Previous</a>
-                                </li>
-
-
-                                <li class="page-item"><a href="?page_no=1" class="page-link">1</a></li>
-                                <li class="page-item"><a href="?page_no=2" class="page-link">2</a></li>
-
-                                    <?php if($page_no_walkin >= 3) { ?>
-                                        <li class="page-item"><a href="#" class="page-link">...</a></li>
-                                        <li class="page-item"><a href="?page_no=<?= $page_no_walkin; ?>" class="page-link"><?= $page_no_walkin; ?></a></li>
-                                    <?php } ?>
-
-                                <li class="page-item">
-                                    <a class="page-link <?= ($page_no_walkin >= $total_no_of_pages_walkin) ? 'disabled' : ''; ?> " <?= ($page_no_walkin < $total_no_of_pages_walkin) ? 'href=?page_no=' .$next_page_walkin : ''; ?>>Next</a>
-                                </li>
-
-                            </ul>
-                        </nav>
-
-                        <div class="p-10">
-                            <strong>Page <?= $page_no_walkin; ?> of <?= $total_no_of_pages_walkin ?></strong>
-                        </div>
-
-                </div>
-
-            </div>
+    
     </div>
 </div> 
 

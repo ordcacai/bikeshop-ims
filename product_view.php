@@ -92,7 +92,6 @@ if(isset($_GET['product_id'])){
             <input type="hidden" name="product_price" value="<?php echo number_format($row['product_price'],2); ?>">
             <input type="number" name="product_quantity" value="1" min="1" max="<?php echo $quantity ?>">
             <button class="buy-btn mb-4" type="submit" name="add_to_cart">Add to Cart</button>
-                <a class="buy-btn mb-4" href="compare.php?product_id=<?php echo $row['product_id']; ?>">Compare</a>
             </form>
 
 

@@ -111,20 +111,6 @@ if(isset($_POST['search'])){
 
                     </div>
 
-                    <!-- <div class="row mx-auto container mt-5">
-                        <div class="col-lg-12 col-md-12 col-sm-12">
-
-                            <p>Price</p>
-                            <input type="range" class="form-range w-50" name="price" value="<?php if(isset($price)){echo $price;}else{echo "100";} ?>" min="1000"  max="50000"id="customRange2">
-                            <div class="w-50">
-                                <span style="float: left;">₱1,000</span>
-                                <span style="float: right;">₱50,000</span>
-                            </div>
-
-                        </div>
-                    </div> -->
-                </div>
-
                 <div class="form-group my-3 mx-3">
                     <input type="submit" name="search" value="Search" class="btn btn-primary">
                 </div>
@@ -134,6 +120,7 @@ if(isset($_POST['search'])){
 
     <!-- Shop -->
     <section id="shop" class="my-5 py-5">
+        <a class="btn compare-btn" href="compare_list.php">Compare</a>  
         <div class="container text-center mt-5 py-5">
             <h3>Our Products</h3>
             <hr class="mx-auto">
