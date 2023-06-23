@@ -116,7 +116,7 @@ include('sidemenu.php'); ?>
                             <p class="my-4"><?php echo $order['order_date']; ?></p>
                         </div>
 
-                        <?php if($order['order_status'] == 'Pending'){ ?>
+                        <?php if($order['order_status'] == 'Pending' || $order['order_status'] == 'Walk-In'){ ?>
                         <div class="form-group my-3">
                             <label><strong>Order Status</strong></label>
                             <select class="form-select" required name="status" id="category">
