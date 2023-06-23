@@ -92,30 +92,10 @@ include('sidemenu.php'); ?>
                                     <a class="btn btn-outline-secondary action-btn" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=VIEW" target="_blank"><i class="fas fa-eye"></i></a>
                                     <a class="btn btn-outline-primary action-btn" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=UPLOAD"><i class="fas fa-upload"></i></a>
                                     <a class="btn btn-outline-danger action-btn" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=DOWNLOAD"><i class="fas fa-download"></i></a>
-                                    <a class="btn btn-outline-info action-btn" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=EMAIL" onclick="hideButton(this)"><i class="fas fa-envelope"></i></a>
-                                    <a class="btn btn-outline-success action-btn" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=COMPLETE" onclick="hideButton(this)"><i class="fas fa-check"></i></a>
-                                    <script>
-                                    function hideButton(button) {
-                                    // Hide the button by setting its display property to "none"
-                                    button.style.display = "none";
-                                    
-                                    // Optional: You can store the hidden state in local storage or a cookie
-                                    localStorage.setItem(button.getAttribute("href"), "hidden");
-                                    }
+                                    <a class="btn btn-outline-info action-btn" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=EMAIL" onclick="hideButtonWithConfirmation(this, event, '<?php echo $row['user_name']; ?>', 'Are you sure you want to send an email to ' + '<?php echo $row['user_name']; ?>' + '?')"><i class="fas fa-envelope"></i></a>
+                                    <a class="btn btn-outline-success action-btn" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=COMPLETE" onclick="hideButtonWithConfirmation(this, event, '<?php echo $row['user_name']; ?>', 'You are about to confirm this order, do you want to proceed?')"><i class="fas fa-check"></i></a>
 
-                                    // Check if the buttons were previously hidden and hide them on page load
-                                    document.addEventListener("DOMContentLoaded", function() {
-                                    var buttons = document.getElementsByClassName("action-btn");
-                                    for (var i = 0; i < buttons.length; i++) {
-                                        var button = buttons[i];
-                                        var href = button.getAttribute("href");
-                                        var hiddenState = localStorage.getItem(href);
-                                        if (hiddenState === "hidden") {
-                                        button.style.display = "none";
-                                        }
-                                    }
-                                    });
-                                    </script>
+                                    
                             </td>
                             <!--Check if payment is already recorded-->
                             <td>
@@ -170,3 +150,33 @@ include('sidemenu.php'); ?>
     </div>
 </div> 
 
+<script>
+        function hideButton(button) {
+// Hide the button by setting its display property to "none"
+        button.style.display = "none";
+
+// Optional: You can store the hidden state in local storage or a cookie
+        localStorage.setItem(button.getAttribute("href"), "hidden");
+        }
+
+        function hideButtonWithConfirmation(button, event, user_name, confirmationMessage) {
+        event.preventDefault();
+        if (confirm(confirmationMessage)) {
+            hideButton(button);
+            window.location.href = button.getAttribute("href");
+        }
+        }
+
+// Check if the buttons were previously hidden and hide them on page load
+        document.addEventListener("DOMContentLoaded", function() {
+        var buttons = document.getElementsByClassName("action-btn");
+        for (var i = 0; i < buttons.length; i++) {
+            var button = buttons[i];
+            var href = button.getAttribute("href");
+            var hiddenState = localStorage.getItem(href);
+            if (hiddenState === "hidden") {
+            button.style.display = "none";
+            }
+        }
+    });
+</script>
