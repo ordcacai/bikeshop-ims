@@ -4,7 +4,8 @@
 
     $stmt = $conn->prepare('SELECT * FROM products');
     $stmt->execute();
-    $products = $stmt->get_result();
+    $productsResult = $stmt->get_result();
+    $products = $productsResult->fetch_all(MYSQLI_ASSOC);
 ?>
 
 <style>
@@ -28,7 +29,10 @@
                     <th width="300px">
                         <select class="form-control" id="select1" onchange="item1(this.value)">
                             <option value="0">-- Select Item 1 --</option>
-                            <?php while($row = $products->fetch_assoc()){ ?>
+                            
+                            <?php 
+                            $productsResult->data_seek(0);
+                            while($row = $productsResult->fetch_assoc()){ ?>
                                 <option value="<?php echo $row['product_id'] ?>"><?php echo $row['product_name'] ?></option>
                             <?php } ?>
                         </select>
@@ -37,8 +41,8 @@
                         <select class="form-control" id="select2" onchange="item2(this.value)">
                             <option value="0">-- Select Item 2 --</option>
                             <?php
-                                $products->data_seek(0);
-                                while($row = $products->fetch_assoc()){ ?>
+                                $productsResult->data_seek(0);
+                                while($row = $productsResult->fetch_assoc()){ ?>
                                 <option value="<?php echo $row['product_id'] ?>"><?php echo $row['product_name'] ?></option>
                             <?php } ?>
                         </select>
@@ -52,7 +56,7 @@
                     </td>
                     <td>
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"
-                            id="img2" alt=" ">
+                            id="img2" alt="">
                     </td>
                 </tr>
                 <tr>
@@ -76,18 +80,18 @@
 </section>
 
 <script>
-    var products = <?php echo json_encode($products->fetch_all(MYSQLI_ASSOC)); ?>;
+var products = <?php echo json_encode($products); ?>;
 
-    function item1(productId) {
-        var select2 = document.getElementById("select2").value;
-        if (productId !== select2) {
-            var selectedProduct = products.find(function(product) {
-                return product.product_id == productId;
-            });
-            document.getElementById("img1").src = selectedProduct.product_image;
-            document.getElementById("price1").innerHTML = "PHP " + selectedProduct.product_price;
-            document.getElementById("desc1").innerHTML = selectedProduct.product_description;
-            document.getElementById("brand1").innerHTML = selectedProduct.product_category;
+   function item1(productId) {
+    var select2 = document.getElementById("select2").value;
+    if (productId !== select2) {
+        var selectedProduct = products.find(function(product) {
+            return product.product_id == productId;
+        });
+        document.getElementById("img1").src = selectedProduct.product_image;
+        document.getElementById("price1").innerHTML = "PHP " + selectedProduct.product_price;
+        document.getElementById("desc1").innerHTML = selectedProduct.product_description;
+        document.getElementById("brand1").innerHTML = selectedProduct.product_category;
         } else {
             document.getElementById("select1").selectedIndex = 0;
             document.getElementById("img1").src = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png";
@@ -98,15 +102,15 @@
     }
 
     function item2(productId) {
-        var select1 = document.getElementById("select1").value;
-        if (productId !== select1) {
-            var selectedProduct = products.find(function(product) {
-                return product.product_id == productId;
-            });
-            document.getElementById("img2").src = selectedProduct.product_image;
-            document.getElementById("price2").innerHTML = "PHP " + selectedProduct.product_price;
-            document.getElementById("desc2").innerHTML = selectedProduct.product_description;
-            document.getElementById("brand2").innerHTML = selectedProduct.product_category;
+    var select1 = document.getElementById("select1").value;
+    if (productId !== select1) {
+        var selectedProduct = products.find(function(product) {
+            return product.product_id == productId;
+        });
+        document.getElementById("img2").src = selectedProduct.product_image;
+        document.getElementById("price2").innerHTML = "PHP " + selectedProduct.product_price;
+        document.getElementById("desc2").innerHTML = selectedProduct.product_description;
+        document.getElementById("brand2").innerHTML = selectedProduct.product_category;
         } else {
             document.getElementById("select2").selectedIndex = 0;
             document.getElementById("img2").src = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png";
