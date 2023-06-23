@@ -19,7 +19,7 @@
     }
 
     //2. return number of products
-    $stmt1 = $conn->prepare("SELECT COUNT(*) As total_records FROM orders WHERE order_status = 'Pending'");
+    $stmt1 = $conn->prepare("SELECT COUNT(*) As total_records FROM orders");
     $stmt1->execute();
     $stmt1->bind_result($total_records);
     $stmt1->store_result();
@@ -34,7 +34,7 @@
     $total_no_of_pages = ceil($total_records/$total_records_per_page);
 
     //4. get all products
-    $stmt2 = $conn->prepare("SELECT * FROM orders WHERE order_status = 'Pending' ORDER BY order_id DESC LIMIT $offset, $total_records_per_page");
+    $stmt2 = $conn->prepare("SELECT * FROM orders ORDER BY order_id DESC LIMIT $offset, $total_records_per_page");
     $stmt2->execute();
     $orders = $stmt2->get_result();//array
 
@@ -88,67 +88,69 @@ include('sidemenu.php'); ?>
                             <td><?php echo $row['order_date']; ?></td>
                             <td><?php echo $row['order_status']; ?></td>
                             <td>
-                                <a class="btn btn-outline-secondary" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=VIEW"><i class="fas fa-eye"></i></a>
+                                <?php if($_SESSION['user_type'] == 'admin') {?>
+                                <a class="btn btn-outline-secondary" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=VIEW" target="_blank"><i class="fas fa-eye"></i></a>
                                 <a class="btn btn-outline-primary" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=UPLOAD"><i class="fas fa-upload"></i></a>
                                 <a class="btn btn-outline-danger" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=DOWNLOAD"><i class="fas fa-download"></i></a>
-                                <?php
+                                <a id="email1" class="btn btn-outline-info" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=EMAIL" onclick="hideButton('email1')"><i class="fas fa-envelope"></i></a>
+                                <a id="email2" class="btn btn-outline-success"  href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=COMPLETE" onclick="hideButton('email2')"><i class="fas fa-check"></i></a>
 
-                                    if (isset($_GET['order_id']) && isset($_GET['ACTION'])) {
-                                        // Check the action and order ID to determine which button was clicked
-                                        $orderID = $_GET['order_id'];
-                                        $action = $_GET['ACTION'];
+                                <script>
+                                function hideButton(buttonId) {
+                                    // Hide the button by setting its display property to "none"
+                                    document.getElementById(buttonId).style.display = "none";
+                                    
+                                    // Optional: You can store the hidden state in local storage or a cookie
+                                    localStorage.setItem(buttonId, "hidden");
+                                }
 
-                                        // Handle the action accordingly (perform the desired functionality)
-
-                                        // Add the clicked button to the disabledButtons array
-                                        $_SESSION['disabled'][] = $action . '_' . $orderID;
+                                // Check if the buttons were previously hidden and hide them on page load
+                                document.addEventListener("DOMContentLoaded", function() {
+                                    var email1Hidden = localStorage.getItem("email1");
+                                    if (email1Hidden === "hidden") {
+                                    document.getElementById("email1").style.display = "none";
                                     }
-                                ?>
+                                    
+                                    var email2Hidden = localStorage.getItem("email2");
+                                    if (email2Hidden === "hidden") {
+                                    document.getElementById("email2").style.display = "none";
+                                    }
+                                });
+                                </script>
+                                
+                                <?php } else{?>
+                                <a class="btn btn-outline-secondary" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=VIEW" target="_blank"><i class="fas fa-eye"></i></a>
+                                <a class="btn btn-outline-primary" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=UPLOAD"><i class="fas fa-upload"></i></a>
+                                <a class="btn btn-outline-danger" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=DOWNLOAD"><i class="fas fa-download"></i></a>
+                                <a  class="btn btn-outline-info" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=EMAIL" onclick="hideButton('email1')"><i class="fas fa-envelope"></i></a>
+                                <a class="btn btn-outline-success"  href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=COMPLETE" onclick="hideButton('email2')"><i class="fas fa-check"></i></a>
 
-                                <!-- Inside the table body -->
-                                <?php if (!in_array('EMAIL_' . $row['order_id'], $_SESSION['disabled'])) { ?>
-                                    <a class="btn btn-outline-info" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=EMAIL" onclick="disableButton(this);">
-                                        <i class="fas fa-envelope"></i>
-                                    </a>
-                                <?php } else { ?>
-                                    <button class="btn btn-outline-info" disabled>
-                                        <i class="fas fa-envelope"></i>
-                                    </button>
-                                <?php } ?>
+                                <script>
+                                function hideButton(buttonId) {
+                                    // Hide the button by setting its display property to "none"
+                                    document.getElementById(buttonId).style.display = "none";
+                                    
+                                    // Optional: You can store the hidden state in local storage or a cookie
+                                    localStorage.setItem(buttonId, "hidden");
+                                }
 
-                                <?php if (!in_array('COMPLETE_' . $row['order_id'], $_SESSION['disabled'])) { ?>
-                                    <a class="btn btn-outline-success" href="invoice_success.php?order_id=<?php echo $row['order_id']; ?>&ACTION=COMPLETE" onclick="disableButton(this);">
-                                        <i class="fas fa-check"></i>
-                                    </a>
-                                <?php } else { ?>
-                                    <button class="btn btn-outline-success" disabled>
-                                        <i class="fas fa-check"></i>
-                                    </button>
-                                <?php } ?>
-                            </td>
-                            
-
-                            <!--Check if payment is already recorded-->
-                            <td>
-                            <?php
-                                $order_id = $row['order_id']; // Get the order ID
-                                $check_payment_stmt = $conn->prepare("SELECT * FROM payments WHERE order_id = ?");
-                                $check_payment_stmt->bind_param('i', $order_id);
-                                $check_payment_stmt->execute();
-                                $payment_result = $check_payment_stmt->get_result();
-
-                                if ($payment_result->num_rows > 0) {
-                                    // Payment record exists, disable the payment button
-                                    ?>
-                                    <button class="btn btn-outline-success" disabled><i class="fas fa-pen"></i></button>
-                                <?php } else { ?>
-                                    <!-- Payment record does not exist, enable the payment button -->
-                                    <a class="btn btn-outline-success" href="<?php echo "payment.php?order_id=" . $row['order_id']; ?>"><i class="fas fa-pen"></i></a>
-                                <?php } ?>
+                                // Check if the buttons were previously hidden and hide them on page load
+                                document.addEventListener("DOMContentLoaded", function() {
+                                    var email1Hidden = localStorage.getItem("email1");
+                                    if (email1Hidden === "hidden") {
+                                    document.getElementById("email1").style.display = "none";
+                                    }
+                                    
+                                    var email2Hidden = localStorage.getItem("email2");
+                                    if (email2Hidden === "hidden") {
+                                    document.getElementById("email2").style.display = "none";
+                                    }
+                                });
+                                </script>
                             </td>
 
                         </tr>
-                        <?php } ?>
+                        <?php }} ?>
                     </tbody>
                 </table>
                     <nav aria-label="Page navigation example" class="text-center">
@@ -180,3 +182,4 @@ include('sidemenu.php'); ?>
             </div>
     </div>
 </div> 
+
