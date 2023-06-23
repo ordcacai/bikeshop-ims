@@ -92,7 +92,7 @@ if(isset($_GET['product_id'])){
             <input type="hidden" name="product_price" value="<?php echo number_format($row['product_price'],2); ?>">
             <input type="number" name="product_quantity" value="1" min="1" max="<?php echo $quantity ?>">
             <button class="buy-btn mb-4" type="submit" name="add_to_cart">Add to Cart</button>
-            <button class="compare-btn mb-4" type="button" onclick="addToCompare(<?php echo $row['product_id']; ?>)">Add to Compare list</button>
+            <button id="compareButton" class="compare-btn mb-4" type="button" onclick="addToCompare(<?php echo $row['product_id']; ?>)">Add to Compare list</button>
             </form>
 
 
@@ -183,42 +183,63 @@ if(isset($_GET['product_id'])){
     var mainImg = document.getElementById("mainImg");
     var smallImg = document.getElementsByClassName("small-img");
 
-    for(let i=0; i<4; i++){
-        smallImg[i].onclick = function(){
-            mainImg.src = smallImg[i].src
-        }
+    for (let i = 0; i < 4; i++) {
+        smallImg[i].onclick = function () {
+            mainImg.src = smallImg[i].src;
+        };
     }
+
+      // Check the compare list status when the page loads
+      window.onload = function() {
+        var compareList = JSON.parse(localStorage.getItem('compareList')) || [];
+        var compareButton = document.getElementById('compareButton');
+        var productId = <?php echo $product_id; ?>;
+
+        if (compareList.includes(productId)) {
+            compareButton.textContent = 'View Compare List';
+            compareButton.onclick = function() {
+                window.location.href = 'compare_list.php';
+            };
+        }
+    };
 
     function addToCompare(productId) {
-    // Check if the product is already in the compare list
-    var compareList = JSON.parse(localStorage.getItem('compareList')) || [];
+        // Check if the product is already in the compare list
+        var compareList = JSON.parse(localStorage.getItem('compareList')) || [];
 
-    if (compareList.includes(productId)) {
-        alert('This product is already in the Compare list!');
-        return;
+        if (compareList.includes(productId)) {
+            window.location.href = 'compare_list.php';
+            return;
+        }
+
+        // Limit the compare list to a maximum of 3 products
+        if (compareList.length >= 3) {
+            alert('You can only compare up to 3 products. Please remove a product from the Compare list to add a new one.');
+            return;
+        }
+
+        // Add the product to the compare list
+        compareList.push(productId);
+        localStorage.setItem('compareList', JSON.stringify(compareList));
+
+        // Change the button text and behavior
+        var compareButton = document.getElementById('compareButton');
+        compareButton.textContent = 'View Compare List';
+        compareButton.onclick = function() {
+            window.location.href = 'compare_list.php';
+        };
+
+        // Show a notification to the user
+        var notification = document.createElement('div');
+        notification.classList.add('compare-notification');
+        notification.textContent = 'Product added to Compare list!';
+        document.body.appendChild(notification);
+
+        setTimeout(function () {
+            document.body.removeChild(notification);
+        }, 2000);
     }
-
-    // Limit the compare list to a maximum of 3 products
-    if (compareList.length >= 3) {
-        alert('You can only compare up to 3 products. Please remove a product from the Compare list to add a new one.');
-        return;
-    }
-
-    // Add the product to the compare list
-    compareList.push(productId);
-    localStorage.setItem('compareList', JSON.stringify(compareList));
-
-    // Show a notification to the user
-    var notification = document.createElement('div');
-    notification.classList.add('compare-notification');
-    notification.textContent = 'Product added to Compare list!';
-    document.body.appendChild(notification);
-
-    setTimeout(function() {
-        document.body.removeChild(notification);
-    }, 2000);
-}
-
 </script>
+
 
 <?php include('layouts/footer.php'); ?>
