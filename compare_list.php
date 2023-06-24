@@ -70,7 +70,7 @@
                     <td id="desc2">N/A</td>
                 </tr>
                 <tr>
-                    <th>Product Brand</th>
+                    <th>Product Category</th>
                     <td id="brand1">N/A</td>
                     <td id="brand2">N/A</td>
                 </tr>
@@ -80,6 +80,8 @@
 </section>
 
 <script>
+
+
 var products = <?php echo json_encode($products); ?>;
 
    function item1(productId) {
@@ -88,8 +90,8 @@ var products = <?php echo json_encode($products); ?>;
         var selectedProduct = products.find(function(product) {
             return product.product_id == productId;
         });
-        document.getElementById("img1").src = selectedProduct.product_image;
-        document.getElementById("price1").innerHTML = "PHP " + selectedProduct.product_price;
+        document.getElementById("img1").src = "assets/imgs/" + selectedProduct.product_image;
+        document.getElementById("price1").innerHTML = "PHP " + formatPrice(selectedProduct.product_price);
         document.getElementById("desc1").innerHTML = selectedProduct.product_description;
         document.getElementById("brand1").innerHTML = selectedProduct.product_category;
         } else {
@@ -107,8 +109,8 @@ var products = <?php echo json_encode($products); ?>;
         var selectedProduct = products.find(function(product) {
             return product.product_id == productId;
         });
-        document.getElementById("img2").src = selectedProduct.product_image;
-        document.getElementById("price2").innerHTML = "PHP " + selectedProduct.product_price;
+        document.getElementById("img2").src = "assets/imgs/" + selectedProduct.product_image;
+        document.getElementById("price2").innerHTML = "PHP " + formatPrice(selectedProduct.product_price);
         document.getElementById("desc2").innerHTML = selectedProduct.product_description;
         document.getElementById("brand2").innerHTML = selectedProduct.product_category;
         } else {
@@ -118,6 +120,11 @@ var products = <?php echo json_encode($products); ?>;
             document.getElementById("desc2").innerHTML = "N/A";
             document.getElementById("brand2").innerHTML = "N/A";
         }
+    }
+
+    function formatPrice(price) {
+        const formatter = new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        return formatter.format(price);
     }
 </script>
 
