@@ -112,7 +112,7 @@ if(isset($_GET['product_id'])){
             <span><i class="bi bi-exclamation-triangle"></i> 1 MONTH FREE SERVICE WARRANTY </span>
             <?php } ?>
         </div>
-        <?php } ?>
+        
     </div>
 </section>
 
@@ -173,6 +173,7 @@ if(isset($_GET['product_id'])){
             <h4 class="p-price">₱<?php echo number_format($row['product_price'],2); ?></h4>
             <button class="buy-btn" href="<?php echo "product_view.php?product_id=".$row['product_id']; ?>">Buy Now</button>
         </div>
+        <?php } ?>
         <?php } ?>
         <?php } ?>
     </div>
